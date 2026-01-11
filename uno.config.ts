@@ -37,10 +37,13 @@ export default defineConfig({
       },
     }),
     presetWebFonts({
+      provider: 'google',
       fonts: {
         sans: 'Inter:400,600,800',
         mono: 'DM Mono:400,600',
       },
+      extendTheme: true,
+      inlineImports: true,
     }),
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],

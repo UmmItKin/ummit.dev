@@ -38,6 +38,10 @@ function formatCanonicalURL(url: string | URL) {
 <title>{title}</title>
 <meta name="generator" content={Astro.generator} />
 
+<!-- Preconnect to external origins -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
 <!-- Low Priority Global Metadata -->
 <link rel="icon" type="image/svg+xml" href="https://links-rs.ummit.dev/cutecute.webp" />
 <link rel="sitemap" href="/sitemap-index.xml" />
