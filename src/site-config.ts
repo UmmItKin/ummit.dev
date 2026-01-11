@@ -1,7 +1,7 @@
 export const siteConfig = {
   author: 'UmmIt Kin',
-  title: 'UmmIt Kin - Blog',
-  subtitle: 'UmmIt Kin Blog!!!!',
+  title: 'UmmIt Kin Personal website',
+  subtitle: 'UmmIt Kin Personal website :)))))',
   description: 'The place where I share my thoughts and projects.',
   image: {
     src: 'https://links-rs.ummit.dev/cutecute.webp',
