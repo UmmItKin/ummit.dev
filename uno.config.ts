@@ -108,5 +108,6 @@ export default defineConfig({
     'i-ri-edit-line',
     'i-ri-shield-check-line',
     'i-ri-terminal-box-line',
+    'i-ri-mail-line',
   ],
 })
