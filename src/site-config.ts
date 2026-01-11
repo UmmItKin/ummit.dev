@@ -48,12 +48,8 @@ export const siteConfig = {
         href: '/blog',
       },
       {
-        text: 'Notes',
-        href: '/blog/notes',
-      },
-      {
         text: 'Talks',
-        href: '/blog/talks',
+        href: '/talks',
       },
       {
         text: 'Projects',
@@ -67,13 +63,11 @@ export const siteConfig = {
         text: 'Blog',
         href: '/blog',
       },
-      {
-        text: 'Notes',
-        href: '/blog/notes',
-      },
+    ],
+    talksLinks: [
       {
         text: 'Talks',
-        href: '/blog/talks',
+        href: '/talks',
       },
     ],
   },
