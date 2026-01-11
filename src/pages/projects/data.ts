@@ -12,4 +12,16 @@ export const projectData: ProjectData = [
       },
     ],
   },
+
+  {
+    title: 'Z2E',
+    projects: [
+      {
+        text: 'Z2E (Zero to Exploit)',
+        description: 'AI Powered Automated Penetration Testing Framework.',
+        icon: 'i-ri-brain-3-fill',
+        href: 'https://github.com/Z2E-Agent',
+      },
+    ],
+  },
 ]

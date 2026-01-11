@@ -70,5 +70,6 @@ export default defineConfig({
     'i-ri-router-line',
     'i-ri-smartphone-line',
     'i-ri-apps-line',
+    'i-ri-brain-3-fill',
   ],
 })
