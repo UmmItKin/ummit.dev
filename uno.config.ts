@@ -63,5 +63,12 @@ export default defineConfig({
     'i-ri-book-2-line',
     'i-ri-signal-tower-line',
     'i-ri-global-line',
+    'i-ri-computer-line',
+    'i-ri-macbook-line',
+    'i-ri-keyboard-line',
+    'i-ri-server-line',
+    'i-ri-router-line',
+    'i-ri-smartphone-line',
+    'i-ri-apps-line',
   ],
 })

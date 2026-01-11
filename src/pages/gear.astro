@@ -1,0 +1,147 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+
+const gear = {
+  desktop: {
+    title: 'Desktop',
+    subtitle: 'Triple Boot with three GNU/Linux',
+    icon: 'i-ri-computer-line',
+    items: [
+      { label: 'Motherboard', value: 'Gigabyte B760M GAMING X' },
+      { label: 'CPU', value: 'Intel i5-13600K' },
+      { label: 'GPU', value: 'Sapphire RX 6650 XT 8GB' },
+      { label: 'GPU-2', value: 'PowerColor RX 6600 8GB' },
+      { label: 'RAM', value: 'ADATA XPG 64GB' },
+      { label: 'NVMe SSD', value: 'Kingston KC3000 2TB' },
+      { label: 'SATA HDD', value: 'Toshiba MG08 4TB' },
+      { label: 'Power Supply', value: 'ADATA 850W Gold' },
+      { label: 'Case', value: 'GIGABYTE C200' },
+      { label: 'Cooler', value: 'Thermalright Aqua Elite 240' },
+      { label: 'Fans', value: 'Thermalright TL-C12C x3' },
+      { label: 'Operating System', value: 'GNU/Linux' },
+      { label: 'Distribution', value: 'Arch Linux with UmmItOS plus BlackArch / NixOS' },
+      { label: 'Dynamic Window Manager', value: 'Hyprland' },
+      { label: 'Desktop Environment', value: 'KDE Plasma' },
+    ],
+  },
+  laptop: {
+    title: 'Laptop',
+    subtitle: 'Dual Boot with two GNU/Linux',
+    icon: 'i-ri-macbook-line',
+    items: [
+      { label: 'Device', value: 'HP Pavilion Aero 13 (Ryzen 7, Sky Blue)' },
+      { label: 'CPU', value: 'AMD Ryzen 7-8840U Processor' },
+      { label: 'iGPU', value: 'AMD Radeon Graphics' },
+      { label: 'RAM', value: 'On-Board 16GB LPDDR5x' },
+      { label: 'NVMe SSD', value: '1TB PCIe NVMe M.2 SSD' },
+      { label: 'Operating System', value: 'GNU/Linux' },
+      { label: 'Distribution', value: 'Arch Linux with UmmItOS plus BlackArch / NixOS' },
+      { label: 'Dynamic WM', value: 'Hyprland' },
+      { label: 'Desktop Environment', value: 'KDE Plasma' },
+    ],
+  },
+  peripherals: {
+    title: 'Peripherals',
+    icon: 'i-ri-keyboard-line',
+    items: [
+      { label: 'Keyboard (Main)', value: 'ZSA Moonlander MK1 (Kailh Silver, Black keycaps)' },
+      { label: 'Keyboard (Fallback)', value: 'MSI GK20 Gaming Keyboard' },
+      { label: 'Mouse', value: 'Logitech G502 X Wired Gaming Mouse - Black' },
+      { label: 'Chair', value: 'Cooler Master CALIBER X2 - Grey' },
+      { label: 'Monitor', value: 'AOC Q24G2A/BK 165 Hz' },
+      { label: 'Pen Tablet', value: 'Wacom CTL-472' },
+      { label: 'Microphone', value: 'HyperX SoloCast - USB Microphone (Black)' },
+      { label: 'Headphones', value: 'Pixel Buds Pro 2' },
+    ],
+  },
+  server: {
+    title: 'Server',
+    icon: 'i-ri-server-line',
+    items: [
+      { label: 'Device', value: 'NucBox K6 Mini PC' },
+      { label: 'CPU', value: 'AMD Ryzen 7 7840HS' },
+      { label: 'iGPU', value: 'AMD Radeon 780M (up to 2700 MHz)' },
+      { label: 'RAM', value: '16GB (2×8GB) DDR5' },
+      { label: 'Storage', value: '1TB PCIe 4.0 M.2 2280 SSD' },
+      { label: 'Display', value: '1× HDMI, 1× DisplayPort' },
+      { label: 'Connectivity', value: 'WiFi 6, Bluetooth 5.2, 2.5G LAN' },
+      { label: 'OS', value: 'Arch Linux' },
+    ],
+  },
+  router: {
+    title: 'Router',
+    icon: 'i-ri-router-line',
+    items: [
+      { label: 'Device', value: 'Raspberry Pi 4B' },
+      { label: 'RAM', value: '8GB LPDDR4-3200 SDRAM' },
+      { label: 'Storage', value: 'microSD 128GB' },
+      { label: 'OS', value: 'OpenWrt' },
+    ],
+  },
+  mobile: {
+    title: 'Mobile Devices',
+    icon: 'i-ri-smartphone-line',
+    items: [
+      { label: 'Device', value: 'Google Pixel 9A' },
+      { label: 'RAM', value: '8GB' },
+      { label: 'Storage', value: '128GB' },
+      { label: 'OS', value: 'PixelOS' },
+      { label: 'Device Color', value: 'Purple' },
+    ],
+  },
+
+  mobile2: {
+    title: 'Mobile Devices (Fallback)',
+    icon: 'i-ri-smartphone-line',
+    items: [
+      { label: 'Device', value: 'Google Pixel 6A' },
+      { label: 'RAM', value: '8GB' },
+      { label: 'Storage', value: '128GB' },
+      { label: 'OS', value: 'GrapheneOS' },
+      { label: 'Device Color', value: 'Black' },
+    ],
+  },
+
+  favorite_software: {
+    title: 'Favorite Software',
+    icon: 'i-ri-apps-line',
+    items: [
+      { label: 'Code Editor', value: 'Neovim' },
+      { label: 'Web Browser', value: 'Floorp/Brave' },
+      { label: 'Terminal Emulator', value: 'Kitty' },
+    ],
+  },
+}
+
+const sections = Object.values(gear)
+---
+
+<BaseLayout title="Gear" description="My hardware and software setup.">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold opacity-80">Gear</h1>
+    <p class="mt-2 opacity-50">My daily hardware and software setup.</p>
+  </div>
+
+  <div class="space-y-12">
+    {
+      sections.map((section) => (
+        <section>
+          <h2 class="text-xl font-semibold mb-1 flex items-center gap-2">
+            <i class:list={[section.icon, 'opacity-60']} />
+            {section.title}
+          </h2>
+          {'subtitle' in section && section.subtitle && <p class="text-sm opacity-50 mb-4">{section.subtitle}</p>}
+          {!('subtitle' in section) && <div class="mb-4" />}
+          <div class="grid gap-2">
+            {section.items.map((item) => (
+              <div class="flex flex-col sm:flex-row sm:items-center py-2 border-b border-neutral-200 dark:border-neutral-800">
+                <span class="text-sm opacity-50 sm:w-40 shrink-0">{item.label}</span>
+                <span class="text-sm">{item.value}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+</BaseLayout>
