@@ -15,10 +15,9 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: lts/*
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
 
-      - run: npx changelogithub gh release
+      - run: bunx changelogithub gh release
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
