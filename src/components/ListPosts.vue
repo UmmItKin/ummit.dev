@@ -21,7 +21,8 @@ function getDate(date: string) {
 function getHref(post: Post) {
   if (post.data.redirect)
     return post.data.redirect
-  return `/posts/${post.slug}`
+  const basePath = post.collection === 'blog' ? '/posts' : `/${post.collection}`
+  return `${basePath}/${post.slug}`
 }
 
 function getTarget(post: Post) {
