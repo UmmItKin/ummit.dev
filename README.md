@@ -37,73 +37,27 @@ If you  just want to develop locally, you can [create a repo](https://github.com
 First, install the dependencies.
 
 ```bash
-npm install
+bun install
 ```
 
 Just run and visit http://localhost:1977.
 
 ```bash
-npm run dev
+bun run dev
 ```
 
-> Node.js version 18 or higher is required for this project.
+> Bun is required for this project.
 
 To build the App, you can run:
 
 ```bash
-npm run build
+bun run build
 ```
 
 You will then see the `dist` folder generated for publishing, which you can preview locally with the following command.
 
 ```bash
-npm run preview
-```
-
-## Use pnpm / yarn
-
-If you want to use pnpm or yarn as a package management tool, please refer to the following steps.
-
-> If `preinstall` exists in `scripts`, remove it first.
-
-### pnpm
-
-Replace `"pre-commit": "npx lint-staged"` in package.json with `"pre-commit": "pnpm lint-staged"`.
-
-And replace `"*": "npm run lint:fix"` with `"*": "pnpm lint:fix"`.
-
-Like this:
-
-```json
-{
-  // ...
-  "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
-  },
-  "lint-staged": {
-    "*": "pnpm lint:fix"
-  }
-}
-```
-
-### yarn
-
-Replace `"pre-commit": "npx lint-staged"` in package.json with `"pre-commit": "yarn lint-staged"`.
-
-And replace `"*": "npm run lint:fix"` with `"*": "yarn lint:fix"`.
-
-Like this:
-
-```json
-{
-  // ...
-  "simple-git-hooks": {
-    "pre-commit": "yarn lint-staged"
-  },
-  "lint-staged": {
-    "*": "yarn lint:fix"
-  }
-}
+bun run preview
 ```
 
 ## License

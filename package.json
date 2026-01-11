@@ -52,9 +52,9 @@
     "simple-git-hooks": "^2.12.1"
   },
   "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
+    "pre-commit": "bun lint-staged"
   },
   "lint-staged": {
-    "*": "npm run lint:fix"
+    "*": "bun run lint:fix"
   }
 }
