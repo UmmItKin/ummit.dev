@@ -5,9 +5,9 @@ import { defineConfig } from 'astro/config'
 import UnoCSS from 'unocss/astro'
 
 export default defineConfig({
-  site: 'https://astro-theme-vitesse.netlify.app/',
+  site: 'https://ummit.dev',
   server: {
-    port: 1977,
+    port: 3199,
   },
   integrations: [
     mdx(),
