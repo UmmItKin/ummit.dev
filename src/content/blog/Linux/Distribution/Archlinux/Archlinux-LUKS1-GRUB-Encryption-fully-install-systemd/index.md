@@ -74,7 +74,7 @@ Generate the `/etc/fstab` file:
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
-The process of installing Arch Linux is the same as that of ArchLinux. If you are unfamiliar with the process, please refer to this article: [Complete Guide to Installing Arch Linux with LUKS Encryption and GNOME Desktop Environment](/posts/en/linux/distribution/archlinux/archlinux-luks-encryption-fully-install-systemd/).
+The process of installing Arch Linux is the same as that of ArchLinux. If you are unfamiliar with the process, please refer to this article: [Complete Guide to setting up LUKS on LVM encryption in Arch Linux (Minimal System)](/posts/linux/distribution/archlinux/archlinux-luks-encryption-fully-install-systemd).
 
 ### Step 4: Configure mkinitcpio.conf
 
