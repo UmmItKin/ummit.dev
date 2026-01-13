@@ -13,6 +13,8 @@ lang: en-US
 
 Today, I updated my Arch installation with a fresh install, but I encountered an issue where it gets stuck at loading `/dev/mapper/vol-root`. I did some research and asked my friends who use full disk encryption about it. During that time, I learned that Arch recently updated something very important for FDE users. Here is the latest version of how to install with FDE on Arch.
 
+https://wiki.archlinux.org/title/Dm-crypt/System_configuration#rd.luks.name
+
 ## Introduction
 
 Since systemd-boot doesn't support encrypted `/boot`, grub does. There are not so good points though, like only luks1 and argon2id are not supported. However, in this short guide I will teach you how to encrypt your /boot to be fully encrypted with our disk.
