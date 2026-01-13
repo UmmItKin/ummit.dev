@@ -5,16 +5,24 @@ tag: "LUKS, Linux, Arch linux"
 lang: en-US
 ---
 
+> **Note:** This is an updated installation method for the latest Arch Linux install.
+
+## Guys! Arch Got an Update
+
+**2026-01-13 12:00:00**
+
+Today, I updated my Arch installation with a fresh install, but I encountered an issue where it gets stuck at loading `/dev/mapper/vol-root`. I did some research and asked my friends who use full disk encryption about it. During that time, I learned that Arch recently updated something very important for FDE users. Here is the latest version of how to install with FDE on Arch.
+
 ## Introduction
 
 Since systemd-boot doesn't support encrypted `/boot`, grub does. There are not so good points though, like only luks1 and argon2id are not supported. However, in this short guide I will teach you how to encrypt your /boot to be fully encrypted with our disk.
 
 ### Step 1: Encrypt the Disk
 
-To begin, encrypt your disk using the LUKS format. However, note that GRUB only supports LUKS1, so avoid using certain options:
+To begin, encrypt your disk using the LUKS format, so avoid using certain options:
 
 ```shell
-cryptsetup luksFormat --type luks1 --cipher aes-xts-plain64 --hash sha256 --iter-time 10000 --key-size 256 --use-urandom --verify-passphrase /dev/sda2
+cryptsetup luksFormat --type luks2 --cipher aes-xts-plain64 --hash sha256 --iter-time 5000 --key-size 256 --use-urandom --verify-passphrase /dev/nvme0n1p2
 ```
 
 Ensure you answer `YES` when prompted. GRUB doesn't support the `--pbkdf argon2id` option, so it's crucial to stick to LUKS1 for compatibility.
@@ -24,9 +32,11 @@ Ensure you answer `YES` when prompted. GRUB doesn't support the `--pbkdf argon2i
 After formatting, open the LUKS device and set up logical volumes using LVM (Logical Volume Manager):
 
 ```shell
-cryptsetup open /dev/sda2 crypt # Decrypting disk and create mapper named 'crypt'
+cryptsetup open /dev/nvme0n1p2 crypt # Decrypting disk and create mapper named 'crypt'
+
 pvcreate /dev/mapper/crypt # Create physical volume named 'crypt'
 vgcreate vol /dev/mapper/crypt # Create volume group named 'vol'
+
 lvcreate -l 3%FREE vol -n swap # Create logcial volume and set this size uses 3% of this partition and named to swap.
 lvcreate -l 50%FREE vol -n root # Create logcial volume and set this size uses 50% of this partition and named to root.
 lvcreate -l 100%FREE vol -n home # Create logcial volume and set this size uses 100% of this partition and named to home.
@@ -59,7 +69,7 @@ mount /dev/vol/home /mnt/home
 Since GRUB supports EFI systems, mount the EFI system partition:
 
 ```shell
-mount /dev/sda1 --mkdir /mnt/boot/efi
+mount /dev/nvme0n1p1 --mkdir /mnt/boot/efi
 ```
 
 Now, proceed with the essential package installations:
@@ -74,14 +84,18 @@ Generate the `/etc/fstab` file:
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
-The process of installing Arch Linux is the same as that of ArchLinux. If you are unfamiliar with the process, please refer to this article: [Complete Guide to setting up LUKS on LVM encryption in Arch Linux (Minimal System)](/posts/linux/distribution/archlinux/archlinux-luks-encryption-fully-install-systemd).
+The process of installing Arch Linux is the same as that of ArchLinux!
+
+If you are unfamiliar with the process, please refer to this article:
+
+[Complete Guide to setting up LUKS on LVM encryption in Arch Linux (Minimal System)](/posts/linux/distribution/archlinux/archlinux-luks-encryption-fully-install-systemd)
 
 ### Step 4: Configure mkinitcpio.conf
 
-Edit the `/etc/mkinitcpio.conf` file, ensuring that the `HOOKS` line includes `lvm2` and `encrypt`. It should look like this:
+Edit the `/etc/mkinitcpio.conf` file, ensuring that the `HOOKS` line includes `lvm2` and `sd-encrypt`. It should look like this. Or you can just directly copy this line.
 
 ```shell
-HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block lvm2 encrypt filesystems fsck)
+HOOKS=(systemd autodetect microcode modconf kms keyboard keymap sd-vconsole sd-encrypt block lvm2 filesystems fsck)
 ```
 
 Save the changes and regenerate the configuration:
@@ -104,20 +118,20 @@ Configure the GRUB file:
 nvim /etc/default/grub
 ```
 
-Edit `GRUB_CMDLINE_LINUX_DEFAULT`:
+Fist, (get UUID using `blkid /dev/nvme0n1p2`):
+
+Edit `GRUB_CMDLINE_LINUX_DEFAULT`
 
 ```shell
-cryptdevice=/dev/nvme0n1p2:crypt root=/dev/mapper/vol-root
+GRUB_CMDLINE_LINUX_DEFAULT="rd.luks.name=<Your_M.2_UUID>=crypt root=/dev/mapper/vol-root"
 ```
 
->Note: Do not use a UUID, the disc may not be found.
-
-and set `GRUB_ENABLE_CRYPTODISK` to "y".
+and set `GRUB_ENABLE_CRYPTODISK` to `y`.
 
 Install GRUB:
 
 ```shell
-grub-install --recheck /dev/sda1
+grub-install --recheck /dev/nvme0n1p1
 ```
 
 Generate the GRUB configuration:
