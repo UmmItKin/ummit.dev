@@ -13,85 +13,34 @@ const pages = defineCollection({
   }),
 })
 
-const blog = defineCollection({
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    duration: z.string().optional(),
-    image: z
-      .object({
-        src: z.string(),
-        alt: z.string(),
-      })
-      .optional(),
-    date: z
-      .string()
-      .or(z.date())
-      .transform((val: string | number | Date) => new Date(val).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-      })),
-    draft: z.boolean().default(false).optional(),
-    lang: z.string().default('en-US').optional(),
-    tag: z.string().optional().optional(),
-    redirect: z.string().optional(),
-    video: z.boolean().default(false).optional(),
-  }),
+// Shared schema for blog-like collections (blog, talks, ctf)
+const postSchema = z.object({
+  title: z.string(),
+  description: z.string().optional(),
+  duration: z.string().optional(),
+  image: z
+    .object({
+      src: z.string(),
+      alt: z.string(),
+    })
+    .optional(),
+  date: z
+    .string()
+    .or(z.date())
+    .transform((val: string | number | Date) => new Date(val).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    })),
+  draft: z.boolean().default(false).optional(),
+  lang: z.string().default('en-US').optional(),
+  tag: z.string().optional(),
+  redirect: z.string().optional(),
+  video: z.boolean().default(false).optional(),
 })
 
-const talks = defineCollection({
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    duration: z.string().optional(),
-    image: z
-      .object({
-        src: z.string(),
-        alt: z.string(),
-      })
-      .optional(),
-    date: z
-      .string()
-      .or(z.date())
-      .transform((val: string | number | Date) => new Date(val).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-      })),
-    draft: z.boolean().default(false).optional(),
-    lang: z.string().default('en-US').optional(),
-    tag: z.string().optional().optional(),
-    redirect: z.string().optional(),
-    video: z.boolean().default(false).optional(),
-  }),
-})
-
-const ctf = defineCollection({
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    duration: z.string().optional(),
-    image: z
-      .object({
-        src: z.string(),
-        alt: z.string(),
-      })
-      .optional(),
-    date: z
-      .string()
-      .or(z.date())
-      .transform((val: string | number | Date) => new Date(val).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-      })),
-    draft: z.boolean().default(false).optional(),
-    lang: z.string().default('en-US').optional(),
-    tag: z.string().optional().optional(),
-    redirect: z.string().optional(),
-    video: z.boolean().default(false).optional(),
-  }),
-})
+const blog = defineCollection({ schema: postSchema })
+const talks = defineCollection({ schema: postSchema })
+const ctf = defineCollection({ schema: postSchema })
 
 export const collections = { pages, blog, talks, ctf }

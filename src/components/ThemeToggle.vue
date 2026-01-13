@@ -1,23 +1,25 @@
 <script lang="ts" setup>
 import { useDark, useToggle } from '@vueuse/core'
-import { onMounted, watchEffect } from 'vue'
+import { onMounted } from 'vue'
 
 const isDark = useDark()
 
 const toggleDark = useToggle(isDark)
 
-watchEffect(() => {
-  if (isDark.value)
-    setDarkMode(document)
-})
-
-function setDarkMode(document: Document) {
-  if (isDark.value)
-    document.documentElement.classList.add('dark')
+function syncDarkMode(doc: Document) {
+  if (isDark.value) {
+    doc.documentElement.classList.add('dark')
+  }
+  else {
+    doc.documentElement.classList.remove('dark')
+  }
 }
+
 onMounted(() => {
+  syncDarkMode(document)
+
   document.addEventListener('astro:before-swap', (event) => {
-    setDarkMode(event.newDocument)
+    syncDarkMode((event as CustomEvent & { newDocument: Document }).newDocument)
   })
 })
 

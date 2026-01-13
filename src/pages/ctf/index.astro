@@ -1,12 +1,12 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
-import ListPosts from '@/components/ListPosts.vue'
+import ListPosts from '@/components/ListPosts.astro'
 import { getPosts } from '@/utils/posts'
 
 const posts = await getPosts(undefined, 'ctf')
 ---
 
-<BaseLayout title="CTF Writeups" description="List of all CTF writeups." pageNav={true} pageOperate={true}>
+<BaseLayout title="CTF Writeups" description="List of all CTF writeups.">
   <div class="mb-8">
     <a aria-label="CTF" class="nav-link text-3xl font-bold opacity-80" href="/ctf"> CTF Writeups </a>
   </div>

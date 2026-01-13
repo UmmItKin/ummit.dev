@@ -1,12 +1,12 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
-import ListPosts from '@/components/ListPosts.vue'
+import ListPosts from '@/components/ListPosts.astro'
 import { getPosts } from '@/utils/posts'
 
 const posts = await getPosts(undefined, 'talks')
 ---
 
-<BaseLayout title="Talks" description="List of all the talks." pageNav={true} pageOperate={true}>
+<BaseLayout title="Talks" description="List of all the talks.">
   <div class="mb-8">
     <a aria-label="Talks" class="nav-link text-3xl font-bold opacity-80" href="/talks"> Talks </a>
   </div>
