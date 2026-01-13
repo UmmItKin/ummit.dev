@@ -4,7 +4,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
 const gear = {
   desktop: {
     title: 'Desktop',
-    subtitle: 'Triple Boot with three GNU/Linux',
+    subtitle: 'Primary machine for all tasks (When not using laptop)',
     icon: 'i-ri-computer-line',
     items: [
       { label: 'Motherboard', value: 'Gigabyte B760M GAMING X' },
@@ -19,14 +19,14 @@ const gear = {
       { label: 'Cooler', value: 'Thermalright Aqua Elite 240' },
       { label: 'Fans', value: 'Thermalright TL-C12C x3' },
       { label: 'Operating System', value: 'GNU/Linux' },
-      { label: 'Distribution', value: 'Arch Linux with UmmItOS plus BlackArch / NixOS' },
+      { label: 'Distribution', value: 'Arch & UmmItOS & BlackArch' },
       { label: 'Dynamic Window Manager', value: 'Hyprland' },
       { label: 'Desktop Environment', value: 'KDE Plasma' },
     ],
   },
   laptop: {
     title: 'Laptop',
-    subtitle: 'Dual Boot with two GNU/Linux',
+    subtitle: 'This laptop mostly for my college and travel use.',
     icon: 'i-ri-macbook-line',
     items: [
       { label: 'Device', value: 'HP Pavilion Aero 13 (Ryzen 7, Sky Blue)' },
@@ -35,13 +35,14 @@ const gear = {
       { label: 'RAM', value: 'On-Board 16GB LPDDR5x' },
       { label: 'NVMe SSD', value: '1TB PCIe NVMe M.2 SSD' },
       { label: 'Operating System', value: 'GNU/Linux' },
-      { label: 'Distribution', value: 'Arch Linux with UmmItOS plus BlackArch / NixOS' },
+      { label: 'Distribution', value: 'Arch & UmmItOS & BlackArch & NixOS' },
       { label: 'Dynamic WM', value: 'Hyprland' },
       { label: 'Desktop Environment', value: 'KDE Plasma' },
     ],
   },
   peripherals: {
     title: 'Peripherals',
+    subtitle: 'My daily peripherals!',
     icon: 'i-ri-keyboard-line',
     items: [
       { label: 'Keyboard (Main)', value: 'ZSA Moonlander MK1 (Kailh Silver, Black keycaps)' },
@@ -56,6 +57,7 @@ const gear = {
   },
   server: {
     title: 'Server',
+    subtitle: 'My home server for various self-hosted services.',
     icon: 'i-ri-server-line',
     items: [
       { label: 'Device', value: 'NucBox K6 Mini PC' },
@@ -70,6 +72,7 @@ const gear = {
   },
   router: {
     title: 'Router',
+    subtitle: 'My home router for network management.',
     icon: 'i-ri-router-line',
     items: [
       { label: 'Device', value: 'Raspberry Pi 4B' },
@@ -80,6 +83,7 @@ const gear = {
   },
   mobile: {
     title: 'Mobile Devices',
+    subtitle: 'Mobile Device that I use daily.',
     icon: 'i-ri-smartphone-line',
     items: [
       { label: 'Device', value: 'Google Pixel 9A' },
@@ -92,6 +96,7 @@ const gear = {
 
   mobile2: {
     title: 'Mobile Devices (Fallback)',
+    subtitle: 'Secondary Mobile Device that I used.',
     icon: 'i-ri-smartphone-line',
     items: [
       { label: 'Device', value: 'Google Pixel 6A' },
@@ -104,6 +109,7 @@ const gear = {
 
   favorite_software: {
     title: 'Favorite Software',
+    subtitle: 'Some of my favorite software that I use daily.',
     icon: 'i-ri-apps-line',
     items: [
       { label: 'Code Editor', value: 'Neovim' },
