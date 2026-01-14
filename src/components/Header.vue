@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { onMounted, onUnmounted } from 'vue'
 import siteConfig from '@/site-config'
 import { getLinkTarget } from '@/utils/link'
 import ThemeToggle from './ThemeToggle.vue'
@@ -17,33 +16,6 @@ const socialLinks = siteConfig.socialLinks.filter((link: Record<string, any>) =>
   else {
     return false
   }
-})
-
-let ticking = false
-function handleScroll() {
-  if (!ticking) {
-    requestAnimationFrame(() => {
-      const header = document.getElementById('header')
-      if (header) {
-        if (window.scrollY > 50) {
-          header.classList.add('header-hide')
-        }
-        else {
-          header.classList.remove('header-hide')
-        }
-      }
-      ticking = false
-    })
-    ticking = true
-  }
-}
-
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll, { passive: true })
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
 })
 
 function toggleNavDrawer() {
@@ -65,7 +37,7 @@ function toggleNavDrawer() {
 <template>
   <header
     id="header"
-    class="!fixed bg-main z-899 w-screen h-20 px-6 flex justify-between items-center relative transition-transform duration-300"
+    class="z-40 w-full py-6 px-6 flex justify-between items-center"
   >
     <div class="flex items-center h-full">
       <a href="/" mr-6 aria-label="Header Logo Image" class="font-bold text-xl">
@@ -108,10 +80,6 @@ function toggleNavDrawer() {
 </template>
 
 <style scoped>
-.header-hide {
-  transform: translateY(-100%);
-}
-
 .nav-drawer {
   transform: translateX(-100%);
   --at-apply: box-border fixed h-screen z-999 left-0 top-0 min-w-32vw max-w-50vw bg-main p-6 text-lg flex flex-col gap-5
