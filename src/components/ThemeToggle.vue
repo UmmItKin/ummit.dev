@@ -1,10 +1,8 @@
 <script lang="ts" setup>
-import { useDark, useToggle } from '@vueuse/core'
-import { onMounted, watchEffect } from 'vue'
+import { useDark } from '@vueuse/core'
+import { nextTick, onMounted, watchEffect } from 'vue'
 
 const isDark = useDark()
-
-const toggleDark = useToggle(isDark)
 
 watchEffect(() => {
   if (isDark.value)
@@ -15,28 +13,31 @@ function setDarkMode(document: Document) {
   if (isDark.value)
     document.documentElement.classList.add('dark')
 }
+
 onMounted(() => {
   document.addEventListener('astro:before-swap', (event) => {
-    setDarkMode(event.newDocument)
+    setDarkMode((event as any).newDocument)
   })
 })
 
 function toggleTheme(event: MouseEvent) {
+  const isAppearanceTransition = document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  if (!isAppearanceTransition) {
+    isDark.value = !isDark.value
+    return
+  }
+
   const x = event.clientX
   const y = event.clientY
   const endRadius = Math.hypot(
     Math.max(x, innerWidth - x),
     Math.max(y, innerHeight - y),
   )
-  // @ts-expect-error: Transition API
-  if (!document.startViewTransition) {
-    toggleDark()
-    return
-  }
 
-  // @ts-expect-error: Transition API
   const transition = document.startViewTransition(async () => {
-    toggleDark()
+    isDark.value = !isDark.value
+    await nextTick()
   })
 
   transition.ready.then(() => {
@@ -50,7 +51,8 @@ function toggleTheme(event: MouseEvent) {
       },
       {
         duration: 400,
-        easing: 'ease-in',
+        easing: 'ease-out',
+        fill: 'forwards',
         pseudoElement: isDark.value
           ? '::view-transition-old(root)'
           : '::view-transition-new(root)',
