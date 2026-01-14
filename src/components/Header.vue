@@ -65,7 +65,6 @@ function toggleNavDrawer() {
 <template>
   <header
     id="header"
-    view-transition-name="site-header"
     class="!fixed bg-main z-899 w-screen h-20 px-6 flex justify-between items-center relative transition-transform duration-300"
   >
     <div class="flex items-center h-full">
