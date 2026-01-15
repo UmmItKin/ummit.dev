@@ -2,6 +2,7 @@
 title: "Managing Your Windows Startup Programs with Regedit: A Step-by-Step Guide"
 description: "In the Windows world, to delete startup programs you need to use a tool called regedit, we'll explain how to use this tool to delete your unwanted behavior!"
 date: 2023-09-04T22:28:10+0800
+lastmod: 2023-09-09T11:27:50+0800
 tag: "windows, regedit"
 lang: en-US
 ---

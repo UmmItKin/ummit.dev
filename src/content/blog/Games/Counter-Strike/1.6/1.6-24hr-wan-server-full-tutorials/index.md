@@ -2,6 +2,7 @@
 title: "The Ultimate Guide to Setting Up a Complete Counter-Strike 1.6: From Zero to Zombie Plague Server, Play with yapb bot and Public the server on the Internet!"
 description: "Learn how to set up a Counter Strike 1.6 server on an Ubuntu Virtual Private Server (VPS) with this comprehensive guide, Also learn how to install yapb bot."
 date: 2021-12-11T00:00:00+0800
+lastmod: 2024-01-08T12:38:17+0800
 tag: "Games, Counter-Strike 1.6"
 lang: en-US
 ---

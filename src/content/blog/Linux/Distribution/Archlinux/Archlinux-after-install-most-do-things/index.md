@@ -2,6 +2,7 @@
 title: "After installed Arch Linux 10 key common tasks"
 description: "top 10 crucial tasks to perform after installing Arch Linux for an optimized and enriched experience."
 date: 2023-08-05T01:08:00+0800
+lastmod: 2024-11-07T21:42:50+0800
 tag: "Arch Linux"
 lang: en-US
 ---

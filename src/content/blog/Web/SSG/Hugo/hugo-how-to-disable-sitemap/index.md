@@ -2,6 +2,7 @@
 title: "Hugo: How to Disable the Sitemap After Generating Your Public Files"
 description: "Discover the distinctions between various bootable USB tools and find the right one for your needs. including YUMI, Rufus and BalenaEtcher."
 date: 2023-09-03T23:33:40+0800
+lastmod: 2023-09-04T21:57:30+0800
 tag: "SSG, Hugo"
 lang: en-US
 ---

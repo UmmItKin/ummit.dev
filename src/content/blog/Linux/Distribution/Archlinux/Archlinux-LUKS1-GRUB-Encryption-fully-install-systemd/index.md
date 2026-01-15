@@ -1,6 +1,7 @@
 ---
 title: "Full Disk Encryption with GRUB and Including /boot: Step-by-Step Guide"
 date: 2023-12-21T11:42:02+0800
+lastmod: 2023-12-22T12:28:23+0800
 tag: "LUKS, Linux, Arch linux"
 lang: en-US
 ---

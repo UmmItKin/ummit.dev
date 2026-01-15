@@ -1,6 +1,7 @@
 ---
 title: "How to Hard Factory Reset an ASUS Router (Method 5)"
 date: 2025-01-02T21:18:32+0800
+lastmod: 2025-01-02T23:19:08+0800
 tag: "ASUS, Router, Factory Reset"
 lang: en-US
 ---

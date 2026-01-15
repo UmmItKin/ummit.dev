@@ -2,6 +2,7 @@
 title: "Customizing Your GNOME Desktop: Installing Icon and cursor themes"
 description: "Personalize your GNOME desktop on Linux by installing icon and cursor themes. Easily transform your desktop's appearance using the GNOME Tweaks tool."
 date: 2023-08-14T08:47:50+0800
+lastmod: 2023-09-11T02:25:55+0800
 tag: "GNOME, Linux"
 lang: en-US
 ---

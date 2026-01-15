@@ -2,6 +2,7 @@
 title: "Discover the Top 10 Essential Gnome Extensions"
 description: "Unlock the Power of Gnome with These Must-Have Extensions!"
 date: 2023-08-05T01:47:00+0800
+lastmod: 2023-09-15T12:20:40+0800
 tag: "GNOME, Linux"
 lang: en-US
 ---

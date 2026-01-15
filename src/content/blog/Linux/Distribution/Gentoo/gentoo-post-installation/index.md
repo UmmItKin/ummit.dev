@@ -2,6 +2,7 @@
 title: "Enhancing Your Gentoo Linux Installation: Post-Installation"
 description: "Take your Gentoo Linux system to the next level with user management, sudo, system logging, NTP time synchronization, CPU optimization, Neofetch, Wi-Fi support. and Others."
 date: 2023-09-20T16:40:21+0800
+lastmod: 2023-10-20T21:17:54+0800
 tag: "Open-RC, Gentoo, Linux"
 lang: en-US
 ---

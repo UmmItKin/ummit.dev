@@ -1,6 +1,7 @@
 ---
 title: "Getting Started with Termux on Android: A Comprehensive Guide"
 date: 2023-12-26T05:20:20+0800
+lastmod: 2024-12-31T06:15:20+0800
 tag: "Android, Termux"
 lang: en-US
 ---

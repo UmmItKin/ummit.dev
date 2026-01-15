@@ -2,6 +2,7 @@
 title: "Firefox Plug-ins for Block annoying Malicious Code for any website :)"
 description: "This guide introduces a selection of powerful browser extensions that can help you fortify your online traffic and surf the web with peace of mind."
 date: 2023-09-15T10:15:50+0800
+lastmod: 2024-12-31T05:07:52+0800
 tag: "Browser, Extensions, Blocker, Privacy, Advertisement"
 lang: en-US
 ---

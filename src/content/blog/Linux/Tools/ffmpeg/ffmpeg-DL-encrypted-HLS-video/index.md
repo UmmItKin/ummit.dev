@@ -2,6 +2,7 @@
 title: "A Crash Guide to Bypassing HLS Encryption video with FFMPEG"
 description: "Learn how to bypass HLS encryption and download videos using FFMPEG directly from the browser."
 date: 2023-12-25T05:27:10+0800
+lastmod: 2025-01-15T10:01:40+0800
 tag: "ffmpeg, video, download"
 lang: en-US
 ---

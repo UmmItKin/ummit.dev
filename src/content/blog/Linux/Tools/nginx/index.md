@@ -2,6 +2,7 @@
 title: "Setting Up NGINX on Linux VPS: Host a Website and Configure SSL with Self-Signed TLS (Cloudflare)"
 description: "Learn how to set up NGINX on a Linux VPS, host a website, and secure it with SSL using a self-signed TLS certificate through Cloudflare. Follow our step-by-step guide to ensure your website is up and running securely."
 date: 2023-09-11T04:00:50+0800
+lastmod: 2024-04-29T23:53:00+0800
 tag: "NGINX, Web"
 lang: en-US
 ---

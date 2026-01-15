@@ -1,6 +1,7 @@
 ---
 title: "Good Bye 2023: Essential Linux Terminal Tools for Linux Geeks"
 date: 2024-01-01T04:15:29+0800
+lastmod: 2024-05-31T21:11:50+0800
 tag: "Linux"
 lang: en-US
 ---

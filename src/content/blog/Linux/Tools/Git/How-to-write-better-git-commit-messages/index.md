@@ -2,6 +2,7 @@
 title: "How to Write Better Git Commit Messages"
 description: "Learn the importance of well-crafted Git commit messages and discover whether simple or detailed commit messages are right for your projects. Explore various commit message styles and best practices to enhance collaboration and codebase documentation."
 date: 2023-09-15T09:03:30+0800
+lastmod: 2023-09-16T12:10:45+0800
 tag: "Git"
 lang: en-US
 ---

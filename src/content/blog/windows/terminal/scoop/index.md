@@ -2,6 +2,7 @@
 title: "Scoop: Empowering Your Windows Terminal with Essential Tools and a Package Manager"
 description: "Enhance Your Terminal Efficiency with Scoop – Discover How to Install and Utilize this Windows Package Manager!"
 date: 2021-12-11T03:55:19+0800
+lastmod: 2023-09-09T09:30:22+0800
 tag: "Windows, scoop, Package Manager"
 lang: en-US
 ---

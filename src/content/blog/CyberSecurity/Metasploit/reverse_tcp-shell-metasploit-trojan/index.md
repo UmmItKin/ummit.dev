@@ -1,6 +1,7 @@
 ---
 title: "Creating a Trojan Backdoor with Reverse TCP Payload in Metasploit and Setting Up World-wide Access for Windows Machines"
 date: 2021-06-27T18:07:30+0800
+lastmod: 2025-03-03T01:12:12+0800
 tag: "Ethical-hacking, Metasploit, Trojan, Backdoor, Payload, Hacking"
 lang: en-US
 ---

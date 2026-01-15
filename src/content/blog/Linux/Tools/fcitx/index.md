@@ -2,6 +2,7 @@
 title: "Arch Linux Fcitx5 Installation Guide for Multilingual Typing"
 description: "Learn how to install and configure Fcitx5 on Arch Linux to enable multilingual typing support for languages such as Chinese and Japanese."
 date: 2022-12-17T02:57:50+08:00
+lastmod: 2025-01-15T10:09:35+0800
 tag: "Arch Linux, Fcitx, Input Method, Multilingual Typing"
 lang: en-US
 ---

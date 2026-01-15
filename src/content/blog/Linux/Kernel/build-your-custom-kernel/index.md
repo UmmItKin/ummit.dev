@@ -2,6 +2,7 @@
 title: "Building the Linux Kernel on your Linux System (systemd-boot): Step-by-Step Guide"
 description: "Learn how to build your own custom Linux kernel from scratch on your Linux system (systemd-boot). Follow this step-by-step guide to gain insight into kernel customization and enhance your system's performance and features."
 date: 2023-08-22T14:20:50+0800
+lastmod: 2023-09-03T19:17:22+0800
 tag: "Linux, Kernel"
 lang: en-US
 ---

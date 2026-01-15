@@ -1,6 +1,7 @@
 ---
 title: "Mounting Your Internal Disk on your Linux System"
 date: 2023-12-07T21:53:02+0800
+lastmod: 2023-12-08T21:39:20+0800
 tag: "Harddisk, Linux"
 lang: en-US
 ---

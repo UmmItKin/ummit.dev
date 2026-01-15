@@ -2,6 +2,7 @@
 title: "Comprehensive Guide to Gentoo Linux: Installing GNOME, Wayland and GDM with OpenRC"
 description: "Learn how to set up GNOME on your Gentoo system with Wayland and the GDM display manager. Follow these steps to configure your environment for a seamless GNOME experience."
 date: 2023-09-26T21:22:21+0800
+lastmod: 2023-09-27T17:10:50+0800
 tag: "Open-RC, Gentoo, Linux, GNOME, Wayland"
 lang: en-US
 ---
