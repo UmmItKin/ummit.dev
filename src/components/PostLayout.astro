@@ -19,12 +19,21 @@ const { post } = Astro.props
 const { title, image, description, date, lastmod, duration, tag } = post.data
 const { Content } = await post.render()
 
+// Generate OG image path based on collection type
+function getOgPath() {
+  if (image?.src) return image.src
+  if (post.collection === 'ctf') return `/og/ctf/${post.slug}.png`
+  if (post.collection === 'talks') return `/og/talks/${post.slug}.png`
+  return `/og/${post.slug}.png`
+}
+const ogImage = getOgPath()
+
 function getDate(dateStr: string) {
   return new Date(dateStr).toISOString()
 }
 ---
 
-<BaseLayout title={title} description={description} pageType="article">
+<BaseLayout title={title} description={description} image={{ src: ogImage, alt: title }} pageType="article">
   <article class="prose">
     <h1>{title}</h1>
     <p class="op-50">

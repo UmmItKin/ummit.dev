@@ -4,6 +4,7 @@ import ListPosts from '@/components/ListPosts.astro'
 import siteConfig from '@/site-config'
 import { getPosts } from '@/utils/posts'
 
+const ogImage = { src: '/og/ctf.png', alt: 'CTF Writeups' }
 const posts = await getPosts(undefined, 'ctf')
 
 function activeLink(pathname: string) {
@@ -11,7 +12,7 @@ function activeLink(pathname: string) {
 }
 ---
 
-<BaseLayout title="CTF Writeups" description="List of all CTF writeups.">
+<BaseLayout title="CTF Writeups" description="List of all CTF writeups." image={ogImage}>
   <div class="flex flex-col gap-2 sm:flex-row sm:gap-4 flex-wrap mb-8">
     {
       siteConfig.page.blogLinks.map((nav) => (

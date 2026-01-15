@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
 
+const ogImage = { src: '/og/friends.png', alt: 'Friends' }
+
 const friendsList = [
   {
     image: 'https://avatars.githubusercontent.com/u/101975746?v=4',
@@ -69,7 +71,7 @@ const friendsList = [
 ]
 ---
 
-<BaseLayout title="Friends" description="My friends and their awesome websites.">
+<BaseLayout title="Friends" description="My friends and their awesome websites." image={ogImage}>
   <div class="mb-8">
     <h1 class="text-3xl font-bold opacity-80">Friends</h1>
   </div>
