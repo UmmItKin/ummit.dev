@@ -22,7 +22,7 @@ https://wiki.archlinux.org/title/Dm-crypt/System_configuration#rd.luks.name
 
 ## Introduction
 
-Since systemd-boot doesn't support encrypted `/boot`, grub does. There are not so good points though, like only luks1 and argon2id are not supported. However, in this short guide I will teach you how to encrypt your /boot to be fully encrypted with our disk.
+Since systemd-boot doesn't support encrypted `/boot`, GRUB does. There are not so good points though, like only argon2id are not supported.
 
 >Warning: GRUB's support for LUKS2 is still limited. You skill need to use LUKS2 with PBKDF2. inorder it boot are working.
 
@@ -166,7 +166,12 @@ Reboot your system. You'll notice that GRUB prompts you to enter the passphrase 
 
 ### Reboot
 
-You can now reboot you computer to see the result.
+After completing these steps, Now exit your current user then umount your arch system. You can enjoy your new Arch Linux system with LUKS encryption. (But no GUI XD)
+
+```shell
+exit
+umount -R /mnt
+```
 
 ## References
 
