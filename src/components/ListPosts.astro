@@ -66,6 +66,7 @@ function getYear(date: Date | string | number) {
                 {post.data.redirect && <i class="text-base i-ri-external-link-line" />}
                 {post.data.video && <i class="text-base i-ri:film-line" />}
                 {post.data.date && <time datetime={getDate(post.data.date)}>{post.data.date.split(',')[0]}</time>}
+                {post.data.lastmod && <span class="op-70">· Updated: {post.data.lastmod.split(',')[0]}</span>}
                 {post.data.duration && <span>· {post.data.duration}</span>}
                 {post.data.tag && <span>· {post.data.tag}</span>}
                 {post.data.lang?.includes('zh') && <span>· 中文</span>}

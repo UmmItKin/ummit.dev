@@ -16,7 +16,7 @@ export async function createPostPaths(collection: PostKey) {
 }
 
 const { post } = Astro.props
-const { title, image, description, date, duration, tag } = post.data
+const { title, image, description, date, lastmod, duration, tag } = post.data
 const { Content } = await post.render()
 
 function getDate(dateStr: string) {
@@ -28,9 +28,10 @@ function getDate(dateStr: string) {
   <article class="prose">
     <h1>{title}</h1>
     <p class="op-50">
-      {date && <time datetime={getDate(date)}>{date.split(',')}</time>}
-      {duration && <span>· {duration}</span>}
-      {tag && <span>· {tag}</span>}
+      {date && <time datetime={getDate(date)}>{date}</time>}
+      {lastmod && <span class="op-70"> · Updated: {lastmod}</span>}
+      {duration && <span> · {duration}</span>}
+      {tag && <span> · {tag}</span>}
     </p>
     {
       image && (

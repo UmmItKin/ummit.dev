@@ -13,6 +13,14 @@ const pages = defineCollection({
   }),
 })
 
+function dateTransform(val: string | number | Date) {
+  return new Date(val).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  })
+}
+
 // Shared schema for blog-like collections (blog, talks, ctf)
 const postSchema = z.object({
   title: z.string(),
@@ -27,11 +35,12 @@ const postSchema = z.object({
   date: z
     .string()
     .or(z.date())
-    .transform((val: string | number | Date) => new Date(val).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    })),
+    .transform(dateTransform),
+  lastmod: z
+    .string()
+    .or(z.date())
+    .transform(dateTransform)
+    .optional(),
   draft: z.boolean().default(false).optional(),
   lang: z.string().default('en-US').optional(),
   tag: z.string().optional(),
