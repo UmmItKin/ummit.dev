@@ -1,4 +1,7 @@
 import { Buffer } from 'node:buffer'
+import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
+import process from 'node:process'
 import satori from 'satori'
 import { html } from 'satori-html'
 import sharp from 'sharp'
@@ -7,10 +10,10 @@ import siteConfig from '@/site-config'
 const BIO = 'HKer, InfoSec enthusiast, passionate about GNU/Linux, Web security, and open source.'
 
 export async function generateOgImage(section: string, title: string) {
-  // Fetch fonts - Inter for English, Noto Sans SC for full Chinese character coverage
+  const fontPath = join(process.cwd(), 'public', 'fonts')
   const [fontData, fontDataChinese] = await Promise.all([
-    fetch('https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-700-normal.woff').then(res => res.arrayBuffer()),
-    fetch('https://github.com/notofonts/noto-cjk/raw/main/Sans/OTF/SimplifiedChinese/NotoSansCJKsc-Bold.otf').then(res => res.arrayBuffer()),
+    readFile(join(fontPath, 'inter-latin-700-normal.woff')),
+    readFile(join(fontPath, 'NotoSansCJKsc-Bold.otf')),
   ])
 
   const markup = html`
