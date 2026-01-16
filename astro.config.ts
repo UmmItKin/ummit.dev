@@ -9,6 +9,10 @@ export default defineConfig({
   server: {
     port: 3199,
   },
+  prefetch: {
+    prefetchAll: false,
+    defaultStrategy: 'viewport',
+  },
   integrations: [
     mdx(),
     sitemap(),
