@@ -1,6 +1,9 @@
 ---
+import { Image } from 'astro:assets'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import siteConfig from '@/site-config'
+import icedteaIcon from '@/assets/CTF/ICEDTEA.jpg'
+import tryhackmeIcon from '@/assets/tryhackme.svg'
 
 const ogImage = { src: '/og/index.png', alt: 'UmmIt Kin Personal Website' }
 ---
@@ -11,6 +14,37 @@ const ogImage = { src: '/og/index.png', alt: 'UmmIt Kin Personal Website' }
     <p>
       HKer, InfoSec enthusiast, passionate about GNU/Linux, Web security, and open source. <br /><br />
       Find me if you want someone to pentest your web applications, or just want to chat about tech!
+    </p>
+
+    <p>
+      CTF Team
+      <a href="https://ic3dt3a.org/" target="_blank" rel="noopener" class="magic-link">
+        <span class="magic-link-icon"><Image src={icedteaIcon} alt="" width={500} height={500} /></span>ICEDTEA
+      </a>
+      <a href="https://heapunderflow.org/" target="_blank" rel="noopener" class="magic-link">
+        <span class="magic-link-icon"><i class="i-ri-stack-overflow-line"></i></span>HeapUnderFlow
+      </a>
+      <br />
+      Challenge Creator
+      <a href="https://ctftime.org/event/2818/" target="_blank" rel="noopener" class="magic-link">
+        <span class="magic-link-icon"><i class="i-ri-flag-line"></i></span>NHNC CTF
+      </a>
+      <a href="https://thjcc.org" target="_blank" rel="noopener" class="magic-link">
+        <span class="magic-link-icon"><i class="i-ri-flag-line"></i></span>THJCC CTF
+      </a>
+      <br />
+      Hacking
+      <a href="https://tryhackme.com/p/UmmIt" target="_blank" rel="noopener" class="magic-link">
+        <span class="magic-link-icon"><i class="i-simple-icons-tryhackme"></i></span>TryHackMe
+      </a>
+      <a href="https://app.hackthebox.com/profile/UmmIt" target="_blank" rel="noopener" class="magic-link">
+        <span class="magic-link-icon"><i class="i-simple-icons-hackthebox"></i></span>HackTheBox
+      </a>
+      <br />
+      Hunting
+      <span class="magic-link no-hover">
+        <span class="magic-link-icon"><i class="i-ri-bug-line"></i></span>Zero-Day
+      </span>
     </p>
 
     <p class="flex gap-x-4 gap-y-2 flex-wrap">
@@ -39,11 +73,11 @@ const ogImage = { src: '/og/index.png', alt: 'UmmIt Kin Personal Website' }
 
     <hr class="hr-line" />
 
-    <!-- InfoSec & CTF Experience Section -->
-    <section class="mt-8">
-      <h2 class="text-xl font-semibold mb-2">InfoSec & CTF Experience</h2>
-      <p class="text-sm opacity-70 mb-6">A brief overview of my experience in the InfoSec and CTF.</p>
+    <hr class="hr-line" />
 
+    <!-- Timeline Details -->
+    <section class="mt-8">
+      <h2 class="text-xl font-semibold mb-6">Timeline</h2>
       <div class="relative border-l-2 border-neutral-300 dark:border-neutral-700 pl-6 space-y-8">
         <div class="relative">
           <div
@@ -144,84 +178,84 @@ const ogImage = { src: '/og/index.png', alt: 'UmmIt Kin Personal Website' }
           <p class="text-sm mt-2 opacity-80">I do it for fun and learning purposes, no public disclosures yet.</p>
         </div>
       </div>
+    </section>
 
-      <hr class="hr-line" />
+    <hr class="hr-line" />
 
-      <!-- Stacks Section -->
-      <section class="mt-8">
-        <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
-          <i class="i-ri-flashlight-line"></i>
-          Stacks
-        </h2>
+    <!-- Stacks Section -->
+    <section class="mt-8">
+      <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
+        <i class="i-ri-flashlight-line"></i>
+        Stacks
+      </h2>
 
-        <!-- Row 1 -->
-        <div class="marquee-container">
-          <div class="marquee-track animate-marquee">
-            <div class="marquee-content">
-              <i class="i-simple-icons-javascript text-4xl opacity-60" title="JavaScript"></i>
-              <i class="i-simple-icons-typescript text-4xl opacity-60" title="TypeScript"></i>
-              <i class="i-simple-icons-python text-4xl opacity-60" title="Python"></i>
-              <i class="i-simple-icons-gnubash text-4xl opacity-60" title="Bash"></i>
-              <i class="i-simple-icons-linux text-4xl opacity-60" title="Linux"></i>
-              <i class="i-simple-icons-archlinux text-4xl opacity-60" title="Arch Linux"></i>
-              <i class="i-simple-icons-nixos text-4xl opacity-60" title="NixOS"></i>
-              <i class="i-simple-icons-debian text-4xl opacity-60" title="Debian"></i>
-              <i class="i-simple-icons-gentoo text-4xl opacity-60" title="Gentoo"></i>
-              <i class="i-simple-icons-raspberrypi text-4xl opacity-60" title="Raspberry Pi"></i>
-              <i class="i-simple-icons-neovim text-4xl opacity-60" title="Neovim"></i>
-              <i class="i-simple-icons-git text-4xl opacity-60" title="Git"></i>
-            </div>
-            <div class="marquee-content" aria-hidden="true">
-              <i class="i-simple-icons-javascript text-4xl opacity-60"></i>
-              <i class="i-simple-icons-typescript text-4xl opacity-60"></i>
-              <i class="i-simple-icons-python text-4xl opacity-60"></i>
-              <i class="i-simple-icons-gnubash text-4xl opacity-60"></i>
-              <i class="i-simple-icons-linux text-4xl opacity-60"></i>
-              <i class="i-simple-icons-archlinux text-4xl opacity-60"></i>
-              <i class="i-simple-icons-nixos text-4xl opacity-60"></i>
-              <i class="i-simple-icons-debian text-4xl opacity-60"></i>
-              <i class="i-simple-icons-gentoo text-4xl opacity-60"></i>
-              <i class="i-simple-icons-raspberrypi text-4xl opacity-60"></i>
-              <i class="i-simple-icons-neovim text-4xl opacity-60"></i>
-              <i class="i-simple-icons-git text-4xl opacity-60"></i>
-            </div>
+      <!-- Row 1 -->
+      <div class="marquee-container">
+        <div class="marquee-track animate-marquee">
+          <div class="marquee-content">
+            <i class="i-simple-icons-javascript text-4xl opacity-60" title="JavaScript"></i>
+            <i class="i-simple-icons-typescript text-4xl opacity-60" title="TypeScript"></i>
+            <i class="i-simple-icons-python text-4xl opacity-60" title="Python"></i>
+            <i class="i-simple-icons-gnubash text-4xl opacity-60" title="Bash"></i>
+            <i class="i-simple-icons-linux text-4xl opacity-60" title="Linux"></i>
+            <i class="i-simple-icons-archlinux text-4xl opacity-60" title="Arch Linux"></i>
+            <i class="i-simple-icons-nixos text-4xl opacity-60" title="NixOS"></i>
+            <i class="i-simple-icons-debian text-4xl opacity-60" title="Debian"></i>
+            <i class="i-simple-icons-gentoo text-4xl opacity-60" title="Gentoo"></i>
+            <i class="i-simple-icons-raspberrypi text-4xl opacity-60" title="Raspberry Pi"></i>
+            <i class="i-simple-icons-neovim text-4xl opacity-60" title="Neovim"></i>
+            <i class="i-simple-icons-git text-4xl opacity-60" title="Git"></i>
+          </div>
+          <div class="marquee-content" aria-hidden="true">
+            <i class="i-simple-icons-javascript text-4xl opacity-60"></i>
+            <i class="i-simple-icons-typescript text-4xl opacity-60"></i>
+            <i class="i-simple-icons-python text-4xl opacity-60"></i>
+            <i class="i-simple-icons-gnubash text-4xl opacity-60"></i>
+            <i class="i-simple-icons-linux text-4xl opacity-60"></i>
+            <i class="i-simple-icons-archlinux text-4xl opacity-60"></i>
+            <i class="i-simple-icons-nixos text-4xl opacity-60"></i>
+            <i class="i-simple-icons-debian text-4xl opacity-60"></i>
+            <i class="i-simple-icons-gentoo text-4xl opacity-60"></i>
+            <i class="i-simple-icons-raspberrypi text-4xl opacity-60"></i>
+            <i class="i-simple-icons-neovim text-4xl opacity-60"></i>
+            <i class="i-simple-icons-git text-4xl opacity-60"></i>
           </div>
         </div>
+      </div>
 
-        <!-- Row 2 -->
-        <div class="marquee-container mt-4">
-          <div class="marquee-track animate-marquee-reverse">
-            <div class="marquee-content">
-              <i class="i-simple-icons-docker text-4xl opacity-60" title="Docker"></i>
-              <i class="i-simple-icons-nginx text-4xl opacity-60" title="Nginx"></i>
-              <i class="i-simple-icons-cloudflare text-4xl opacity-60" title="Cloudflare"></i>
-              <i class="i-simple-icons-proxmox text-4xl opacity-60" title="Proxmox"></i>
-              <i class="i-simple-icons-wireguard text-4xl opacity-60" title="WireGuard"></i>
-              <i class="i-simple-icons-burpsuite text-4xl opacity-60" title="Burp Suite"></i>
-              <i class="i-simple-icons-wireshark text-4xl opacity-60" title="Wireshark"></i>
-              <i class="i-simple-icons-kalilinux text-4xl opacity-60" title="Kali Linux"></i>
-              <i class="i-simple-icons-metasploit text-4xl opacity-60" title="Metasploit"></i>
-              <i class="i-simple-icons-mysql text-4xl opacity-60" title="MySQL"></i>
-              <i class="i-simple-icons-html5 text-4xl opacity-60" title="HTML5"></i>
-              <i class="i-simple-icons-css3 text-4xl opacity-60" title="CSS3"></i>
-            </div>
-            <div class="marquee-content" aria-hidden="true">
-              <i class="i-simple-icons-docker text-4xl opacity-60"></i>
-              <i class="i-simple-icons-nginx text-4xl opacity-60"></i>
-              <i class="i-simple-icons-cloudflare text-4xl opacity-60"></i>
-              <i class="i-simple-icons-proxmox text-4xl opacity-60"></i>
-              <i class="i-simple-icons-wireguard text-4xl opacity-60"></i>
-              <i class="i-simple-icons-burpsuite text-4xl opacity-60"></i>
-              <i class="i-simple-icons-wireshark text-4xl opacity-60"></i>
-              <i class="i-simple-icons-kalilinux text-4xl opacity-60"></i>
-              <i class="i-simple-icons-metasploit text-4xl opacity-60"></i>
-              <i class="i-simple-icons-mysql text-4xl opacity-60"></i>
-              <i class="i-simple-icons-html5 text-4xl opacity-60"></i>
-              <i class="i-simple-icons-css3 text-4xl opacity-60"></i>
-            </div>
+      <!-- Row 2 -->
+      <div class="marquee-container mt-4">
+        <div class="marquee-track animate-marquee-reverse">
+          <div class="marquee-content">
+            <i class="i-simple-icons-docker text-4xl opacity-60" title="Docker"></i>
+            <i class="i-simple-icons-nginx text-4xl opacity-60" title="Nginx"></i>
+            <i class="i-simple-icons-cloudflare text-4xl opacity-60" title="Cloudflare"></i>
+            <i class="i-simple-icons-proxmox text-4xl opacity-60" title="Proxmox"></i>
+            <i class="i-simple-icons-wireguard text-4xl opacity-60" title="WireGuard"></i>
+            <i class="i-simple-icons-burpsuite text-4xl opacity-60" title="Burp Suite"></i>
+            <i class="i-simple-icons-wireshark text-4xl opacity-60" title="Wireshark"></i>
+            <i class="i-simple-icons-kalilinux text-4xl opacity-60" title="Kali Linux"></i>
+            <i class="i-simple-icons-metasploit text-4xl opacity-60" title="Metasploit"></i>
+            <i class="i-simple-icons-mysql text-4xl opacity-60" title="MySQL"></i>
+            <i class="i-simple-icons-html5 text-4xl opacity-60" title="HTML5"></i>
+            <i class="i-simple-icons-css3 text-4xl opacity-60" title="CSS3"></i>
+          </div>
+          <div class="marquee-content" aria-hidden="true">
+            <i class="i-simple-icons-docker text-4xl opacity-60"></i>
+            <i class="i-simple-icons-nginx text-4xl opacity-60"></i>
+            <i class="i-simple-icons-cloudflare text-4xl opacity-60"></i>
+            <i class="i-simple-icons-proxmox text-4xl opacity-60"></i>
+            <i class="i-simple-icons-wireguard text-4xl opacity-60"></i>
+            <i class="i-simple-icons-burpsuite text-4xl opacity-60"></i>
+            <i class="i-simple-icons-wireshark text-4xl opacity-60"></i>
+            <i class="i-simple-icons-kalilinux text-4xl opacity-60"></i>
+            <i class="i-simple-icons-metasploit text-4xl opacity-60"></i>
+            <i class="i-simple-icons-mysql text-4xl opacity-60"></i>
+            <i class="i-simple-icons-html5 text-4xl opacity-60"></i>
+            <i class="i-simple-icons-css3 text-4xl opacity-60"></i>
           </div>
         </div>
-      </section>
+      </div>
     </section>
   </article>
 </BaseLayout>
@@ -273,5 +307,25 @@ const ogImage = { src: '/og/index.png', alt: 'UmmIt Kin Personal Website' }
 
   .marquee-container:hover .marquee-track {
     animation-play-state: paused;
+  }
+
+  .magic-link-icon :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.125rem;
+  }
+
+  .magic-link-icon i {
+    font-size: 1em;
+    opacity: 0.8;
+  }
+
+  .magic-link.no-hover {
+    cursor: default;
+  }
+
+  .magic-link.no-hover:hover {
+    background: rgba(136, 136, 136, 0.15);
   }
 </style>

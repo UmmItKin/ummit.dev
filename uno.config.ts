@@ -25,6 +25,10 @@ export default defineConfig({
     {
       'hr-line': 'w-14 mx-auto my-8 border-solid border-1px !border-neutral-200 !dark:border-neutral-800',
     },
+    {
+      'magic-link': 'inline-flex items-center gap-1 py-1 px-1.5 rd-1 bg-neutral-500/15 hover:bg-neutral-500/25 translate-y-0.75 leading-none text-inherit decoration-none !border-none whitespace-nowrap transition-all duration-150 ease-out',
+      'magic-link-icon': 'inline-flex items-center justify-center w-1.1em h-1.1em rd-0.5 overflow-hidden shrink-0',
+    },
   ],
   presets: [
     presetWind3(),
