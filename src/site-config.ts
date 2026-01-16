@@ -4,7 +4,7 @@ export const siteConfig = {
   subtitle: 'UmmIt Kin Personal website :)))))',
   description: 'The place where I share my thoughts and projects.',
   image: {
-    src: 'https://links-rs.ummit.dev/cutecute.webp',
+    src: '/links.webp',
     alt: 'Website Main Image',
   },
   email: 'ayo@ummit.dev',
@@ -30,7 +30,7 @@ export const siteConfig = {
   ],
   header: {
     logo: {
-      src: 'https://links-rs.ummit.dev/cutecute.webp',
+      src: '/links.webp',
       alt: 'Logo Image',
     },
     navLinks: [

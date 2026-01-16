@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets'
 import BaseLayout from '@/layouts/BaseLayout.astro'
+import avatarImg from '@/assets/links.webp'
 
 const ogImage = { src: '/og/links.png', alt: 'Links' }
 
@@ -41,10 +43,13 @@ const links = [
   <div class="flex flex-col items-center justify-center min-h-70vh">
     <!-- Avatar -->
     <div class="mb-6">
-      <img
-        src="https://links-rs.ummit.dev/cutecute.webp"
+      <Image
+        src={avatarImg}
         alt="UmmIt Kin"
-        class="w-24 h-24 rounded-full border-2 border-neutral-500/30"
+        width={500}
+        height={500}
+        class="avatar-blur w-40 h-40 rounded-full border-2 border-neutral-500/30 transition-all duration-300"
+        loading="eager"
       />
     </div>
 
@@ -70,3 +75,29 @@ const links = [
     </div>
   </div>
 </BaseLayout>
+
+<style>
+  .avatar-blur {
+    filter: blur(10px);
+    transform: scale(1.05);
+  }
+
+  .avatar-blur.loaded {
+    filter: blur(0);
+    transform: scale(1);
+  }
+</style>
+
+<script>
+  function initBlurLoad() {
+    const img = document.querySelector('.avatar-blur')
+    if (!(img instanceof HTMLImageElement)) {
+      return
+    }
+    const handleLoad = () => img.classList.add('loaded')
+    img.complete ? handleLoad() : img.addEventListener('load', handleLoad, { once: true })
+  }
+
+  initBlurLoad()
+  document.addEventListener('astro:page-load', initBlurLoad)
+</script>
