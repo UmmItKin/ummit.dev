@@ -90,7 +90,7 @@ const ogImage = { src: '/og/index.png', alt: 'UmmIt Kin Personal Website' }
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit ICEDTEA CTF website"
-              class="ml-2 opacity-70 hover:opacity-100 transition-opacity"
+              class="timeline-link"
             >
               <i class="i-ri-external-link-line text-sm"></i>
             </a>
@@ -112,7 +112,7 @@ const ogImage = { src: '/og/index.png', alt: 'UmmIt Kin Personal Website' }
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit HeapUnderFlow CTF website"
-              class="ml-2 opacity-70 hover:opacity-100 transition-opacity"
+              class="timeline-link"
             >
               <i class="i-ri-external-link-line text-sm"></i>
             </a>
@@ -134,7 +134,7 @@ const ogImage = { src: '/og/index.png', alt: 'UmmIt Kin Personal Website' }
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit No Hack No CTF on CTFtime"
-              class="ml-2 opacity-70 hover:opacity-100 transition-opacity"
+              class="timeline-link"
             >
               <i class="i-ri-external-link-line text-sm"></i>
             </a>
@@ -156,7 +156,7 @@ const ogImage = { src: '/og/index.png', alt: 'UmmIt Kin Personal Website' }
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit TryHackMe profile"
-              class="ml-2 opacity-70 hover:opacity-100 transition-opacity"
+              class="timeline-link"
             >
               <i class="i-ri-external-link-line text-sm"></i>
             </a>
@@ -326,5 +326,17 @@ const ogImage = { src: '/og/index.png', alt: 'UmmIt Kin Personal Website' }
 
   .magic-link.no-hover:hover {
     background: rgba(136, 136, 136, 0.15);
+  }
+
+  .timeline-link {
+    margin-left: 0.5rem;
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+    border: none !important;
+  }
+
+  .timeline-link:hover {
+    opacity: 1;
+    border: none !important;
   }
 </style>
