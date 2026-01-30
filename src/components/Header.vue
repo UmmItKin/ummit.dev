@@ -1,101 +1,113 @@
 <script lang="ts" setup>
+import { ref } from 'vue'
 import siteConfig from '@/site-config'
 import { getLinkTarget } from '@/utils/link'
 import ThemeToggle from './ThemeToggle.vue'
 
-const navLinks = siteConfig.header.navLinks || []
+interface SocialLink {
+  text: string
+  href: string
+  icon: string
+  header?: boolean | string
+}
 
-const socialLinks = siteConfig.socialLinks.filter((link: Record<string, any>) => {
-  if (link.header && typeof link.header === 'boolean') {
-    return link
-  }
-  else if (link.header && typeof link.header === 'string') {
-    link.icon = link.header.includes('i-') ? link.header : link.icon
-    return link
-  }
-  else {
-    return false
-  }
-})
+const navLinks = siteConfig.header.navLinks || []
+const isDrawerOpen = ref(false)
+
+const socialLinks = (siteConfig.socialLinks as SocialLink[])
+  .filter(link => link.header)
+  .map(link => ({
+    ...link,
+    icon: typeof link.header === 'string' && link.header.includes('i-')
+      ? link.header
+      : link.icon,
+  }))
 
 function toggleNavDrawer() {
-  const drawer = document.querySelector('.nav-drawer') as HTMLElement
-  const mask = document.querySelector('.nav-drawer-mask') as HTMLElement
-  if (!drawer || !mask)
-    return
-  if (drawer.style.transform === `translateX(0%)`) {
-    drawer.style.transform = `translateX(-100%)`
-    mask.style.display = `none`
-  }
-  else {
-    drawer.style.transform = `translateX(0%)`
-    mask.style.display = `block`
-  }
+  isDrawerOpen.value = !isDrawerOpen.value
+}
+
+function closeDrawer() {
+  isDrawerOpen.value = false
 }
 </script>
 
 <template>
   <header
     id="header"
-    class="z-40 w-full py-6 px-6 flex justify-between items-center"
+    z-40 w-full py-6 px-6 flex justify-between items-center
   >
-    <div class="flex items-center h-full">
-      <a href="/" mr-6 aria-label="Header Logo Image" class="font-bold text-xl">
+    <div flex items-center h-full>
+      <a href="/" mr-6 aria-label="Header Logo Image" font-bold text-xl>
         UmmIt
       </a>
-      <nav class="sm:flex hidden flex-wrap gap-x-6 position-initial flex-row">
+      <nav sm:flex hidden flex-wrap gap-x-6 position-initial flex-row>
         <a
-          v-for="link in navLinks" :key="link.text" :aria-label="`${link.text}`" :target="getLinkTarget(link.href)"
-          nav-link :href="link.href"
+          v-for="link in navLinks"
+          :key="link.text"
+          :aria-label="link.text"
+          :target="getLinkTarget(link.href)"
+          :href="link.href"
+          nav-link
         >
           {{ link.text }}
         </a>
       </nav>
-      <div sm:hidden h-full flex items-center @click="toggleNavDrawer()">
-        <menu i-ri-menu-2-fill />
-      </div>
+      <button sm:hidden h-full flex items-center @click="toggleNavDrawer">
+        <i i-ri-menu-2-fill />
+      </button>
     </div>
-    <div class="flex gap-x-6">
+    <div flex gap-x-6>
       <a
-        v-for="link in socialLinks" :key="link.text" :aria-label="`${link.text}`" :class="link.icon" nav-link
-        :target="getLinkTarget(link.href)" :href="link.href"
+        v-for="link in socialLinks"
+        :key="link.text"
+        :aria-label="link.text"
+        :class="link.icon"
+        :target="getLinkTarget(link.href)"
+        :href="link.href"
+        nav-link
       />
-
       <a nav-link target="_blank" href="/rss.xml" i-ri-rss-line aria-label="RSS" />
       <ThemeToggle />
     </div>
   </header>
+
   <nav
-    class="nav-drawer sm:hidden"
+    sm:hidden fixed h-screen z-999 left-0 top-0 min-w-32vw max-w-50vw
+    bg-main p-6 text-lg flex flex-col gap-5 transition-transform
+    :class="isDrawerOpen ? 'translate-x-0' : 'translate-x--100%'"
   >
     <i i-ri-menu-2-fill />
     <a
-      v-for="link in navLinks" :key="link.text" :aria-label="`${link.text}`" :target="getLinkTarget(link.href)"
-      nav-link :href="link.href" @click="toggleNavDrawer()"
+      v-for="link in navLinks"
+      :key="link.text"
+      :aria-label="link.text"
+      :target="getLinkTarget(link.href)"
+      :href="link.href"
+      nav-link
+      @click="closeDrawer"
     >
       {{ link.text }}
     </a>
   </nav>
-  <div class="nav-drawer-mask" @click="toggleNavDrawer()" />
+
+  <Transition name="fade">
+    <div
+      v-if="isDrawerOpen"
+      fixed inset-0 z-998 bg-black:50
+      @click="closeDrawer"
+    />
+  </Transition>
 </template>
 
 <style scoped>
-.nav-drawer {
-  transform: translateX(-100%);
-  --at-apply: box-border fixed h-screen z-999 left-0 top-0 min-w-32vw max-w-50vw bg-main p-6 text-lg flex flex-col gap-5
-    transition-all;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
 }
 
-.nav-drawer-mask {
-  display: none;
-  --at-apply: transition-all;
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 998;
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

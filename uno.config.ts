@@ -9,27 +9,29 @@ import {
 } from 'unocss'
 
 export default defineConfig({
-  shortcuts: [
-    {
-      'bg-main': 'bg-hex-eef5fc dark:bg-hex-0d1117',
-      'text-main': 'text-hex-555555 dark:text-hex-bbbbbb',
-      'text-link': 'text-dark dark:text-white ',
-      'border-main': 'border-neutral-300 dark:border-neutral-600',
-    },
-    {
-      'text-title': 'text-link text-4xl font-800',
-      'nav-link': 'text-link opacity-70 hover:opacity-100 transition-opacity duration-200 cursor-pointer',
-      'prose-link': 'text-link text-nowrap cursor-pointer border-b-1 !border-opacity-30 hover:!border-opacity-100 border-neutral-500 hover:border-neutral-600 dark:border-neutral-500 hover:dark:border-neutral-400 transition-border-color duration-200 decoration-none',
-      'container-link': 'p-2 opacity-60 hover:opacity-100 cursor-pointer hover:bg-neutral-500 !bg-opacity-10 transition-colors transition-opacity duration-200',
-    },
-    {
-      'hr-line': 'w-14 mx-auto my-8 border-solid border-1px !border-neutral-200 !dark:border-neutral-800',
-    },
-    {
-      'magic-link': 'inline-flex items-center gap-1 py-1 px-1.5 rd-1 bg-neutral-500/15 hover:bg-neutral-500/25 translate-y-0.75 leading-none text-inherit decoration-none !border-none whitespace-nowrap transition-all duration-150 ease-out',
-      'magic-link-icon': 'inline-flex items-center justify-center w-1.1em h-1.1em rd-0.5 overflow-hidden shrink-0',
-    },
-  ],
+  shortcuts: {
+    // Base colors
+    'bg-main': 'bg-hex-eef5fc dark:bg-hex-0d1117',
+    'text-main': 'text-hex-555555 dark:text-hex-bbbbbb',
+    'text-link': 'text-dark dark:text-white',
+    'border-main': 'border-neutral-300 dark:border-neutral-600',
+
+    // Typography
+    'text-title': 'text-link text-4xl font-800',
+
+    // Navigation
+    'nav-link': 'text-link opacity-70 hover:opacity-100 transition-opacity duration-200 cursor-pointer',
+    'prose-link': 'text-link text-nowrap cursor-pointer border-b-1 !border-opacity-30 hover:!border-opacity-100 border-neutral-500 hover:border-neutral-600 dark:border-neutral-500 hover:dark:border-neutral-400 transition-border-color duration-200 decoration-none',
+    'container-link': 'p-2 opacity-60 hover:opacity-100 cursor-pointer hover:bg-neutral-500 !bg-opacity-10 transition-colors transition-opacity duration-200',
+
+    // Dividers
+    'hr-line': 'w-14 mx-auto my-8 border-solid border-1px !border-neutral-200 !dark:border-neutral-800',
+
+    // Magic link component
+    'magic-link': 'inline-flex items-center gap-1 py-1 px-1.5 rd-1 bg-neutral-500/15 hover:bg-neutral-500/25 translate-y-0.75 leading-none text-inherit decoration-none !border-none whitespace-nowrap transition-all duration-150 ease-out',
+    'magic-link-icon': 'inline-flex items-center justify-center w-1.1em h-1.1em rd-0.5 overflow-hidden shrink-0',
+  },
+
   presets: [
     presetWind3(),
     presetAttributify(),
@@ -50,63 +52,81 @@ export default defineConfig({
       inlineImports: true,
     }),
   ],
-  transformers: [transformerDirectives(), transformerVariantGroup()],
+
+  transformers: [
+    transformerDirectives(),
+    transformerVariantGroup(),
+  ],
+
   safelist: [
+    // UI icons
     'i-ri-file-list-2-line',
+    'i-ri-rss-line',
+    'i-ri-book-2-line',
+    'i-ri-signal-tower-line',
+    'i-ri-global-line',
+    'i-ri-external-link-line',
+    'i-ri-mail-line',
+    'i-ri-edit-line',
+
+    // Social icons
     'i-carbon-campsite',
     'i-simple-icons-github',
     'i-simple-icons-x',
     'i-simple-icons-youtube',
     'i-ri-github-line',
     'i-ri-twitter-x-line',
-    'i-simple-icons-archlinux',
-    'i-ri-rss-line',
-    'i-ri-book-2-line',
-    'i-ri-signal-tower-line',
-    'i-ri-global-line',
+
+    // Device icons
     'i-ri-computer-line',
     'i-ri-macbook-line',
     'i-ri-keyboard-line',
     'i-ri-server-line',
     'i-ri-router-line',
     'i-ri-smartphone-line',
+    'i-ri-wifi-line',
+
+    // Development icons
     'i-ri-apps-line',
-    'i-ri-brain-3-fill',
     'i-ri-briefcase-line',
     'i-ri-file-list-line',
     'i-ri-code-line',
     'i-ri-terminal-line',
+    'i-ri-terminal-box-line',
+    'i-ri-database-2-line',
+    'i-ri-bug-line',
+    'i-ri-flashlight-line',
+
+    // Tech stack icons
     'i-simple-icons-linux',
     'i-simple-icons-python',
-    'i-ri-shield-keyhole-line',
     'i-simple-icons-neovim',
     'i-simple-icons-git',
     'i-simple-icons-docker',
-    'i-ri-wifi-line',
     'i-simple-icons-nginx',
     'i-simple-icons-cloudflare',
-    'i-ri-lock-line',
     'i-simple-icons-wireguard',
-    'i-ri-database-2-line',
     'i-simple-icons-html5',
     'i-simple-icons-javascript',
-    'i-ri-bug-line',
-    'i-ri-flashlight-line',
     'i-simple-icons-typescript',
     'i-simple-icons-gnubash',
     'i-simple-icons-css3',
+
+    // OS icons
+    'i-simple-icons-archlinux',
     'i-simple-icons-nixos',
     'i-simple-icons-debian',
     'i-simple-icons-raspberrypi',
+
+    // Security icons
+    'i-ri-brain-3-fill',
+    'i-ri-shield-keyhole-line',
+    'i-ri-lock-line',
+    'i-ri-shield-check-line',
+    'i-ri-flag-line',
     'i-simple-icons-burpsuite',
     'i-simple-icons-wireshark',
     'i-simple-icons-kalilinux',
     'i-simple-icons-metasploit',
-    'i-ri-flag-line',
-    'i-ri-edit-line',
-    'i-ri-shield-check-line',
-    'i-ri-terminal-box-line',
-    'i-ri-mail-line',
-    'i-ri-external-link-line',
   ],
 })
