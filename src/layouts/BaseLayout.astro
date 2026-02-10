@@ -5,6 +5,7 @@ import BaseHead from '@/components/BaseHead.astro'
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.astro'
 import ScrollToTop from '@/components/ScrollToTop.vue'
+import Oneko from '@/components/Oneko.vue'
 
 const { title, description, image, pageType } = Astro.props
 ---
@@ -23,6 +24,7 @@ const { title, description, image, pageType } = Astro.props
       Skip to main content
     </a>
     <Header client:idle />
+    <Oneko client:load />
     <main
       id="main-content"
       class="grow max-w-3xl mx-auto pt-10 pb-16 px-6 relative"
