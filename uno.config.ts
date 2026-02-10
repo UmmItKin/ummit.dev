@@ -112,6 +112,10 @@ export default defineConfig({
     'i-simple-icons-typescript',
     'i-simple-icons-gnubash',
     'i-simple-icons-css3',
+    'i-simple-icons-go',
+    'i-simple-icons-tailwindcss',
+    'i-simple-icons-shadcnui',
+    'i-simple-icons-hyprland',
 
     // OS icons
     'i-simple-icons-archlinux',
