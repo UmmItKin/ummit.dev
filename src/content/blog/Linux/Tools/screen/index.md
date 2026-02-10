@@ -1,5 +1,5 @@
 ---
-title: "Mastering Efficiency with the Screen Command for Server Management"
+title: "Screen Command for Server Management"
 description: "Discover the power of the screen command in Linux for effective server management, remote sessions, and persistent terminal sessions. Learn how to install, use, and maximize your productivity with this versatile tool."
 date: 2021-12-16T20:43:12+0800
 tag: "Linux, screen"

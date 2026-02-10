@@ -1,8 +1,8 @@
 ---
-title: "Grub and os-prober: Creating a Multi-OS Boot Menu"
+title: "Creating a Multi-OS Boot Menu with GRUB"
 description: "Learn how to set up a multi-OS boot menu using Grub and os-prober, ensuring hassle-free switching between different operating systems on your computer."
 date: 2023-09-23T17:32:55+0800
-tag: "grub, Linux, Multi-Boot, efibootmgr, os-prober"
+tag: "GRUB"
 lang: en-US
 ---
 

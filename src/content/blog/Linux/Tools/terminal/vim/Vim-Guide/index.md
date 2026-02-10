@@ -1,5 +1,5 @@
 ---
-title: "Vim: A Quick Guide to Efficient Text Editing"
+title: "Vim: Quick Guide"
 date: 2023-12-22T03:15:00+0800
 tag: "Vim, Linux, Terminal"
 lang: en-US

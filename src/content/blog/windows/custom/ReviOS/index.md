@@ -1,5 +1,5 @@
 ---
-title: "Customize Windows 10/11: Enhance Speed and Efficiency with ReviOS"
+title: "Customize Windows 10/11 with ReviOS"
 description: "Discover the power of ReviOS, an open-source solution to streamline your Windows 10/11 experience. Say goodbye to unnecessary bloatware and become a more efficient system."
 date: 2023-10-11T09:11:57+0800
 tag: "Windows, ReviOS"

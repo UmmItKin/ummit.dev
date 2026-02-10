@@ -1,7 +1,7 @@
 ---
 title: "Resizing LVM and LUKS Encrypted Btrfs Filesystem"
 date: 2023-12-22T04:23:37+0800
-tag: "BTRFS, LUKS, Linux"
+tag: "Btrfs"
 lang: en-US
 ---
 

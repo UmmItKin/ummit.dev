@@ -1,5 +1,5 @@
 ---
-title: "Mastering Git: Wayback Commands"
+title: "Git: Wayback Commands"
 date: 2023-12-26T04:45:59+08:00
 tag: "Git"
 lang: en-US

@@ -1,6 +1,6 @@
 ---
-title: "Comprehensive Guide to Installing Kali Linux with Manual Partitioning, LVM, and LUKS Encryption"
-description: "This article is a comprehensive guide to specifically installing Kali Linux with manual LVM partitioning. The steps outlined here will help you set up Kali Linux with Logical Volume Management (LVM), with LVM and LUKS encryption."
+title: "Kali Linux with Manual Partitioning, LVM, and LUKS Encryption"
+description: "Kali Linux with manual LVM partitioning with LVM and LUKS encryption."
 date: 2025-02-02T22:10:02+0800
 tag: "Kali Linux, LVM, LUKS"
 lang: en-US

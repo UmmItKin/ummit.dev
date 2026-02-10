@@ -3,7 +3,7 @@ title: "Complete Guide to setting up LUKS on LVM encryption in Arch Linux (Minim
 description: "A detailed guide on setting up LUKS (Linux Unified Key Setup) encryption on LVM. with Minimal system installation."
 date: 2023-08-10T02:08:10+0800
 lastmod: 2025-01-15T08:18:15+0800
-tag: "Arch Linux, LUKS, LVM, Encryption"
+tag: "Arch Linux, LUKS, LVM"
 lang: en-US
 ---
 

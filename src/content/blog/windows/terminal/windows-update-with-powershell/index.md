@@ -1,5 +1,5 @@
 ---
-title: "Manually Updating Windows with PowerShell: A Quick Guide"
+title: "Manually Updating Windows with PowerShell"
 description: "Discover the power of PowerShell in managing Windows updates. This quick guide provides step-by-step instructions on how to manually update your Windows system."
 date: 2023-10-15T21:53:00+0800
 tag: "Windows, Powershell, Update"

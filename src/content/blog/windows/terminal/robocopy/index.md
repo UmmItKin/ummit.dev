@@ -1,5 +1,5 @@
 ---
-title: "File Management with RoboCopy: A Comprehensive Guide"
+title: "File Management with RoboCopy"
 date: 2023-11-19T02:45:50+0800
 tag: "windows, robocopy"
 lang: en-US

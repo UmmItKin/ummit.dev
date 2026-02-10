@@ -1,8 +1,8 @@
 ---
-title: "How to install Packet Tracer on Arch Linux with AUR"
+title: "How to install Packet Tracer on Arch Linux"
 description: "Installing Packet Tracer on Arch Linux with AUR, a step-by-step guide."
 date: 2024-10-21T10:38:20+0800
-tag: "Arch Linux, Packet Tracer, AUR"
+tag: "Arch Linux, Packet Tracer"
 lang: en-US
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Fixing Slow Downloading on Steam for Linux: A Quick Guide"
 date: 2024-01-02T03:02:58+0800
-tag: "Games, Steam"
+tag: "Steam"
 lang: en-US
 ---
 

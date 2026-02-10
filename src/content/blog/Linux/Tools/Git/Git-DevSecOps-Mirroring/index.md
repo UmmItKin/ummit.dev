@@ -1,5 +1,5 @@
 ---
-title: "Setting Up DevSecOps Mirroring - Codeberg, Gitea, Gitlab and Github Workflows: A Step-by-Step Guide"
+title: "Mirroring Codeberg, Gitea, Gitlab and Github Workflows"
 date: 2023-12-29T03:09:45+08:00
 tag: "Git, Mirror"
 lang: en-US

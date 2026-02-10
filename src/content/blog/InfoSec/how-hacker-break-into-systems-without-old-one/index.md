@@ -1,7 +1,7 @@
 ---
 title: "How Hackers Break into Systems: Resetting Passwords Without the Old One"
 date: 2024-08-26T20:03:30+0800
-tag: "Ethical-hacking, Cyber-Security, Windows, Password-reset"
+tag: "Windows, Password"
 lang: en-US
 ---
 

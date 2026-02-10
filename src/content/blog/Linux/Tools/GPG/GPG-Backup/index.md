@@ -1,5 +1,5 @@
 ---
-title: "How to Backup Your GPG Key: A Step-by-Step Guide"
+title: "How to Backup Your GPG Key"
 date: 2024-09-28T21:14:50+0800
 tag: "GPG, GNU/Linux"
 lang: en-US

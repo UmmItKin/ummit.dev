@@ -1,5 +1,5 @@
 ---
-title: "Unleash Compression Power with 7-Zip on Linux: Installation and Usage Guide"
+title: "7-Zip on Linux: Installation and Usage Guide"
 description: "Discover the Remarkable Efficiency of 7-Zip for File Compression and Extraction on the Linux Platform. and learn how to use!"
 date: 2022-02-16T09:43:18+0800
 tag: "Linux, 7zip"

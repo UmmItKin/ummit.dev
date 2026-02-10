@@ -1,7 +1,7 @@
 ---
-title: "Upgrading My Computer with a New HDD: A Beginner's Guide"
+title: "Upgrading My Computer with a New HDD!"
 date: 2023-12-07T19:19:20+0800
-tag: "Harddisk"
+tag: "HDD"
 lang: en-US
 ---
 

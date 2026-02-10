@@ -1,7 +1,7 @@
 ---
 title: "Installing Multiple Kernels with GRUB on Arch Linux"
 date: 2023-12-26T05:33:45+0800
-tag: "grub, Linux, Multi-Boot, efibootmgr"
+tag: "GRUB"
 lang: en-US
 ---
 

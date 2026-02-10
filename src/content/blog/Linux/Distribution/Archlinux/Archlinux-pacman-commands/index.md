@@ -2,7 +2,7 @@
 title: "The Ultimate Guide to Pacman Package Manager Commands on Arch Linux"
 description: "Learn the essential Pacman commands for installing, updating, and managing packages on your Arch Linux system. Master the art of software management with this comprehensive guide to Pacman, the powerhouse package manager."
 date: 2023-08-29T00:35:40+0800
-tag: "Arch Linux, Pacman, Package Manager"
+tag: "Arch Linux"
 lang: en-US
 ---
 

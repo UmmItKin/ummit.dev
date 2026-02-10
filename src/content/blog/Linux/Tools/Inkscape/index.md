@@ -1,5 +1,5 @@
 ---
-title: "Converting SVG to PNG with Inkscape: A Quick Guide"
+title: "Converting SVG to PNG with Inkscape"
 date: 2023-12-26T08:27:20+0800
 tag: "Inkscape, convert"
 lang: en-US

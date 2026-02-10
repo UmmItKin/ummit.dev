@@ -1,6 +1,6 @@
 ---
-title: "Mastering Multimedia: A Comprehensive Guide to FFmpeg"
-description: "Unlock the full potential of FFmpeg, the versatile multimedia toolkit. Explore essential commands and techniques for video and audio manipulation, conversion, and more."
+title: "A Comprehensive Guide for FFmpeg"
+description: "Explore essential commands and techniques for FFmpeg"
 date: 2023-09-11T04:15:40+0800
 tag: "FFMPEG"
 lang: en-US

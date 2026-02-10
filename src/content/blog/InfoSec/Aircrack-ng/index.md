@@ -1,8 +1,8 @@
 ---
-title: "Brute-Force Attack with Aircrack-ng on WiFi Networks"
+title: "Cracking Wifi Password with Aircrack-NG"
 date: 2024-07-06T22:06:14+0800
 lastmod: 2024-12-31T06:24:58+0800
-tag: "Aircrack-ng, high-school-article-rewrite, Cyber-Security, WiFi"
+tag: "Aircrack-NG"
 lang: en-US
 ---
 

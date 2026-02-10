@@ -2,7 +2,7 @@
 title: "KVM: High-Performance Graphics for Virtual Machines with Looking Glass"
 description: "Looking Glass, a groundbreaking technology that brings the power of physical GPUs to your virtual machines. Learn how to install, configure, and make the most of this open-source gem for unmatched graphics performance in your VMs."
 date: 2023-09-04T23:29:40+0800
-tag: "looking-glass, virt-manager"
+tag: "looking-glass"
 lang: en-US
 ---
 

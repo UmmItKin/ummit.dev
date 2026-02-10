@@ -2,7 +2,7 @@
 title: "Before You Buy a Raspberry Pi: Essential Considerations"
 date: 2023-01-24T20:52:00+0800
 lastmod: 2023-12-26T12:04:20+0800
-tag: "Raspberry Pi, Linux, Hardware"
+tag: "Raspberry Pi"
 lang: en-US
 ---
 

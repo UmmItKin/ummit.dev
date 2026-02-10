@@ -1,5 +1,5 @@
 ---
-title: "Editing GPG Key Information: A Quick Guide"
+title: "Editing GPG Key Information"
 date: 2023-12-31T09:16:21+0800
 tag: "GPG, Linux"
 lang: en-US

@@ -1,5 +1,5 @@
 ---
-title: "How to Edit Git Commit Messages: A Step-by-Step Guide"
+title: "How to Edit Git Commit Messages"
 date: 2024-05-30T16:53:03+08:00
 tag: "Git"
 lang: en-US

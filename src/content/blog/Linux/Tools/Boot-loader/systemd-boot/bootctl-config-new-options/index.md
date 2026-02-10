@@ -2,7 +2,7 @@
 title: "Using Different Linux Kernel Versions with systemd-boot and Bootctl"
 description: "Exploring the process of seamlessly switching between Linux kernel versions using systemd-boot and Bootctl for enhanced system performance and flexibility."
 date: 2023-08-22T13:32:01+0800
-tag: "Linux, Bootctl, Boot-loader"
+tag: "Linux"
 lang: en-US
 ---
 

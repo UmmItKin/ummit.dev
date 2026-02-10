@@ -1,8 +1,8 @@
 ---
-title: "Firefox Plug-ins for Enhanced your Browsing Experience with extra features :)"
+title: "Firefox Plug-ins for Enhanced your Browsing Experience with extra features"
 date: 2023-12-26T07:44:30+0800
 lastmod: 2024-12-31T04:27:45+0800
-tag: "Browser, Extensions"
+tag: "Browser Extensions"
 lang: en-US
 ---
 

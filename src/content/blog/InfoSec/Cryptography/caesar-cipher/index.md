@@ -1,7 +1,7 @@
 ---
 title: "Caesar Cipher encryption and decryption"
 date: 2025-01-15T10:58:16+0800
-tag: "Caesar Cipher, encryption, decryption, mathematics"
+tag: "Caesar Cipher"
 lang: en-US
 ---
 

@@ -1,7 +1,7 @@
 ---
-title: "Setting Up a Minecraft Server on VPS: A Comprehensive Guide"
+title: "A Comprehensive Guide for Setting Up a Minecraft Server"
 date: 2023-12-22T02:20:10+0800
-tag: "Games, Minecraft, VPS, Self-host"
+tag: "Minecraft"
 lang: en-US
 ---
 

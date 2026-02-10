@@ -1,5 +1,5 @@
 ---
-title: "Search Engine Crawlers: A Guide to custom robots.txt with Disallow or allow Rule"
+title: "A Guide to custom robots.txt with Disallow or allow Rule"
 description: "Learn how to take control of search engine crawling by using the robots.txt disallow rule to restrict access to specific parts of your website."
 date: 2023-09-04T21:14:00+0800
 tag: "Search-Engine, Robots.txt"

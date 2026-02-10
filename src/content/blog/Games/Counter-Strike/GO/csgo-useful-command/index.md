@@ -2,7 +2,7 @@
 title: "Enhance Your CS:GO Gameplay with These Useful Commands!"
 description: "Unlock the full potential of your CS:GO gameplay with these essential commands! From optimizing your crosshair to performing quick actions, these commands can give you the edge you need to succeed in the game."
 date: 2023-09-23T20:29:30+0800
-tag: "csgo, Games"
+tag: "CSGO"
 lang: en-US
 ---
 

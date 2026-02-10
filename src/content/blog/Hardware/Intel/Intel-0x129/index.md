@@ -2,7 +2,7 @@
 title: "Intel Fucked Up and You Need to Update Your BIOS Now !!!"
 date: 2024-09-08T00:32:20+0800
 lastmod: 2025-01-15T10:35:09+0800
-tag: "Intel, CPU, BIOS"
+tag: "Intel"
 lang: en-US
 ---
 
