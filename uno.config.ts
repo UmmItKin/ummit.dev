@@ -68,6 +68,7 @@ export default defineConfig({
     'i-ri-external-link-line',
     'i-ri-mail-line',
     'i-ri-edit-line',
+    'i-ri-alert-line',
 
     // Social icons
     'i-carbon-campsite',

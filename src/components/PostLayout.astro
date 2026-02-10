@@ -31,6 +31,14 @@ const ogImage = getOgPath()
 function getDate(dateStr: string) {
   return new Date(dateStr).toISOString()
 }
+
+function isOutdated(dateStr: string, lastmodStr?: string) {
+  const relevantDate = lastmodStr || dateStr
+  const date = new Date(relevantDate)
+  const now = new Date()
+  const sixMonthsInMs = 180 * 24 * 60 * 60 * 1000
+  return now.getTime() - date.getTime() > sixMonthsInMs
+}
 ---
 
 <BaseLayout title={title} description={description} image={{ src: ogImage, alt: title }} pageType="article">
@@ -42,6 +50,14 @@ function getDate(dateStr: string) {
       {duration && <span> · {duration}</span>}
       {tag && <span> · {tag}</span>}
     </p>
+    {
+      post.collection === 'blog' && isOutdated(date, lastmod) && (
+        <p class="op-60 text-sm flex items-center gap-1 mt-2">
+          <i class="i-ri-alert-line text-orange-500" />
+          <span>The article may be outdated as it hasn't been updated in over six months.</span>
+        </p>
+      )
+    }
     {
       image && (
         <p>
