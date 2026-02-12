@@ -12,6 +12,12 @@
 
 This is the source code for my personal website, built on top of the [astro-theme-vitesse](https://github.com/kieranwv/astro-theme-vitesse) template with extensive customizations to fit my needs.
 
+### Why
+
+Originally, the Vitesse theme seemed to be discontinued, and the source code was no longer being updated. Therefore, I forked it, updated it, and continue to maintain it myself. If you want to use this theme, feel free to do so!
+
+All the packages are using the latest versions and are upgraded by me regularly.
+
 ## Features
 
 More extended features:
