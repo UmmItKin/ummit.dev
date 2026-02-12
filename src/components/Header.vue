@@ -36,10 +36,15 @@ function closeDrawer() {
     id="header"
     z-40 w-full py-6 px-6 flex justify-between items-center
   >
-    <div flex items-center h-full>
-      <a href="/" mr-6 aria-label="Header Logo Image" font-bold text-xl>
+    <div flex items-center h-full gap-x-6>
+      <a href="/" aria-label="Header Logo Image" font-bold text-xl>
         UmmIt
       </a>
+      <button sm:hidden h-full flex items-center @click="toggleNavDrawer">
+        <i i-ri-menu-2-fill />
+      </button>
+    </div>
+    <div flex items-center gap-x-6>
       <nav sm:flex hidden flex-wrap gap-x-6 position-initial flex-row>
         <a
           v-for="link in navLinks"
@@ -52,21 +57,18 @@ function closeDrawer() {
           {{ link.text }}
         </a>
       </nav>
-      <button sm:hidden h-full flex items-center @click="toggleNavDrawer">
-        <i i-ri-menu-2-fill />
-      </button>
-    </div>
-    <div flex gap-x-6>
-      <a
-        v-for="link in socialLinks"
-        :key="link.text"
-        :aria-label="link.text"
-        :class="link.icon"
-        :target="getLinkTarget(link.href)"
-        :href="link.href"
-        nav-link
-      />
-      <a nav-link target="_blank" href="/rss.xml" i-ri-rss-line aria-label="RSS" />
+      <div flex gap-x-6>
+        <a
+          v-for="link in socialLinks"
+          :key="link.text"
+          :aria-label="link.text"
+          :class="link.icon"
+          :target="getLinkTarget(link.href)"
+          :href="link.href"
+          nav-link
+        />
+        <a nav-link target="_blank" href="/rss.xml" i-ri-rss-line aria-label="RSS" />
+      </div>
     </div>
   </header>
 
