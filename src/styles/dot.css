@@ -1,0 +1,13 @@
+.bg-dot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, #0d1117 22px, transparent 1%) 50%,
+    linear-gradient(#0d1117 22px, transparent 1%) 50%,
+    #2f353c;
+  background-position: center center;
+  background-size: 24px 24px;
+  mask-image: linear-gradient(0deg, transparent 5%, #000000);
+}
