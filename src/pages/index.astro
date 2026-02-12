@@ -1,11 +1,15 @@
 ---
 import { Image } from 'astro:assets'
 import BaseLayout from '@/layouts/BaseLayout.astro'
+import GitHubGraph from '@/components/GitHubGraph.vue'
 import siteConfig from '@/site-config'
 import icedteaIcon from '@/assets/CTF/ICEDTEA.jpg'
 import tryhackmeIcon from '@/assets/tryhackme.svg'
+import { fetchGitHubContributions } from '@/utils/github-contributions'
 
 const ogImage = { src: '/og/index.png', alt: 'UmmIt Kin Personal Website' }
+
+const contributions = await fetchGitHubContributions(siteConfig.github)
 ---
 
 <BaseLayout description={siteConfig.description} image={ogImage}>
@@ -70,7 +74,22 @@ const ogImage = { src: '/og/index.png', alt: 'UmmIt Kin Personal Website' }
 
     <hr class="hr-line" />
 
-    <!-- Timeline Details -->
+    {
+      contributions && (
+        <>
+          <section class="mt-8">
+            <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
+              <i class="i-ri-github-line" />
+              Contributions
+            </h2>
+            <GitHubGraph client:visible days={contributions.days} total={contributions.total} />
+          </section>
+
+          <hr class="hr-line" />
+        </>
+      )
+    }
+
     <section class="mt-8">
       <h2 class="text-xl font-semibold mb-6">Timeline</h2>
       <div class="relative border-l-2 border-neutral-300 dark:border-neutral-700 pl-6 space-y-8">
@@ -177,7 +196,6 @@ const ogImage = { src: '/og/index.png', alt: 'UmmIt Kin Personal Website' }
 
     <hr class="hr-line" />
 
-    <!-- Stacks Section -->
     <section class="mt-8">
       <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
         <i class="i-ri-flashlight-line"></i>
@@ -191,7 +209,6 @@ const ogImage = { src: '/og/index.png', alt: 'UmmIt Kin Personal Website' }
         <small class="text-xs text-main/60 italic mt-1"> Cannot list all here, just the main ones :) </small>
       </div>
 
-      <!-- Row 1 -->
       <div class="marquee-container">
         <div class="marquee-track animate-marquee">
           <div class="marquee-content">
@@ -223,7 +240,6 @@ const ogImage = { src: '/og/index.png', alt: 'UmmIt Kin Personal Website' }
         </div>
       </div>
 
-      <!-- Row 2 -->
       <div class="marquee-container mt-4">
         <div class="marquee-track animate-marquee-reverse">
           <div class="marquee-content">

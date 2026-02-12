@@ -1,5 +1,6 @@
 export const siteConfig = {
   author: 'UmmIt Kin',
+  github: 'UmmItKin',
   title: 'UmmIt Kin Personal website',
   subtitle: 'UmmIt Kin Personal website :)))))',
   description: 'The place where I share my thoughts and projects.',
