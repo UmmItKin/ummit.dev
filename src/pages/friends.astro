@@ -1,6 +1,6 @@
 ---
+import { Image } from 'astro:assets'
 import BaseLayout from '@/layouts/BaseLayout.astro'
-import FloatingAvatars from '@/components/ui/FloatingAvatars.vue'
 
 import lemonteaImg from '@/assets/friends/lemontea.png'
 import chilinImg from '@/assets/friends/chilin.png'
@@ -102,5 +102,75 @@ const friendsList = [
     <h1 class="text-3xl font-bold opacity-80">Friends</h1>
   </div>
 
-  <FloatingAvatars friends={friendsList} client:load />
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+    {
+      friendsList.map((friend) => (
+        <div class="flex flex-col items-center">
+          <a href={friend.url} target="_blank" rel="noopener noreferrer" class="block relative group">
+            {friend.tooltip && (
+              <span class="absolute bottom-full left-50% -translate-x-50% mb-2 px-3 py-1.5 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black text-xs rounded-md whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 ease-out z-10 pointer-events-none">
+                {friend.tooltip}
+              </span>
+            )}
+            <Image
+              src={friend.image}
+              alt={`${friend.name}'s avatar`}
+              width={700}
+              height={700}
+              class="friend-avatar w-42 h-42 rd-full object-cover opacity-80 hover:opacity-100 transition-all duration-300"
+              loading="lazy"
+            />
+          </a>
+          <span class="mt-4 text-base font-medium opacity-75">{friend.name}</span>
+          <div class="mt-2 flex gap-2">
+            <a
+              href={friend.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${friend.name}'s GitHub`}
+              class="opacity-40 hover:opacity-100 transition-opacity"
+            >
+              <i class="i-simple-icons-github text-sm" />
+            </a>
+            <a
+              href={friend.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${friend.name}'s Website`}
+              class="opacity-40 hover:opacity-100 transition-opacity"
+            >
+              <i class="i-ri-global-line text-sm" />
+            </a>
+          </div>
+        </div>
+      ))
+    }
+  </div>
 </BaseLayout>
+
+<style>
+  .friend-avatar {
+    filter: blur(10px);
+    transform: scale(1.05);
+  }
+
+  .friend-avatar.loaded {
+    filter: blur(0);
+    transform: scale(1);
+  }
+</style>
+
+<script>
+  function initBlurLoad() {
+    document.querySelectorAll('.friend-avatar').forEach((img) => {
+      if (!(img instanceof HTMLImageElement)) {
+        return
+      }
+      const handleLoad = () => img.classList.add('loaded')
+      img.complete ? handleLoad() : img.addEventListener('load', handleLoad, { once: true })
+    })
+  }
+
+  initBlurLoad()
+  document.addEventListener('astro:page-load', initBlurLoad)
+</script>
