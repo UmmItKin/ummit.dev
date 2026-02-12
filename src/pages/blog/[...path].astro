@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
 import ListPosts from '@/components/ListPosts.astro'
 import siteConfig from '@/site-config'
 import { getPosts } from '@/utils/posts'
+import { getWriterLevel } from '@/utils/level'
 
 export async function getStaticPaths() {
   const paths = siteConfig.page.blogLinks.map((nav) => {
@@ -19,6 +20,7 @@ export async function getStaticPaths() {
 const { path } = Astro.params
 
 const posts = await getPosts(path)
+const levelInfo = getWriterLevel(posts.length)
 
 function activeLink(pathname: string) {
   return Astro.url.pathname.replace(/\/+/g, '/').replace(/\/$/, '') === pathname
@@ -26,7 +28,7 @@ function activeLink(pathname: string) {
 ---
 
 <BaseLayout title="Blog" description="List of all the blog posts.">
-  <div class="flex flex-col gap-2 sm:flex-row sm:gap-4 flex-wrap mb-8">
+  <div class="flex flex-col gap-2 sm:flex-row sm:gap-4 flex-wrap mb-4">
     {
       siteConfig.page.blogLinks.map((nav) => (
         <a
@@ -39,5 +41,18 @@ function activeLink(pathname: string) {
       ))
     }
   </div>
+
+  <div class="mb-8 p-4 rounded-lg bg-neutral-800/30 border border-neutral-700/50">
+    <div class="flex items-center gap-2 mb-1 flex-wrap">
+      <span class="font-semibold text-base">
+        {levelInfo.count}
+        {levelInfo.count === 1 ? 'article' : 'articles'} written
+      </span>
+      <span class="text-base opacity-60">·</span>
+      <span class="text-base font-medium text-blue-400">{levelInfo.level}</span>
+    </div>
+    <p class="text-sm opacity-70 italic">{levelInfo.message}</p>
+  </div>
+
   <ListPosts list={posts} />
 </BaseLayout>
