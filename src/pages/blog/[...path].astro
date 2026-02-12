@@ -22,6 +22,10 @@ const { path } = Astro.params
 const posts = await getPosts(path)
 const levelInfo = getWriterLevel(posts.length)
 
+// Get the earliest year from posts
+const earliestYear =
+  posts.length > 0 ? Math.min(...posts.map((post) => new Date(post.data.date).getFullYear())) : new Date().getFullYear()
+
 function activeLink(pathname: string) {
   return Astro.url.pathname.replace(/\/+/g, '/').replace(/\/$/, '') === pathname
 }
@@ -50,6 +54,8 @@ function activeLink(pathname: string) {
       </span>
       <span class="text-base opacity-60">·</span>
       <span class="text-base font-medium text-blue-400">{levelInfo.level}</span>
+      <span class="text-base opacity-60">·</span>
+      <span class="text-base opacity-50">Since {earliestYear}</span>
     </div>
     <p class="text-sm opacity-70 italic">{levelInfo.message}</p>
   </div>
