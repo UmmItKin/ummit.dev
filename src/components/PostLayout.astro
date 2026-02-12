@@ -32,12 +32,42 @@ function getDate(dateStr: string) {
   return new Date(dateStr).toISOString()
 }
 
-function isOutdated(dateStr: string, lastmodStr?: string) {
+function getOutdatedInfo(dateStr: string, lastmodStr?: string) {
   const relevantDate = lastmodStr || dateStr
   const date = new Date(relevantDate)
   const now = new Date()
-  const sixMonthsInMs = 180 * 24 * 60 * 60 * 1000
-  return now.getTime() - date.getTime() > sixMonthsInMs
+  const monthsAgo = (now.getTime() - date.getTime()) / (30 * 24 * 60 * 60 * 1000)
+
+  if (monthsAgo < 6) return null
+
+  if (monthsAgo >= 36) {
+    return {
+      icon: 'i-ri-skull-line',
+      color: 'text-red-600',
+      message:
+        'RIP! This article is ancient (3+ years old). The content is probably archaeological material now. Good luck!',
+    }
+  }
+  if (monthsAgo >= 24) {
+    return {
+      icon: 'i-ri-error-warning-line',
+      color: 'text-red-500',
+      message: "Wowah, this article may be useless as it hasn't been updated in over 2 years. XDD",
+    }
+  }
+  if (monthsAgo >= 12) {
+    return {
+      icon: 'i-ri-alert-line',
+      color: 'text-orange-500',
+      message: "Oops, as it hasn't been updated in 1 year, so the content you better to research again.",
+    }
+  }
+
+  return {
+    icon: 'i-ri-alert-line',
+    color: 'text-yellow-500',
+    message: "The article may be outdated as it hasn't been updated in over six months.",
+  }
 }
 ---
 
@@ -51,12 +81,17 @@ function isOutdated(dateStr: string, lastmodStr?: string) {
       {tag && <span> · {tag}</span>}
     </p>
     {
-      post.collection === 'blog' && isOutdated(date, lastmod) && (
-        <p class="op-60 text-sm flex items-center gap-1 mt-2">
-          <i class="i-ri-alert-line text-orange-500" />
-          <span>The article may be outdated as it hasn't been updated in over six months.</span>
-        </p>
-      )
+      (() => {
+        const outdatedInfo = post.collection === 'blog' ? getOutdatedInfo(date, lastmod) : null
+        return (
+          outdatedInfo && (
+            <p class="op-60 text-sm flex items-center gap-1 mt-2">
+              <i class:list={[outdatedInfo.icon, outdatedInfo.color]} />
+              <span>{outdatedInfo.message}</span>
+            </p>
+          )
+        )
+      })()
     }
     {
       image && (
