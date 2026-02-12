@@ -6,6 +6,9 @@ import UnoCSS from 'unocss/astro'
 
 export default defineConfig({
   site: 'https://ummit.dev',
+  devToolbar: {
+    enabled: false,
+  },
   server: {
     port: 3199,
   },
