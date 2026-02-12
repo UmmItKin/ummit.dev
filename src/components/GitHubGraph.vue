@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { ContributionDay } from '@/utils/github-contributions'
-import { computed, shallowRef } from 'vue'
+import { computed, onMounted, shallowRef } from 'vue'
 
 const { days, total } = defineProps<{
   days: ContributionDay[]
@@ -8,6 +8,11 @@ const { days, total } = defineProps<{
 }>()
 
 const tooltip = shallowRef({ visible: false, text: '', x: 0, y: 0 })
+const isMounted = shallowRef(false)
+
+onMounted(() => {
+  isMounted.value = true
+})
 
 const weeks = computed(() => {
   if (!days.length)
@@ -150,7 +155,7 @@ function hideTooltip() {
       <span>More</span>
     </div>
 
-    <Teleport to="body">
+    <Teleport v-if="isMounted" to="body">
       <div
         class="graph-tooltip"
         :class="tooltip.visible ? 'graph-tooltip-visible' : ''"
