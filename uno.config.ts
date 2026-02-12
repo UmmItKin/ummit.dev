@@ -10,24 +10,19 @@ import {
 
 export default defineConfig({
   shortcuts: {
-    // Base colors
-    'bg-main': 'bg-hex-eef5fc dark:bg-hex-0d1117',
-    'text-main': 'text-hex-555555 dark:text-hex-bbbbbb',
-    'text-link': 'text-dark dark:text-white',
-    'border-main': 'border-neutral-300 dark:border-neutral-600',
+    'bg-main': 'bg-hex-0d1117',
+    'text-main': 'text-hex-bbbbbb',
+    'text-link': 'text-white',
+    'border-main': 'border-neutral-600',
 
-    // Typography
     'text-title': 'text-link text-4xl font-800',
 
-    // Navigation
     'nav-link': 'text-link opacity-70 hover:opacity-100 transition-opacity duration-200 cursor-pointer',
-    'prose-link': 'text-link text-nowrap cursor-pointer border-b-1 !border-opacity-30 hover:!border-opacity-100 border-neutral-500 hover:border-neutral-600 dark:border-neutral-500 hover:dark:border-neutral-400 transition-border-color duration-200 decoration-none',
+    'prose-link': 'text-link text-nowrap cursor-pointer border-b-1 !border-opacity-30 hover:!border-opacity-100 border-neutral-500 hover:border-neutral-400 transition-border-color duration-200 decoration-none',
     'container-link': 'p-2 opacity-60 hover:opacity-100 cursor-pointer hover:bg-neutral-500 !bg-opacity-10 transition-colors transition-opacity duration-200',
 
-    // Dividers
-    'hr-line': 'w-14 mx-auto my-8 border-solid border-1px !border-neutral-200 !dark:border-neutral-800',
+    'hr-line': 'w-14 mx-auto my-8 border-solid border-1px !border-neutral-800',
 
-    // Magic link component
     'magic-link': 'inline-flex items-center gap-1 py-1 px-1.5 rd-1 bg-neutral-500/15 hover:bg-neutral-500/25 translate-y-0.75 leading-none text-inherit decoration-none !border-none whitespace-nowrap transition-all duration-150 ease-out',
     'magic-link-icon': 'inline-flex items-center justify-center w-1.1em h-1.1em rd-0.5 overflow-hidden shrink-0',
   },

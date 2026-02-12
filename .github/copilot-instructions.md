@@ -68,7 +68,6 @@ Each post folder contains `index.md` and optional assets (images).
 ### Vue Components (Interactive)
 Use Vue for components requiring client-side interactivity:
 - `Header.vue` - Navigation with mobile drawer toggle
-- `ThemeToggle.vue` - Dark/light mode switch
 - `ScrollToTop.vue` - Scroll behavior
 
 Hydrate with `client:idle` in layouts:

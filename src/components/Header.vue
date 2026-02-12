@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import siteConfig from '@/site-config'
 import { getLinkTarget } from '@/utils/link'
-import ThemeToggle from './ThemeToggle.vue'
 
 interface SocialLink {
   text: string
@@ -68,7 +67,6 @@ function closeDrawer() {
         nav-link
       />
       <a nav-link target="_blank" href="/rss.xml" i-ri-rss-line aria-label="RSS" />
-      <ThemeToggle />
     </div>
   </header>
 

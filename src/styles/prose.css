@@ -370,15 +370,14 @@
   color: inherit;
 }
 
-/* Dark mode adjustments */
-html.dark .prose ol > li::before {
+.prose ol > li::before {
   color: #9ca3af;
 }
 
-html.dark .prose ul > li::before {
+.prose ul > li::before {
   background-color: #6b7280;
 }
 
-html.dark .prose figure figcaption {
+.prose figure figcaption {
   color: #9ca3af;
 }

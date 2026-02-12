@@ -1,5 +1,5 @@
-html.dark .astro-code,
-html.dark .astro-code span {
+.astro-code,
+.astro-code span {
   color: var(--shiki-dark) !important;
   background-color: #161b22 !important;
   font-style: var(--shiki-dark-font-style) !important;
@@ -7,12 +7,8 @@ html.dark .astro-code span {
   text-decoration: var(--shiki-dark-text-decoration) !important;
 }
 
-html.dark {
+html {
   color-scheme: dark;
-}
-
-html:not(.dark) {
-  color-scheme: light;
 }
 
 #nprogress {
@@ -56,9 +52,9 @@ article {
   z-index: 2147483646;
 }
 
-html.dark::view-transition-old(root) {
+::view-transition-old(root) {
   z-index: 2147483646;
 }
-html.dark::view-transition-new(root) {
+::view-transition-new(root) {
   z-index: 1;
 }

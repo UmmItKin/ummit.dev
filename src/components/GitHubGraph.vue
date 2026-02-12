@@ -257,34 +257,18 @@ function hideTooltip() {
 }
 
 .day-cell.level-0 {
-  background: rgba(140, 160, 180, 0.15);
-}
-.day-cell.level-1 {
-  background: rgba(56, 132, 180, 0.4);
-}
-.day-cell.level-2 {
-  background: rgba(56, 132, 180, 0.6);
-}
-.day-cell.level-3 {
-  background: rgba(56, 132, 180, 0.8);
-}
-.day-cell.level-4 {
-  background: rgba(56, 132, 180, 1);
-}
-
-:global(html.dark) .day-cell.level-0 {
   background: rgba(110, 140, 160, 0.12);
 }
-:global(html.dark) .day-cell.level-1 {
+.day-cell.level-1 {
   background: rgba(79, 166, 204, 0.35);
 }
-:global(html.dark) .day-cell.level-2 {
+.day-cell.level-2 {
   background: rgba(79, 166, 204, 0.55);
 }
-:global(html.dark) .day-cell.level-3 {
+.day-cell.level-3 {
   background: rgba(79, 166, 204, 0.75);
 }
-:global(html.dark) .day-cell.level-4 {
+.day-cell.level-4 {
   background: rgba(79, 186, 214, 0.95);
 }
 </style>
@@ -300,9 +284,9 @@ function hideTooltip() {
   white-space: nowrap;
   pointer-events: none;
   z-index: 1000;
-  background: #24292e;
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  background: #e8ecf0;
+  color: #1a1a1a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   opacity: 0;
   visibility: hidden;
   transition:
@@ -315,11 +299,5 @@ function hideTooltip() {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(-100%);
-}
-
-html.dark .graph-tooltip {
-  background: #e8ecf0;
-  color: #1a1a1a;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 </style>

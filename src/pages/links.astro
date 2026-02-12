@@ -65,7 +65,7 @@ const links = [
             href={link.href}
             target={link.href.startsWith('/') ? '_self' : '_blank'}
             rel={link.href.startsWith('/') ? '' : 'noopener noreferrer'}
-            class="flex items-center justify-center gap-3 py-3 px-6 rd-2 border border-neutral-300 dark:border-neutral-700 bg-neutral-100/50 dark:bg-neutral-800/50 opacity-80 hover:opacity-100 transition-opacity duration-200 decoration-none"
+            class="flex items-center justify-center gap-3 py-3 px-6 rd-2 border border-neutral-700 bg-neutral-800/50 opacity-80 hover:opacity-100 transition-opacity duration-200 decoration-none"
           >
             <i class:list={[link.icon, 'text-lg']} />
             <span>{link.text}</span>

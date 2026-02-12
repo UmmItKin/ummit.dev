@@ -18,7 +18,7 @@ src/
 ├── components/          # Reusable UI components (Vue + Astro)
 │   ├── layout/         # Header, Footer, BaseHead
 │   ├── content/        # ListPosts, ListProjects, PostLayout
-│   └── ui/             # ThemeToggle, ScrollToTop
+│   └── ui/             # ScrollToTop
 ├── content/            # Content collections (type-safe)
 │   ├── blog/           # Main blog posts
 │   ├── ctf/            # CTF writeups and cybersecurity content
@@ -50,7 +50,7 @@ src/
 - **Component architecture** - Clean separation between Vue (interactive) and Astro (static)
 
 ### Component Guidelines
-- **Vue components** for interactive features (theme toggle, navigation, scroll-to-top)
+- **Vue components** for interactive features (navigation, scroll-to-top)
 - **Astro components** for static content (layouts, content lists, page structures)
 - **TypeScript interfaces** for all component props
 - **Composition API** preferred for Vue components
@@ -132,8 +132,8 @@ src/
 - **Design shortcuts** for common patterns:
 
 ```
-'bg-main': 'bg-hex-eef5fc dark:bg-hex-0d1117'
-'text-main': 'text-hex-555555 dark:text-hex-bbbbbb'
+'bg-main': 'bg-hex-0d1117'
+'text-main': 'text-hex-bbbbbb'
 'nav-link': 'text-link opacity-70 hover:opacity-100 transition-opacity duration-200'
 ```
 
@@ -141,7 +141,7 @@ src/
 - **Inter font family** for sans-serif text
 - **DM Mono** for code and monospace content
 - **Consistent spacing** using UnoCSS spacing scale
-- **Accessible color contrast** in both light and dark modes
+- **Dark theme only** - optimized for dark mode viewing
 
 ## Security & Best Practices
 
