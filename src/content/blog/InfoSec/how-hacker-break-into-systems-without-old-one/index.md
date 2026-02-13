@@ -1,5 +1,6 @@
 ---
 title: "How Hackers Break into Systems: Resetting Passwords Without the Old One"
+description: Educational guide to Windows password reset techniques using bootable media and system file manipulation for recovery.
 date: 2024-08-26T20:03:30+0800
 tag: "Windows, Password"
 lang: en-US

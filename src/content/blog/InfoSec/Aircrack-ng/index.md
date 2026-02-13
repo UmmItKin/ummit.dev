@@ -1,5 +1,6 @@
 ---
 title: "Cracking Wifi Password with Aircrack-NG"
+description: Educational guide to WiFi security testing using Aircrack-ng suite for monitoring, capturing, and analyzing wireless networks.
 date: 2024-07-06T22:06:14+0800
 lastmod: 2024-12-31T06:24:58+0800
 tag: "Aircrack-NG"

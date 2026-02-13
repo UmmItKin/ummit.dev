@@ -1,5 +1,6 @@
 ---
 title: "Brute-Force Attack on MD5 Hash Using Hashcat"
+description: Learn password cracking techniques using Hashcat on Linux with wordlist-based brute-force attacks on MD5 hashes.
 date: 2024-10-28T09:10:10+0800
 lastmod: 2024-12-31T06:45:40+0800
 tag: "Hashcat, Hash"

@@ -1,5 +1,6 @@
 ---
 title: "Caesar Cipher encryption and decryption"
+description: Understand Caesar Cipher substitution encryption technique with step-by-step examples of encryption and decryption processes.
 date: 2025-01-15T10:58:16+0800
 tag: "Caesar Cipher"
 lang: en-US
