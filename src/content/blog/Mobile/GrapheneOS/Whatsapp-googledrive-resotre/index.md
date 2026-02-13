@@ -2,7 +2,7 @@
 title: "Restoring WhatsApp Chats on GrapheneOS with Google Drive Backup"
 description: "GrapheneOS with Google Drive backup. Ensure Google Play Services has the necessary permissions to access your contacts."
 date: 2025-01-26T18:40:00+0800
-tag: "GrapheneOS, WhatsApp"
+tag: "GrapheneOS, WhatsApp, Mobile"
 lang: en-US
 ---
 

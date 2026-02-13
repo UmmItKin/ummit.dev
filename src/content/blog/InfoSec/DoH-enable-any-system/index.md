@@ -3,7 +3,7 @@ title: "Configuring DNS Over HTTPS (DoH) on your system"
 description: "This step-by-step guide ensures encrypted DNS traffic with DoH"
 date: 2023-11-27T12:26:50+0800
 lastmod: 2023-12-03T11:05:02+0800
-tag: "DoH"
+tag: "DNS, Privacy, Security"
 lang: en-US
 ---
 

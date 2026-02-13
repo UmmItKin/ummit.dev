@@ -2,7 +2,7 @@
 title: "dlopen() Error: Resolving Shared Library Issues on Arch Linux"
 description: "Discover effective solutions to tackle the elusive dlopen() error on Arch Linux. Learn how to troubleshoot shared library loading problems, fix application launch issues, and restore your system's stability."
 date: 2023-02-14T20:04:00+0800
-tag: "Arch Linux, Appimage"
+tag: "Arch Linux, AppImage, Troubleshooting"
 lang: en-US
 ---
 

@@ -3,7 +3,7 @@ title: "How to Hard Factory Reset an ASUS Router (Method 5)"
 description: Complete guide to performing a hard factory reset on ASUS routers using the WPS button method.
 date: 2025-01-02T21:18:32+0800
 lastmod: 2025-01-02T23:19:08+0800
-tag: "ASUS, Router"
+tag: "ASUS, Router, Networking"
 lang: en-US
 ---
 

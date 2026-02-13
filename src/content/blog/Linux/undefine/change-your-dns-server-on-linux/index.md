@@ -2,7 +2,7 @@
 title: "Changing DNS Servers on Linux"
 description: "Learn how to improve your network performance by changing DNS servers on Linux. Configure popular DNS servers like Cloudflare DNS and Google DNS to enhance your browsing experience."
 date: 2023-08-19T15:22:25+0800
-tag: "Linux, Nameserver, DNS"
+tag: "Linux, DNS, Networking"
 lang: en-US
 ---
 

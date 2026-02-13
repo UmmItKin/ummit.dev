@@ -2,7 +2,7 @@
 title: "How to Set Up 2FA on Linux for Enhanced Security"
 description: "This guide walks you through the steps to set up Two-Factor Authentication (2FA) on a Linux server to add an extra layer of security for your system."
 date: 2024-12-11T02:47:02+0800
-tag: "GNU/Linux, 2FA, Security"
+tag: "Linux, 2FA, Security"
 lang: en-US
 ---
 

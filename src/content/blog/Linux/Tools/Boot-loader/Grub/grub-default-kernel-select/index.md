@@ -2,7 +2,7 @@
 title: "Setting the Default Kernel Select in GRUB"
 description: Configure GRUB bootloader to automatically select your preferred kernel version at system startup.
 date: 2024-07-31T21:54:00+0800
-tag: "grub, GNU/Linux, Multi-Boot"
+tag: "GRUB, Linux, Multi-Boot"
 lang: en-US
 ---
 

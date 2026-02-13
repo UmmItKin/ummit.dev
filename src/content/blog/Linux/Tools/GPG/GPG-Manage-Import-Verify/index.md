@@ -2,7 +2,7 @@
 title: "GPG Keys: Managing, Importing, and Verifying"
 description: "Mastering GPG keys for secure communication and data integrity - Learn how to manage, import, delete, list, and verify GPG keys in this comprehensive guide."
 date: 2023-09-07T03:00:02+0800
-tag: "GPG, Linux"
+tag: "GPG, Encryption, Security"
 lang: en-US
 ---
 

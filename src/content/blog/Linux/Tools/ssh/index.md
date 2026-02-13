@@ -2,7 +2,7 @@
 title: "SCP: A Comprehensive Guide"
 description: "Discover the power of secure and efficient file transfers using SCP (Secure Copy) and learn how to seamlessly manage remote server access with SSH login methods. "
 date: 2022-01-27T20:24:39+0800
-tag: "Linux, scp, SSH"
+tag: "Linux, SSH, Remote Access"
 lang: en-US
 ---
 

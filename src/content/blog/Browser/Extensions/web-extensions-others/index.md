@@ -3,7 +3,7 @@ title: "Firefox Plug-ins for Enhanced your Browsing Experience with extra featur
 description: Practical Firefox extensions for everyday browsing including tab management, image search, and YouTube enhancements.
 date: 2023-12-26T07:44:30+0800
 lastmod: 2024-12-31T04:27:45+0800
-tag: "Browser Extensions"
+tag: "Firefox, Extensions, Productivity"
 lang: en-US
 ---
 

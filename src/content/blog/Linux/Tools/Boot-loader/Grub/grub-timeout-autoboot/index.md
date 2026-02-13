@@ -2,7 +2,7 @@
 title: "How to Set the Default Auto Load Seconds in GRUB"
 description: Adjust GRUB bootloader timeout settings to control how long the boot menu displays before auto-loading.
 date: 2024-08-07T07:34:40+0800
-tag: "grub, Linux"
+tag: "GRUB, Boot Loader, Linux"
 lang: en-US
 ---
 

@@ -2,7 +2,7 @@
 title: "Gentoo Linux: Some common problem with package installing"
 description: "In this article, we're going to talk about how to solve package installation problems on gentoo, such as package.use this common problem."
 date: 2023-10-29T02:34:10+0800
-tag: "Gentoo"
+tag: "Gentoo, Package Management, Troubleshooting"
 lang: en-US
 ---
 

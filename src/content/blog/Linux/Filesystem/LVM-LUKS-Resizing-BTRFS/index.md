@@ -2,7 +2,7 @@
 title: "Resizing LVM and LUKS Encrypted Btrfs Filesystem"
 description: Learn how to safely resize Btrfs filesystems within LVM and LUKS encrypted storage setups.
 date: 2023-12-22T04:23:37+0800
-tag: "Btrfs"
+tag: "Btrfs, LVM, Storage"
 lang: en-US
 ---
 

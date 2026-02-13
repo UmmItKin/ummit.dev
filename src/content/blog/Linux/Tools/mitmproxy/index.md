@@ -2,7 +2,7 @@
 title: "Setting Up mitmproxy with Network Traffic Analysis"
 description: Intercept and analyze HTTP and HTTPS network traffic between browsers and servers using mitmproxy.
 date: 2023-12-26T04:02:10+0800
-tag: "mitmproxy"
+tag: "Network Analysis, mitmproxy, Security"
 lang: en-US
 ---
 

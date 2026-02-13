@@ -2,7 +2,7 @@
 title: "Copying Text to Clipboard with xclip in Linux"
 description: Use xclip command-line utility to efficiently copy file contents to clipboard in Linux terminal environments.
 date: 2023-12-26T05:03:29+0800
-tag: "Linux, clipboard, xclip"
+tag: "Linux, Clipboard, CLI Tools"
 lang: en-US
 ---
 

@@ -2,7 +2,7 @@
 title: "Editing GPG Key Information"
 description: Update GPG key details including email addresses, user names, and expiration dates using command-line tools.
 date: 2023-12-31T09:16:21+0800
-tag: "GPG, Linux"
+tag: "GPG, Encryption, Linux"
 lang: en-US
 ---
 

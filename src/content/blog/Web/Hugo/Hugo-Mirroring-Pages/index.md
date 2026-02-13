@@ -2,7 +2,7 @@
 title: "Mirroring Hugo site: with subdomain GitLab and Cloudflare and more"
 description: Deploy Hugo static sites across multiple platforms using GitLab Pages and Cloudflare Pages with dynamic baseURL configuration.
 date: 2023-12-31T12:15:20+0800
-tag: "SSG, Hugo, Cloudflare, Github"
+tag: "Hugo, Cloudflare, Deployment"
 lang: en-US
 ---
 

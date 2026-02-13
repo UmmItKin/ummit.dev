@@ -2,7 +2,7 @@
 title: "UFW Guide"
 description: "Discover Uncomplicated Firewall (UFW), a user-friendly tool for managing firewall rules in Linux. Learn how to secure your system, control incoming and outgoing traffic, and navigate UFW's features."
 date: 2021-12-15T03:06:48+0800
-tag: "Linux, ufw, Firewall"
+tag: "Linux, Firewall, Security"
 lang: en-US
 ---
 

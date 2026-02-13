@@ -3,7 +3,7 @@ title: "How to use Linux rm Command"
 description: "Learn how to use the rm command in Linux to remove files and directory."
 date: 2022-01-09T03:01:14+0800
 lastmod: 2024-10-06T17:51:40+0800
-tag: "RM"
+tag: "Linux, Command Line, File Management"
 lang: en-US
 ---
 

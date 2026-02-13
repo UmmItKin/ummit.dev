@@ -2,7 +2,7 @@
 title: "Fixing Security Vulnerabilities in systemd-boot /boot"
 description: "Learn how to enhance your Linux system's security by fixing vulnerabilities in systemd-boot /boot"
 date: 2023-11-07T13:18:30+0800
-tag: "Linux, Bootctl, Boot-loader"
+tag: "systemd-boot, Security, Linux"
 lang: en-US
 ---
 

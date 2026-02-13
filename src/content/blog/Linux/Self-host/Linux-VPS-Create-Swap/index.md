@@ -2,7 +2,7 @@
 title: "Creating a Swap File on Your Linux VPS"
 description: "Enhance your Linux VPS's performance and memory management by adding a swap file. Follow our detailed walkthrough to learn how to create a swap file on your Linux VPS."
 date: 2023-08-14T09:15:24+08:00
-tag: "VPS, SSH, Linux, Swap"
+tag: "Linux, VPS, Memory Management"
 lang: en-US
 ---
 

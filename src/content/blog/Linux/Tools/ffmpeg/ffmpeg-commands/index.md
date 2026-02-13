@@ -2,7 +2,7 @@
 title: "A Comprehensive Guide for FFmpeg"
 description: "Explore essential commands and techniques for FFmpeg"
 date: 2023-09-11T04:15:40+0800
-tag: "FFMPEG"
+tag: "FFmpeg, Video Editing, Multimedia"
 lang: en-US
 ---
 

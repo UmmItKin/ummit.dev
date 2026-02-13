@@ -2,7 +2,7 @@
 title: "Automated GitHub Releases with Bun, Bumpp, and Changelogithub"
 description: Automate version bumping and GitHub release creation with changelog generation using Bun, bumpp, and changelogithub.
 date: 2026-01-16T09:30:00+0800
-tag: "Bun, GitHub, Release, Automation, Changelog"
+tag: "Bun, GitHub, Automation"
 lang: en-US
 ---
 

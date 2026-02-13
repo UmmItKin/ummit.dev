@@ -3,7 +3,7 @@ title: "Creating a Trojan Backdoor with Reverse TCP Payload in Metasploit and Se
 description: Educational guide to creating reverse TCP backdoors with Metasploit framework for security testing and penetration analysis.
 date: 2021-06-27T18:07:30+0800
 lastmod: 2025-03-03T01:12:12+0800
-tag: "Metasploit, Backdoor"
+tag: "Metasploit, Penetration Testing, InfoSec"
 lang: en-US
 ---
 

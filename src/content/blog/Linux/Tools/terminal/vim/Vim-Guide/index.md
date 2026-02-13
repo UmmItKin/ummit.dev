@@ -2,7 +2,7 @@
 title: "Vim: Quick Guide"
 description: Comprehensive Vim editor guide covering modes, essential commands, and advanced features for efficient text editing.
 date: 2023-12-22T03:15:00+0800
-tag: "Vim, Linux, Terminal"
+tag: "Vim, Text Editor, Linux"
 lang: en-US
 ---
 

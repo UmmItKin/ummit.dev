@@ -2,7 +2,7 @@
 title: "Installing Multiple Kernels with GRUB on Arch Linux"
 description: Install and manage multiple Linux kernels on Arch Linux with GRUB bootloader for flexibility and compatibility.
 date: 2023-12-26T05:33:45+0800
-tag: "GRUB"
+tag: "GRUB, Arch Linux, Kernel"
 lang: en-US
 ---
 

@@ -2,7 +2,7 @@
 title: "Encrypt and Decrypt Your Internal Disk with an Existing Decrypted Filesystem Inside Keyfile"
 description: Set up automatic disk encryption and decryption using LUKS with keyfile-based authentication on Linux.
 date: 2023-12-08T10:10:02+0800
-tag: "LUKS"
+tag: "LUKS, Encryption, Linux"
 lang: en-US
 ---
 
