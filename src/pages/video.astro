@@ -24,7 +24,20 @@ const videos = [
     date: 'Aug 7, 2024',
     platform: 'YouTube',
   },
+
+  {
+    title: 'Sucks game',
+    url: 'https://www.youtube.com/watch?v=RGqX25W3HeM',
+    date: 'Jan 26, 2025',
+    platform: 'YouTube',
+  },
 ]
+
+const sortedVideos = [...videos].sort((a, b) => {
+  const dateA = new Date(a.date)
+  const dateB = new Date(b.date)
+  return dateB.getTime() - dateA.getTime()
+})
 
 function activeLink(pathname: string) {
   return Astro.url.pathname.replace(/\/+/g, '/').replace(/\/$/, '') === pathname
@@ -57,7 +70,7 @@ function activeLink(pathname: string) {
 
   <div class="space-y-4">
     {
-      videos.map((video) => (
+      sortedVideos.map((video) => (
         <a
           href={video.url}
           target="_blank"
