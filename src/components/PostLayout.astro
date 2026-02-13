@@ -71,7 +71,16 @@ function getOutdatedInfo(dateStr: string, lastmodStr?: string) {
 }
 ---
 
+<!-- Actually javascript:history.back()" also work xdd-->
 <BaseLayout title={title} description={description} image={{ src: ogImage, alt: title }} pageType="article">
+  <div class="mb-6">
+    <button
+      onclick="history.back()"
+      class="inline-flex items-center gap-2 text-sm opacity-60 hover:opacity-100 transition-opacity duration-200 cursor-pointer bg-transparent border-0 p-0"
+    >
+      <span class="font-mono">&gt; z ../</span>
+    </button>
+  </div>
   <article class="prose">
     <h1>{title}</h1>
     <p class="op-50">
