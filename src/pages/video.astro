@@ -1,0 +1,79 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import siteConfig from '@/site-config'
+
+const ogImage = { src: '/og/index.png', alt: 'Video' }
+
+const videos = [
+  {
+    title: 'A little Linux ricing video.',
+    url: 'https://www.youtube.com/watch?v=oaUWFIx5SE0',
+    date: 'Jun 17, 2025',
+    platform: 'YouTube',
+  },
+  {
+    title: 'Linux is Life and beautiful :)',
+    url: 'https://www.youtube.com/watch?v=sjeKlj8mTjE',
+    date: 'Nov 27, 2024',
+    platform: 'YouTube',
+  },
+
+  {
+    title: 'i use arch btw',
+    url: 'https://www.youtube.com/watch?v=oaUWFIx5SE0',
+    date: 'Aug 7, 2024',
+    platform: 'YouTube',
+  },
+]
+
+function activeLink(pathname: string) {
+  return Astro.url.pathname.replace(/\/+/g, '/').replace(/\/$/, '') === pathname
+}
+---
+
+<BaseLayout title="Video" description="My video collection." image={ogImage}>
+  <div class="flex flex-col gap-2 sm:flex-row sm:gap-4 flex-wrap mb-4">
+    {
+      siteConfig.page.blogLinks.map((nav) => (
+        <a
+          aria-label={nav.text}
+          class={`nav-link text-3xl font-bold ${activeLink(nav.href) ? 'opacity-80' : 'opacity-30 hover:opacity-50'}`}
+          href={nav.href}
+        >
+          {nav.text}
+        </a>
+      ))
+    }
+  </div>
+
+  <div class="mb-8 p-4 rounded-lg bg-neutral-800/30 border border-neutral-700/50">
+    <div class="flex items-center gap-2 mb-1 flex-wrap">
+      <span class="font-semibold text-base">{videos.length} {videos.length === 1 ? 'video' : 'videos'} shared</span>
+      <span class="text-base opacity-60">·</span>
+      <span class="text-base font-medium text-red-400">Video Collection</span>
+    </div>
+    <p class="text-sm opacity-70 italic">Some of my Videos ...</p>
+  </div>
+
+  <div class="space-y-4">
+    {
+      videos.map((video) => (
+        <a
+          href={video.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block hover:opacity-80 transition-opacity duration-200"
+        >
+          <div class="flex flex-col sm:flex-row sm:items-baseline gap-2">
+            <h3 class="text-lg font-normal">{video.title}</h3>
+            <div class="flex items-center gap-2 text-sm opacity-60">
+              <span>{video.date}</span>
+              <span>·</span>
+              <span>{video.platform}</span>
+            </div>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</BaseLayout>

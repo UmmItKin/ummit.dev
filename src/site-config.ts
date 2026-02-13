@@ -71,6 +71,10 @@ export const siteConfig = {
         text: 'Talks',
         href: '/talks',
       },
+      {
+        text: 'Video',
+        href: '/video',
+      },
     ],
   },
   footer: {
