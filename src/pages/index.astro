@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import GitHubGraph from '@/components/GitHubGraph.vue'
+import Sponsor from '@/components/Sponsor.astro'
 import siteConfig from '@/site-config'
 import icedteaIcon from '@/assets/CTF/ICEDTEA.jpg'
 import tryhackmeIcon from '@/assets/tryhackme.svg'
@@ -258,6 +259,16 @@ const contributions = await fetchGitHubContributions(siteConfig.github)
           </div>
         </div>
       </div>
+    </section>
+
+    <hr class="hr-line" />
+
+    <section class="mt-8">
+      <p class="mb-6 opacity-90">
+        If you enjoy my work and find them useful, consider sponsor me to help keep my projects sustainable. Thank you!
+      </p>
+
+      <Sponsor />
     </section>
   </article>
 </BaseLayout>

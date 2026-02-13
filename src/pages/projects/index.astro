@@ -2,10 +2,20 @@
 import { projectData } from './data'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import ListProjects from '@/components/ListProjects.astro'
+import Sponsor from '@/components/Sponsor.astro'
 ---
 
 <BaseLayout title="Projects" description="List of projects that I am proud of">
   <h1 class="mb-10 text-title">Projects</h1>
+
+  <section class="mt-8">
+    <p class="mb-6 opacity-90">
+      If you enjoy my work and find them useful, consider sponsor me to help keep my projects sustainable. Thank you!
+    </p>
+
+    <Sponsor />
+  </section>
+
   <div mb-16 sm:mb-24>
     {
       projectData.length > 0 && (
