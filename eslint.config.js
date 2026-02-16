@@ -10,5 +10,6 @@ export default antfu({
   },
   ignores: [
     '.agents/**',
+    '.opencode/**',
   ],
 })
