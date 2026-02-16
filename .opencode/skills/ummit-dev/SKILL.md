@@ -3,7 +3,7 @@ name: ummit-dev
 description: UmmIt.dev personal website and blog. Use when working with this Astro-based blog, managing content, styling with UnoCSS, or understanding the project architecture and conventions.
 metadata:
   author: UmmIt Kin
-  version: "2026.2.13"
+  version: "2026.2.16"
   tech_stack: "Astro 5.17+, Vue 3.5+, UnoCSS 0.66+, TypeScript"
 ---
 
@@ -24,6 +24,28 @@ UmmIt.dev is a high-performance personal website and blog focusing on cybersecur
 | **Package Manager** | **Bun only** (never use npm/yarn) |
 | **Build Target** | Static HTML with selective hydration |
 | **Deployment** | GitHub Actions with Bun |
+
+## Homepage Icon Colors & Assets
+
+The homepage (`src/pages/index.astro`) uses color-coded icons and logos for different platforms:
+
+**CTF Teams:**
+- **ICEDTEA**: Custom logo from `src/assets/CTF/ICEDTEA.jpg`
+- **HeapUnderFlow**: Blue stack overflow icon (`text-blue-500`)
+- **NHNC CTF**: Logo from `src/assets/nhnc-logo.webp` (downloaded from CTFtime)
+- **THJCC CTF**: Logo from `src/assets/thjcc-logo.png` (downloaded from thjcc.org)
+
+**Hacking Platforms:**
+- **TryHackMe**: Red icon (`text-[#C11111]`) - official brand color
+- **HackTheBox**: Green icon (`text-[#9FEF00]`) - official brand color
+
+**Creator:**
+- **UmmItOS**: Logo from `src/assets/ummitos-logo.png` (GitHub avatar)
+
+**Hunting:**
+- **Zero-Day**: Red bug icon (`text-red-500`) - emphasizes danger
+
+All platform logos should use official brand colors when available.
 
 ## Project Structure
 
