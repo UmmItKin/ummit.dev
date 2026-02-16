@@ -6,6 +6,9 @@ import Sponsor from '@/components/Sponsor.astro'
 import siteConfig from '@/site-config'
 import icedteaIcon from '@/assets/CTF/ICEDTEA.jpg'
 import tryhackmeIcon from '@/assets/tryhackme.svg'
+import nhncIcon from '@/assets/nhnc-logo.webp'
+import thjccIcon from '@/assets/thjcc-logo.png'
+import ummitosIcon from '@/assets/ummitos-logo.png'
 import { fetchGitHubContributions } from '@/utils/github-contributions'
 
 const ogImage = { src: '/og/index.png', alt: 'UmmIt Kin Personal Website' }
@@ -24,28 +27,33 @@ const contributions = await fetchGitHubContributions(siteConfig.github)
         <span class="magic-link-icon"><Image src={icedteaIcon} alt="" width={500} height={500} /></span>ICEDTEA
       </a>
       <a href="https://ctftime.org/team/405936/" target="_blank" rel="noopener" class="magic-link">
-        <span class="magic-link-icon"><i class="i-ri-stack-overflow-line"></i></span>HeapUnderFlow
+        <span class="magic-link-icon"><i class="i-ri-stack-overflow-line text-blue-500"></i></span>HeapUnderFlow
       </a>
       <br />
       Challenge Creator
       <a href="https://ctftime.org/event/2818/" target="_blank" rel="noopener" class="magic-link">
-        <span class="magic-link-icon"><i class="i-ri-flag-line"></i></span>NHNC CTF
+        <span class="magic-link-icon"><Image src={nhncIcon} alt="" width={500} height={500} /></span>NHNC CTF
       </a>
       <a href="https://thjcc.org" target="_blank" rel="noopener" class="magic-link">
-        <span class="magic-link-icon"><i class="i-ri-flag-line"></i></span>THJCC CTF
+        <span class="magic-link-icon"><Image src={thjccIcon} alt="" width={500} height={500} /></span>THJCC CTF
       </a>
       <br />
       Hacking
       <a href="https://tryhackme.com/p/UmmIt" target="_blank" rel="noopener" class="magic-link">
-        <span class="magic-link-icon"><i class="i-simple-icons-tryhackme"></i></span>TryHackMe
+        <span class="magic-link-icon"><i class="i-simple-icons-tryhackme text-[#C11111]"></i></span>TryHackMe
       </a>
       <a href="https://app.hackthebox.com/users/2099997" target="_blank" rel="noopener" class="magic-link">
-        <span class="magic-link-icon"><i class="i-simple-icons-hackthebox"></i></span>HackTheBox
+        <span class="magic-link-icon"><i class="i-simple-icons-hackthebox text-[#9FEF00]"></i></span>HackTheBox
+      </a>
+      <br />
+      Creator
+      <a href="https://docs.ummit.dev/" target="_blank" rel="noopener" class="magic-link">
+        <span class="magic-link-icon"><Image src={ummitosIcon} alt="" width={500} height={500} /></span>UmmItOS
       </a>
       <br />
       Hunting
       <span class="magic-link no-hover">
-        <span class="magic-link-icon"><i class="i-ri-bug-line"></i></span>Zero-Day
+        <span class="magic-link-icon"><i class="i-ri-bug-line text-red-500"></i></span>Zero-Day
       </span>
     </p>
 
