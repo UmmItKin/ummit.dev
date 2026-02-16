@@ -6,6 +6,7 @@ import Sponsor from '@/components/Sponsor.astro'
 import siteConfig from '@/site-config'
 import icedteaIcon from '@/assets/CTF/ICEDTEA.jpg'
 import tryhackmeIcon from '@/assets/tryhackme.svg'
+import heapunderflowIcon from '@/assets/heapunderflow.webp'
 import nhncIcon from '@/assets/nhnc-logo.webp'
 import thjccIcon from '@/assets/thjcc-logo.png'
 import ummitosIcon from '@/assets/ummitos-logo.png'
@@ -27,7 +28,8 @@ const contributions = await fetchGitHubContributions(siteConfig.github)
         <span class="magic-link-icon"><Image src={icedteaIcon} alt="" width={500} height={500} /></span>ICEDTEA
       </a>
       <a href="https://ctftime.org/team/405936/" target="_blank" rel="noopener" class="magic-link">
-        <span class="magic-link-icon"><i class="i-ri-stack-overflow-line text-blue-500"></i></span>HeapUnderFlow
+        <span class="magic-link-icon"><Image src={heapunderflowIcon} alt="" width={500} height={500} /></span
+        >HeapUnderFlow
       </a>
       <br />
       Challenge Creator
