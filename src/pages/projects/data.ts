@@ -14,10 +14,10 @@ export const projectData: ProjectData = [
   },
 
   {
-    title: 'Z2E',
+    title: 'Z2E-Agent',
     projects: [
       {
-        text: 'Z2E (Zero to Exploit)',
+        text: 'Z2E',
         description: 'AI Powered Automated Penetration Testing Framework.',
         icon: 'i-ri-brain-3-fill',
         href: 'https://github.com/Z2E-Agent',
