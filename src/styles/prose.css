@@ -199,7 +199,6 @@
 }
 
 .prose pre {
-  color: #e5e7eb;
   overflow-x: auto;
   font-size: 0.875em;
   line-height: 1.7142857;
@@ -215,7 +214,6 @@
   border-radius: 0;
   padding: 0;
   font-weight: 400;
-  color: inherit;
   font-size: inherit;
   font-family: inherit;
   line-height: inherit;
