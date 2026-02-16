@@ -10,6 +10,7 @@ import heapunderflowIcon from '@/assets/heapunderflow.webp'
 import nhncIcon from '@/assets/nhnc-logo.webp'
 import thjccIcon from '@/assets/thjcc-logo.png'
 import ummitosIcon from '@/assets/ummitos-logo.png'
+import cryptohackIcon from '@/assets/cryptohack-logo.png'
 import { fetchGitHubContributions } from '@/utils/github-contributions'
 
 const ogImage = { src: '/og/index.png', alt: 'UmmIt Kin Personal Website' }
@@ -46,6 +47,9 @@ const contributions = await fetchGitHubContributions(siteConfig.github)
       </a>
       <a href="https://app.hackthebox.com/users/2099997" target="_blank" rel="noopener" class="magic-link">
         <span class="magic-link-icon"><i class="i-simple-icons-hackthebox text-[#9FEF00]"></i></span>HackTheBox
+      </a>
+      <a href="https://cryptohack.org/user/UmmIt/" target="_blank" rel="noopener" class="magic-link">
+        <span class="magic-link-icon"><Image src={cryptohackIcon} alt="" width={500} height={500} /></span>CryptoHack
       </a>
       <br />
       Creator
