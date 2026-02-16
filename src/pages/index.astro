@@ -11,6 +11,10 @@ import nhncIcon from '@/assets/nhnc-logo.webp'
 import thjccIcon from '@/assets/thjcc-logo.png'
 import ummitosIcon from '@/assets/ummitos-logo.png'
 import cryptohackIcon from '@/assets/cryptohack-logo.png'
+import oscpCert from '@/assets/certs/oscp.webp'
+import cwesCert from '@/assets/certs/cwes.png'
+import cjcaCert from '@/assets/certs/cjca.png'
+import pt1Cert from '@/assets/certs/thm-pt1.png'
 import { fetchGitHubContributions } from '@/utils/github-contributions'
 
 const ogImage = { src: '/og/index.png', alt: 'UmmIt Kin Personal Website' }
@@ -60,6 +64,20 @@ const contributions = await fetchGitHubContributions(siteConfig.github)
       Hunting
       <span class="magic-link no-hover">
         <span class="magic-link-icon"><i class="i-ri-bug-line text-red-500"></i></span>Zero-Day
+      </span>
+      <br />
+      Cert
+      <span class="magic-link no-hover">
+        <span class="magic-link-icon"><Image src={oscpCert} alt="" width={500} height={500} /></span>OSCP
+      </span>
+      <span class="magic-link no-hover">
+        <span class="magic-link-icon"><Image src={cwesCert} alt="" width={500} height={500} /></span>CWES
+      </span>
+      <span class="magic-link no-hover">
+        <span class="magic-link-icon"><Image src={cjcaCert} alt="" width={500} height={500} /></span>CJCA
+      </span>
+      <span class="magic-link no-hover">
+        <span class="magic-link-icon"><Image src={pt1Cert} alt="" width={500} height={500} /></span>PT1
       </span>
     </p>
 
