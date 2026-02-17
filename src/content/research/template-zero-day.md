@@ -2,7 +2,7 @@
 title: 'ZD-XXXX-XXXXX'
 description: 'Brief description of the zero-day vulnerability'
 date: '2026-02-18'
-draft: true
+draft: false
 tag: 'Zero-Day'
 ---
 

@@ -2,7 +2,7 @@
 title: 'CVE-XXXX-XXXXX'
 description: 'Brief description of the vulnerability'
 date: '2026-02-18'
-draft: true
+draft: false
 tag: 'CVE'
 ---
 
