@@ -26,12 +26,18 @@ const levelInfo = getWriterLevel(posts.length)
 const earliestYear =
   posts.length > 0 ? Math.min(...posts.map((post) => new Date(post.data.date).getFullYear())) : new Date().getFullYear()
 
+// Set OG image based on current path
+const ogImage = {
+  src: `/og/${path ? path : 'blog'}.png`,
+  alt: path ? path.charAt(0).toUpperCase() + path.slice(1) : 'Blog',
+}
+
 function activeLink(pathname: string) {
   return Astro.url.pathname.replace(/\/+/g, '/').replace(/\/$/, '') === pathname
 }
 ---
 
-<BaseLayout title="Blog" description="List of all the blog posts.">
+<BaseLayout title="Blog" description="List of all the blog posts." image={ogImage}>
   <div class="flex flex-col gap-2 sm:flex-row sm:gap-4 flex-wrap mb-4">
     {
       siteConfig.page.blogLinks.map((nav) => (
