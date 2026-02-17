@@ -262,19 +262,19 @@ function hideTooltip() {
 }
 
 .day-cell.level-0 {
-  background: rgba(110, 140, 160, 0.12);
+  background: rgba(139, 92, 246, 0.12);
 }
 .day-cell.level-1 {
-  background: rgba(79, 166, 204, 0.35);
+  background: rgba(139, 92, 246, 0.35);
 }
 .day-cell.level-2 {
-  background: rgba(79, 166, 204, 0.55);
+  background: rgba(139, 92, 246, 0.55);
 }
 .day-cell.level-3 {
-  background: rgba(79, 166, 204, 0.75);
+  background: rgba(139, 92, 246, 0.75);
 }
 .day-cell.level-4 {
-  background: rgba(79, 186, 214, 0.95);
+  background: rgba(139, 92, 246, 0.95);
 }
 </style>
 
