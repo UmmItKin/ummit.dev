@@ -51,5 +51,6 @@ const postSchema = z.object({
 const blog = defineCollection({ schema: postSchema })
 const talks = defineCollection({ schema: postSchema })
 const ctf = defineCollection({ schema: postSchema })
+const research = defineCollection({ schema: postSchema })
 
-export const collections = { pages, blog, talks, ctf }
+export const collections = { pages, blog, talks, ctf, research }
