@@ -2,34 +2,41 @@
 title: "No Hack No CTF 2025 - Full Writeup for Crackme and gitgit Challenges"
 description: "Full writeup for No Hack No CTF 2025 Crackme and gitgit challenges. Learn how to solve these challenges step by step."
 date: 2025-07-08T20:37:34+0800
-tag: "CTF, Writeup, No Hack No CTF 2025"
+lastmod: 2026-02-18T12:57:32+0800
+tag: "CTF, No Hack No CTF, WriteUp"
 lang: en-US
 ---
 
-## No Hack No CTF 2025
+>WriteUP was updated because my personal GitHub username was changed, and update the heading :)
 
-This is my complete writeup for the No Hack No CTF 2025 challenges, focusing on the Crackme and gitgit challenges that I created. In this writeup, I'll explain how these challenges work and how to solve them.
+# Introduction
 
-## gitgit Challenge
+This is my complete writeup for the No Hack No CTF 2025 challenges, focusing on the Crackme and gitgit challenges that I created.
 
-### Challenge Overview
+In this writeup, I'll explain how these challenges work and how to solve them.
 
-The challenge provides a git repository at: `https://github.com/UmmItC/gitgit` (now renamed to NHNC-gitgit).
+# gitgit Challenge
+
+## Challenge Overview
+
+The challenge provides a git repository at: `https://github.com/UmmItKin/NHNC-gitgit` (now renamed to NHNC-gitgit).
 
 At first glance, you might assume this is a straightforward git challenge where you simply examine the codebase. However, it's far more complex than that. I designed this challenge to mirror real-world security incidents where developers accidentally leak sensitive files (like .env files) and attempt to cover their tracks using `git delete` and `git push --force`.
 
-The key question is: **Can you truly hide sensitive information with a simple force push?**
+## Key question
 
-The answer is no—and that's exactly the premise of this challenge. You must recover the sensitive information I've deliberately hidden within the git repository's history.
+>**Can you truly hide sensitive information with a simple force push?**
+
+The answer is no! and that's the premise of this challenge. You must recover the sensitive information I've deliberately hidden within the git repository's history.
 
 After extensive research, I believe this is a unique challenge format that hasn't been explored in other CTFs. I'm excited to share this real-world scenario!
 
-### Initial Investigation
+### Repository Investigation
 
 You should start by approaching this like any normal developer would. First, clone the repository and examine its contents:
 
 ```bash
-git clone https://github.com/UmmItC/gitgit
+git clone https://github.com/UmmItKin/gitgit
 cd gitgit
 ```
 
@@ -44,13 +51,13 @@ Once the development server is running, you can see the main interface:
 
 ![Main Interface](./images/gitgit/1.png)
 
-Clicking on the "SECURE Terminal" button reveals what appears to be a flag:
+Clicking on the `SECURE Terminal` button reveals what appears to be a flag:
 
 ![Terminal View](./images/gitgit/2.png)
 
 You will see something like: `NHNC{???????????????????????}`
 
-However, this is clearly not the real flag—just a placeholder.
+However, this is clearly not the real flag. This is just a placeholder.
 
 ### Finding the Real Flag
 
@@ -64,53 +71,61 @@ According to insider information, there may be sensitive information or confiden
 Can you leverage your technical skills to successfully recover these important clues?
 ```
 
-The keywords "confidential hidden" are the main hint. The flag isn't visible in the current codebase, which means you need to dig into the repository's history.
+The keywords `confidential hidden` are the main hint. The flag isn't visible in the current codebase, which means you need to dig into the repository's history.
 
 ### GitHub Activity API
 
 Here's how you can find the flag in under 30 seconds using the GitHub Activity API:
 
 ```shell
-curl -L -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/UmmItC/gitgit/activity
+curl -L -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/UmmItKin/gitgit/activity
 ```
 
 The API response will show various repository activities. You should pay special attention to entries with `"activity_type": "force_push"` and will find three such entries.
 
 ![API Response](./images/gitgit/3.png)
 
-This confirms what I designed—someone tried to hide something using force pushes. For each force push activity, you should copy the commit hash and use GitHub's tree view to examine that specific point in history:
+This is what I designed! Someone tried to hide something using force pushes. For each force push activity, you should copy the commit hash and use GitHub's tree view to examine that specific point in history:
 
 ```
-https://github.com/UmmItC/NHNC-gitgit/tree/5dd233465d64bebed5b8755e5e081fe0653e0b9b
+https://github.com/UmmItKin/NHNC-gitgit/tree/5dd233465d64bebed5b8755e5e081fe0653e0b9b
 ```
 
 By navigating through the historical versions, you will find the one containing the sensitive information. Checking the `src/app/page.tsx` file in the historical commit reveals the flag:
 
 ![Flag Found](./images/gitgit/4.png)
 
-And there it is! The flag: `NHNC{Don7_tH!NK_foRCe_PU$H3d_CAn_HElp_YoU_hiD3_mE$s@6e!!!!-_0}`
+#### Flag
 
-### Key Takeaway
+And there it is! The flag:
 
-This challenge demonstrates an important security principle: **force pushing doesn't actually delete commit history from GitHub's servers**. The commits remain accessible through the API and can be discovered by anyone who knows where to look.
+>NHNC{Don7_tH!NK_foRCe_PU$H3d_CAn_HElp_YoU_hiD3_mE$s@6e!!!!-_0}
+
+## Why This challenge Created
+
+This challenge demonstrates an important security principle:
+
+>**Force pushing doesn't actually delete commit history from GitHub's servers!!!!**
+
+The commits remain accessible through the API and can be discovered by anyone who knows where to look.
 
 In real-world scenarios, if sensitive information is accidentally committed, the proper remediation involves:
 
 ```
-Just Delete the repository and Push again.
-
-Force push won't help you hidden. If that guy want to fuck you.
+You need to delete the repository and push again.
+Force push won't help you hidden.
+If that guy want to fuck you.
 ```
 
 ---
 
-## Crackme Challenge
+# Crackme Challenge
 
-### Challenge Overview
+## Challenge Overview
 
-This challenge involves Linux/Arch Linux and digital forensics. You are provided with a qcow2 virtual machine file that's been compressed into a tar.xz archive.
+This challenge involves Arch Linux and digital forensics. You are provided with a `qcow2` virtual machine file that's been compressed into a tar.xz archive.
 
-### Initial Setup
+## Initial Setup
 
 First, you should extract the archive:
 
@@ -118,7 +133,9 @@ First, you should extract the archive:
 tar -xfv crackme.tar.xz
 ```
 
-Then boot the virtual machine using QEMU:
+Then boot the virtual machine using QEMU.
+
+Alternatively, you can import it using virt-manager if you prefer a GUI approach.
 
 ```shell
 qemu-system-x86_64 \
@@ -135,15 +152,15 @@ qemu-system-x86_64 \
   -boot c
 ```
 
-Alternatively, you can import it using virt-manager if you prefer a GUI approach.
+## Password Reset
 
-### Password Reset
+When you boot the virtual machine, you'll discover it's running Arch Linux. However, there's a problem:
 
-When you boot the virtual machine, you'll discover it's running Arch Linux. However, there's a problem: **you don't have the password to log in**.
+>**You don't have the password to log in**.
 
 ### GRUB Boot Parameter Modification
 
-You need to bypass the login requirement using GRUB. You should reboot the machine and when the GRUB menu appears, press `e` to edit the boot entry.
+You need to bypass the login requirement using GRUB. By rebooting the machine and when the GRUB menu appears, press `e` to edit the boot entry.
 
 You should navigate to the line that loads the Linux kernel image:
 
@@ -175,13 +192,15 @@ Finally, you can log in with the password you just set.
 
 ![Root Shell Access](./images/Crackme/root-shell.png)
 
-### Analysis File
+## Analysis File
 
 But we're not done yet! You should take a look at the files first with `ls -la`. You'll notice a file called `.photorec.sig` and `README.md`.
 
 ![File](./images/Crackme/file.png)
 
 If you don't know what photorec is, a quick search will show you it's a file recovery tool, and it's also related to the README.md message.
+
+### LUKS Partition Confirmed
 
 Now we can do a simple check of the machine with `cat /etc/fstab` and `lsblk`.
 
@@ -199,11 +218,15 @@ cryptsetup isLuks -v /dev/vda3
 
 Yes! This is a LUKS partition.
 
+### PhotoRec Recovery
+
 Now we can confirm the information in README.md and the `photorec` file are definitely related. You should try recovery by starting to install the `testdisk` package and using `photorec` to do the recovery.
 
 According to the information you have, you can set the file to only recover `.key` files with this custom signature: `key 0 NHNCKEY2025____`. Now run `photorec` and process the first disk `/dev/vda`.
 
 ![Photorec Interface](./images/Crackme/photorec1.png)
+
+#### Custom Extension
 
 Now you should use `File Opt`. By default, photorec uses all extensions, but based on the information you have, you only need to use custom signatures.
 
@@ -214,6 +237,8 @@ You should select only `custom Own custom signatures` by pressing `s` to disable
 ![File Recovery](./images/Crackme/photorec3.png)
 
 Go back to the menu by pressing `q`.
+
+#### Searching file
 
 Now you can start searching for deleted files by pressing search and selecting `[Whole disk]`.
 
@@ -229,7 +254,9 @@ You'll see a few custom files being recovered. Let you check these files. Quit t
 
 ![Recovered Files](./images/Crackme/photorec6.png)
 
-You'll find five files here. Let's confirm if these are the NHNC keys you need by checking the header with this command:
+### Filetype confirmed
+
+You'll got fews files here. Let's confirm if these are the NHNC keys you need by checking the header with this command:
 
 ```shell
 hexdump -C f11421696.key | head
@@ -240,11 +267,13 @@ hexdump -C f11421696.key | head
 
 ![hexdump](./images/Crackme/hexdump.png)
 
-Perfect! The first one you can see contains `NHNCKEY2025____`, which matches the `.photorec.sig` signature. This is likely the keyfile you need. However, there's one problem - the file is too big and oversized.
+Perfect! The first one you can see contains `NHNCKEY2025____`, which matches the `.photorec.sig` signature. This is likely the keyfile you need.
 
-Looking back at the README.md message, you can see it says the keyfile size is `4111`!
+However, there's one problem! the file is too big and oversized. looking back at the README.md message, you can see it says the keyfile size is `4111`!
 
-So now you can trim the file to the correct size:
+#### Triming filesize
+
+You can trim the file to the correct size:
 
 ```shell
 head -c 4111 f111421696.key > keyfile.key
@@ -259,9 +288,13 @@ cryptsetup -v open /dev/vda3 NHNCluks --key-file keyfile.key
 cd ~ && mount /dev/mapper/NHNCluks first_one
 ```
 
-> By the way, you can see there are already two empty directories - that's actually a hint that you need to mount two partitions to capture the flag.
+##### The hints
+
+By the way, you can see there are already two empty directories, that's actually a hint that you need to mount two partitions to capture the flag.
 
 ![mount1](./images/Crackme/mount1.png)
+
+### LUKS Image
 
 Now let's see what files are in the first_one directory:
 
@@ -280,13 +313,17 @@ cryptsetup -v isLuks secret.img
 
 Yes! The command confirms this is a LUKS image. Now you just need to use the wordlist to bruteforce this image to find the password.
 
-> Also, the keyfiles were taking up too much space. You should delete all the unused key files from the directory since they're taking up a lot of filesystem space and might affect your ability to download things.
+#### Filesize bloated
+
+Also, the keyfiles were taking up too much space. You should delete all the unused key files from the directory since they're taking up a lot of filesystem space and might affect your ability to download things.
 
 You can use a tool from the Kali repository called `bruteforce-luks`:
 
-> https://www.kali.org/tools/bruteforce-luks/
+### LUKS Bruteforcing
 
-But there's one problem - this machine isn't Kali, right?
+Now, You getting the wordlists, and all you need to do is via this wordlist to bruteforcing the image to get the password, for the tool of bruteforcing an Image, you can use `bruteforce-luks` from Kali or install it manually.
+
+> https://www.kali.org/tools/bruteforce-luks/
 
 You can find the source code and build the program yourself. Actually, thinking about this question also coincides with me creating my very own first GNU/Linux distro based on Arch. (been a while xd)
 
@@ -307,7 +344,9 @@ pacman -Sy
 pacman -S git
 ```
 
-But here's one problem: PKGBUILD doesn't allow using root for building, so you should create a temporary user just for this case to install the PKGBUILD package:
+But here's one problem:
+
+>PKGBUILD doesn't allow using root for building, so you should create a temporary user just for this case to install the PKGBUILD package.
 
 ```shell
 useradd -m nhncuser
@@ -402,3 +441,7 @@ Did you learn a lot about recovery, Linux, and GitHub/Git usage? :D
 3 Teams solve my Crackme
 
 ![GJ](./images/2025-07-08-213014_hyprshot.png)
+
+# Thanks !!!!
+
+Thank you to all the players who played my question. I hope you learned something new! :D
