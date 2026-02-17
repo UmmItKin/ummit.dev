@@ -68,6 +68,10 @@ export const siteConfig = {
         href: '/ctf',
       },
       {
+        text: 'Research',
+        href: '/research',
+      },
+      {
         text: 'Talks',
         href: '/talks',
       },
