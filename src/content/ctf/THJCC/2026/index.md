@@ -216,3 +216,109 @@ The flag displayed on the admin dashboard is:
 `THJCC{c00k135_4r3_n07_53cur3_1f_n07_51gn3d_4nd_p13453_d0_7h3_53cur3_c0d1ng_r3v13w_101111}`
 
 ![Flag Retrieved](./images/0422/flag.png)
+
+---
+
+# r2s
+
+Should I upgrade my web server?
+
+I'm too lazy. nvm, lol.
+
+It should be safe enough?
+
+This challenge involves a simple penetration testing methodology. All you need to do is perform basic footprinting on this server.
+
+## CTFd token
+
+Since we're running an instance of this challenge, each user needs to generate a token to solve it. Go to the CTF website profile page at `https://ctf2026.thjcc.org/settings`, generate a token, and enter it on the r2s instance page.
+
+![Instance](./images/r2s/instance/Instance.png)
+![Instance Created](./images/r2s/instance/instance-created.png)
+
+## Testing the Application
+
+Looking at the page, we see a login panel:
+
+![Visit](./images/r2s/dashboard/visit.png)
+
+### First try to login
+
+Let's randomly enter something. As expected, it's not that easy. We receive an `Invalid username or password` message:
+
+![Login](./images/r2s/dashboard/try-to-login.png)
+
+### Confirming Next.js
+
+Let's use F12 to check. Every website has its unique code signatures, and this one is no exception:
+
+```shell
+src="/_next/static/chunks/webpack-1b7be808ceb885ba.js"
+```
+
+![Next](./images/r2s/footprinting/next.png)
+
+We can clearly see this is using Next.js. However, the version is still uncertain. Let's perform deep footprinting to identify it:
+
+### Confirming Next.js Version
+
+For Next.js, we can use the following method to manually determine the version. You can search the keyword `version` in each `.js` file:
+
+Go to: `F12` > `Debugger` > `Main Thread` `chal.thjcc.org:10454` `*.js`
+
+You'll see many generated JavaScript files. Open each one and search for the `version` keyword!
+
+![NextJS Version Confirm](./images/r2s/footprinting/next-ver.png)
+
+We successfully found `window.next={version:"15.0.0",appDir:!0}`:
+
+![React Version Confirm](./images/r2s/footprinting/react-ver.png)
+
+We also found `var cc=i.version;if("19.0.0-rc-65a56d0e-20241020`
+
+However, regarding this version number... If you search for Next.js version releases online, there's no version 19. This is because Next.js is React-based. The `19.0.0-rc` is actually the React version, not the Next.js version.
+
+#### Automatically Detect Version with cURL
+
+Here's a script you can use to automatically detect React and Next.js versions:
+
+```shell
+CHAL="http://chal.thjcc.org:10454"; \
+curl -sL "$CHAL" | grep -oP '/_next/static/[^"]+\.js' | xargs -I {} curl -sL "${CHAL}{}" | grep -oP '(?<=version:")[^"]+' | sort -u
+```
+
+### Finding the CVE
+
+Now that we've confirmed the versions, let's search for an available exploit. Are there any applicable CVEs?
+
+![Searching PoC](./images/r2s/react2shell/searching-poc.png)
+
+We found one that works:
+
+>https://nextjs.org/blog/CVE-2025-66478
+
+>https://vercel.com/kb/bulletin/security-bulletin-cve-2025-55184-and-cve-2025-55183
+
+As mentioned in the article, this is an RCE vulnerability!
+
+>A critical vulnerability has been identified in the React Server Components (RSC) protocol. The issue is rated CVSS 10.0 and can allow remote code execution when processing attacker-controlled requests in unpatched environments.
+
+### Finding a Proof of Concept
+
+Now let's find a working PoC. I'll use my own PoC:
+
+https://github.com/UmmItKin/CVE-2025-55182-PoC
+
+The usage is straightforward. Simply clone the repository and run `make` to use it:
+
+```bash
+git clone https://github.com/UmmItKin/CVE-2025-55182-PoC
+cd CVE-2025-55182-PoC
+make
+```
+
+Then, use this tool to RCE the machine. It's located in `/flag.txt`!
+
+![RCE](./images/r2s/react2shell/rce.png)
+
+Flag: `THJCC{r34ct_ssr_rc3_1s_d4ng3r0us}`
