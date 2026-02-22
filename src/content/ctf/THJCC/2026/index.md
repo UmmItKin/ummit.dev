@@ -9,13 +9,28 @@ draft: true
 
 # Introduction
 
+This is the full write-up of the challenge for 0422, r2s, Simple Hack and I use arch btw. This involves the topic:
+
+- Steganography
+- Cryptography
+- Hashing
+- Insecure Direct Object Reference (IDOR)
+- Broken Authentication
+- Insecure cookie handling
+- Foorprinting
+- CVE Exploit PoC
+- File upload restrictions
+- PHP Heredoc
+
+And more.
+
 # I use arch btw
 
 This is a multi-stage challenge involving steganography, file extraction, hash cracking, and password-protected document extraction. Here's the detailed step-by-step approach:
 
-**Challenge Description:**
+**Challenge Description:** Can you find the hidden message in the provided JPEG image file?
 
-Can you find the hidden message in the provided JPEG image file?
+>Author: UmmIt Kin
 
 ![CTFd](./images/i%20use%20arch%20btw/CTFd.png)
 
@@ -155,15 +170,17 @@ This is the flag for this challenge:
 
 # 0422
 
+**Challenge Description:**
+
 A very simple challenge about a web exploit.
 
 Really simple. LOL.
 
-This is a web exploitation challenge involving cookie manipulation and access control. Can you gain admin privileges by modifying client-side cookies?
+>Author: UmmIt Kin
 
-> Vulnerability: Insecure Direct Object Reference (IDOR) / Broken Authentication / Insecure cookie handling.
+This is a web exploitation challenge involving cookie manipulation and access control.
 
-![alt text](./images/0422/CTFd.png)
+![CTFd](./images/0422/CTFd.png)
 
 ## Testing the Application
 
@@ -221,15 +238,19 @@ The flag displayed on the admin dashboard is:
 
 # r2s
 
+**Challenge Description:**
+
 Should I upgrade my web server?
 
 I'm too lazy. nvm, lol.
 
 It should be safe enough?
 
-![alt text](./images/r2s/CTFd.png)
+>Author: UmmIt Kin
 
 This challenge involves a simple penetration testing methodology. All you need to do is perform basic footprinting on this server and find the PoC exploit and RCE.
+
+![alt text](./images/r2s/CTFd.png)
 
 ## CTFd token
 
@@ -330,6 +351,7 @@ Flag: `THJCC{r34ct_ssr_rc3_1s_d4ng3r0us}`
 # Simple Hack
 
 **Challenge Description:**
+
 We developed a file upload platform. I think it is really secure. Isn't it?
 
 > Author: UmmIt Kin
