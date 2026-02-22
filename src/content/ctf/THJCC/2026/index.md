@@ -150,3 +150,69 @@ Password is `rush2112` Now you can open it.
 This is the flag for this challenge:
 
 `THJCC{7h15_15_7h3_m3554g3....._1_u53_4rch_b7w}`
+
+---
+
+# 0422
+
+A very simple challenge about a web exploit.
+
+Really simple. LOL.
+
+This is a web exploitation challenge involving cookie manipulation and access control. Can you gain admin privileges by modifying client-side cookies?
+
+> Vulnerability: Insecure Direct Object Reference (IDOR) / Broken Authentication / Insecure cookie handling.
+
+![alt text](./images/0422/CTFd.png)
+
+## Testing the Application
+
+Start by visiting the application dashboard. You'll be presented with a login panel:
+
+![0422 Dashboard](./images/0422/Dashboard.png)
+
+Attempt to login with any username and password combination. The credentials themselves don't matter for this challenge. What matters is what happens after authentication.
+
+### Login Attempt
+
+After submitting the login form with test credentials, you'll receive an error response:
+
+![Login Error](./images/0422/wrong.png)
+
+This is expected. The server rejects the invalid credentials, but the important thing is what the server sends back in the response headers.
+
+### Opening Developer Tools
+
+Open Developer Tools with these steps:
+
+- Press F12
+- Click on the "Storage" tab (or "Application" in Chrome)
+- In the left sidebar, click "Cookies"
+- Select the domain: `https://chal.thjcc.org:3000`
+
+### Identifying the Vulnerability
+
+Let try one more time to send the login, and you'll see important cookie values:
+
+```
+Referer: http://chal.thjcc.org:3000/dashboard
+Cookie: PHPSESSID=6cfc69646050e9e5a4f613e6cbacac06; role=guest; username=wae
+```
+
+Notice the `role=guest` cookie. This is the vulnerability!
+
+### Modifying the Role Cookie
+
+Find the cookie named `role` with the current value `guest`. Double-click on the `role` cookie's value field and change it from `guest` to `admin`:
+
+![F12](./images/0422/f12.png)
+
+### End this Game !!
+
+Now Refresh the page. The server will now trust the modified cookie and grant you admin privileges.
+
+The flag displayed on the admin dashboard is:
+
+`THJCC{c00k135_4r3_n07_53cur3_1f_n07_51gn3d_4nd_p13453_d0_7h3_53cur3_c0d1ng_r3v13w_101111}`
+
+![Flag Retrieved](./images/0422/flag.png)
