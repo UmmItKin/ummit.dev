@@ -4,7 +4,7 @@ description: "The step by step official writeup for these challenges."
 date: 2026-02-22T23:46:20+0800
 tag: "CTF, THJCC CTF 2026, WriteUp"
 lang: en-US
-draft: true
+draft: false
 ---
 
 # Introduction
