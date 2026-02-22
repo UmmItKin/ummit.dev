@@ -633,3 +633,27 @@ Click on the uploaded file path to trigger execution:
 Flag: `THJCC{w311_d0n3_y0u_byp4553d_7h3_b14ck1157_:D}`
 
 ![Flag](./images/Simple%20Hack/flag.png)
+
+## Overall
+
+Simple Hack was the challenge that took me the most time to complete. It is also the hardest one! XDDD
+
+This challenge was actually rewritten based on a Zero-Day vulnerability I found :) So, its difficulty is the highest among these four challenges!
+
+If you can't solve it, don’t feel discouraged... because I believe that to get this one right, you need a lot of web security knowledge.
+
+For the others, you can basically rely on AI to solve most of them. But this one is a different story! XDD
+
+Finally, I want to thank my teammate, ICEDTEA. This experience of creating challenges is invaluable to me!!!! Next year, I'm planning to come up with more pentest challenges... XDD, like those in the Privilege Escalation category.
+
+Because after that, knowing how to handle Instancer will make things easier. i can express the challenge creation even better! XDDD
+
+### Mining Bot ?????
+
+Recently, before the CTF started, someone was working on my challenge. When I created a react2shell challenge, someone gained remote code execution (RCE) on our challenge machine and ran a program for crypto mining.
+
+It was really frustrating, especially since they accessed our CT logs, which revealed our subdomain that seemed to be related to the challenge, and exploited the RCE in our R2S challenge.
+
+I felt like: WTF Bro? So fucking bad.
+
+![Huh?](./x8664kok.png)
