@@ -5,6 +5,7 @@
   max-width: none;
   min-height: 38vh;
   color: inherit;
+  overflow-wrap: anywhere;
 }
 
 @media (min-width: 640px) {
@@ -184,6 +185,13 @@
 .prose code {
   font-weight: 600;
   font-size: 0.875em;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.prose pre code {
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .prose code::before {
