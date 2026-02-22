@@ -186,7 +186,13 @@
   font-weight: 600;
   font-size: 0.875em;
   overflow-wrap: anywhere;
-  word-break: break-all;
+  word-break: normal;
+}
+
+.prose p > code {
+  max-width: 100%;
+  white-space: normal;
+  word-break: break-word;
 }
 
 .prose pre code {
