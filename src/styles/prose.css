@@ -186,13 +186,7 @@
   font-weight: 600;
   font-size: 0.875em;
   overflow-wrap: anywhere;
-  word-break: break-word;
-}
-
-.prose :not(pre) > code {
-  display: inline-block;
-  max-width: 100%;
-  white-space: pre-wrap;
+  word-break: break-all;
 }
 
 .prose pre code {
