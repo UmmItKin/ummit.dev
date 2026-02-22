@@ -189,6 +189,12 @@
   word-break: break-word;
 }
 
+.prose :not(pre) > code {
+  display: inline-block;
+  max-width: 100%;
+  white-space: pre-wrap;
+}
+
 .prose pre code {
   overflow-wrap: normal;
   word-break: normal;
@@ -214,6 +220,8 @@
   margin-bottom: 1.7142857em;
   border-radius: 0.375rem;
   padding: 0.8571429em 1.1428571em;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .prose pre code {
