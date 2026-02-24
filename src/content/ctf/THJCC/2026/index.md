@@ -485,7 +485,7 @@ ag.txt
 B
 ?>
 ```
-Result: **BLOCKED** - Filename or extension check
+Result: **Accepted** - Bypassed
 
 ### PHP extensions
 
