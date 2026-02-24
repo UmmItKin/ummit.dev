@@ -18,7 +18,7 @@ This is the full write-up of the challenge for 0422, r2s, Simple Hack and I use 
 - Insecure Direct Object Reference (IDOR)
 - Broken Authentication
 - Insecure cookie handling
-- Foorprinting
+- Footprinting
 - CVE Exploit PoC
 - File upload restrictions
 - PHP Heredoc
