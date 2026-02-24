@@ -23,9 +23,14 @@ This is the full write-up of the challenge for 0422, r2s, Simple Hack and I use 
 - File upload restrictions
 - PHP Heredoc
 
-And more.
+| Challenge | Category | Difficulty | Description |
+| :--- | :---: | :---: | :--- |
+| r2s | Web | Easy | Penetration testing |
+| 04220 | Web | Bady | Authentication |
+| Simple Hack | Web | Insane | File Upload restrictions |
+| I use arch btw | Forensics | Easy | Steganography and hashing |
 
-# Source code
+## Source code
 
 For the source code of the challenge, please visit my GitHub.
 
