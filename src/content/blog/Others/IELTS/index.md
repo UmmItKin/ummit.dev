@@ -11,10 +11,11 @@ lang: en-US
 
 Purpose:
 
+- What is it? One sentence that introduces the chart to the reader.
 - Rewrite the chart title in one sentence.
 - Important: Do not copy the title word-for-word. Keep this one sentence short.
 
-### Point
+## Point
 
 - Never copy the title directly — rewrite it in your own words
 - Use verbs like shows / illustrates / presents
@@ -22,7 +23,7 @@ Purpose:
 - Use "in" for years/locations, "from ___ to ___" for time ranges
 - Keep it to one clean sentence
 
-### Chart type vocabulary:
+## Chart type vocabulary:
 
 - Bar chart
 - line graph
@@ -37,6 +38,10 @@ Purpose:
 | shows / illustrates / presents | Use to paraphrase the title | "The chart shows sales by month." |
 | broken down by / by / across | Use to say categories | "broken down by age group" |
 | in / in the / for | Use to say time or place | "in 2022", "for the UK" |
+
+## The Formula
+
+> [Chart type] + [verb] + [what] + [broken down by category] + [time period/location]
 
 ## Starting the paragraph
 
@@ -106,9 +111,20 @@ Example:
 | The main trend is... | Say the biggest trend | "The main trend is a steady increase." |
 | remains relatively stable | Use for little change | "Prices remain relatively stable." |
 
+### Example - Social Media Chart
+
+- Teenagers use much more than adults
+- Both groups use more on weekends
+- Teenagers nearly double adults
+
 # Paragraphs 3 & 4 — Details (3–4 sentences each)
 
 Purpose: Give specific numbers, units, and comparisons. Use two small groups of data (group A and group B). Descibe the data
+
+What are they? These are where you describe the specific data and numbers from the chart.
+
+- Para 3 = first subject / most notable data (e.g. the highest, the biggest trend)
+- Para 4 = second subject / remaining data (e.g. the lowest, the other category)
 
 Important: Always write the unit (%, $, hours). Check numbers carefully.
 
@@ -121,6 +137,37 @@ Template — Para 4:
 Example:
 > In the 18–30 group, men exercised 8 hours per week. This fell to 5 hours for 31–50 year olds and to 3 hours for those 51 and over.
 > By comparison, women aged 18–30 exercised 6 hours per week. This dropped to 4 hours for 31–50 year olds and to 2 hours for those 51 and over.
+
+## Key Term Table — Paragraphs 3 & 4
+
+### Introducing data
+
+- In [year/month]...
+- At its peak...
+- At its lowest point...
+
+### Describing numbers
+
+- stood at... (e.g. "rainfall stood at 80mm")
+- accounted for...
+- represented...
+- reached approximately...
+
+### Showing change
+
+- increased / rose / climbed by [amount]
+- decreased / fell / dropped by [amount]
+- increased / rose to [number]
+- remained stable at...
+
+### Linking between points
+
+- Meanwhile, ...
+- In contrast, ...
+- By comparison, ...
+- Following this, ...
+- Subsequently, ...
+- Interestingly, ...
 
 ## Key Term Usage — Paragraphs 3 & 4
 
@@ -136,6 +183,26 @@ Example:
 | significantly higher/lower than | Big difference | "is significantly higher than..." |
 | stood at X / accounted for X / reached X | Number phrases | "stood at 30%, accounted for 20%" |
 
+## "by" vs "to"
+
+**"by"** = the change amount
+> "Rainfall increased **by** 20mm" (it went up 20mm)
+
+**"to"** = the final number
+> "Rainfall increased **to** 80mm" (it ended at 80mm)
+
+Example:
+> "In January, London's rainfall stood at 80mm, which was significantly higher than Paris at 45mm. London's rainfall subsequently rose to its peak of 120mm in November, an increase of 40mm from October."
+
+### "by" vs "to" — Key Term Card
+
+| | by | to |
+|---|---|---|
+| Means | the change amount | the final number |
+| Question | "how much?" | "how many now?" |
+| Example | rose by 50 units | rose to 200 units |
+| Combined | rose by 50 units to 200 units | |
+
 BY vs TO — Use in Details
 
 | Word | Meaning | Example |
@@ -143,6 +210,36 @@ BY vs TO — Use in Details
 | by | Amount of change (difference) | "rose by 10%" |
 | to | Final value (end point) | "rose to 60%" |
 | both | Use both to show change and end | "rose by 10% to 60%" |
+
+## Full Detail Paragraph Key Terms
+
+### Introduce the number
+
+- stood at...
+- accounted for...
+- reached...
+- was recorded at...
+
+### Going UP
+
+- increased / rose / climbed / jumped by... to...
+
+### Going DOWN
+
+- decreased / fell / dropped / declined by... to...
+
+### Staying same
+
+- remained stable at...
+- stayed constant at...
+
+### Linking sentences
+
+- Meanwhile, ...
+- In contrast, ...
+- By comparison, ...
+- Following this, ...
+- Subsequently, ...
 
 # Short Checklist
 
