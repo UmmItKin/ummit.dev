@@ -340,3 +340,21 @@ Details 1:
 
 Details 2:
 > To wrap things up, even though the UK spent more on books, France clearly had a stronger preference for perfume. They spent £200,000 on it, while the UK only spent £140,000.
+
+## Sample 2
+
+Para 1 — 
+
+Intro "The bar chart illustrates the average hours per week spent on exercise, broken down by men and women across three age groups, in the UK in 2022."
+
+Para 2 — 
+
+Overview "Overall, it is evident that men exercise significantly more than women across all age groups. Additionally, the 18–30 age group shows the highest levels of physical activity, while older age groups tend to exercise less."
+
+Para 3 — 
+
+Men "In the 18–30 age group, men's exercise hours stood at 8 hours per week, representing the highest figure across all groups. This subsequently fell to 5 hours among 31–50 year olds, a decrease of 3 hours. This declined further to just 3 hours for those aged 51 and over, making it the lowest recorded figure for men."
+
+Para 4 — 
+
+Women "Meanwhile, women in the 18–30 age group stood at 6 hours per week, slightly lower than their male counterparts. This subsequently fell to 4 hours among 31–50 year olds. This declined further to only 2 hours for those aged 51 and over, the lowest figure overall across both genders."
