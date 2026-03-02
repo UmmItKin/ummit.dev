@@ -1,8 +1,8 @@
 ---
-title: "No Hack No CTF 2025 - Full Writeup for Crackme and gitgit Challenges"
+title: "No Hack No CTF 2025 - Official Writeup for Crackme and gitgit Challenges"
 description: "Full writeup for No Hack No CTF 2025 Crackme and gitgit challenges. Learn how to solve these challenges step by step."
 date: 2025-07-08T20:37:34+0800
-lastmod: 2026-02-18T12:57:32+0800
+lastmod: 2026-03-02T12:42:26+0800
 tag: "CTF, No Hack No CTF, WriteUp"
 lang: en-US
 ---
@@ -19,17 +19,11 @@ In this writeup, I'll explain how these challenges work and how to solve them.
 
 ## Challenge Overview
 
-The challenge provides a git repository at: `https://github.com/UmmItKin/NHNC-gitgit` (now renamed to NHNC-gitgit).
+![GJ](./images/2025-07-08-212614_hyprshot.png)
+
+The challenge provides a git repository at: `https://github.com/UmmItKin/NHNC-gitgit`
 
 At first glance, you might assume this is a straightforward git challenge where you simply examine the codebase. However, it's far more complex than that. I designed this challenge to mirror real-world security incidents where developers accidentally leak sensitive files (like .env files) and attempt to cover their tracks using `git delete` and `git push --force`.
-
-## Key question
-
->**Can you truly hide sensitive information with a simple force push?**
-
-The answer is no! and that's the premise of this challenge. You must recover the sensitive information I've deliberately hidden within the git repository's history.
-
-After extensive research, I believe this is a unique challenge format that hasn't been explored in other CTFs. I'm excited to share this real-world scenario!
 
 ### Repository Investigation
 
@@ -87,21 +81,23 @@ The API response will show various repository activities. You should pay special
 
 This is what I designed! Someone tried to hide something using force pushes. For each force push activity, you should copy the commit hash and use GitHub's tree view to examine that specific point in history:
 
-```
-https://github.com/UmmItKin/NHNC-gitgit/tree/5dd233465d64bebed5b8755e5e081fe0653e0b9b
-```
+>https://github.com/UmmItKin/NHNC-gitgit/blob/5dd233465d64bebed5b8755e5e081fe0653e0b9b/src/app/page.tsx
 
-By navigating through the historical versions, you will find the one containing the sensitive information. Checking the `src/app/page.tsx` file in the historical commit reveals the flag:
+Navigating through the historical, you will find the one containing the sensitive information. Checking the `src/app/page.tsx` file in the historical commit reveals the flag:
 
 ![Flag Found](./images/gitgit/4.png)
 
 #### Flag
 
-And there it is! The flag:
-
 >NHNC{Don7_tH!NK_foRCe_PU$H3d_CAn_HElp_YoU_hiD3_mE$s@6e!!!!-_0}
 
 ## Why This challenge Created
+
+Can you truly hide sensitive information with a simple force push?
+
+The answer is no! and that's the premise of this challenge. You must recover the sensitive information I've deliberately hidden within the git repository's history.
+
+After extensive research, I believe this is a unique challenge format that hasn't been explored in other CTFs. I'm excited to share this real-world scenario!
 
 This challenge demonstrates an important security principle:
 
@@ -120,6 +116,8 @@ If that guy want to fuck you.
 ---
 
 # Crackme Challenge
+
+![GJ](./images/2025-07-08-213014_hyprshot.png)
 
 ## Challenge Overview
 
@@ -433,14 +431,6 @@ That's all for my challenges! Thanks everyone for playing my questions! :D
 Hopefully you learned something or found it fun and helpful.
 
 Did you learn a lot about recovery, Linux, and GitHub/Git usage? :D
-
-29 Teams solve my gitgit
-
-![GJ](./images/2025-07-08-212614_hyprshot.png)
-
-3 Teams solve my Crackme
-
-![GJ](./images/2025-07-08-213014_hyprshot.png)
 
 # Thanks !!!!
 
