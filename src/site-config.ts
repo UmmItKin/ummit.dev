@@ -36,6 +36,10 @@ export const siteConfig = {
     },
     navLinks: [
       {
+        text: 'About',
+        href: '/about',
+      },
+      {
         text: 'Blog',
         href: '/blog',
       },
