@@ -91,6 +91,10 @@ export const siteConfig = {
         text: 'Markdown Style',
         href: '/md-style',
       },
+      {
+        text: 'Todo',
+        href: '/todo',
+      },
     ],
   },
 }
