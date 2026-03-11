@@ -1,5 +1,6 @@
 ---
 title: Posts Props
+description: Reference for the supported frontmatter fields in posts and static pages.
 ---
 
 Props in blog:

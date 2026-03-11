@@ -1,5 +1,6 @@
 ---
 title: todo
+description: Personal todo list and reminders for future work on the site.
 ---
 
 - 將 HackTheBox/TryHackMe 既 CTF writeup 寫入去. 用 cantonese.

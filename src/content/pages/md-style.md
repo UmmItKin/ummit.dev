@@ -1,5 +1,6 @@
 ---
 title: Markdown Style
+description: A quick reference page for how markdown content is rendered on this site.
 ---
 
 The page style in your `*.md` file.
