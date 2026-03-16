@@ -47,7 +47,7 @@ That is very useful when the injection point is annoying, filtered, or has lengt
 
 Of course, I did not generate the filter chain by hand. That would be painful. I used a helper script to automate the generation and get an interactive shell.
 
-At that point I just cleaned up the exploit helper a bit and used it as my command execution script. I am pasting the same version here without the comments.
+(https://github.com/synacktiv/php_filter_chain_generator)
 
 ```python
 import base64
@@ -186,7 +186,7 @@ That last point matters a lot. A kernel version might look old and juicy at firs
 
 ## Privilege Escalation
 
-At this stage I just did the usual thing: enumerate first, then decide what looks realistic.
+At this stage I just did the usual thing, enumerate first, then decide what looks realistic.
 
 ### Failed Attempts
 
@@ -200,7 +200,7 @@ Looking back, that was not very surprising:
 
 I also ran the normal enumeration flow to check writable paths, services, sudo rules, and other common misconfigurations.
 
-### The Real Privesc Path - SUID `choom`
+### PrivEsc - SUID `choom`
 
 The actual breakthrough came from enumerating SUID binaries:
 
@@ -240,7 +240,7 @@ What I liked about this challenge is that it did not stop at one clever web tric
 - avoid tunnel vision on kernel exploits
 - notice the much simpler SUID privesc route
 
-The main lesson here is the same as always: after getting a shell, do not rush blindly into fancy exploits. Slow down, enumerate properly, and look for the boring stuff too. A lot of the time, the intended privesc is much simpler than the one you are trying to force.
+The main lesson here is the same as always, after getting a shell, do not rush blindly into fancy exploits. Slow down, enumerate properly, and look for the boring stuff too. A lot of the time, the intended privesc is much simpler than the one you are trying to force.
 
 我幾鐘意呢類 RCE 類別既, 因為我 Prefer HackTheBox/TryHackMe 類既 hack 機拎 shell 題目 ... :)
 
