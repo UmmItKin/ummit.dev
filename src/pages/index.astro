@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import GitHubGraph from '@/components/GitHubGraph.vue'
+import HoverPreviewLink from '@/components/HoverPreviewLink.astro'
 import Sponsor from '@/components/Sponsor.astro'
 import siteConfig from '@/site-config'
 import icedteaIcon from '@/assets/CTF/ICEDTEA.jpg'
@@ -33,44 +34,89 @@ const contributions = await fetchGitHubContributions(siteConfig.github)
 
     <p>
       CTF Team
-      <a href="https://ic3dt3a.org/" target="_blank" rel="noopener" class="magic-link">
+      <HoverPreviewLink
+        href="https://ic3dt3a.org/"
+        title="ICEDTEA"
+        subtitle="CTF Team"
+        description="A Taiwan based CTF team that I am part of"
+      >
         <span class="magic-link-icon"><Image src={icedteaIcon} alt="" width={500} height={500} /></span>ICEDTEA
-      </a>
-      <a href="https://ctftime.org/team/405936/" target="_blank" rel="noopener" class="magic-link">
+      </HoverPreviewLink>
+      <HoverPreviewLink
+        href="https://ctftime.org/team/405936/"
+        title="HeapUnderFlow"
+        subtitle="CTF Team"
+        description="My current Hong Kong based CTF team"
+      >
         <span class="magic-link-icon"><Image src={heapunderflowIcon} alt="" width={500} height={500} /></span
         >HeapUnderFlow
-      </a>
+      </HoverPreviewLink>
       <br />
       Challenge Creator
-      <a href="https://ctftime.org/event/2818/" target="_blank" rel="noopener" class="magic-link">
+      <HoverPreviewLink
+        href="https://ctftime.org/event/2818/"
+        title="NHNC CTF"
+        subtitle="Challenge Creator"
+        description="I created challenges and helped with the design side for No Hack No CTF."
+      >
         <span class="magic-link-icon"><Image src={nhncIcon} alt="" width={500} height={500} /></span>NHNC CTF
-      </a>
-      <a href="https://thjcc.org" target="_blank" rel="noopener" class="magic-link">
+      </HoverPreviewLink>
+      <HoverPreviewLink
+        href="https://thjcc.org"
+        title="THJCC CTF"
+        subtitle="Challenge Creator"
+        description="A Taiwai CTF event where I also contributed challenge-related work."
+      >
         <span class="magic-link-icon"><Image src={thjccIcon} alt="" width={500} height={500} /></span>THJCC CTF
-      </a>
+      </HoverPreviewLink>
       <br />
       Hacking
-      <a href="https://tryhackme.com/p/UmmIt" target="_blank" rel="noopener" class="magic-link">
+      <HoverPreviewLink
+        href="https://tryhackme.com/p/UmmIt"
+        title="TryHackMe"
+        subtitle="Practice Platform"
+        description="Used for rooms, labs, and certification tracks."
+      >
         <span class="magic-link-icon"><i class="i-simple-icons-tryhackme text-[#C11111]"></i></span>TryHackMe
-      </a>
-      <a href="https://app.hackthebox.com/users/2099997" target="_blank" rel="noopener" class="magic-link">
+      </HoverPreviewLink>
+      <HoverPreviewLink
+        href="https://app.hackthebox.com/users/2099997"
+        title="HackTheBox"
+        subtitle="Practice Platform"
+        description="Used for labs, boxes, and web exploitation practice."
+      >
         <span class="magic-link-icon"><i class="i-simple-icons-hackthebox text-[#9FEF00]"></i></span>HackTheBox
-      </a>
-      <a href="https://cryptohack.org/user/UmmIt/" target="_blank" rel="noopener" class="magic-link">
+      </HoverPreviewLink>
+      <HoverPreviewLink
+        href="https://cryptohack.org/user/UmmIt/"
+        title="CryptoHack"
+        subtitle="Practice Platform"
+        description="A platform I use for learning and practicing cryptography."
+      >
         <span class="magic-link-icon"><Image src={cryptohackIcon} alt="" width={500} height={500} /></span>CryptoHack
-      </a>
+      </HoverPreviewLink>
       <br />
       Creator
-      <a href="https://docs.ummit.dev/" target="_blank" rel="noopener" class="magic-link">
+      <HoverPreviewLink
+        href="https://docs.ummit.dev/"
+        title="UmmItOS"
+        subtitle="My Project"
+        description="My own Arch-based distribution and personal Linux experiment."
+      >
         <span class="magic-link-icon"><Image src={ummitosIcon} alt="" width={500} height={500} /></span>UmmItOS
-      </a>
+      </HoverPreviewLink>
       <br />
       Community
-      <a href="https://www.pycon.hk/" target="_blank" rel="noopener" class="magic-link">
+      <HoverPreviewLink
+        href="https://www.pycon.hk/"
+        title="Hong Kong Python User Group"
+        subtitle="Community"
+        description="I join HKPUG activities and occasionally give talks there."
+      >
         <span class="magic-link-icon">
           <Image src={hkpugLogo} alt="" width={256} height={256} />
-        </span>Hong Kong Python User Group (HKPUG)
-      </a>
+        </span>HKPUG
+      </HoverPreviewLink>
       <br />
       Candidate
       <a href="https://www.offsec.com/courses/pen-200/" target="_blank" rel="noopener" class="magic-link">

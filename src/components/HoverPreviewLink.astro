@@ -1,0 +1,184 @@
+---
+import { Image } from 'astro:assets'
+
+interface Props {
+  href: string
+  title: string
+  subtitle?: string
+  description?: string
+  previewImage?: any
+  imageFit?: 'cover' | 'contain'
+  imagePosition?: string
+  target?: string
+  rel?: string
+}
+
+const {
+  href,
+  title,
+  subtitle,
+  description,
+  previewImage,
+  imageFit = 'cover',
+  imagePosition = 'center',
+  target = '_blank',
+  rel = 'noopener',
+} = Astro.props
+---
+
+<span class="preview-link-group relative inline-flex">
+  <a href={href} target={target} rel={rel} class="magic-link preview-link-trigger">
+    <slot />
+  </a>
+
+  <span class="preview-card pointer-events-none">
+    <span class="preview-card-inner">
+      <span class="preview-card-copy">
+        {subtitle && <span class="preview-card-subtitle">{subtitle}</span>}
+        <span class="preview-card-title">{title}</span>
+        {description && <span class="preview-card-description">{description}</span>}
+      </span>
+      {
+        previewImage && (
+          <span class="preview-card-image" data-fit={imageFit}>
+            <Image src={previewImage} alt="" width={160} height={160} />
+          </span>
+        )
+      }
+    </span>
+  </span>
+</span>
+
+<style>
+  .preview-link-group {
+    position: relative;
+  }
+
+  .preview-card {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 0.9rem);
+    width: max-content;
+    max-width: min(18rem, calc(100vw - 2rem));
+    transform: translateX(-50%) translateY(0.35rem) scale(0.985);
+    transform-origin: center bottom;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.18s ease,
+      transform 0.18s ease,
+      visibility 0.18s ease;
+    z-index: 40;
+  }
+
+  .preview-link-group:hover .preview-card,
+  .preview-link-group:focus-within .preview-card {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+
+  .preview-card-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+    align-items: start;
+    padding: 0.78rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(115, 115, 115, 0.28);
+    background: rgba(20, 22, 29, 0.96);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.34);
+    backdrop-filter: blur(14px);
+    max-width: inherit;
+  }
+
+  .preview-card-image + .preview-card-copy,
+  .preview-card-copy + .preview-card-image {
+    min-width: 0;
+  }
+
+  .preview-card-inner:has(.preview-card-image) {
+    grid-template-columns: minmax(0, 1fr) 4.6rem;
+  }
+
+  .preview-card-copy {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    flex: 1;
+  }
+
+  .preview-card-subtitle {
+    font-size: 0.66rem;
+    line-height: 1.2;
+    opacity: 0.58;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+  }
+
+  .preview-card-title {
+    font-size: 0.94rem;
+    line-height: 1.2;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.94);
+    text-wrap: balance;
+  }
+
+  .preview-card-description {
+    font-size: 0.78rem;
+    line-height: 1.4;
+    opacity: 0.72;
+  }
+
+  .preview-card-image {
+    width: 4.6rem;
+    height: 4.6rem;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 0.8rem;
+    border: 1px solid rgba(115, 115, 115, 0.22);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .preview-card-image[data-fit='contain'] {
+    padding: 0.45rem;
+  }
+
+  .preview-card-image :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: var(--preview-image-fit, cover);
+    object-position: var(--preview-image-position, center);
+    display: block;
+  }
+
+  @media (max-width: 640px) {
+    .preview-card {
+      left: 50%;
+      max-width: min(16rem, calc(100vw - 2rem));
+      transform: translateX(-50%) translateY(0.35rem) scale(0.985);
+    }
+
+    .preview-link-group:hover .preview-card,
+    .preview-link-group:focus-within .preview-card {
+      transform: translateX(-50%) translateY(0) scale(1);
+    }
+
+    .preview-card-inner:has(.preview-card-image) {
+      grid-template-columns: minmax(0, 1fr) 4rem;
+    }
+
+    .preview-card-image {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+</style>
+
+<style
+  define:vars={{
+    'preview-image-fit': imageFit,
+    'preview-image-position': imagePosition,
+  }}
+></style>
