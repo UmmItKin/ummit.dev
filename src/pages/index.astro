@@ -119,33 +119,38 @@ const contributions = await fetchGitHubContributions(siteConfig.github)
       </HoverPreviewLink>
       <br />
       Candidate
-      <a href="https://www.offsec.com/courses/pen-200/" target="_blank" rel="noopener" class="magic-link">
+      <HoverPreviewLink
+        href="https://www.offsec.com/courses/pen-200/"
+        title="OSCP"
+        subtitle="Offensive Security"
+        description="Offensive Security Certified Professional - Advanced penetration testing certification."
+      >
         <span class="magic-link-icon"><Image src={oscpCert} alt="" width={500} height={500} /></span>OSCP
-      </a>
-      <a
+      </HoverPreviewLink>
+      <HoverPreviewLink
         href="https://academy.hackthebox.com/preview/certifications/htb-certified-web-exploitation-specialist"
-        target="_blank"
-        rel="noopener"
-        class="magic-link"
+        title="CWES"
+        subtitle="HackTheBox"
+        description="Certified Web Exploitation Specialist - Advanced web application security certification."
       >
         <span class="magic-link-icon"><Image src={cwesCert} alt="" width={500} height={500} /></span>CWES
-      </a>
-      <a
+      </HoverPreviewLink>
+      <HoverPreviewLink
         href="https://academy.hackthebox.com/preview/certifications/htb-certified-junior-cybersecurity-associate"
-        target="_blank"
-        rel="noopener"
-        class="magic-link"
+        title="CJCA"
+        subtitle="HackTheBox"
+        description="Certified Junior Cybersecurity Associate - Entry-level cybersecurity fundamentals."
       >
         <span class="magic-link-icon"><Image src={cjcaCert} alt="" width={500} height={500} /></span>CJCA
-      </a>
-      <a
+      </HoverPreviewLink>
+      <HoverPreviewLink
         href="https://tryhackme.com/certification/junior-penetration-tester"
-        target="_blank"
-        rel="noopener"
-        class="magic-link"
+        title="PT1"
+        subtitle="TryHackMe"
+        description="Junior Penetration Tester - Foundational penetration testing skills certification."
       >
         <span class="magic-link-icon"><Image src={pt1Cert} alt="" width={500} height={500} /></span>PT1
-      </a>
+      </HoverPreviewLink>
     </p>
 
     <p>
