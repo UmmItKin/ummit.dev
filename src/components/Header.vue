@@ -73,7 +73,7 @@ function closeDrawer() {
   </header>
 
   <nav
-    sm:hidden fixed h-screen z-999 left-0 top-0 min-w-32vw max-w-50vw
+    sm:hidden fixed h-screen z-50 left-0 top-0 min-w-32vw max-w-50vw
     bg-main p-6 text-lg flex flex-col gap-5 transition-transform
     :class="isDrawerOpen ? 'translate-x-0' : 'translate-x--100%'"
   >
@@ -94,7 +94,7 @@ function closeDrawer() {
   <Transition name="fade">
     <div
       v-if="isDrawerOpen"
-      fixed inset-0 z-998 bg-black:50
+      fixed inset-0 z-49 bg-black:50
       @click="closeDrawer"
     />
   </Transition>

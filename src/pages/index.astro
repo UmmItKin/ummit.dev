@@ -32,43 +32,47 @@ const contributions = await fetchGitHubContributions(siteConfig.github)
     </h1>
     <p>HKer, InfoSec enthusiast, passionate about GNU/Linux, Web security, and open source.</p>
 
-    <p>
+    <p class="ctf-section">
       CTF Team
-      <HoverPreviewLink
-        href="https://ic3dt3a.org/"
-        title="ICEDTEA"
-        subtitle="CTF Team"
-        description="A Taiwan based CTF team that I am part of"
-      >
-        <span class="magic-link-icon"><Image src={icedteaIcon} alt="" width={500} height={500} /></span>ICEDTEA
-      </HoverPreviewLink>
-      <HoverPreviewLink
-        href="https://ctftime.org/team/405936/"
-        title="HeapUnderFlow"
-        subtitle="CTF Team"
-        description="My current Hong Kong based CTF team"
-      >
-        <span class="magic-link-icon"><Image src={heapunderflowIcon} alt="" width={500} height={500} /></span
-        >HeapUnderFlow
-      </HoverPreviewLink>
+      <span class="ctf-links">
+        <HoverPreviewLink
+          href="https://ic3dt3a.org/"
+          title="ICEDTEA"
+          subtitle="CTF Team"
+          description="A Taiwan based CTF team that I am part of"
+        >
+          <span class="magic-link-icon"><Image src={icedteaIcon} alt="" width={500} height={500} /></span>ICEDTEA
+        </HoverPreviewLink>
+        <HoverPreviewLink
+          href="https://ctftime.org/team/405936/"
+          title="HeapUnderFlow"
+          subtitle="CTF Team"
+          description="My current Hong Kong based CTF team"
+        >
+          <span class="magic-link-icon"><Image src={heapunderflowIcon} alt="" width={500} height={500} /></span
+          >HeapUnderFlow
+        </HoverPreviewLink>
+      </span>
       <br />
       Challenge Creator
-      <HoverPreviewLink
-        href="https://ctftime.org/event/2818/"
-        title="NHNC CTF"
-        subtitle="Challenge Creator"
-        description="I created challenges and helped with the design side for No Hack No CTF."
-      >
-        <span class="magic-link-icon"><Image src={nhncIcon} alt="" width={500} height={500} /></span>NHNC CTF
-      </HoverPreviewLink>
-      <HoverPreviewLink
-        href="https://thjcc.org"
-        title="THJCC CTF"
-        subtitle="Challenge Creator"
-        description="A Taiwai CTF event where I also contributed challenge-related work."
-      >
-        <span class="magic-link-icon"><Image src={thjccIcon} alt="" width={500} height={500} /></span>THJCC CTF
-      </HoverPreviewLink>
+      <span class="ctf-links">
+        <HoverPreviewLink
+          href="https://ctftime.org/event/2818/"
+          title="NHNC CTF"
+          subtitle="Challenge Creator"
+          description="I created challenges and helped with the design side for No Hack No CTF."
+        >
+          <span class="magic-link-icon"><Image src={nhncIcon} alt="" width={500} height={500} /></span>NHNC CTF
+        </HoverPreviewLink>
+        <HoverPreviewLink
+          href="https://thjcc.org"
+          title="THJCC CTF"
+          subtitle="Challenge Creator"
+          description="A Taiwai CTF event where I also contributed challenge-related work."
+        >
+          <span class="magic-link-icon"><Image src={thjccIcon} alt="" width={500} height={500} /></span>THJCC CTF
+        </HoverPreviewLink>
+      </span>
       <br />
       Hacking
       <HoverPreviewLink

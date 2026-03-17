@@ -31,7 +31,7 @@ const {
     <slot />
   </a>
 
-  <span class="preview-card pointer-events-none">
+  <span class="preview-card pointer-events-none" id="preview-card">
     <span class="preview-card-inner">
       <span class="preview-card-copy">
         {subtitle && <span class="preview-card-subtitle">{subtitle}</span>}
@@ -48,6 +48,26 @@ const {
     </span>
   </span>
 </span>
+
+<script>
+  // Detect touch devices more accurately
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+  // Note: This can return true on touch-screen laptops.
+
+  if (isTouchDevice) {
+    // Hide all preview cards on touch devices
+    const previewCards = document.querySelectorAll('.preview-card')
+    previewCards.forEach((card) => {
+      ;(card as HTMLElement).style.display = 'none'
+    })
+
+    // Remove hover interactions on touch devices
+    const previewGroups = document.querySelectorAll('.preview-link-group')
+    previewGroups.forEach((group) => {
+      group.classList.add('touch-device')
+    })
+  }
+</script>
 
 <style>
   .preview-link-group {
@@ -68,7 +88,7 @@ const {
       opacity 0.18s ease,
       transform 0.18s ease,
       visibility 0.18s ease;
-    z-index: 40;
+    z-index: 10;
   }
 
   .preview-link-group:hover .preview-card,
@@ -153,26 +173,14 @@ const {
     display: block;
   }
 
-  @media (max-width: 640px) {
-    .preview-card {
-      left: 50%;
-      max-width: min(16rem, calc(100vw - 2rem));
-      transform: translateX(-50%) translateY(0.35rem) scale(0.985);
-    }
+  /* Additional styles for touch devices */
+  .touch-device .preview-card {
+    display: none !important;
+  }
 
-    .preview-link-group:hover .preview-card,
-    .preview-link-group:focus-within .preview-card {
-      transform: translateX(-50%) translateY(0) scale(1);
-    }
-
-    .preview-card-inner:has(.preview-card-image) {
-      grid-template-columns: minmax(0, 1fr) 4rem;
-    }
-
-    .preview-card-image {
-      width: 4rem;
-      height: 4rem;
-    }
+  .touch-device:hover .preview-card,
+  .touch-device:focus-within .preview-card {
+    display: none !important;
   }
 </style>
 
