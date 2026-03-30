@@ -7,7 +7,7 @@ import { html } from 'satori-html'
 import sharp from 'sharp'
 import siteConfig from '@/site-config'
 
-const BIO = 'HKer, InfoSec enthusiast, passionate about GNU/Linux, Web security, and open source.'
+const BIO = 'HKer, InfoSec enthusiast currently into Computer Forensics, Wireless Attack, Web Security, GNU/Linux, and Open source. Also hunting CVEs :D'
 
 export async function generateOgImage(section: string, title: string) {
   const fontPath = join(process.cwd(), 'public', 'fonts')
