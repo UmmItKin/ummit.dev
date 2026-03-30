@@ -214,7 +214,7 @@ const contributions = await fetchGitHubContributions(siteConfig.github)
         <>
           <section class="mt-8">
             <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
-              <i class="i-ri-github-line" />
+              <i class="i-simple-icons-git" />
               Contributions
             </h2>
             <GitHubGraph client:visible days={contributions.days} total={contributions.total} />
