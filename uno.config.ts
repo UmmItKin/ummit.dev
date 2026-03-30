@@ -124,5 +124,7 @@ export default defineConfig({
     'i-simple-icons-wireshark',
     'i-simple-icons-kalilinux',
     'i-simple-icons-metasploit',
+
+    'i-ri-sketching-line',
   ],
 })

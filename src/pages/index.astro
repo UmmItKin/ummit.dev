@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import GitHubGraph from '@/components/GitHubGraph.vue'
+import SkillRadar from '@/components/SkillRadar.vue'
 import HoverPreviewLink from '@/components/HoverPreviewLink.astro'
 import Sponsor from '@/components/Sponsor.astro'
 import siteConfig from '@/site-config'
@@ -223,6 +224,17 @@ const contributions = await fetchGitHubContributions(siteConfig.github)
         </>
       )
     }
+
+    <section class="mt-8">
+      <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
+        <i class="i-ri-trophy-line"></i>
+        Skills
+      </h2>
+      <p class="text-sm opacity-70 mb-4">This is my skill :D</p>
+      <SkillRadar client:visible />
+    </section>
+
+    <hr class="hr-line" />
 
     <section class="mt-8">
       <h2 class="text-xl font-semibold mb-6">Timeline</h2>
