@@ -8,7 +8,7 @@ export const siteConfig = {
     src: '/links.webp',
     alt: 'Website Main Image',
   },
-  email: 'ayo@ummit.dev',
+  email: 'root@ummit.dev',
   email_two: 'job@lamkin.me',
   socialLinks: [
     {
