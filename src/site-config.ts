@@ -9,7 +9,7 @@ export const siteConfig = {
     alt: 'Website Main Image',
   },
   email: 'root@ummit.dev',
-  email_two: 'job@lamkin.me',
+  email_two: 'job.inquiry@lamkin.me',
   socialLinks: [
     {
       text: 'GitHub',
