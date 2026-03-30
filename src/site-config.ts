@@ -15,7 +15,7 @@ export const siteConfig = {
       text: 'GitHub',
       href: 'https://github.com/UmmItKin',
       icon: 'i-simple-icons-github',
-      header: 'i-simple-icons-git',
+      header: 'i-ri-github-line',
     },
     {
       text: 'Twitter',
