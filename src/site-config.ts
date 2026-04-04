@@ -76,6 +76,10 @@ export const siteConfig = {
         href: '/research',
       },
       {
+        text: 'Paper',
+        href: '/paper',
+      },
+      {
         text: 'Talks',
         href: '/talks',
       },

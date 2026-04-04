@@ -52,5 +52,6 @@ const blog = defineCollection({ schema: postSchema })
 const talks = defineCollection({ schema: postSchema })
 const ctf = defineCollection({ schema: postSchema })
 const research = defineCollection({ schema: postSchema })
+const paper = defineCollection({ schema: postSchema })
 
-export const collections = { pages, blog, talks, ctf, research }
+export const collections = { pages, blog, talks, ctf, research, paper }
