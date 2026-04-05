@@ -2,7 +2,7 @@
 title: "Cracking Wifi Password with Aircrack-NG"
 description: Educational guide to WiFi security testing using Aircrack-ng suite for monitoring, capturing, and analyzing wireless networks.
 date: 2024-07-06T22:06:14+0800
-lastmod: 2026-04-05T02:55:48+0800
+lastmod: 2026-04-06T00:02:50+0800
 tag: "WiFi Security, Aircrack-NG"
 lang: en-US
 ---
@@ -21,7 +21,9 @@ Only crack your own network or a network where the owner has given you explicit 
 
 To get started with Aircrack-ng, you'll need a compatible wireless network adapter that supports **monitor mode** and **packet injection**.
 
-> Not sure which WiFi adapter to buy? Check out my guide: [How to Choose a WiFi Adapter for WiFi Pentesting in 2026](/blog/infosec/wifi-adapter-guide-2026) — it covers chipsets, drivers, and where to buy.
+Not sure which WiFi adapter to buy? Check out my guide! it covers chipsets, drivers, and where to buy.
+
+>[Stop Buying the Wrong WiFi Adapter !!! The Ultimate 2026 WiFi Pentesting Hardware Guide, Known as Kali, BlackArch Compatible](/posts/infosec/wifi-adapter-guide-2026)
 
 ## Installing Aircrack-NG
 
