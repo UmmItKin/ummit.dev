@@ -21,38 +21,7 @@ Only crack your own network or a network where the owner has given you explicit 
 
 To get started with Aircrack-ng, you'll need a compatible wireless network adapter that supports **monitor mode** and **packet injection**.
 
-### Choosing the Right Adapter — Look at the Chipset
-
-When buying a WiFi adapter for penetration testing, **the chipset matters more than the brand or model**. The chipset determines whether your adapter will work out of the box with Linux and support monitor mode and packet injection.
-
-Some highly recommended chipsets include:
-
-- **RTL8812AU** — Dual-band (2.4GHz + 5GHz), widely supported, great for most use cases
-- **MT76** series (MediaTek) — Good Linux kernel support
-- **Atheros AR9271** — Classic choice, excellent compatibility
-
-For a comprehensive list of compatible adapters and detailed driver information, check out [morrownr's USB-WiFi repository](https://github.com/morrownr/USB-WiFi) — it's one of the most detailed resources available.
-
-### Recommended Adapters
-
-- [zSecurity Dual-Band USB Wireless Adapter (RTL8812AU)](https://zsecurity.org/product/zsecurity-dual-band-usb-wireless-adapter-2-4-5-ghz-realtek-rtl8812au/)
-- [ALFA Kali Linux Compatible Adapters](https://www.alfa.com.tw/collections/kali-linux-compatible?view=all) — ALFA is my highly recommended place to buy Kali-compatible WiFi adapters.
-
-### Checking Driver Support
-
-Before purchasing, you can check if your Linux kernel already has the driver for a given chipset. For example, to check if the `mt76` driver is available:
-
-```bash
-modprobe -nv mt76
-```
-
-If the driver is available, you'll see output like:
-
-```
-insmod /lib/modules/6.19.10-zen1-1-zen/kernel/drivers/net/wireless/mediatek/mt76/mt76.ko.zst
-```
-
-This means the kernel can load the driver — no extra installation needed.
+> Not sure which WiFi adapter to buy? Check out my guide: [How to Choose a WiFi Adapter for WiFi Pentesting in 2026](/blog/infosec/wifi-adapter-guide-2026) — it covers chipsets, drivers, and where to buy.
 
 ## Installing Aircrack-NG
 
