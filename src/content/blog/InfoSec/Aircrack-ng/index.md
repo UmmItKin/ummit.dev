@@ -108,6 +108,12 @@ sudo airodump-ng <your-interface-mon>
 # eg: sudo airodump-ng wlan0mon
 ```
 
+If you want to refresh and quickly view nearby WiFi networks from NetworkManager, you can also run:
+
+```shell
+nmcli device wifi list --rescan yes
+```
+
 ## Creating Capture File
 
 Capture data from the target network. This network is the WiFi you want to crack the password for.
