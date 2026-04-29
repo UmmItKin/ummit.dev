@@ -59,7 +59,7 @@ function dismiss() {
           <div class="flex items-center gap-3 mb-5 text-red-500">
             <div class="i-ri-error-warning-line text-3xl" />
             <h2 class="text-xl font-bold tracking-wide m-0">
-              Automated Notice
+              Hidden Flag - Automated Notice
             </h2>
           </div>
 
