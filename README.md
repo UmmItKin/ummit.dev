@@ -22,9 +22,11 @@ All the packages are using the latest versions and are upgraded by me regularly.
 
 Extensions on top of the original Vitesse theme:
 
+- **Astro 6** with the new content layer API
 - **Multiple content collections** — `blog`, `ctf`, `talks`, `research`, `paper`
 - **Auto OG image generation** — dynamic Open Graph images per page and per post (Satori)
 - **Per-post `lastmod`** support
+- **Self-hosted fonts** — Inter and DM Mono via `@fontsource` (no Google Fonts requests)
 - **Friends page** — showcase your connections
 - **Gear page** — share your setup and tools
 - **Links page** — curated collection of useful links
@@ -32,7 +34,7 @@ Extensions on top of the original Vitesse theme:
 
 ## Getting Started
 
-Requires [Bun](https://bun.sh/) (npm/yarn not supported here).
+Requires [Bun](https://bun.sh/) and Node 22+ (npm/yarn not supported here).
 
 ```bash
 bun install      # install dependencies
