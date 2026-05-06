@@ -26,7 +26,7 @@ This method involves going into the game settings and enabling the developer con
 
 4. **Enable Developer Console**: Look for the "Enable Developer Console (~)" option. It's usually near the bottom of the list. Click the checkbox to enable it.
 
-![](https://img.gurugamer.com/resize/740x-/2019/07/12/d0iuv-d53f.png)
+![Enable Developer Console option in CS:GO Game settings](https://img.gurugamer.com/resize/740x-/2019/07/12/d0iuv-d53f.png)
 
 5. **Apply Settings**: After enabling the developer console, make sure to click the "Apply" or "OK" button to save your changes.
 

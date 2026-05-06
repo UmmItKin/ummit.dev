@@ -24,7 +24,7 @@ irm https://massgrave.dev/get | iex
 
 3. You will see the option menu on your terminal screen, type `2` for KMS38 / Windows, that will active your windows until
 
-![](https://massgrave.dev/MAS_AIO.png)
+![MAS interactive menu showing activation options](https://massgrave.dev/MAS_AIO.png)
 
 4. Wait for the active to finish, it will show Press any key to Go back.
 
@@ -49,7 +49,7 @@ irm https://massgrave.dev/get | iex
 
 >Notes: After 180 days you will need to do active again.
 
-![](https://massgrave.dev/MAS_AIO.png)
+![MAS interactive menu showing Office activation option](https://massgrave.dev/MAS_AIO.png)
 
 5. That's all, You Office has been Successfully activated!
 

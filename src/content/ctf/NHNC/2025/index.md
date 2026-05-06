@@ -9,15 +9,15 @@ lang: en-US
 
 >WriteUP was updated because my personal GitHub username was changed, and update the heading :)
 
-# Introduction
+## Introduction
 
 This is my complete writeup for the No Hack No CTF 2025 challenges, focusing on the Crackme and gitgit challenges that I created.
 
 In this writeup, I'll explain how these challenges work and how to solve them.
 
-# gitgit Challenge
+## gitgit Challenge
 
-## Challenge Overview
+### Challenge Overview
 
 ![GJ](./images/2025-07-08-212614_hyprshot.png)
 
@@ -25,7 +25,7 @@ The challenge provides a git repository at: `https://github.com/UmmItKin/NHNC-gi
 
 At first glance, you might assume this is a straightforward git challenge where you simply examine the codebase. However, it's far more complex than that. I designed this challenge to mirror real-world security incidents where developers accidentally leak sensitive files (like .env files) and attempt to cover their tracks using `git delete` and `git push --force`.
 
-### Repository Investigation
+#### Repository Investigation
 
 You should start by approaching this like any normal developer would. First, clone the repository and examine its contents:
 
@@ -53,7 +53,7 @@ You will see something like: `NHNC{???????????????????????}`
 
 However, this is clearly not the real flag. This is just a placeholder.
 
-### Finding the Real Flag
+#### Finding the Real Flag
 
 The challenge description provides an important clue:
 
@@ -67,7 +67,7 @@ Can you leverage your technical skills to successfully recover these important c
 
 The keywords `confidential hidden` are the main hint. The flag isn't visible in the current codebase, which means you need to dig into the repository's history.
 
-### GitHub Activity API
+#### GitHub Activity API
 
 Here's how you can find the flag in under 30 seconds using the GitHub Activity API:
 
@@ -87,11 +87,11 @@ Navigating through the historical, you will find the one containing the sensitiv
 
 ![Flag Found](./images/gitgit/4.png)
 
-#### Flag
+##### Flag
 
 >NHNC{Don7_tH!NK_foRCe_PU$H3d_CAn_HElp_YoU_hiD3_mE$s@6e!!!!-_0}
 
-## Why This challenge Created
+### Why This challenge Created
 
 Can you truly hide sensitive information with a simple force push?
 
@@ -115,15 +115,15 @@ If that guy want to fuck you.
 
 ---
 
-# Crackme Challenge
+## Crackme Challenge
 
 ![GJ](./images/2025-07-08-213014_hyprshot.png)
 
-## Challenge Overview
+### Challenge Overview
 
 This challenge involves Arch Linux and digital forensics. You are provided with a `qcow2` virtual machine file that's been compressed into a tar.xz archive.
 
-## Initial Setup
+### Initial Setup
 
 First, you should extract the archive:
 
@@ -150,13 +150,13 @@ qemu-system-x86_64 \
   -boot c
 ```
 
-## Password Reset
+### Password Reset
 
 When you boot the virtual machine, you'll discover it's running Arch Linux. However, there's a problem:
 
 >**You don't have the password to log in**.
 
-### GRUB Boot Parameter Modification
+#### GRUB Boot Parameter Modification
 
 You need to bypass the login requirement using GRUB. By rebooting the machine and when the GRUB menu appears, press `e` to edit the boot entry.
 
@@ -190,7 +190,7 @@ Finally, you can log in with the password you just set.
 
 ![Root Shell Access](./images/Crackme/root-shell.png)
 
-## Analysis File
+### Analysis File
 
 But we're not done yet! You should take a look at the files first with `ls -la`. You'll notice a file called `.photorec.sig` and `README.md`.
 
@@ -198,7 +198,7 @@ But we're not done yet! You should take a look at the files first with `ls -la`.
 
 If you don't know what photorec is, a quick search will show you it's a file recovery tool, and it's also related to the README.md message.
 
-### LUKS Partition Confirmed
+#### LUKS Partition Confirmed
 
 Now we can do a simple check of the machine with `cat /etc/fstab` and `lsblk`.
 
@@ -216,7 +216,7 @@ cryptsetup isLuks -v /dev/vda3
 
 Yes! This is a LUKS partition.
 
-### PhotoRec Recovery
+#### PhotoRec Recovery
 
 Now we can confirm the information in README.md and the `photorec` file are definitely related. You should try recovery by starting to install the `testdisk` package and using `photorec` to do the recovery.
 
@@ -224,7 +224,7 @@ According to the information you have, you can set the file to only recover `.ke
 
 ![Photorec Interface](./images/Crackme/photorec1.png)
 
-#### Custom Extension
+##### Custom Extension
 
 Now you should use `File Opt`. By default, photorec uses all extensions, but based on the information you have, you only need to use custom signatures.
 
@@ -236,7 +236,7 @@ You should select only `custom Own custom signatures` by pressing `s` to disable
 
 Go back to the menu by pressing `q`.
 
-#### Searching file
+##### Searching file
 
 Now you can start searching for deleted files by pressing search and selecting `[Whole disk]`.
 
@@ -252,7 +252,7 @@ You'll see a few custom files being recovered. Let you check these files. Quit t
 
 ![Recovered Files](./images/Crackme/photorec6.png)
 
-### Filetype confirmed
+#### Filetype confirmed
 
 You'll got fews files here. Let's confirm if these are the NHNC keys you need by checking the header with this command:
 
@@ -269,7 +269,7 @@ Perfect! The first one you can see contains `NHNCKEY2025____`, which matches the
 
 However, there's one problem! the file is too big and oversized. looking back at the README.md message, you can see it says the keyfile size is `4111`!
 
-#### Triming filesize
+##### Triming filesize
 
 You can trim the file to the correct size:
 
@@ -286,13 +286,13 @@ cryptsetup -v open /dev/vda3 NHNCluks --key-file keyfile.key
 cd ~ && mount /dev/mapper/NHNCluks first_one
 ```
 
-##### The hints
+###### The hints
 
 By the way, you can see there are already two empty directories, that's actually a hint that you need to mount two partitions to capture the flag.
 
 ![mount1](./images/Crackme/mount1.png)
 
-### LUKS Image
+#### LUKS Image
 
 Now let's see what files are in the first_one directory:
 
@@ -311,13 +311,13 @@ cryptsetup -v isLuks secret.img
 
 Yes! The command confirms this is a LUKS image. Now you just need to use the wordlist to bruteforce this image to find the password.
 
-#### Filesize bloated
+##### Filesize bloated
 
 Also, the keyfiles were taking up too much space. You should delete all the unused key files from the directory since they're taking up a lot of filesystem space and might affect your ability to download things.
 
 You can use a tool from the Kali repository called `bruteforce-luks`:
 
-### LUKS Bruteforcing
+#### LUKS Bruteforcing
 
 Now, You getting the wordlists, and all you need to do is via this wordlist to bruteforcing the image to get the password, for the tool of bruteforcing an Image, you can use `bruteforce-luks` from Kali or install it manually.
 
@@ -424,7 +424,7 @@ Or you can set up this machine to be accessible via SSH to login and copy the fl
 
 ![Final Flag](./images/Crackme/final-flag.png)
 
-## Final Thoughts
+### Final Thoughts
 
 That's all for my challenges! Thanks everyone for playing my questions! :D
 
@@ -432,6 +432,6 @@ Hopefully you learned something or found it fun and helpful.
 
 Did you learn a lot about recovery, Linux, and GitHub/Git usage? :D
 
-# Thanks !!!!
+## Thanks !!!!
 
 Thank you to all the players who played my question. I hope you learned something new! :D

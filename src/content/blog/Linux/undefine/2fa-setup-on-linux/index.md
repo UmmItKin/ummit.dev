@@ -6,11 +6,11 @@ tag: "Linux, 2FA, Security"
 lang: en-US
 ---
 
-# Introduction
+## Introduction
 
 Actually, Just past of the day, via my school, I knew there is a way to setup 2FA, then i started to learn how to set up. And now, i world like to share with you guys.
 
-# Prerequisites
+## Prerequisites
 
 Before you begin, make sure you have the following:
 
@@ -19,7 +19,7 @@ Before you begin, make sure you have the following:
 - Basic knowledge of Linux commands is assumed.
 - Do not use the root account for this setup. Using the root account might cause login issues after enabling 2FA.
 
-## Step 1: Install the 2FA Package
+### Step 1: Install the 2FA Package
 
 To begin, you need to install the `libpam-google-authenticator` package on your server, which will enable 2FA functionality.
 
@@ -30,7 +30,7 @@ sudo apt update
 sudo apt install libpam-google-authenticator
 ```
 
-## Step 2: Configure the 2FA Package
+### Step 2: Configure the 2FA Package
 
 Next, configure the Google Authenticator package by running:
 
@@ -42,7 +42,7 @@ The system will prompt you with a few questions. You can generally respond with 
 
 Once completed, you'll see a **QR code** and a **secret key**.
 
-## Step 3: Scan the QR Code or Enter the Secret Key
+### Step 3: Scan the QR Code or Enter the Secret Key
 
 Now, open your 2FA app (Google Authenticator, Authy, etc.), and either:
 
@@ -53,7 +53,7 @@ Your app will start generating time-based 6-digit codes.
 
 > **Tip:** If you’re using a different 2FA app, the process will be the same. Just make sure to enter the secret key manually if scanning the QR code isn't an option.
 
-## Step 4: Configure SSH for 2FA
+### Step 4: Configure SSH for 2FA
 
 Next, you need to configure SSH to use 2FA. Edit the SSH daemon's configuration file:
 
@@ -72,7 +72,7 @@ These settings will enable keyboard-interactive authentication (which includes 2
 
 After saving the changes, close the file.
 
-## Step 5: Restart SSH Service
+### Step 5: Restart SSH Service
 
 To apply the changes, restart the SSH service:
 
@@ -80,7 +80,7 @@ To apply the changes, restart the SSH service:
 sudo systemctl restart ssh
 ```
 
-## Step 6: Configure PAM for 2FA
+### Step 6: Configure PAM for 2FA
 
 PAM (Pluggable Authentication Modules) must also be configured to use Google Authenticator. Edit the PAM configuration for SSH:
 
@@ -101,7 +101,7 @@ Where you place this line in the file matters:
 
 Choose the sequence you prefer, save the file, and exit.
 
-## Step 7: Restart SSH Again
+### Step 7: Restart SSH Again
 
 To ensure all changes take effect, restart the SSH service one more time:
 
@@ -109,7 +109,7 @@ To ensure all changes take effect, restart the SSH service one more time:
 sudo systemctl restart ssh
 ```
 
-## Step 8: Test 2FA
+### Step 8: Test 2FA
 
 It’s time to test the 2FA setup. Try SSHing into your server:
 

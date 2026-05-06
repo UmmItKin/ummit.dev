@@ -7,23 +7,23 @@ tag: "CTF, HKCERT CTF, Web Exploitation"
 lang: en-US
 ---
 
-# Introduction
+## Introduction
 
 This page is for my HKCERT CTF 2025 writeups. Right now I only have time to write up `renderme` first, and I will add the other challenges later when I cleanup my PC file ... XDD
 
 ~~呢條友好懶,完左咁耐都未寫返篇 writeup 出黎~~
 
-# renderme
+## renderme
 
 `renderme` is a very fun Web Exploitation challenge because it is not just one single trick. You need to first get code execution, then calm down and enumerate the machine properly, and only then do the privilege escalation.
 
-## Challenge Overview
+### Challenge Overview
 
 The goal of this challenge was straightforward: get RCE on the target, escalate privileges, and read the root flag.
 
 After looking at the application behavior for a bit, it was pretty clear that user-controlled input was reaching a file inclusion sink. Once I saw that, my first thought was immediately `php://filter`, because this kind of bug often turns into LFI-to-RCE if the backend uses `include` or `require` carelessly.
 
-## Initial Access - PHP Filter Chain RCE
+### Initial Access - PHP Filter Chain RCE
 
 The main bug here was that we could control data that eventually ended up inside a PHP file inclusion path. Instead of going down the usual path like log poisoning or upload tricks, I decided to use the PHP filter chain technique.
 
@@ -171,7 +171,7 @@ if __name__ == '__main__':
     main()
 ```
 
-## Shell Access and Enumeration
+### Shell Access and Enumeration
 
 After the payload landed properly, I got code execution as `www-data`.
 
@@ -184,11 +184,11 @@ Basic enumeration showed:
 
 That last point matters a lot. A kernel version might look old and juicy at first glance, but once Docker or some containerized environment gets involved, a lot of public kernel privesc ideas become a waste of time.
 
-## Privilege Escalation
+### Privilege Escalation
 
 At this stage I just did the usual thing, enumerate first, then decide what looks realistic.
 
-### Failed Attempts
+#### Failed Attempts
 
 Since the host kernel looked relatively old, I did try a few known kernel privesc directions first. None of them worked.
 
@@ -200,7 +200,7 @@ Looking back, that was not very surprising:
 
 I also ran the normal enumeration flow to check writable paths, services, sudo rules, and other common misconfigurations.
 
-### PrivEsc - SUID `choom`
+#### PrivEsc - SUID `choom`
 
 The actual breakthrough came from enumerating SUID binaries:
 
@@ -230,7 +230,7 @@ That was enough to read the root flag and finish the challenge cleanly.
 flag{T4x3EMg2KD6J3VfCPvOiDqF17ntodEsU}
 ```
 
-## Final Thoughts
+### Final Thoughts
 
 What I liked about this challenge is that it did not stop at one clever web trick. It forced a full chain:
 
@@ -244,7 +244,7 @@ The main lesson here is the same as always, after getting a shell, do not rush b
 
 我幾鐘意呢類 RCE 類別既, 因為我 Prefer HackTheBox/TryHackMe 類既 hack 機拎 shell 題目 ... :)
 
-## Reference
+### Reference
 
 - [GTFOBins - choom](https://gtfobins.github.io/gtfobins/choom/#suid)
 - [Synacktiv - PHP filters chain](https://www.synacktiv.com/en/publications/php-filters-chain-what-is-it-and-how-to-use-it)

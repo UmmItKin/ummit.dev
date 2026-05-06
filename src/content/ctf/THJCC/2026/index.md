@@ -8,7 +8,7 @@ lang: en-US
 draft: false
 ---
 
-# Introduction
+## Introduction
 
 This is the full write-up of the challenge for 0422, r2s, Simple Hack and I use arch btw. This involves the topic:
 
@@ -30,13 +30,13 @@ This is the full write-up of the challenge for 0422, r2s, Simple Hack and I use 
 | Simple Hack | Web | Insane | File Upload restrictions |
 | I use arch btw | Forensics | Easy | Steganography and hashing |
 
-## Source code
+### Source code
 
 For the source code of the challenge, please visit my GitHub.
 
 >https://github.com/UmmItKin/THJCC-Chals
 
-# I use arch btw
+## I use arch btw
 
 This is a multi-stage challenge involving steganography, file extraction, hash cracking, and password-protected document extraction. Here's the detailed step-by-step approach:
 
@@ -46,7 +46,7 @@ This is a multi-stage challenge involving steganography, file extraction, hash c
 
 ![CTFd](./images/i%20use%20arch%20btw/CTFd.png)
 
-## File Analysis
+### File Analysis
 
 Before diving into extraction, let's understand what we're working with, using `file` command:
 
@@ -87,7 +87,7 @@ biux
 
 Take a look at the end of this file. We can see we have a `readme.xlsx` file, which confirms there is a hidden file inside this image.
 
-### Extract hidden files
+#### Extract hidden files
 
 Binwalk is a forensics tool used to search binary images for embedded files and executable code. JPEG files can contain hidden data in their metadata or appended after the image data.
 
@@ -97,7 +97,7 @@ Binwalk is a forensics tool used to search binary images for embedded files and 
 binwalk -e "THJCC_I use arch btw.jpg"
 ```
 
-### XLSX File
+#### XLSX File
 
 Navigate to the extraction directory and examine what was extracted:
 
@@ -105,7 +105,7 @@ You should find one file!!! The file `readme.xlsx`. xlsx is a Microsoft Excel fi
 
 ![alt text](./images/i%20use%20arch%20btw/binwalk/binwalk-extracted.png)
 
-#### That file are encrypted
+##### That file are encrypted
 
 However, looking at the file command output, you can see that this file is encrypted:
 
@@ -115,11 +115,11 @@ readme.xlsx: CDFV2 Encrypted
 
 ![alt text](./images/i%20use%20arch%20btw/password-is-protected.png)
 
-## Hashed Value
+### Hashed Value
 
 Our mission at this point is to extract the hash from this file type and crack it. One of the most popular tools is `john`, a password cracker. You can use `office2john`, one of John's utilities, to extract the hash value!
 
-### Extract Password Hash from XLSX
+#### Extract Password Hash from XLSX
 
 The `office2john` tool (from the John the Ripper suite) converts Microsoft Office document hashes into a format that password cracking tools like hashcat can understand:
 
@@ -128,7 +128,7 @@ The `office2john` tool (from the John the Ripper suite) converts Microsoft Offic
 readme.xlsx:$office$*2007*20*128*16*8c78445e54b41f53ff8696023f465f38*17f96a28c8b4501b5a054b1ff55c5f13*2ff3b41a3016bd9284011bfd287343ab1e48e56e
 ```
 
-### Wordlist Finding
+#### Wordlist Finding
 
 Before we perform hash cracking, you need to find a wordlist.
 
@@ -142,7 +142,7 @@ For Blackarch users, install it via the command below. If not, you can clone the
 sudo pacman blackarch/seclists
 ```
 
-### Cracking with Hashcat
+#### Cracking with Hashcat
 
 Now we perform a dictionary attack using hashcat:
 
@@ -172,7 +172,7 @@ Password is `rush2112` Now you can open it.
 
 ![flag](./images/i%20use%20arch%20btw/flag.png)
 
-#### Flag
+##### Flag
 
 This is the flag for this challenge:
 
@@ -180,7 +180,7 @@ This is the flag for this challenge:
 
 ---
 
-# 0422
+## 0422
 
 **Challenge Description:**
 
@@ -194,7 +194,7 @@ This is a web exploitation challenge involving cookie manipulation and access co
 
 ![CTFd](./images/0422/CTFd.png)
 
-## Testing the Application
+### Testing the Application
 
 Start by visiting the application dashboard. You'll be presented with a login panel:
 
@@ -202,7 +202,7 @@ Start by visiting the application dashboard. You'll be presented with a login pa
 
 Attempt to login with any username and password combination. The credentials themselves don't matter for this challenge. What matters is what happens after authentication.
 
-### Login Attempt
+#### Login Attempt
 
 After submitting the login form with test credentials, you'll receive an error response:
 
@@ -210,7 +210,7 @@ After submitting the login form with test credentials, you'll receive an error r
 
 This is expected. The server rejects the invalid credentials, but the important thing is what the server sends back in the response headers.
 
-### Opening Developer Tools
+#### Opening Developer Tools
 
 Open Developer Tools with these steps:
 
@@ -219,7 +219,7 @@ Open Developer Tools with these steps:
 - In the left sidebar, click "Cookies"
 - Select the domain: `https://chal.thjcc.org:3000`
 
-### Identifying the Vulnerability
+#### Identifying the Vulnerability
 
 Let try one more time to send the login, and you'll see important cookie values:
 
@@ -230,13 +230,13 @@ Cookie: PHPSESSID=6cfc69646050e9e5a4f613e6cbacac06; role=guest; username=wae
 
 Notice the `role=guest` cookie. This is the vulnerability!
 
-### Modifying the Role Cookie
+#### Modifying the Role Cookie
 
 Find the cookie named `role` with the current value `guest`. Double-click on the `role` cookie's value field and change it from `guest` to `admin`:
 
 ![F12](./images/0422/f12.png)
 
-### End this Game !!
+#### End this Game !!
 
 Now Refresh the page. The server will now trust the modified cookie and grant you admin privileges.
 
@@ -248,7 +248,7 @@ The flag displayed on the admin dashboard is:
 
 ---
 
-# r2s
+## r2s
 
 **Challenge Description:**
 
@@ -264,26 +264,26 @@ This challenge involves a simple penetration testing methodology. All you need t
 
 ![alt text](./images/r2s/CTFd.png)
 
-## CTFd token
+### CTFd token
 
 Since we're running an instance of this challenge, each user needs to generate a token to solve it. Go to the CTF website profile page at `https://ctf2026.thjcc.org/settings`, generate a token, and enter it on the r2s instance page.
 
 ![Instance](./images/r2s/instance/Instance.png)
 ![Instance Created](./images/r2s/instance/instance-created.png)
 
-## Testing the Application
+### Testing the Application
 
 Looking at the page, we see a login panel:
 
 ![Visit](./images/r2s/dashboard/visit.png)
 
-### First try to login
+#### First try to login
 
 Let's randomly enter something. As expected, it's not that easy. We receive an `Invalid username or password` message:
 
 ![Login](./images/r2s/dashboard/try-to-login.png)
 
-### Confirming Next.js
+#### Confirming Next.js
 
 Let's use F12 to check. Every website has its unique code signatures, and this one is no exception:
 
@@ -295,7 +295,7 @@ src="/_next/static/chunks/webpack-1b7be808ceb885ba.js"
 
 We can clearly see this is using Next.js. However, the version is still uncertain. Let's perform deep footprinting to identify it:
 
-### Confirming Next.js Version
+#### Confirming Next.js Version
 
 For Next.js, we can use the following method to manually determine the version. You can search the keyword `version` in each `.js` file:
 
@@ -313,7 +313,7 @@ We also found `var cc=i.version;if("19.0.0-rc-65a56d0e-20241020`
 
 However, regarding this version number... If you search for Next.js version releases online, there's no version 19. This is because Next.js is React-based. The `19.0.0-rc` is actually the React version, not the Next.js version.
 
-#### Automatically Detect Version with cURL
+##### Automatically Detect Version with cURL
 
 Here's a script you can use to automatically detect React and Next.js versions:
 
@@ -322,7 +322,7 @@ CHAL="http://chal.thjcc.org:10454"; \
 curl -sL "$CHAL" | grep -oP '/_next/static/[^"]+\.js' | xargs -I {} curl -sL "${CHAL}{}" | grep -oP '(?<=version:")[^"]+' | sort -u
 ```
 
-### Finding the CVE
+#### Finding the CVE
 
 Now that we've confirmed the versions, let's search for an available exploit. Are there any applicable CVEs?
 
@@ -338,7 +338,7 @@ As mentioned in the article, this is an RCE vulnerability!
 
 >A critical vulnerability has been identified in the React Server Components (RSC) protocol. The issue is rated CVSS 10.0 and can allow remote code execution when processing attacker-controlled requests in unpatched environments.
 
-### Finding a Proof of Concept
+#### Finding a Proof of Concept
 
 Now let's find a working PoC. I'll use my own PoC:
 
@@ -360,7 +360,7 @@ Flag: `THJCC{r34ct_ssr_rc3_1s_d4ng3r0us}`
 
 ---
 
-# Simple Hack
+## Simple Hack
 
 **Challenge Description:**
 
@@ -376,13 +376,13 @@ Thus, this challenge demonstrates a critical file upload vulnerability combined 
 
 Solving this challenge requires a substantial level of expertise in web security and PHP manipulation. Let's proceed to understand how to bypass the restrictions.
 
-## Website Interface
+### Website Interface
 
 Start by looking at the interface of this website! we can see that it is a file upload service!
 
 ![Website Interface](./images/Simple%20Hack/Interface.png)
 
-## PHP Confirmed
+### PHP Confirmed
 
 Like the r2s challenge, we should start by identifying the service and technology stack:
 
@@ -406,7 +406,7 @@ Content-type: text/html; charset=UTF-8
 
 We can see the server is running **PHP 8.2**!! This is important information.
 
-### File upload Vulnerability
+#### File upload Vulnerability
 
 Now the picture becomes clear!
 
@@ -416,7 +416,7 @@ This is a classic **File Upload Vulnerability** scenario. If you're not familiar
 
 File Upload Vulnerabilities occur when a web application allows users to upload files without properly validating them. Attackers can exploit this to upload malicious files that can lead to remote code execution, defacement, or server compromise.
 
-#### Attempting Payloads
+##### Attempting Payloads
 
 Now we know it's a file upload challenge with PHP. Let's try basic exploitation techniques:
 
@@ -441,7 +441,7 @@ Using Function Calls
 
 Result: **BLOCKED** - Contains `file_get_contents` keyword and `()` parentheses
 
-#### Deducing the Blacklist Through Trial and Error
+##### Deducing the Blacklist Through Trial and Error
 
 By trying different payloads, we can deduce what's filtered:
 
@@ -456,7 +456,7 @@ By trying different payloads, we can deduce what's filtered:
 | `<?php "string" ?>` | BLOCKED | `"` and `'` characters |
 | `<?php include(...) ?>` | BLOCKED | `include` and `()` |
 
-## File Extensions
+### File Extensions
 
 Even if the content passes the blacklist, the file extension matters for execution. The server must map the extension to a PHP handler. Let's try different extensions:
 
@@ -487,7 +487,7 @@ B
 ```
 Result: **Accepted** - Bypassed
 
-### PHP extensions
+#### PHP extensions
 
 | Extension | Server Config | Result |
 |-----------|---------------|--------|
@@ -519,11 +519,11 @@ Case-insensitive extensions might bypass filters! The server might check lowerca
 
 Now test `.phtml` first (commonly enabled), then try case variations like `.pHtml` or `.PhTmL`.
 
-## Heredoc Bypassing
+### Heredoc Bypassing
 
 The key insight is realizing what's **NOT** blocked. Let's think about PHP syntax features that don't require parentheses or quotes:
 
-### The <<<
+#### The <<<
 
 The Heredoc syntax is a PHP feature for defining multi-line strings **without needing quotes or special characters**.
 
@@ -544,7 +544,7 @@ END;
 - Supports string concatenation at parse time
 - Not in the typical blacklist because it's less commonly exploited
 
-### Combining Heredoc with `require`
+#### Combining Heredoc with `require`
 
 The `require` keyword is special in PHP:
 
@@ -565,7 +565,7 @@ A;
 ?>
 ```
 
-## Building the Exploit
+### Building the Exploit
 
 Construct the file path using Heredoc
 
@@ -608,7 +608,7 @@ Now:
 
 Use `.phtml` extension instead of `.php` to potentially bypass file type checks:
 
-### Final Exploit
+#### Final Exploit
 
 ```
 Filename: exploit.phtml
@@ -624,7 +624,7 @@ B
 ?>
 ```
 
-## Upload the File
+### Upload the File
 
 1. Save the above code to a file
 2. Upload it to the platform with filename: `exploit.phtml`
@@ -632,7 +632,7 @@ B
 
 ![Successfully](./images/Simple%20Hack/Successfully.png)
 
-### Retrieve Flag
+#### Retrieve Flag
 
 Click on the uploaded file path to trigger execution:
 
@@ -646,7 +646,7 @@ Flag: `THJCC{w311_d0n3_y0u_byp4553d_7h3_b14ck1157_:D}`
 
 ![Flag](./images/Simple%20Hack/flag.png)
 
-## Overall
+### Overall
 
 Simple Hack was the challenge that took me the most time to complete. It is also the hardest one! XDDD
 
@@ -660,7 +660,7 @@ Finally, I want to thank my teammate, ICEDTEA. This experience of creating chall
 
 Because after that, knowing how to handle Instancer will make things easier. i can express the challenge creation even better! XDDD
 
-### Mining Bot ?????
+#### Mining Bot ?????
 
 Recently, before the CTF started, someone was working on my challenge. When I created a react2shell challenge, someone gained remote code execution (RCE) on our challenge machine and ran a program for crypto mining.
 

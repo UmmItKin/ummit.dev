@@ -8,7 +8,7 @@ lang: en-US
 draft: false
 ---
 
-# Paragraph 1 — Introduction
+## Paragraph 1 — Introduction
 
 Purpose:
 
@@ -16,15 +16,15 @@ Purpose:
 - Rewrite the chart title in one sentence.
 - Important: Do not copy the title word-for-word. Keep this one sentence short.
 
-## Point
+### Point
 
 - Never copy the title directly — rewrite it in your own words
 - Use verbs like shows / illustrates / presents
 - Use "broken down by" for categories
-- Use "in" for years/locations, "from ___ to ___" for time ranges
+- Use "in" for years/locations, "from ___to___" for time ranges
 - Keep it to one clean sentence
 
-## Chart type vocabulary:
+### Chart type vocabulary:
 
 - Bar chart
 - line graph
@@ -32,7 +32,7 @@ Purpose:
 - table
 - diagram
 
-## Key Term Usage
+### Key Term Usage
 
 | Term / Phrase | Use | Example |
 |---|---|---|
@@ -40,11 +40,11 @@ Purpose:
 | broken down by / by / across | Use to say categories | "broken down by age group" |
 | in / in the / for | Use to say time or place | "in 2022", "for the UK" |
 
-## The Formula
+### The Formula
 
 > [Chart type] + [verb] + [what] + [broken down by category] + [time period/location]
 
-## Starting the paragraph
+### Starting the paragraph
 
 - Overall, it is clear that...
 - Overall, it is evident that...
@@ -59,7 +59,7 @@ Example 1:
 Example 2:
 > The bar chart illustrates the proportion of household spending, broken down by food, rent, and leisure, in France, in 2018.
 
-## Word-Boosting Templates — Intro
+### Word-Boosting Templates — Intro
 
 These longer openers help you hit the word count while still paraphrasing:
 
@@ -70,13 +70,13 @@ These longer openers help you hit the word count while still paraphrasing:
 Example:
 > Looking at the bar chart, we can see how much people in France and the UK spent on five different items — cars, computers, books, perfume, and cameras — back in 2010.
 
-# Paragraph 2 — Overview (2–3 sentences)
+## Paragraph 2 — Overview (2–3 sentences)
 
 Purpose: Give the main trends, big picture, major point, most changedw. NO numbers.
 
 Important: No numbers here. Only big patterns and comparisons.
 
-## Describing trends
+### Describing trends
 
 - ... is significantly higher than...
 - ... is considerably lower than...
@@ -86,7 +86,7 @@ Important: No numbers here. Only big patterns and comparisons.
 - ... reaches its peak in...
 - ... hits its lowest point in...
 
-## Comparing two things
+### Comparing two things
 
 - ... whereas ...
 - ... while ...
@@ -94,13 +94,13 @@ Important: No numbers here. Only big patterns and comparisons.
 - However, ...
 - On the other hand, ...
 
-## Describing similarity
+### Describing similarity
 
 - Both ... and ... show/experience...
 - Similarly, ...
 - ... follows a similar pattern to ...
 
-## Useful adjectives (no numbers!)
+### Useful adjectives (no numbers!)
 
 - significant / considerable
 - slight / marginal
@@ -115,7 +115,7 @@ Template:
 Example:
 > Overall, it is clear that men exercise more than women across all age groups. Additionally, activity falls with age for both sexes.
 
-## Key Term Usage
+### Key Term Usage
 | Term / Phrase | Use | Example |
 |---|---|---|
 | Overall, it is clear that... | Start the overview | "Overall, it is clear that demand rose." |
@@ -123,7 +123,7 @@ Example:
 | The main trend is... | Say the biggest trend | "The main trend is a steady increase." |
 | remains relatively stable | Use for little change | "Prices remain relatively stable." |
 
-## Word-Boosting Templates — Overview
+### Word-Boosting Templates — Overview
 
 These phrases add natural length to your overview without using numbers:
 
@@ -136,13 +136,13 @@ These phrases add natural length to your overview without using numbers:
 Example:
 > The UK generally outspent France in four out of the five areas. Both countries put the biggest slice of their budget toward cars.
 
-### Example - Social Media Chart
+#### Example - Social Media Chart
 
 - Teenagers use much more than adults
 - Both groups use more on weekends
 - Teenagers nearly double adults
 
-# Paragraphs 3 & 4 — Details (3–4 sentences each)
+## Paragraphs 3 & 4 — Details (3–4 sentences each)
 
 Purpose: Give specific numbers, units, and comparisons. Use two small groups of data (group A and group B). Descibe the data
 
@@ -163,29 +163,29 @@ Example:
 > In the 18–30 group, men exercised 8 hours per week. This fell to 5 hours for 31–50 year olds and to 3 hours for those 51 and over.
 > By comparison, women aged 18–30 exercised 6 hours per week. This dropped to 4 hours for 31–50 year olds and to 2 hours for those 51 and over.
 
-## Key Term Table — Paragraphs 3 & 4
+### Key Term Table — Paragraphs 3 & 4
 
-### Introducing data
+#### Introducing data
 
 - In [year/month]...
 - At its peak...
 - At its lowest point...
 
-### Describing numbers
+#### Describing numbers
 
 - stood at... (e.g. "rainfall stood at 80mm")
 - accounted for...
 - represented...
 - reached approximately...
 
-### Showing change
+#### Showing change
 
 - increased / rose / climbed by [amount]
 - decreased / fell / dropped by [amount]
 - increased / rose to [number]
 - remained stable at...
 
-### Linking between points
+#### Linking between points
 
 - Meanwhile, ...
 - In contrast, ...
@@ -194,35 +194,35 @@ Example:
 - Subsequently, ...
 - Interestingly, ...
 
-## Word-Boosting Templates — Details
+### Word-Boosting Templates — Details
 
 These phrases add natural length and variety to your detail paragraphs:
 
-### Highlighting a gap
+#### Highlighting a gap
 
 - The most striking gap between the two [subjects] showed up in [item].
 - The biggest difference can be seen in [item], where [A] [verb] more than double that of [B].
 
-### Approximate values
+#### Approximate values
 
 - [Subject] hit nearly [amount] in this category.
 - [Subject] stayed around [amount].
 - ... coming in at [amount] compared to just [amount].
 - ... which was roughly / approximately / nearly [amount].
 
-### Exceptions & contrast
+#### Exceptions & contrast
 
 - Interestingly, [item] was the only area where [B] actually [verb] more than [A].
 - [Subject] clearly had a stronger preference for [item].
 
-### Wrapping up a paragraph
+#### Wrapping up a paragraph
 
 - To wrap things up, ...
 - Looking at the remaining categories, ...
 - As for the other items, ...
 - In terms of the remaining categories, ...
 
-### "while" to compare in one sentence
+#### "while" to compare in one sentence
 
 - [A] spent [amount] on [item], while [B] only spent [amount].
 - [A] [verb] [amount], while [B] followed closely at around [amount].
@@ -230,7 +230,7 @@ These phrases add natural length and variety to your detail paragraphs:
 Example:
 > Interestingly, computers were the only area where the French actually spent more than British consumers. French buyers hit nearly £380,000 in this category, while British consumers stayed around £350,000. The most striking gap between the two nations showed up in camera sales — British consumers spent more than double that of the French, coming in at £360,000 compared to just £150,000.
 
-## Key Term Usage — Paragraphs 3 & 4
+### Key Term Usage — Paragraphs 3 & 4
 
 | Term / Phrase | Use | Example |
 |---|---|---|
@@ -244,7 +244,7 @@ Example:
 | significantly higher/lower than | Big difference | "is significantly higher than..." |
 | stood at X / accounted for X / reached X | Number phrases | "stood at 30%, accounted for 20%" |
 
-## "by" vs "to"
+### "by" vs "to"
 
 **"by"** = the change amount
 > "Rainfall increased **by** 20mm" (it went up 20mm)
@@ -255,7 +255,7 @@ Example:
 Example:
 > "In January, London's rainfall stood at 80mm, which was significantly higher than Paris at 45mm. London's rainfall subsequently rose to its peak of 120mm in November, an increase of 40mm from October."
 
-### "by" vs "to" — Key Term Card
+#### "by" vs "to" — Key Term Card
 
 | | by | to |
 |---|---|---|
@@ -272,29 +272,29 @@ BY vs TO — Use in Details
 | to | Final value (end point) | "rose to 60%" |
 | both | Use both to show change and end | "rose by 10% to 60%" |
 
-## Full Detail Paragraph Key Terms
+### Full Detail Paragraph Key Terms
 
-### Introduce the number
+#### Introduce the number
 
 - stood at...
 - accounted for...
 - reached...
 - was recorded at...
 
-### Going UP
+#### Going UP
 
 - increased / rose / climbed / jumped by... to...
 
-### Going DOWN
+#### Going DOWN
 
 - decreased / fell / dropped / declined by... to...
 
-### Staying same
+#### Staying same
 
 - remained stable at...
 - stayed constant at...
 
-### Linking sentences
+#### Linking sentences
 
 - Meanwhile, ...
 - In contrast, ...
@@ -302,7 +302,7 @@ BY vs TO — Use in Details
 - Following this, ...
 - Subsequently, ...
 
-# Short Checklist
+## Short Checklist
 
 - Minimum 150 words (aim 160–170).
 - P1: paraphrase only (1 sentence).
@@ -312,9 +312,9 @@ BY vs TO — Use in Details
 - Use a mix of short and long sentences.
 - Leave 2–3 minutes to check numbers, units and grammar.
 
-# Full 4-paragraph Sample Answers
+## Full 4-paragraph Sample Answers
 
-## Sample 1 — Exercise by Age Group
+### Sample 1 — Exercise by Age Group
 
 Intro:
 > The bar chart shows the average hours of exercise per week by men and women in three age groups in the UK in 2022.
@@ -328,7 +328,7 @@ Details 1:
 Details 2:
 > By comparison, women aged 18–30 exercised 6 hours per week. This dropped to 4 hours for 31–50 year olds and to 2 hours for those 51 and over.
 
-## Sample 2 — France vs UK Consumer Spending
+### Sample 2 — France vs UK Consumer Spending
 
 Intro:
 > Looking at the bar chart, we can see how much people in France and the UK spent on five different items — cars, computers, books, perfume, and cameras — back in 2010.
@@ -342,7 +342,7 @@ Details 1:
 Details 2:
 > To wrap things up, even though the UK spent more on books, France clearly had a stronger preference for perfume. They spent £200,000 on it, while the UK only spent £140,000.
 
-## Sample 2
+### Sample 2
 
 Para 1
 

@@ -7,7 +7,7 @@ tag: "ASUS, Router, Networking"
 lang: en-US
 ---
 
-# Introduction
+## Introduction
 
 This tutorial will guide you through the process of how you can hard factory reset an ASUS router using Method 5.
 
@@ -40,10 +40,10 @@ After completing these steps, your ASUS router will automatically reboot. Once t
 
 After the hard factory reset successfully completes, you should see the have a wifi network named with `ASUS_<model>` and this is the default network name. You can connect to this network and access the router's settings page by entering the default username and password. The default username and password are usually `admin` for both fields.
 
-## Conclusion
+### Conclusion
 
 The process of hard factory resetting usually took around 5-10 minutes to complete. After the reset, you can reconfigure your network settings and set up your router as needed. This method is useful when you encounter issues with your ASUS router and need to restore it to its default settings.
 
-## References
+### References
 
 - [How to Hard Factory Reset ASUS Router? (Method 5) | ASUS SUPPORT](https://www.youtube.com/watch?v=RGONeydSKmo)
