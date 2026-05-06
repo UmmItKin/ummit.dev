@@ -16,7 +16,7 @@ function getHref(post: CollectionPosts) {
     return post.data.redirect
   }
   const basePath = post.collection === 'blog' ? '/posts' : `/${post.collection}`
-  return `${basePath}/${post.slug}`
+  return `${basePath}/${post.id}`
 }
 
 function getTarget(post: CollectionPosts) {

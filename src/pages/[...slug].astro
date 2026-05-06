@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content'
+import { getCollection, render } from 'astro:content'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import type { CollectionPages } from '@/types'
 
@@ -7,7 +7,7 @@ export async function getStaticPaths() {
   const pages = await getCollection('pages')
   return pages.map((page) => {
     return {
-      params: { slug: page.slug },
+      params: { slug: page.id },
       props: { page },
     }
   })
@@ -23,9 +23,9 @@ const generatedOgImages: Record<string, string> = {
   'posts-props': '/og/posts-props.png',
   todo: '/og/todo.png',
 }
-const ogImage = image ?? (generatedOgImages[page.slug] ? { src: generatedOgImages[page.slug], alt: title } : undefined)
+const ogImage = image ?? (generatedOgImages[page.id] ? { src: generatedOgImages[page.id], alt: title } : undefined)
 
-const { Content } = await page.render()
+const { Content } = await render(page)
 ---
 
 <BaseLayout title={title} description={description} image={ogImage}>

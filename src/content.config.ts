@@ -1,6 +1,13 @@
+import { glob } from 'astro/loaders'
 import { defineCollection, z } from 'astro:content'
 
+// Preserve original directory casing in IDs (default lowercases via github-slugger)
+function generateId({ entry }: { entry: string }) {
+  return entry.replace(/\.(md|mdx)$/, '').replace(/\/index$/, '')
+}
+
 const pages = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/pages', generateId }),
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
@@ -21,7 +28,7 @@ function dateTransform(val: string | number | Date) {
   })
 }
 
-// Shared schema for blog-like collections (blog, talks, ctf)
+// Shared schema for blog-like collections (blog, talks, ctf, research, paper)
 const postSchema = z.object({
   title: z.string(),
   description: z.string().optional(),
@@ -48,10 +55,17 @@ const postSchema = z.object({
   video: z.boolean().default(false).optional(),
 })
 
-const blog = defineCollection({ schema: postSchema })
-const talks = defineCollection({ schema: postSchema })
-const ctf = defineCollection({ schema: postSchema })
-const research = defineCollection({ schema: postSchema })
-const paper = defineCollection({ schema: postSchema })
+function postCollection(base: string) {
+  return defineCollection({
+    loader: glob({ pattern: '**/*.{md,mdx}', base, generateId }),
+    schema: postSchema,
+  })
+}
+
+const blog = postCollection('./src/content/blog')
+const talks = postCollection('./src/content/talks')
+const ctf = postCollection('./src/content/ctf')
+const research = postCollection('./src/content/research')
+const paper = postCollection('./src/content/paper')
 
 export const collections = { pages, blog, talks, ctf, research, paper }

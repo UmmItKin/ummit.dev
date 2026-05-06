@@ -7,6 +7,6 @@ export function sortPostsByDate(itemA: CollectionPosts, itemB: CollectionPosts) 
 
 export async function getPosts(path?: string, collection: PostKey = 'blog') {
   return (await getCollection(collection, (post) => {
-    return (import.meta.env.PROD ? post.data.draft !== true : true) && (path ? post.slug.includes(path) : true)
+    return (import.meta.env.PROD ? post.data.draft !== true : true) && (path ? post.id.includes(path) : true)
   })).sort(sortPostsByDate)
 }
