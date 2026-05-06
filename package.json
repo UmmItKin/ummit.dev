@@ -66,6 +66,6 @@
     "pre-commit": "bun lint-staged"
   },
   "lint-staged": {
-    "*": "bun run lint:fix"
+    "*.{js,ts,mjs,cjs,vue,astro,md,mdx,yml,yaml,json}": "eslint --fix"
   }
 }
