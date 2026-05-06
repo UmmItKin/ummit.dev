@@ -1,6 +1,6 @@
 # UmmIt.dev — Agent Notes
 
-Personal blog: Astro 5 + Vue 3 + UnoCSS + MDX. Static SSG only.
+Personal blog: Astro 6 + Vue 3 + UnoCSS + MDX. Static SSG only. Requires Node 22+.
 
 ## Commands
 
@@ -16,9 +16,10 @@ CI only runs `bun run lint` (`.github/workflows/ci.yml`). No test suite exists.
 
 ## Content collections
 
-Defined in `src/content/config.ts`. All blog-like collections share `postSchema`:
-`blog`, `talks`, `ctf`, `research`, `paper` (+ `pages` for static).
+Defined in `src/content.config.ts` (Astro v6 content layer API; **not** `src/content/config.ts`). All blog-like collections share `postSchema`: `blog`, `talks`, `ctf`, `research`, `paper` (+ `pages` for static).
 
+- All collections use the `glob()` loader from `astro/loaders` with a custom `generateId` to **preserve original directory casing** in URLs (default `github-slugger` lowercases everything, which would break existing URLs like `/posts/InfoSec/...`).
+- Use **`entry.id`** (not `entry.slug` — removed in v6). For rendering: `import { render } from 'astro:content'` then `await render(entry)` (not `entry.render()`).
 - Frontmatter date field is **`date`** (not `publishDate`). Schema transforms it to a localized string at build time.
 - `PostKey` in `src/types.ts` must be kept in sync with collections.
 - Posts can live as `<slug>.md` or `<slug>/index.md` with co-located assets.
@@ -27,7 +28,7 @@ Defined in `src/content/config.ts`. All blog-like collections share `postSchema`
 
 Missing any step breaks routing or OG images:
 
-1. Entry in `src/content/config.ts` + add to `collections` export
+1. Entry in `src/content.config.ts` via `postCollection('./src/content/<name>')` + add to `collections` export
 2. Add name to `PostKey` union in `src/types.ts`
 3. `src/pages/<name>/index.astro` (listing)
 4. `src/pages/<name>/[...slug].astro` (post pages)
