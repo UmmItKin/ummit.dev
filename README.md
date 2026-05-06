@@ -20,28 +20,30 @@ All the packages are using the latest versions and are upgraded by me regularly.
 
 ## Features
 
-More extended features:
+Extensions on top of the original Vitesse theme:
 
-- **Blog** — New lastmod for each blog.
-- **Auto OG Image Generation** — Dynamic Open Graph images for each page
-- **Friends Page** — Showcase your connections
-- **Gear Page** — Share your setup and tools
-- **Links Page** — Curated collection of useful links
-
-And more..
+- **Multiple content collections** — `blog`, `ctf`, `talks`, `research`, `paper`
+- **Auto OG image generation** — dynamic Open Graph images per page and per post (Satori)
+- **Per-post `lastmod`** support
+- **Friends page** — showcase your connections
+- **Gear page** — share your setup and tools
+- **Links page** — curated collection of useful links
+- **Dark-only theme** — optimized for dark mode viewing
 
 ## Getting Started
 
+Requires [Bun](https://bun.sh/) (npm/yarn not supported here).
+
 ```bash
-# Install dependencies
-bun install
-
-# Start development server
-bun dev
-
-# Build for production
-bun build
+bun install      # install dependencies
+bun dev          # dev server (--host enabled)
+bun build        # production build
+bun lint:fix     # auto-fix lint issues
 ```
+
+## Contributing
+
+See [`AGENTS.md`](./AGENTS.md) for repo-specific conventions, content rules, and the checklist for adding a new content collection.
 
 ## License
 
