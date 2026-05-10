@@ -3,39 +3,98 @@ interface Props {
   text?: string
 }
 
-const { text = 'Sponsor to support UmmIt' } = Astro.props
+const { text = 'Support my work' } = Astro.props
 ---
 
-<div class="flex flex-col sm:flex-row gap-3">
-  <a href="https://github.com/sponsors/UmmItKin" target="_blank" rel="noopener noreferrer" class="sponsor-button">
+<div class="sponsor-wrap">
+  <p class="sponsor-text">
     <i class="i-ri-heart-fill"></i>
-    <span>{text}</span>
-  </a>
+    {text} — coffee fuels more CTF writeups, OSS, and zero-day hunting.
+  </p>
+  <div class="sponsor-buttons">
+    <a
+      href="https://github.com/sponsors/UmmItKin"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="sponsor-button github"
+      aria-label="Sponsor UmmIt on GitHub"
+    >
+      <i class="i-ri-github-fill"></i>
+      <span>GitHub Sponsors</span>
+    </a>
+    <a
+      href="https://buymeacoffee.com/ummitc"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="sponsor-button bmc"
+      aria-label="Buy UmmIt a coffee"
+    >
+      <i class="i-simple-icons-buymeacoffee"></i>
+      <span>Buy Me a Coffee</span>
+    </a>
+  </div>
 </div>
 
 <style>
+  .sponsor-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .sponsor-text {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .sponsor-text i {
+    color: #f472b6;
+  }
+
+  .sponsor-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .sponsor-buttons {
+      flex-direction: row;
+    }
+  }
+
   .sponsor-button {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
+    padding: 0.6rem 1.1rem;
+    font-size: 0.9rem;
     font-weight: 500;
-    color: #a3a3a3;
-    background: rgba(163, 163, 163, 0.1);
-    border: 1px solid rgba(163, 163, 163, 0.3);
+    color: #d4d4d4;
+    background: rgba(163, 163, 163, 0.08);
+    border: 1px solid rgba(163, 163, 163, 0.25);
     border-radius: 0.5rem;
     transition: all 0.2s ease;
     text-decoration: none;
   }
 
-  .sponsor-button:hover {
-    background: rgba(236, 72, 153, 0.15);
-    border-color: rgba(236, 72, 153, 0.5);
+  .sponsor-button i {
+    font-size: 1.1rem;
+  }
+
+  .sponsor-button.github:hover {
+    background: rgba(236, 72, 153, 0.12);
+    border-color: rgba(236, 72, 153, 0.45);
     color: #f472b6;
   }
 
-  .sponsor-button i {
-    font-size: 1.25rem;
+  .sponsor-button.bmc:hover {
+    background: rgba(255, 221, 0, 0.12);
+    border-color: rgba(255, 221, 0, 0.45);
+    color: #fde047;
   }
 </style>

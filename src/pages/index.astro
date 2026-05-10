@@ -210,6 +210,16 @@ const contributions = await fetchGitHubContributions(siteConfig.github)
 
     <hr class="hr-line" />
 
+    <section class="mt-8">
+      <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
+        <i class="i-ri-cup-line"></i>
+        Sponsor
+      </h2>
+      <Sponsor />
+    </section>
+
+    <hr class="hr-line" />
+
     {
       contributions && (
         <>
