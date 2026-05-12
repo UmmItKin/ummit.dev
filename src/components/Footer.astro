@@ -31,4 +31,26 @@ const footerNavLinks = siteConfig.footer?.navLinks ?? []
     <a class="nav-link" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
     <span class="op-70">&nbsp;&nbsp;©&nbsp;&nbsp;{new Date().getFullYear()}&nbsp;&nbsp;{siteConfig.author}.</span>
   </div>
+  <div class="op-50 text-xs font-mono">
+    Running for <span id="site-uptime">…</span>
+  </div>
 </footer>
+
+<script>
+  const START = new Date('2023-10-20T16:57:50+0800').getTime()
+  function tick() {
+    const el = document.getElementById('site-uptime')
+    if (!el) {
+      return
+    }
+    const diff = Date.now() - START
+    const day = Math.floor(diff / 86400000)
+    const year = Math.floor(day / 365)
+    const remAfterYear = day - year * 365
+    const month = Math.floor(remAfterYear / 30)
+    const dayLeft = remAfterYear - month * 30
+    el.textContent = `${dayLeft}d ${month}mo ${year}y`
+  }
+  tick()
+  document.addEventListener('astro:page-load', tick)
+</script>
