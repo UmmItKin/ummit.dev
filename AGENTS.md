@@ -8,11 +8,13 @@ Use **Bun only** (never npm/yarn):
 
 ```bash
 bun dev          # dev server, --host enabled (port 4321 default)
-bun build        # production build (verify before commit)
+bun build        # production build (also runs in pre-commit hook)
 bun lint:fix     # auto-fix; runs in pre-commit via simple-git-hooks + lint-staged
 ```
 
 CI only runs `bun run lint` (`.github/workflows/ci.yml`). No test suite exists.
+
+Pre-commit hook runs `bun lint-staged && bun run build` — a broken build blocks commits.
 
 ## Content collections
 
@@ -55,6 +57,17 @@ Do **not** add a `[...path].astro` alongside `index.astro` at the same level —
 - Icons: verify against installed iconify sets before using. Common: `i-ri-*` (Remix), `i-simple-icons-*`. Don't invent icon names.
   - Navbar GitHub uses `i-ri-github-line`; index page uses `i-simple-icons-git`.
 - Dark theme only. No light mode toggle.
+
+## Astro component gotchas
+
+`prettier-plugin-astro` is brittle inside conditional JSX fragments `{cond && (<>…</>)}`:
+
+- **Hoist `<style>` and `<script>` blocks to top-level** of the `.astro` file (after the closing `}` of the fragment). Astro hoists them anyway, and inside `<>` the prettier parser chokes with cryptic `Unexpected token, expected "}"` errors pointing at unrelated lines.
+- **No JSX-style `{/* */}` comments** inside fragments (prettier-astro fails on punctuation like `;`). Use HTML `<!-- -->` only when outside `<>`, otherwise delete the comment.
+- **Inline `<script>` blocks are plain JS, not TS.** TS generics (`querySelectorAll<HTMLElement>`, `Map<string, …>`), `interface`, and `as` casts all break the parser. Cast via `instanceof` checks instead.
+- **`} else {` triggers a rule conflict** between `format/prettier` (wants same-line) and `style/brace-style` (wants split). Refactor to separate `if` blocks or early returns.
+- **Prose styles clobber children.** Anything inside `<article class="prose">` inherits margins, `list-style`, and `::marker`. Add `not-prose` on the wrapper plus `!important` global CSS to override `ul`/`li`/`::before` when needed.
+- `getHeadings()` from `render(entry)` returns `MarkdownHeading[]` with auto-slugged IDs (no rehype plugin needed).
 
 ## Content writing rules (user preferences)
 
