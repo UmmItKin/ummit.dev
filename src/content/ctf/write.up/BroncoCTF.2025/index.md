@@ -94,7 +94,7 @@ correct password
 
 This time, I received the output `correct password`, and the flag was `bronco{brigade}`.
 
-![break-the-battalion](https://dl.ummit.dev/BroncoCTF.2025/Break the Battalion.png)
+![break-the-battalion](./images/BroncoCTF.2025/Break-the-Battalion.png)
 
 ## Inspector Requestor
 
@@ -121,7 +121,7 @@ I searched through a search engine using the phrase `mary had a little lamb in D
 
 and the flat is `bronco{32123332223333212333223211}`
 
-![Mary's Lamb is a Little Phreak](https://dl.ummit.dev/BroncoCTF.2025/Mary's Lamb is a Little Phreak.png)
+![Mary's Lamb is a Little Phreak](./images/BroncoCTF.2025/Mary-s-Lamb-is-a-Little-Phreak.png)
 
 ## Rahhh-Sh
 
