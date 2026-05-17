@@ -1,5 +1,5 @@
 ---
-title: "THJCC CTF 2026 - Official Writeup for 0422, r2s, Simple Hack and I use arch btw"
+title: "THJCC CTF 2026 Writeup"
 description: "THJCC CTF 2026 official writeup, Complete solutions for these challenges! By UmmIt Kin."
 date: 2026-02-22T23:46:20+0800
 lastmod: 2026-02-25T01:00:50+0800

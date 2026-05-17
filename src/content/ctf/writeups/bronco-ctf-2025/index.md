@@ -1,5 +1,6 @@
 ---
 title: "Bronco CTF 2025 Writeup"
+description: "Writeup for Bronco CTF 2025, covering reverse engineering, web, and miscellaneous challenges including Break the Battalion, Inspector Requestor, Mary's Lamb is a Little Phreak, and Rahhh-Sh."
 date: 2025-02-17T10:16:30+0800
 tag: "Bronco CTF, 2025, Writeup, CTF"
 lang: en-US

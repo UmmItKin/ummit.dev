@@ -1,5 +1,6 @@
 ---
 title: "SekaiCTF 2025 Writeup"
+description: "Writeup for SekaiCTF 2025 web exploitation challenges, covering LFI vulnerability exploitation and Docker container filesystem analysis in the My Flask App challenge."
 date: 2026-03-19T23:45:00+0800
 tag: "SekaiCTF, Writeup, CTF"
 lang: en-US
