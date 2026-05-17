@@ -1,7 +1,8 @@
 ---
-title: "Mirroring Codeberg, Gitea, Gitlab and Github Workflows"
+title: "Set Up Git Repository Mirroring Across Platforms"
 description: Set up automated repository mirroring between GitHub, GitLab, Codeberg, and other Git platforms for redundancy.
 date: 2023-12-29T03:09:45+08:00
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Git, Repository Mirroring, DevSecOps"
 lang: en-US
 ---

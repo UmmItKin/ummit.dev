@@ -1,7 +1,8 @@
 ---
-title: "A Comprehensive Guide for Setting Up a Minecraft Server"
+title: "How to Set Up a 24/7 Minecraft Java Server on VPS"
 description: Step-by-step guide to setting up and running a 24/7 Minecraft Java Edition server on VPS.
 date: 2023-12-22T02:20:10+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Minecraft, Server Setup, VPS"
 lang: en-US
 ---

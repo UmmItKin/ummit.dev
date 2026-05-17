@@ -1,7 +1,8 @@
 ---
-title: "Structuring and Preparing Your Blog for Hugo Themes"
+title: "Prepare Your Blog Content for Hugo Theme Migration"
 description: Organize and restructure blog content for Hugo theme migration with proper file naming and thumbnail management.
 date: 2023-12-26T08:44:20+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Hugo, Static Site, Markdown"
 lang: en-US
 ---

@@ -1,6 +1,6 @@
 ---
-title: "Firefox Plug-ins for Enhanced your appearance of your browser"
-description: Customize Firefox appearance with themes and dark mode extensions for comfortable browsing experience.
+title: "Firefox Extensions to Customize Your Browser Appearance"
+description: Customize your Firefox appearance with themes and dark mode extensions for a more comfortable browsing experience.
 date: 2023-12-26T08:00:21+0800
 lastmod: 2024-12-31T05:26:16+0800
 tag: "Firefox, Extensions, Customization"

@@ -1,5 +1,5 @@
 ---
-title: "Before You Buy a Raspberry Pi: Essential Considerations"
+title: "What to Know Before Buying a Raspberry Pi"
 description: Everything you need to know before purchasing a Raspberry Pi including required accessories and use cases.
 date: 2023-01-24T20:52:00+0800
 lastmod: 2023-12-26T12:04:20+0800

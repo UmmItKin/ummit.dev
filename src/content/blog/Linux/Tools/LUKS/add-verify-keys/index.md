@@ -1,7 +1,8 @@
 ---
-title: "How to Add More Keys and Verify Keys on LUKS"
+title: "Add and Verify LUKS Key Slots"
 description: "This article will guide you through the process of adding a new key and verifying it on LUKS-encrypted."
 date: 2024-11-24T21:42:06+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "LUKS, Encryption, Security"
 lang: en-US
 ---

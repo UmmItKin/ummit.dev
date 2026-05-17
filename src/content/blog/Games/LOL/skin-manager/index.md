@@ -1,6 +1,6 @@
 ---
-title: "League of Legends: A step-by-step guide to customizing skins using CSLOL Manager"
-description: "Discover how to relive the nostalgia of old-school League of Legends by customizing your skins with CSLOL Manager. Follow these simple steps to transform your gaming experience."
+title: "Customize League of Legends Skins with CSLOL Manager"
+description: "Relive the nostalgia of old-school League of Legends by customizing your skins with CSLOL Manager. Follow this step-by-step guide to transform your gaming experience."
 date: 2023-09-24T23:06:40+0800
 lastmod: 2023-09-25T18:30:42+0800
 tag: "League of Legends, Gaming, Customization"

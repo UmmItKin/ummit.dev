@@ -1,5 +1,5 @@
 ---
-title: "IELTS Writing 1 — 4 Paragraph Guide"
+title: "IELTS Writing Task 1: Four-Paragraph Structure Guide"
 description: "IELTS writing task."
 date: 2026-03-01T23:10:11+0800
 lastmod: 2026-03-02T04:12:10+0800

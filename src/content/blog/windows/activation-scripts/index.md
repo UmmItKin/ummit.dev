@@ -1,7 +1,8 @@
 ---
-title: "MAS: A Safe way to Active your windows and office without 3rd-party unknown software"
+title: "Activate Windows and Office Safely with Microsoft Activation Scripts"
 description: "Using unknown software to activate your windows or office may cause your computer to become infected. In this article, we will introduce a tool called Microsoft Activation Scripts."
 date: 2023-09-11T02:52:00+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Windows, Activation, MAS"
 lang: en-US
 ---

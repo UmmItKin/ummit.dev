@@ -1,7 +1,8 @@
 ---
-title: "Encrypting External Drives with LUKS"
+title: "Encrypt External Drives with LUKS on Linux"
 description: "This article will guide you through the process of encrypting an external drive with LUKS and mounting it on your GNU/Linux system."
 date: 2024-12-29T21:11:06+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "LUKS, Encryption, Storage"
 lang: en-US
 ---

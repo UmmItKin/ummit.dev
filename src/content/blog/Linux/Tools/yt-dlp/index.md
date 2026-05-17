@@ -1,7 +1,8 @@
 ---
-title: "yt-dlp Command Line Tools: A Comprehensive Guide"
+title: "yt-dlp: The Complete Video Download Tool Guide"
 description: "Learn how to use yt-dlp's command-line tools to download videos, audio tracks, and customize number formats for a more organized media library."
 date: 2023-08-12T11:46:50+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "yt-dlp, Video Download, CLI Tools"
 lang: en-US
 ---

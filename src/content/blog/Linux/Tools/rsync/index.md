@@ -1,7 +1,8 @@
 ---
-title: "Rsync: A Comprehensive Guide"
+title: "The Complete Guide to Rsync for File Synchronization"
 description: "Explore the power of rsync, a versatile tool that efficiently synchronizes data between different locations, ensuring your files are up-to-date and organized."
 date: 2023-08-28T22:26:52+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Linux, File Sync, Backup"
 lang: en-US
 ---

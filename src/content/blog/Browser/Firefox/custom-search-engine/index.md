@@ -1,6 +1,6 @@
 ---
 title: "Customizing Default Search Engine in Firefox Desktop"
-description: "This article show you how to customize your default search engine on Firefox desktop."
+description: "This article shows you how to customize your default search engine on Firefox desktop."
 date: 2023-08-11T08:20:50+0800
 lastmod: 2024-12-31T05:56:20+0800
 tag: "Firefox, Browser Customization, Search Engine"

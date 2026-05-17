@@ -1,7 +1,8 @@
 ---
-title: "How to Edit Git Commit Messages"
+title: "Edit Git Commit Messages with Interactive Rebase"
 description: Modify Git commit messages using interactive rebase for cleaner repository history and better documentation.
 date: 2024-05-30T16:53:03+08:00
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Git, Rebase, Version Control"
 lang: en-US
 ---

@@ -1,7 +1,8 @@
 ---
-title: "Vim: Quick Guide"
+title: "Vim Quick Start Guide for Beginners"
 description: Comprehensive Vim editor guide covering modes, essential commands, and advanced features for efficient text editing.
 date: 2023-12-22T03:15:00+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Vim, Text Editor, Linux"
 lang: en-US
 ---

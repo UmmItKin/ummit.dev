@@ -1,7 +1,8 @@
 ---
-title: "Git: Configurations Settings"
+title: "Git Global and Local Configuration Settings"
 description: Manage Git global and local configurations for different identities across multiple repositories and projects.
 date: 2023-12-27T02:21:38+08:00
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Git, Configuration, DevOps"
 lang: en-US
 ---

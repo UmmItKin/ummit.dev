@@ -1,5 +1,5 @@
 ---
-title: "Building Your Own Custom Arch Linux ISO with Archiso"
+title: "Build a Custom Arch Linux ISO with Archiso"
 description: "Explore the process of creating a personalized Arch Linux ISO using the official tool called Archiso to craft your own customized Arch Linux ISO."
 date: 2023-08-27T18:54:30+0800
 lastmod: 2025-02-04T14:59:40+0800

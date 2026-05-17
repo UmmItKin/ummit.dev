@@ -1,5 +1,5 @@
 ---
-title: "Discover the Top 10 Essential Gnome Extensions"
+title: "Top 10 Essential GNOME Extensions for Productivity"
 description: "Unlock the Power of Gnome with These Must-Have Extensions!"
 date: 2023-08-05T01:47:00+0800
 lastmod: 2023-09-15T12:20:40+0800

@@ -1,7 +1,8 @@
 ---
-title: "How to Backup Your GPG Key"
+title: "Backup and Restore Your GPG Keys"
 description: Export, secure, and restore your GPG keys for safe backup and transfer across different systems.
 date: 2024-09-28T21:14:50+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "GPG, Encryption, Linux"
 lang: en-US
 ---

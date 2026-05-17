@@ -1,7 +1,8 @@
 ---
-title: "How to use Floorp MCP Server with OpenCode"
+title: "Connect Floorp Browser to OpenCode with MCP Server"
 description: "A quick guide to connect Floorp browser automation to OpenCode with a local MCP server using bunx."
 date: 2026-03-17T17:35:00+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Floorp, MCP, OpenCode, Bun"
 lang: en-US
 ---

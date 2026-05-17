@@ -1,7 +1,8 @@
 ---
-title: "A Comprehensive Guide for FFmpeg"
+title: "FFmpeg Command Reference and Examples"
 description: "Explore essential commands and techniques for FFmpeg"
 date: 2023-09-11T04:15:40+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "FFmpeg, Video Editing, Multimedia"
 lang: en-US
 ---

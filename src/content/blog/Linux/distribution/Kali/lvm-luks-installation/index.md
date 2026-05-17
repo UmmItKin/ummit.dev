@@ -1,7 +1,8 @@
 ---
-title: "Kali Linux with Manual Partitioning, LVM, and LUKS Encryption"
+title: "Install Kali Linux with Manual Partitioning, LVM, and LUKS Encryption"
 description: "Kali Linux with manual LVM partitioning with LVM and LUKS encryption."
 date: 2025-02-02T22:10:02+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Kali Linux, LUKS, LVM"
 lang: en-US
 ---

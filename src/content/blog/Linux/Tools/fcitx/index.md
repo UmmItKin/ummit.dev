@@ -1,5 +1,5 @@
 ---
-title: "Arch Linux Fcitx5 Installation Guide for Quick Classic (速成)"
+title: "Install Fcitx5 on Arch Linux for Chinese Input (速成)"
 description: "Learn how to install and configure Fcitx5 on Arch Linux to enable multilingual typing support for languages such as Chinese and Japanese."
 date: 2022-12-17T02:57:50+08:00
 lastmod: 2025-01-15T10:09:35+0800

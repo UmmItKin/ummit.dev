@@ -1,7 +1,8 @@
 ---
-title: "Git: Secure Committing with GPG"
+title: "Sign Git Commits with GPG Keys"
 description: Set up GPG key signing for Git commits to verify authenticity and enhance repository security.
 date: 2023-12-27T08:20:15+08:00
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Git, GPG, Security"
 lang: en-US
 ---

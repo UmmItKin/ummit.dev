@@ -1,7 +1,8 @@
 ---
-title: "Git: Wayback Commands"
+title: "Git Undo, Revert, Reset, and Recover Commands"
 description: Essential Git commands for undoing commits, resetting changes, and managing repository history effectively.
 date: 2023-12-26T04:45:59+08:00
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Git, Version Control, DevOps"
 lang: en-US
 ---

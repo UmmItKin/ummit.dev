@@ -1,5 +1,5 @@
 ---
-title: "Windows Terminal: A Guide to Installing Oh My Posh and Customize"
+title: "Customize Windows Terminal with Oh My Posh"
 description: "Transform your Windows terminal experience with Oh My Posh! Follow this guide to learn how to install and customize this sleek and powerful prompt framework."
 date: 2022-06-23T02:19:58+0800
 lastmod: 2023-09-09T10:00:20+0800

@@ -1,7 +1,8 @@
 ---
-title: "Upgrading My Computer with a New HDD!"
+title: "How to Install a New Hard Drive in Your Computer"
 description: Beginner-friendly guide to physically installing and setting up a new hard disk drive in your computer.
 date: 2023-12-07T19:19:20+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Hardware, Storage, Installation"
 lang: en-US
 ---

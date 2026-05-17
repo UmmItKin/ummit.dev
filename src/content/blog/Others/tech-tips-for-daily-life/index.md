@@ -1,7 +1,8 @@
 ---
-title: "將開發技能應用到生活中, My Life Hacks"
+title: "將開發技能應用到生活中：工程師的效率駭客技巧"
 description: "作為 technical guy，我們掌握的技能不只是用來寫程式。這篇文章分享如何將 Git、自動化腳本、容器化等技術應用到日常生活，提升效率和生活品質。"
 date: 2026-03-19T23:45:00+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Git, Productivity, Life Hacks, Automation"
 lang: zh-TW
 draft: true

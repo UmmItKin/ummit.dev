@@ -1,7 +1,8 @@
 ---
-title: "Setting up SearXNG on your SSH VPS Server with Docker"
+title: "Set Up SearXNG Search Engine on Your VPS with Docker"
 description: "Set up your private SearXNG metasearch engine on an SSH VPS server using Docker. Follow this concise guide to quickly install, customize, and maintain SearXNG."
 date: 2023-08-13T07:55:46+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Self-Hosting, Docker, Privacy"
 lang: en-US
 ---

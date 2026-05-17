@@ -1,7 +1,8 @@
 ---
-title: "File Management with RoboCopy"
+title: "Master Windows File Management with Robocopy"
 description: Master Windows RoboCopy for efficient multi-threaded file copying, moving, and backup operations with advanced filtering.
 date: 2023-11-19T02:45:50+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Windows, File Management, RoboCopy"
 lang: en-US
 ---
