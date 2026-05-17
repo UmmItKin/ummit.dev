@@ -18,7 +18,7 @@ Pre-commit hook runs `bun lint-staged && bun run build` — a broken build block
 
 ## Content collections
 
-Defined in `src/content.config.ts` (Astro v6 content layer API; **not** `src/content/config.ts`). All blog-like collections share `postSchema`: `blog`, `talks`, `ctf`, `research`, `paper` (+ `pages` for static).
+Defined in `src/content.config.ts` (Astro v6 content layer API; **not** `src/content/config.ts`). All blog-like collections share `postSchema`: `blog`, `talks`, `ctf`, `research`, `paper`, `infosec` (+ `pages` for static).
 
 - All collections use the `glob()` loader from `astro/loaders` with a custom `generateId` to **preserve original directory casing** in URLs (default `github-slugger` lowercases everything, which would break existing URLs like `/posts/InfoSec/...`).
 - Use **`entry.id`** (not `entry.slug` — removed in v6). For rendering: `import { render } from 'astro:content'` then `await render(entry)` (not `entry.render()`).

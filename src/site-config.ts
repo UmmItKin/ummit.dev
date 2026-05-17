@@ -68,6 +68,10 @@ export const siteConfig = {
         href: '/blog',
       },
       {
+        text: 'InfoSec',
+        href: '/infosec',
+      },
+      {
         text: 'CTF',
         href: '/ctf',
       },

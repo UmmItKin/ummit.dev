@@ -67,5 +67,6 @@ const talks = postCollection('./src/content/talks')
 const ctf = postCollection('./src/content/ctf')
 const research = postCollection('./src/content/research')
 const paper = postCollection('./src/content/paper')
+const infosec = postCollection('./src/content/infosec')
 
-export const collections = { pages, blog, talks, ctf, research, paper }
+export const collections = { pages, blog, talks, ctf, research, paper, infosec }

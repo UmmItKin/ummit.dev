@@ -28,6 +28,7 @@ function getOgPath() {
   if (post.collection === 'talks') return `/og/talks/${post.id}.png`
   if (post.collection === 'research') return `/og/research/${post.id}.png`
   if (post.collection === 'paper') return `/og/paper/${post.id}.png`
+  if (post.collection === 'infosec') return `/og/infosec/${post.id}.png`
   return `/og/${post.id}.png`
 }
 const ogImage = getOgPath()
