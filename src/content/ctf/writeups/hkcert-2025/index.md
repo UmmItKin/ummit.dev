@@ -2,7 +2,7 @@
 title: "HKCERT CTF 2025 Writeup"
 description: "My HKCERT CTF 2025 writeup collection, starting with the renderme web exploitation challenge."
 date: 2026-03-17T00:40:00+0800
-lastmod: 2026-03-17T00:53:00+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "CTF, HKCERT CTF, Web Exploitation"
 lang: en-US
 ---
