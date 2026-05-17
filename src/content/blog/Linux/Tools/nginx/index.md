@@ -1,6 +1,6 @@
 ---
 title: "Host a Website with NGINX and SSL Through Cloudflare"
-description: "Learn how to set up NGINX on a Linux VPS, host a website, and secure it with SSL using a self-signed TLS certificate through Cloudflare. Follow our step-by-step guide to ensure your website is up and running securely."
+description: "Set up NGINX on a Linux VPS, host a website, and secure it with SSL through Cloudflare."
 date: 2023-09-11T04:00:50+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "NGINX, Web Server, SSL"

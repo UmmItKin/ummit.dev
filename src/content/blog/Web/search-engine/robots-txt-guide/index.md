@@ -1,6 +1,6 @@
 ---
 title: "Custom robots.txt Guide: Allow and Disallow Rules for SEO"
-description: "Learn how to take control of search engine crawling by using the robots.txt disallow rule to restrict access to specific parts of your website."
+description: "Write a robots.txt file with allow and disallow rules to control how search engines crawl your site."
 date: 2023-09-04T21:14:00+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "SEO, Robots.txt, Web Development"

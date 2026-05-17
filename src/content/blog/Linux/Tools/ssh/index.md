@@ -1,6 +1,6 @@
 ---
 title: "SCP and SSH Guide for Secure File Transfers"
-description: "Discover the power of secure and efficient file transfers using SCP (Secure Copy) and learn how to seamlessly manage remote server access with SSH login methods. "
+description: "Transfer files securely with SCP and manage SSH server access with key-based authentication."
 date: 2022-01-27T20:24:39+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "Linux, SSH, Remote Access"

@@ -1,6 +1,6 @@
 ---
 title: "Restore WhatsApp Chats on GrapheneOS from Google Drive"
-description: "GrapheneOS with Google Drive backup. Ensure Google Play Services has the necessary permissions to access your contacts."
+description: "Restore WhatsApp chat history from Google Drive backup on GrapheneOS with proper Google Play Services permissions."
 date: 2025-01-26T18:40:00+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "GrapheneOS, WhatsApp, Mobile"

@@ -1,6 +1,6 @@
 ---
 title: "Fix systemd-boot Security Vulnerabilities"
-description: "Learn how to enhance your Linux system's security by fixing vulnerabilities in systemd-boot /boot"
+description: "Fix systemd-boot permission issues to secure your boot partition against unauthorized modifications."
 date: 2023-11-07T13:18:30+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "systemd-boot, Security, Linux"

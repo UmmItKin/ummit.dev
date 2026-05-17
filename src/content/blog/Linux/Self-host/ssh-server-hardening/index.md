@@ -1,6 +1,6 @@
 ---
 title: "How to Secure Your Linux VPS Server"
-description: "Learn how to effortlessly secure your VPS server with just a few essential steps. This blog will guide you through the process."
+description: "Secure your Linux VPS with SSH key authentication, firewall rules, and fail2ban."
 date: 2023-06-29T01:23:00+08:00
 lastmod: 2026-05-17T23:05:04+0800
 tag: "VPS, Security, Server Administration"

@@ -1,6 +1,6 @@
 ---
 title: "IELTS Writing Task 1: Four-Paragraph Structure Guide"
-description: "IELTS writing task."
+description: "A four-paragraph structure for IELTS Writing Task 1 with templates and example phrases."
 date: 2026-03-01T23:10:11+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "English, IELTS"

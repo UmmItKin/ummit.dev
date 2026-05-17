@@ -1,6 +1,6 @@
 ---
 title: "21 Essential Linux Command Tips for Terminal Productivity"
-description: "Unlock the true potential of the Linux terminal with these 21 command tips that can revolutionize your productivity and efficiency."
+description: "21 Linux terminal tips including history tricks, process management, and text processing you will use every day."
 date: 2023-08-29T00:02:40+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "Linux, Terminal, Productivity"

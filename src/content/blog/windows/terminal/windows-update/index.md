@@ -1,6 +1,6 @@
 ---
 title: "Manually Update Windows with PowerShell"
-description: "Discover the power of PowerShell in managing Windows updates. This quick guide provides step-by-step instructions on how to manually update your Windows system."
+description: "Manually check and install Windows updates using PowerShell when the Settings app is not working."
 date: 2023-10-15T21:53:00+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "Windows, PowerShell, System Updates"

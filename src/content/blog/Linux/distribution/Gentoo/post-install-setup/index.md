@@ -1,6 +1,6 @@
 ---
 title: "Essential Gentoo Post-Installation Setup Tasks"
-description: "Take your Gentoo Linux system to the next level with user management, sudo, system logging, NTP time synchronization, CPU optimization, Neofetch, Wi-Fi support. and Others."
+description: "Essential post-installation tasks for Gentoo including user setup, sudo, logging, and Wi-Fi configuration."
 date: 2023-09-20T16:40:21+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "Gentoo, Linux, Post-Installation"

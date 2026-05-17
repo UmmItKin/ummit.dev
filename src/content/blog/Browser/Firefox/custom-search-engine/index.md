@@ -1,8 +1,8 @@
 ---
 title: "Customizing Default Search Engine in Firefox Desktop"
-description: "This article shows you how to customize your default search engine on Firefox desktop."
+description: Change the default search engine in Firefox desktop to Google, DuckDuckGo, or any other provider.
 date: 2023-08-11T08:20:50+0800
-lastmod: 2024-12-31T05:56:20+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Firefox, Browser Customization, Search Engine"
 lang: en-US
 ---

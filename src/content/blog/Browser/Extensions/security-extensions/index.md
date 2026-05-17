@@ -1,6 +1,6 @@
 ---
 title: "Firefox Extensions to Block Annoying Malicious Code"
-description: "This guide introduces a selection of powerful browser extensions that can help you fortify your online traffic and surf the web with peace of mind."
+description: Browser extensions that block trackers, ads, and malicious scripts to keep your browsing private and secure.
 date: 2023-09-15T10:15:50+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "Firefox, Privacy, Security Extensions"

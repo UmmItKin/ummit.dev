@@ -1,6 +1,6 @@
 ---
 title: "Switch Linux Kernel Versions with systemd-boot"
-description: "Exploring the process of seamlessly switching between Linux kernel versions using systemd-boot and Bootctl for enhanced system performance and flexibility."
+description: "Switch between different Linux kernel versions using systemd-boot and bootctl for testing or compatibility."
 date: 2023-08-22T13:32:01+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "systemd-boot, UEFI, Linux"

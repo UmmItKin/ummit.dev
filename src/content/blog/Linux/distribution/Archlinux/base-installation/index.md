@@ -1,6 +1,6 @@
 ---
 title: "How to Install Arch Linux from Scratch"
-description: "Guide for helping people to install Arch Linux from scratch, resulting in a minimal system. Not including the installation of a desktop environment :)"
+description: "Install Arch Linux from scratch with this step-by-step guide covering partitioning, bootloader, and base system setup."
 date: 2022-12-17T02:57:50+08:00
 lastmod: 2026-05-17T23:05:04+0800
 tag: "Arch Linux, Installation, Linux"

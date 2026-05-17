@@ -1,6 +1,6 @@
 ---
 title: "Top 10 Essential GNOME Extensions for Productivity"
-description: "Unlock the Power of Gnome with These Must-Have Extensions!"
+description: "Top GNOME extensions for window management, system monitoring, and workflow improvements."
 date: 2023-08-05T01:47:00+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "GNOME, Extensions, Productivity"

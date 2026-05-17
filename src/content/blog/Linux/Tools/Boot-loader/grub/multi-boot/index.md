@@ -1,6 +1,6 @@
 ---
 title: "Create a Multi-OS Boot Menu with GRUB"
-description: "Learn how to set up a multi-OS boot menu using Grub and os-prober, ensuring hassle-free switching between different operating systems on your computer."
+description: "Set up GRUB as a multi-OS boot menu with os-prober for dual-booting Linux and Windows."
 date: 2023-09-23T17:32:55+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "GRUB, Dual Boot, Linux"

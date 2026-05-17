@@ -1,6 +1,6 @@
 ---
 title: "Merge Git Repositories While Preserving History"
-description: "A guide to merging Git repositories using remote merge and subtree merge, keeping complete commit history intact."
+description: "Merge two Git repositories into one while preserving the full commit history of both projects."
 date: 2026-03-19T20:15:00+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "Git, Version Control, Repository Management"

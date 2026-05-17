@@ -1,8 +1,8 @@
 ---
 title: "Linux TTY Guide"
-description: "Explore the power of the Linux terminal with this comprehensive guide to TTY (teletypewriter) sessions. Learn how to navigate between virtual terminals, manage multiple sessions, troubleshoot graphical interface issues."
+description: "Navigate Linux TTY virtual terminals for recovery, multi-session management, and troubleshooting GUI issues."
 date: 2023-11-19T00:28:05+0800
-lastmod: 2023-12-22T01:01:20+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Linux, Terminal, TTY"
 lang: en-US
 ---

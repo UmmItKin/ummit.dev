@@ -1,6 +1,6 @@
 ---
 title: "Must-Have Oh My Zsh Plugins for Productivity"
-description: "Discover the transformative magic of Oh My Zsh, the acclaimed shell customization framework that elevates both the functionality and aesthetics of your terminal."
+description: "Must-have Oh My Zsh plugins for syntax highlighting, auto-suggestions, and command completion."
 date: 2023-08-11T10:05:30+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "Linux, Zsh, Productivity"

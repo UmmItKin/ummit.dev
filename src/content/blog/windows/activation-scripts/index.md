@@ -1,6 +1,6 @@
 ---
 title: "Activate Windows and Office Safely with Microsoft Activation Scripts"
-description: "Using unknown software to activate your windows or office may cause your computer to become infected. In this article, we will introduce a tool called Microsoft Activation Scripts."
+description: "Activate Windows and Office safely with Microsoft Activation Scripts, an open-source alternative to unknown activators."
 date: 2023-09-11T02:52:00+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "Windows, Activation, MAS"

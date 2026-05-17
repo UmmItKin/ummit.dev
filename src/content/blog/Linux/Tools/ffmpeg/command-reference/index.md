@@ -1,6 +1,6 @@
 ---
 title: "FFmpeg Command Reference and Examples"
-description: "Explore essential commands and techniques for FFmpeg"
+description: "Common FFmpeg commands for video conversion, audio extraction, screen recording, and streaming."
 date: 2023-09-11T04:15:40+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "FFmpeg, Video Editing, Multimedia"

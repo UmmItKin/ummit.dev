@@ -1,6 +1,6 @@
 ---
 title: "Manage Remote Servers with the Screen Command"
-description: "Discover the power of the screen command in Linux for effective server management, remote sessions, and persistent terminal sessions. Learn how to install, use, and maximize your productivity with this versatile tool."
+description: "Use the screen command for persistent terminal sessions on remote servers without losing your work."
 date: 2021-12-16T20:43:12+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "Linux, Server Management, Terminal"

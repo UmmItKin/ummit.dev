@@ -1,6 +1,6 @@
 ---
 title: "Enable Secure Boot with Self-Signed Keys on Linux"
-description: "Unlock the full potential of your Linux system by enabling Secure Boot with your own self-certified keys. This step-by-step guide walks you through the process, ensuring a secure and seamless boot experience."
+description: "Enable Secure Boot on Linux with your own self-signed keys for better security without the lockout risk."
 date: 2023-11-07T10:54:50+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "Linux, UEFI, Secure Boot"

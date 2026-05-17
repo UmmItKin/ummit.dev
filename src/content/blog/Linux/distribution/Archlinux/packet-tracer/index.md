@@ -1,6 +1,6 @@
 ---
 title: "Install Packet Tracer on Arch Linux with AUR"
-description: "Installing Packet Tracer on Arch Linux with AUR, a step-by-step guide."
+description: "Install Cisco Packet Tracer on Arch Linux from AUR for network simulation and practice."
 date: 2024-10-21T10:38:20+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "Arch Linux, Packet Tracer, Networking"

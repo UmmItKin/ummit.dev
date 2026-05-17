@@ -1,6 +1,6 @@
 ---
 title: "Manage Windows Software with Scoop Package Manager"
-description: "Enhance Your Terminal Efficiency with Scoop – Discover How to Install and Utilize this Windows Package Manager!"
+description: "Install and manage software on Windows with Scoop package manager from the command line."
 date: 2021-12-11T03:55:19+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "Windows, Package Manager, Scoop"

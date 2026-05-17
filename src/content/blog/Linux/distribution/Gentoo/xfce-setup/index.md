@@ -1,6 +1,6 @@
 ---
 title: "Install XFCE Desktop on Gentoo Linux with OpenRC"
-description: "Gentoo Linux of installing XORG, XFCE and LightDM with the OpenRC init system. Dive into the realm of open-source customization and create a powerful and tailored desktop environment on your Gentoo system."
+description: "Install Xorg, XFCE desktop, and LightDM display manager on Gentoo Linux with OpenRC."
 date: 2023-09-20T16:40:21+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "Gentoo, XFCE, Desktop Environment"

@@ -1,6 +1,6 @@
 ---
 title: "How to Install Gentoo Linux with OpenRC"
-description: "Explore this in-depth guide to installing Gentoo Linux using OpenRC, focusing on Linux installation without Windows and Desktop Environments (DE)."
+description: "Install Gentoo Linux with OpenRC from scratch covering disk partitioning, kernel config, and base system."
 date: 2023-09-16T17:30:34+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "Gentoo, Linux Installation, OpenRC"

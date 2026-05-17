@@ -1,6 +1,6 @@
 ---
 title: "Create a Bootable USB Drive with dd on Linux"
-description: "Crafting a Bootable USB Drive with 'dd': Your Gateway to Linux Installation"
+description: "Create a bootable USB drive using the dd command for installing any Linux distribution."
 date: 2023-08-11T08:00:50+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "Linux, Bootable USB, Installation"

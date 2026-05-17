@@ -1,6 +1,6 @@
 ---
 title: "10 Essential Post-Installation Tasks for Arch Linux"
-description: "top 10 crucial tasks to perform after installing Arch Linux for an optimized and enriched experience."
+description: "10 things to do after installing Arch Linux including user setup, firewall, and system optimization."
 date: 2023-08-05T01:08:00+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "Arch Linux, Post-Installation, Configuration"

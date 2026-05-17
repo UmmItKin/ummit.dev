@@ -1,6 +1,6 @@
 ---
 title: "Install and Use 7-Zip on Linux"
-description: "Discover the Remarkable Efficiency of 7-Zip for File Compression and Extraction on the Linux Platform. and learn how to use!"
+description: "Install and use 7-Zip on Linux for high-ratio file compression and extraction from the command line."
 date: 2022-02-16T09:43:18+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "Linux, Compression, File Management"

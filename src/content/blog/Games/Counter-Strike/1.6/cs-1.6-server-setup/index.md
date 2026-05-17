@@ -1,6 +1,6 @@
 ---
 title: "How to Set Up a Counter-Strike 1.6 Server with Zombie Plague and Bots"
-description: "Learn how to set up a Counter Strike 1.6 server on an Ubuntu VPS with Zombie Plague mod and configure yapb bots for offline practice."
+description: Set up a Counter-Strike 1.6 server on an Ubuntu VPS with Zombie Plague mod, yapb bots, and FastDL support.
 date: 2021-12-11T00:00:00+0800
 lastmod: 2026-05-17T23:05:04+0800
 tag: "Counter-Strike, Server Setup, Gaming"
