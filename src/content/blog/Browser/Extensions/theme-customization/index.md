@@ -2,7 +2,7 @@
 title: "Firefox Extensions to Customize Your Browser Appearance"
 description: Customize your Firefox appearance with themes and dark mode extensions for a more comfortable browsing experience.
 date: 2023-12-26T08:00:21+0800
-lastmod: 2024-12-31T05:26:16+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Firefox, Extensions, Customization"
 lang: en-US
 ---

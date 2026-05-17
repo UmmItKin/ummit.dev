@@ -2,7 +2,7 @@
 title: "How to Mount Internal Drives on Linux with fstab"
 description: Configure automatic mounting of internal hard drives on Linux using fstab and proper filesystem setup.
 date: 2023-12-07T21:53:02+0800
-lastmod: 2023-12-08T21:39:20+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Linux, Storage, Disk Management"
 lang: en-US
 ---

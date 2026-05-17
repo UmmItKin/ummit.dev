@@ -2,7 +2,7 @@
 title: "Termux on Android: The Complete Terminal Emulator Guide"
 description: Install and use Termux terminal emulator on Android for Linux-like command-line experience on mobile devices.
 date: 2023-12-26T05:20:20+0800
-lastmod: 2024-12-31T06:15:20+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Android, Termux, Mobile Linux"
 lang: en-US
 ---

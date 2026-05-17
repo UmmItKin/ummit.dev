@@ -2,7 +2,7 @@
 title: "Firefox Extensions to Enhance Your Browsing Experience"
 description: Practical Firefox extensions for everyday browsing including tab management, image search, and YouTube enhancements.
 date: 2023-12-26T07:44:30+0800
-lastmod: 2024-12-31T04:27:45+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Firefox, Extensions, Productivity"
 lang: en-US
 ---

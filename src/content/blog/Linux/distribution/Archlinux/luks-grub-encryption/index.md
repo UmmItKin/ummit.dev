@@ -2,7 +2,7 @@
 title: "Full Disk Encryption with GRUB Including /boot on Arch Linux"
 description: Complete Arch Linux installation guide with full disk encryption using LUKS2, LVM, and GRUB bootloader.
 date: 2023-12-21T11:42:02+0800
-lastmod: 2026-01-15T10:00:00+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Arch Linux, LUKS, Encryption"
 lang: en-US
 ---

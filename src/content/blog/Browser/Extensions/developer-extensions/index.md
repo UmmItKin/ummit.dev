@@ -2,7 +2,7 @@
 title: "Firefox Extensions for Enhanced Developer Productivity"
 description: Essential Firefox extensions for developers including cookie management, custom styling, and technology detection tools.
 date: 2023-12-26T07:44:30+0800
-lastmod: 2024-12-31T04:13:27+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Firefox, Developer Tools, Extensions"
 lang: en-US
 ---

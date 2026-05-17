@@ -2,7 +2,7 @@
 title: "Remove Windows Startup Programs with Regedit"
 description: "In the Windows world, to delete startup programs you need to use a tool called regedit, we'll explain how to use this tool to delete your unwanted behavior!"
 date: 2023-09-04T22:28:10+0800
-lastmod: 2023-09-09T11:27:50+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Windows, Registry, System Optimization"
 lang: en-US
 ---

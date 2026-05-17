@@ -2,7 +2,7 @@
 title: "Critical Intel BIOS Update Required for 13th and 14th Gen CPUs"
 description: Critical BIOS update required for Intel 13th and 14th Gen CPUs to fix voltage issues and prevent hardware damage.
 date: 2024-09-08T00:32:20+0800
-lastmod: 2025-01-15T10:35:09+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Intel, BIOS, Hardware"
 lang: en-US
 ---

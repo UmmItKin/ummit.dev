@@ -2,7 +2,7 @@
 title: "Create a Bootable USB Drive with dd on Linux"
 description: "Crafting a Bootable USB Drive with 'dd': Your Gateway to Linux Installation"
 date: 2023-08-11T08:00:50+0800
-lastmod: 2023-12-22T11:13:10+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Linux, Bootable USB, Installation"
 lang: en-US
 ---

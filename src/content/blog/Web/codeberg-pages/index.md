@@ -2,7 +2,7 @@
 title: "Host Free Static Websites on Codeberg Pages with Custom Domain"
 description: "Learn how to using Codeberg Pages to host static websites for free and seamlessly integrate your custom domain. Explore the power of hassle-free web hosting with this comprehensive guide."
 date: 2023-09-03T19:50:04+0800
-lastmod: 2023-09-16T10:45:30+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "Git, Web Hosting, Codeberg"
 lang: en-US
 ---

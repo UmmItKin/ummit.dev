@@ -2,7 +2,7 @@
 title: "Customize League of Legends Skins with CSLOL Manager"
 description: "Relive the nostalgia of old-school League of Legends by customizing your skins with CSLOL Manager. Follow this step-by-step guide to transform your gaming experience."
 date: 2023-09-24T23:06:40+0800
-lastmod: 2023-09-25T18:30:42+0800
+lastmod: 2026-05-17T23:05:04+0800
 tag: "League of Legends, Gaming, Customization"
 lang: en-US
 ---
