@@ -10,6 +10,17 @@ EventEmitter.defaultMaxListeners = 30
 
 export default defineConfig({
   site: 'https://ummit.dev',
+  vite: {
+    build: {
+      rollupOptions: {
+        onwarn(warning, warn) {
+          if (warning.code === 'INVALID_ANNOTATION')
+            return
+          warn(warning)
+        },
+      },
+    },
+  },
   devToolbar: {
     enabled: false,
   },

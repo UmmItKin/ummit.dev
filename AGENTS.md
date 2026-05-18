@@ -2,6 +2,11 @@
 
 Personal blog: Astro 6 + Vue 3 + UnoCSS + MDX. Static SSG only. Requires Node 22+.
 
+## General
+
+- When unsure about a tool, API, or configuration detail, use the **Brave Search MCP** tool (or `websearch`) to look it up — don't guess.
+- Build warnings from vendored dependencies (`@vueuse/core`) are suppressed in `astro.config.ts` via `rollupOptions.onwarn`.
+
 ## Commands
 
 Use **Bun only** (never npm/yarn):
@@ -60,7 +65,7 @@ Blog posts are served under `/posts/<id>`, **not** `/blog/<id>`. The `blog/` pat
 - `DeadManSwitch.vue` gated by `enableDeadManSwitch` in `src/layouts/BaseLayout.astro` — currently disabled. Don't re-enable without asking.
 - `SkillRadar.vue` — **do not modify**, user maintains it manually.
 - `src/utils/og-image.ts` has a known false-positive Buffer LSP error — ignore it.
-- Pre-existing build warning (safe to ignore): `/projects/data` missing GET handler.
+- Pre-existing build warnings (safe to ignore): two `INVALID_ANNOTATION` warnings from `@vueuse/core` in Vite build. Suppressed via `rollupOptions.onwarn` in `astro.config.ts`.
 
 ## Styles
 
