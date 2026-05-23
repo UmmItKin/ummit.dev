@@ -2,7 +2,7 @@ import type { ProjectData } from '@/types'
 
 export const projectData: ProjectData = [
   {
-    title: 'Featured',
+    title: 'Platforms',
     projects: [
       {
         text: 'UmmItOS',
@@ -17,22 +17,16 @@ export const projectData: ProjectData = [
         href: 'https://z2e.team',
       },
       {
-        text: 'offensive-web',
-        description: 'Your go-to resource for offensive web security techniques and tools',
+        text: 'ummit.dev',
+        description: 'A beautiful personal portfolio theme forked from the Vitesse theme with extended features',
         icon: 'i-ri-global-line',
-        href: 'https://offensive.ummit.dev/',
+        href: 'https://ummit.dev',
       },
       {
-        text: 'wg-cli',
-        description: 'A minimal Bash wrapper around `wg-quick` for managing a WireGuard interface with built-in egress IP verification.',
-        icon: 'i-simple-icons-wireguard',
-        href: 'https://github.com/UmmItKin/wg-cli',
-      },
-      {
-        text: 'ct-go',
-        description: 'CLI tool for grabbing CT logs from crt.sh',
-        icon: 'i-simple-icons-go',
-        href: 'https://github.com/UmmItKin/ct-go',
+        text: 'ummit-dots',
+        description: 'My personal dots, based on UmmItOS',
+        icon: 'i-ri-terminal-box-line',
+        href: 'https://github.com/UmmItKin/ummit-dots',
       },
     ],
   },
@@ -40,6 +34,18 @@ export const projectData: ProjectData = [
   {
     title: 'Security',
     projects: [
+      {
+        text: 'offensive-web',
+        description: 'Your go-to resource for offensive web security techniques and tools',
+        icon: 'i-ri-global-line',
+        href: 'https://offensive.ummit.dev/',
+      },
+      {
+        text: 'ct-go',
+        description: 'CLI tool for grabbing CT logs from crt.sh',
+        icon: 'i-ri-shield-line',
+        href: 'https://github.com/UmmItKin/ct-go',
+      },
       {
         text: 'SebBypass',
         description: 'Chrome extension to bypass Safe Exam Browser (SEB) restrictions when taking quizzes.',
@@ -52,23 +58,17 @@ export const projectData: ProjectData = [
         icon: 'i-ri-bug-line',
         href: 'https://github.com/UmmItKin/CVE-2025-55182-PoC',
       },
+    ],
+  },
+
+  {
+    title: 'CTF',
+    projects: [
       {
-        text: 'NHNC-Crackme',
-        description: 'No Hack No CTF 2025 - Crackme question',
-        icon: 'i-ri-lock-line',
-        href: 'https://github.com/UmmItKin/NHNC-Crackme',
-      },
-      {
-        text: 'NHNC-gitgit',
-        description: 'No Hack No CTF 2025 - gitgit question',
-        icon: 'i-ri-git-branch-line',
-        href: 'https://github.com/UmmItKin/NHNC-gitgit',
-      },
-      {
-        text: 'CTF-dlers',
-        description: 'A high-performance CLI tool for downloading challenges from CTFd platforms with concurrent processing.',
-        icon: 'i-ri-download-2-line',
-        href: 'https://github.com/UmmItKin/CTF-dlers',
+        text: 'CTFs-chal',
+        description: 'All of my CTFs challenge source code.',
+        icon: 'i-ri-terminal-box-line',
+        href: 'https://github.com/UmmItKin/CTFs-chal',
       },
     ],
   },
@@ -76,6 +76,12 @@ export const projectData: ProjectData = [
   {
     title: 'Tools',
     projects: [
+      {
+        text: 'wg-cli',
+        description: 'A minimal Bash wrapper around `wg-quick` for managing a WireGuard interface with built-in egress IP verification.',
+        icon: 'i-ri-terminal-box-line',
+        href: 'https://github.com/UmmItKin/wg-cli',
+      },
       {
         text: 'Upptime',
         description: 'My server status monitor, powered by Upptime.',
@@ -101,10 +107,10 @@ export const projectData: ProjectData = [
         href: 'https://github.com/UmmItKin/gdrive-subtitle',
       },
       {
-        text: 'ummit-dots',
-        description: 'My personal dots, based on UmmItOS',
-        icon: 'i-ri-terminal-box-line',
-        href: 'https://github.com/UmmItKin/ummit-dots',
+        text: 'CTF-dlers',
+        description: 'A high-performance CLI tool for downloading challenges from CTFd platforms with concurrent processing.',
+        icon: 'i-ri-download-2-line',
+        href: 'https://github.com/UmmItKin/CTF-dlers',
       },
     ],
   },
