@@ -2,7 +2,7 @@ import type { ProjectData } from '@/types'
 
 export const projectData: ProjectData = [
   {
-    title: 'Platforms',
+    title: 'Featured',
     projects: [
       {
         text: 'UmmItOS',
@@ -11,22 +11,10 @@ export const projectData: ProjectData = [
         href: 'https://docs.ummit.dev',
       },
       {
-        text: 'Z2E',
+        text: 'Z2E-Agent',
         description: 'AI Powered Automated Penetration Testing Framework.',
         icon: 'i-ri-brain-3-fill',
         href: 'https://z2e.team',
-      },
-      {
-        text: 'ummit.dev',
-        description: 'A beautiful personal portfolio theme forked from the Vitesse theme with extended features',
-        icon: 'i-ri-global-line',
-        href: 'https://ummit.dev',
-      },
-      {
-        text: 'ummit-dots',
-        description: 'My personal dots, based on UmmItOS',
-        icon: 'i-ri-terminal-box-line',
-        href: 'https://github.com/UmmItKin/ummit-dots',
       },
     ],
   },
