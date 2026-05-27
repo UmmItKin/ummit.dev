@@ -35,12 +35,6 @@ export const projectData: ProjectData = [
         href: 'https://github.com/UmmItKin/ct-go',
       },
       {
-        text: 'SebBypass',
-        description: 'Chrome extension to bypass Safe Exam Browser (SEB) restrictions when taking quizzes.',
-        icon: 'i-ri-shield-line',
-        href: 'https://github.com/UmmItKin/SebBypass',
-      },
-      {
         text: 'CVE-2025-55182-PoC',
         description: 'react2shell PoC with Go',
         icon: 'i-ri-bug-line',
@@ -57,6 +51,12 @@ export const projectData: ProjectData = [
         description: 'All of my CTFs challenge source code.',
         icon: 'i-ri-terminal-box-line',
         href: 'https://github.com/UmmItKin/CTFs-chal',
+      },
+      {
+        text: 'CTF-dlers',
+        description: 'A high-performance CLI tool for downloading challenges from CTFd platforms with concurrent processing.',
+        icon: 'i-ri-download-2-line',
+        href: 'https://github.com/UmmItKin/CTF-dlers',
       },
     ],
   },
@@ -93,12 +93,6 @@ export const projectData: ProjectData = [
         description: 'A simple tool to embed Google video subtitles into the video.',
         icon: 'i-ri-video-line',
         href: 'https://github.com/UmmItKin/gdrive-subtitle',
-      },
-      {
-        text: 'CTF-dlers',
-        description: 'A high-performance CLI tool for downloading challenges from CTFd platforms with concurrent processing.',
-        icon: 'i-ri-download-2-line',
-        href: 'https://github.com/UmmItKin/CTF-dlers',
       },
     ],
   },
