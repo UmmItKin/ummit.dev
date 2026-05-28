@@ -11,6 +11,10 @@ interface Props {
 }
 
 const { list = [] } = Astro.props
+
+function isImageIcon(icon?: string) {
+  return !!icon && (icon.startsWith('/') || icon.startsWith('http://') || icon.startsWith('https://'))
+}
 ---
 
 <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -22,7 +26,11 @@ const { list = [] } = Astro.props
         <li class="container-link w-full flex items-center rd-2">
           <a class="flex items-center" target="_blank" href={project.href} aria-label={project.text}>
             <div class="ml-2 mr-4 pt-2">
-              <i class:list={['text-4xl inline-block', project.icon || 'i-carbon-unknown']} />
+              {isImageIcon(project.icon) ? (
+                <img src={project.icon} alt="" class="w-16 h-16" loading="lazy" decoding="async" />
+              ) : (
+                <i class:list={['text-4xl inline-block', project.icon || 'i-carbon-unknown']} />
+              )}
             </div>
             <div class="font-normal lh-tight">
               <div class="text-lg hover:text-main">{project.text}</div>

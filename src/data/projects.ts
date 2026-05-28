@@ -13,7 +13,7 @@ export const projectData: ProjectData = [
       {
         text: 'Z2E-Agent',
         description: 'AI Powered Automated Penetration Testing Framework.',
-        icon: 'i-ri-brain-3-fill',
+        icon: '/icons/anubis.svg',
         href: 'https://z2e.team',
       },
     ],
