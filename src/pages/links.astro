@@ -40,39 +40,43 @@ const links = [
 ---
 
 <BaseLayout title="Links" description="All my links in one place." image={ogImage}>
-  <div class="flex flex-col items-center justify-center min-h-70vh">
+  <div class="flex flex-col items-center justify-center min-h-70vh py-12">
     <!-- Avatar -->
-    <div class="mb-6">
+    <div class="mb-5">
       <Image
         src={avatarImg}
         alt="UmmIt Kin"
         width={500}
         height={500}
-        class="avatar-blur w-40 h-40 rounded-full border-2 border-neutral-500/30 transition-all duration-300"
+        class="avatar-blur w-28 h-28 md:w-32 md:h-32 rounded-full border-2 border-neutral-500/25 transition-all duration-300"
         loading="eager"
       />
     </div>
 
     <!-- Name -->
-    <h1 class="text-2xl font-bold mb-2">UmmIt Kin</h1>
-    <p class="text-sm opacity-60 mb-8">HKer · InfoSec · GNU/Linux</p>
+    <h1 class="text-2xl font-bold">UmmIt Kin</h1>
+    <p class="text-sm opacity-45 mt-1 mb-8">HKer · InfoSec · GNU/Linux</p>
 
     <!-- Links -->
-    <div class="flex flex-col gap-3 w-full max-w-sm px-4">
+    <div class="flex flex-col gap-3 w-full max-w-md px-4">
       {
-        links.map((link) => (
+        links.map((link, i) => (
           <a
             href={link.href}
             target={link.href.startsWith('/') ? '_self' : '_blank'}
             rel={link.href.startsWith('/') ? '' : 'noopener noreferrer'}
-            class="flex items-center justify-center gap-3 py-3 px-6 rd-2 border border-neutral-700 bg-neutral-800/50 opacity-80 hover:opacity-100 transition-opacity duration-200 decoration-none"
+            class="link-btn flex items-center justify-center gap-3 py-3 px-6 rounded-xl border border-neutral-700/80 bg-neutral-800/40 hover:bg-neutral-700/40 hover:border-neutral-500/60 hover:-translate-y-0.5 transition-all duration-200 decoration-none"
+            style={`animation-delay: ${i * 60}ms`}
           >
-            <i class:list={[link.icon, 'text-lg']} />
-            <span>{link.text}</span>
+            <i class:list={[link.icon, 'text-lg opacity-80']} />
+            <span class="font-medium">{link.text}</span>
           </a>
         ))
       }
     </div>
+
+    <!-- Footer -->
+    <p class="mt-10 text-xs opacity-25">ummit.dev</p>
   </div>
 </BaseLayout>
 
@@ -85,6 +89,21 @@ const links = [
   .avatar-blur.loaded {
     filter: blur(0);
     transform: scale(1);
+  }
+
+  .link-btn {
+    animation: linkFadeIn 0.4s ease-out both;
+  }
+
+  @keyframes linkFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 </style>
 
