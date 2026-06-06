@@ -38,12 +38,12 @@ export default defineConfig({
       },
     }),
     presetWebFonts({
-      // Fonts are loaded locally via @fontsource (see src/components/BaseHead.astro).
+      // Fonts are self-hosted via src/styles/fonts.css.
       // Use 'none' provider so UnoCSS only registers font-family names without fetching.
       provider: 'none',
       fonts: {
-        sans: 'Inter',
-        mono: 'DM Mono',
+        sans: 'Google Sans Flex',
+        mono: 'Google Sans Code',
       },
       extendTheme: true,
     }),

@@ -48,8 +48,6 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^9.0.0",
-    "@fontsource/dm-mono": "^5.2.7",
-    "@fontsource/inter": "^5.2.8",
     "@iconify/json": "^2.2.483",
     "@types/lodash-es": "^4.17.12",
     "@types/nprogress": "^0.2.3",

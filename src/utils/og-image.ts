@@ -11,10 +11,7 @@ const BIO = 'HKer, InfoSec enthusiast currently into Computer Forensics, Wireles
 
 export async function generateOgImage(section: string, title: string) {
   const fontPath = join(process.cwd(), 'public', 'fonts')
-  const [fontData, fontDataChinese] = await Promise.all([
-    readFile(join(fontPath, 'inter-latin-700-normal.woff')),
-    readFile(join(fontPath, 'NotoSansCJKsc-Bold.otf')),
-  ])
+  const fontData = await readFile(join(fontPath, 'Inter-Bold.ttf'))
 
   const markup = html`
     <div
@@ -93,7 +90,6 @@ export async function generateOgImage(section: string, title: string) {
           style="
             font-size: 56px;
             font-weight: 700;
-            font-family: 'Inter', 'Noto Sans SC';
             color: #ffffff;
             line-height: 1.2;
             max-width: 1000px;
@@ -113,12 +109,6 @@ export async function generateOgImage(section: string, title: string) {
       {
         name: 'Inter',
         data: fontData,
-        weight: 700,
-        style: 'normal',
-      },
-      {
-        name: 'Noto Sans SC',
-        data: fontDataChinese,
         weight: 700,
         style: 'normal',
       },
