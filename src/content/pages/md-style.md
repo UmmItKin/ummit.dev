@@ -1,41 +1,69 @@
 ---
 title: Markdown Style
-description: A quick reference page for how markdown content is rendered on this site.
+description: A quick reference for how Markdown content is rendered on this site.
 ---
 
-The page style in your `*.md` file.
+This page demonstrates all supported Markdown elements in the UmmIt theme. Use it as a reference when writing posts.
 
-## h2
+## Headings
 
-The main content of your article
+### h3 — Section heading
 
-### h3
+#### h4 — Sub-section
 
-The main content of your article
+##### h5 — Minor heading
 
-#### h4
+###### h6 — Smallest heading
 
-The main content of your article
+## Inline formatting
 
-##### h5
+**Bold text** · _Italic text_ · **_Bold + italic_** · `inline code` · ~~strikethrough~~
 
-The main content of your article
+[External link](https://ummit.dev) and [internal link](/about).
 
-###### h6
+## Blockquotes
 
-The main content of your article
+> Single-line quote.
 
-Table Style:
+> Multi-paragraph blockquote.
+>
+> Second paragraph inside the same quote.
 
-| Field        | Description                                          |
-| :----------- | :--------------------------------------------------- |
-| NAME         | Displayed in header and footer. Used in SEO and RSS. |
-| EMAIL        | Displayed in contact section.                        |
-| NUM_POSTS    | Limit num of posts on home page.                     |
-| NUM_WORKS    | Limit num of works on home page.                     |
-| NUM_PROJECTS | Limit num of projects on home page.                  |
+> Nested blockquotes are also supported:
+>
+> > Inner quote level.
 
-Code Snippet:
+## Lists
+
+### Unordered
+
+- Item one
+- Item two
+  - Nested item
+  - Another nested item
+- Item three
+
+### Ordered
+
+1. First step
+2. Second step
+   1. Sub-step A
+   2. Sub-step B
+3. Third step
+
+### Task list
+
+- [x] Completed task
+- [ ] Pending task
+- [ ] Another pending task
+
+## Code
+
+### Inline
+
+Use backticks for `const x = 42` inline code.
+
+### Fenced block with language
 
 ```ts
 export const data = {
@@ -47,3 +75,63 @@ export function getName() {
   return data.name
 }
 ```
+
+### Fenced block without language
+
+```
+Plain preformatted text.
+  Indentation is preserved.
+```
+
+## Tables
+
+| Field       | Type     | Required | Description              |
+| :---------- | :------- | :------- | :----------------------- |
+| title       | string   | Yes      | Title of the article     |
+| date        | Date     | Yes      | Publication date         |
+| description | string   | No       | SEO and listing summary  |
+| draft       | boolean  | No       | Exclude from production  |
+
+## Horizontal rule
+
+Above the line...
+
+---
+
+...below the line.
+
+## Images
+
+![Alt text](https://placehold.co/800x400/1a1a2e/ffffff?text=Example+Image)
+
+## Video
+
+Videos are supported via the `video: true` frontmatter flag. Embed using an `<iframe>` or `<video>` tag in your content.
+
+## Links with preview cards
+
+When linking to other posts or external sites in your content, the theme may render hover preview cards for supported link types.
+
+## Frontmatter
+
+Every post begins with YAML frontmatter between `---` fences:
+
+```yaml
+---
+title: My Post Title
+date: 2025-01-15
+description: A short summary for SEO and listings
+lastmod: 2025-06-01
+image:
+  src: /path/to/image.png
+  alt: Description of the image
+duration: 5 min
+lang: en-US
+tag: featured
+draft: false
+redirect: https://external-site.com/article
+video: false
+---
+```
+
+See [Posts Props](/posts-props) for the full field reference.
