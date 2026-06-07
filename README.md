@@ -23,13 +23,16 @@ All the packages are using the latest versions and are upgraded by me regularly.
 Extensions on top of the original Vitesse theme:
 
 - **Astro 6** with the new content layer API
-- **Multiple content collections** — `blog`, `infosec`, `ctf`, `talks`, `research`, `paper`
+- **7 content collections** — `blog`, `infosec`, `ctf`, `talks`, `research`, `paper`, `pages`
 - **Auto OG image generation** — dynamic Open Graph images per page and per post (Satori)
 - **Per-post `lastmod`** support
-- **Self-hosted fonts** — Inter and DM Mono via `@fontsource` (no Google Fonts requests)
-- **Friends page** — showcase your connections
+- **Self-hosted variable fonts** — Google Sans Flex + Google Sans Code (no external font requests)
+- **Competition experience** — table with CTF placements and rankings
+- **Friends page** — card layout with hover effects
 - **Gear page** — share your setup and tools
-- **Links page** — curated collection of useful links
+- **Links page** — linktree-style with stagger animation
+- **Projects page** — showcase with category grouping
+- **Responsive design** — mobile-first with card/table adaptive layouts
 - **Dark-only theme** — optimized for dark mode viewing
 
 ## Getting Started
