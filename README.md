@@ -48,7 +48,8 @@ bun lint:fix     # auto-fix lint issues
 
 ## Contributing
 
-See [`AGENTS.md`](./AGENTS.md) for repo-specific conventions, content rules, and the checklist for adding a new content collection.
+- [`CLAUDE.md`](./CLAUDE.md) — orientation for Claude Code and other AI coding tools
+- [`AGENTS.md`](./AGENTS.md) — full reference for OpenCode; covers repo conventions, content rules, and the checklist for adding a new content collection
 
 ## License
 
