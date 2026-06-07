@@ -127,5 +127,6 @@ export default defineConfig({
     'i-simple-icons-metasploit',
 
     'i-ri-sketching-line',
+    'i-ri-key-2-line',
   ],
 })
