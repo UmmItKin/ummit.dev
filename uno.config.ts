@@ -128,5 +128,8 @@ export default defineConfig({
 
     'i-ri-sketching-line',
     'i-ri-key-2-line',
+    'i-ri-heart-fill',
+    'i-ri-github-fill',
+    'i-simple-icons-buymeacoffee',
   ],
 })
