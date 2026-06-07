@@ -26,7 +26,9 @@ See **[AGENTS.md](./AGENTS.md)** for the full reference — it is the authoritat
 
 - **Content collections** — 7 collections (`blog`, `infosec`, `ctf`, `research`, `paper`, `talks`, `pages`) defined in `src/content.config.ts` using Astro v6 content layer API. All blog-like collections share `postSchema`. Checklist for adding a new collection.
 - **Routing table** — blog posts live at `/posts/<id>`, not `/blog/<id>`; `/blog` is only for filtered listing pages. Root `[...slug].astro` handles static pages.
-- **Styles** — UnoCSS shortcuts in `uno.config.ts`; icons only from `i-ri-*` (Remix) and `i-simple-icons-*` sets; dark theme only.
+- **Styles** — UnoCSS shortcuts in `uno.config.ts`; icons only from `i-ri-*` (Remix) and `i-simple-icons-*` sets; dark theme only. New icons must be safelisted in `uno.config.ts`. Only Tailwind v3 utility classes exist — `text-2xs` does NOT work (smallest is `text-xs`).
+- **Fonts** — self-hosted Google Sans Flex (sans) + Google Sans Code (mono) via `src/styles/fonts.css`. Long unicode-range lines trigger Prettier; run `bun lint:fix` after editing. OG images use Satori which only supports TTF/OTF — `public/fonts/Inter-Bold.ttf` is for Satori only, the site uses woff2.
+- **Responsive** — breakpoint `md:` = 768px. Pattern: `class="md:hidden"` for mobile-only + `class="hidden md:block"` for desktop-only. Tables on mobile get a separate card/list layout.
 - **Astro component gotchas** — Prettier fragility inside conditional JSX fragments, inline `<script>` is plain JS not TS, `} else {` formatting conflicts.
 - **Content rules** — no em-dashes in body text, use placeholders not real data, integrate into existing articles rather than appending.
 
@@ -41,8 +43,11 @@ See **[AGENTS.md](./AGENTS.md)** for the full reference — it is the authoritat
 | `src/components/ListPosts.astro` | Renders all listing pages |
 | `src/layouts/BaseLayout.astro` | Root layout wrapper |
 | `astro.config.ts` | Astro config (integrations, port 3199, `INVALID_ANNOTATION` warnings suppressed) |
-| `uno.config.ts` | UnoCSS shortcuts, presets, icon safelist |
+| `uno.config.ts` | UnoCSS shortcuts, presets, **icon safelist** (new icons must be added here) |
+| `src/styles/fonts.css` | Self-hosted @font-face declarations for Google Sans Flex + Google Sans Code |
 | `src/data/projects.ts` | Project showcase data |
+| `src/pages/index.astro` | Homepage (bio, CTF teams, competition table, timeline, stacks) |
+| `public/fonts/` | Self-hosted woff2 font files + Inter-Bold.ttf (for Satori OG images) |
 
 ## Component conventions
 
