@@ -292,7 +292,7 @@ By the way, you can see there are already two empty directories, that's actually
 
 ![mount1](./images/Crackme/mount1.png)
 
-#### LUKS Image
+### LUKS Image
 
 Now let's see what files are in the first_one directory:
 
@@ -317,7 +317,7 @@ Also, the keyfiles were taking up too much space. You should delete all the unus
 
 You can use a tool from the Kali repository called `bruteforce-luks`:
 
-#### LUKS Bruteforcing
+### LUKS Bruteforcing
 
 Now, You getting the wordlists, and all you need to do is via this wordlist to bruteforcing the image to get the password, for the tool of bruteforcing an Image, you can use `bruteforce-luks` from Kali or install it manually.
 
