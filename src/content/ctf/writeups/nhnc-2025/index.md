@@ -2,7 +2,7 @@
 title: "No Hack No CTF 2025 — Official Writeup"
 description: "Full writeup for No Hack No CTF 2025 Crackme and gitgit challenges. Learn how to solve these challenges step by step."
 date: 2025-07-08T20:37:34+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-06-08T23:17:00+0800
 tag: "CTF, No Hack No CTF, WriteUp"
 lang: en-US
 ---

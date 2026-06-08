@@ -2,7 +2,7 @@
 title: "THJCC CTF 2026 — Official Writeup"
 description: "THJCC CTF 2026 official writeup, Complete solutions for these challenges! By UmmIt Kin."
 date: 2026-02-22T23:46:20+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-06-08T23:17:00+0800
 tag: "CTF, THJCC CTF 2026, WriteUp"
 lang: en-US
 draft: false
