@@ -10,7 +10,7 @@ interface Props {
 const { headings, minHeadings = 1 } = Astro.props
 
 // Keep h2 + h3 only; skip post title (h1) and noisy deeper levels.
-const toc = headings.filter((h) => h.depth >= 2 && h.depth <= 3)
+const toc = headings.filter((h) => h.depth >= 1 && h.depth <= 3)
 
 const shouldRender = toc.filter((h) => h.depth === 2).length >= minHeadings
 
