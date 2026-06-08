@@ -660,7 +660,7 @@ Finally, I want to thank my teammate, ICEDTEA. This experience of creating chall
 
 Because after that, knowing how to handle Instancer will make things easier. i can express the challenge creation even better! XDDD
 
-#### Mining Bot ?????
+## Mining Bot ?????
 
 Recently, before the CTF started, someone was working on my challenge. When I created a react2shell challenge, someone gained remote code execution (RCE) on our challenge machine and ran a program for crypto mining.
 
