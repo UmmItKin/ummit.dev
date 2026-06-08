@@ -9,7 +9,7 @@ lang: en-US
 
 >WriteUP was updated because my personal GitHub username was changed, and update the heading :)
 
-## Introduction
+# Introduction
 
 This is my complete writeup for the No Hack No CTF 2025 challenges, focusing on the Crackme and gitgit challenges that I created.
 
@@ -87,7 +87,7 @@ Navigating through the historical, you will find the one containing the sensitiv
 
 ![Flag Found](./images/gitgit/4.png)
 
-##### Flag
+#### Flag
 
 >NHNC{Don7_tH!NK_foRCe_PU$H3d_CAn_HElp_YoU_hiD3_mE$s@6e!!!!-_0}
 
@@ -224,7 +224,7 @@ According to the information you have, you can set the file to only recover `.ke
 
 ![Photorec Interface](./images/Crackme/photorec1.png)
 
-##### Custom Extension
+#### Custom Extension
 
 Now you should use `File Opt`. By default, photorec uses all extensions, but based on the information you have, you only need to use custom signatures.
 
@@ -236,7 +236,7 @@ You should select only `custom Own custom signatures` by pressing `s` to disable
 
 Go back to the menu by pressing `q`.
 
-##### Searching file
+#### Searching file
 
 Now you can start searching for deleted files by pressing search and selecting `[Whole disk]`.
 
@@ -269,7 +269,7 @@ Perfect! The first one you can see contains `NHNCKEY2025____`, which matches the
 
 However, there's one problem! the file is too big and oversized. looking back at the README.md message, you can see it says the keyfile size is `4111`!
 
-##### Triming filesize
+#### Triming filesize
 
 You can trim the file to the correct size:
 
@@ -286,7 +286,7 @@ cryptsetup -v open /dev/vda3 NHNCluks --key-file keyfile.key
 cd ~ && mount /dev/mapper/NHNCluks first_one
 ```
 
-###### The hints
+#### The hints
 
 By the way, you can see there are already two empty directories, that's actually a hint that you need to mount two partitions to capture the flag.
 
@@ -311,7 +311,7 @@ cryptsetup -v isLuks secret.img
 
 Yes! The command confirms this is a LUKS image. Now you just need to use the wordlist to bruteforce this image to find the password.
 
-##### Filesize bloated
+#### Filesize bloated
 
 Also, the keyfiles were taking up too much space. You should delete all the unused key files from the directory since they're taking up a lot of filesystem space and might affect your ability to download things.
 

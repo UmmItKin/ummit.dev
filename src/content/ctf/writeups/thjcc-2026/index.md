@@ -8,7 +8,7 @@ lang: en-US
 draft: false
 ---
 
-## Introduction
+# Introduction
 
 This is the full write-up of the challenge for 0422, r2s, Simple Hack and I use arch btw. This involves the topic:
 
@@ -30,7 +30,7 @@ This is the full write-up of the challenge for 0422, r2s, Simple Hack and I use 
 | Simple Hack | Web | Insane | File Upload restrictions |
 | I use arch btw | Forensics | Easy | Steganography and hashing |
 
-### Source code
+## Source code
 
 For the source code of the challenge, please visit my GitHub.
 
@@ -105,7 +105,7 @@ You should find one file!!! The file `readme.xlsx`. xlsx is a Microsoft Excel fi
 
 ![alt text](./images/i%20use%20arch%20btw/binwalk/binwalk-extracted.png)
 
-##### That file are encrypted
+#### That file are encrypted
 
 However, looking at the file command output, you can see that this file is encrypted:
 
@@ -172,7 +172,7 @@ Password is `rush2112` Now you can open it.
 
 ![flag](./images/i%20use%20arch%20btw/flag.png)
 
-##### Flag
+#### Flag
 
 This is the flag for this challenge:
 
@@ -313,7 +313,7 @@ We also found `var cc=i.version;if("19.0.0-rc-65a56d0e-20241020`
 
 However, regarding this version number... If you search for Next.js version releases online, there's no version 19. This is because Next.js is React-based. The `19.0.0-rc` is actually the React version, not the Next.js version.
 
-##### Automatically Detect Version with cURL
+#### Automatically Detect Version with cURL
 
 Here's a script you can use to automatically detect React and Next.js versions:
 
@@ -416,7 +416,7 @@ This is a classic **File Upload Vulnerability** scenario. If you're not familiar
 
 File Upload Vulnerabilities occur when a web application allows users to upload files without properly validating them. Attackers can exploit this to upload malicious files that can lead to remote code execution, defacement, or server compromise.
 
-##### Attempting Payloads
+#### Attempting Payloads
 
 Now we know it's a file upload challenge with PHP. Let's try basic exploitation techniques:
 
@@ -441,7 +441,7 @@ Using Function Calls
 
 Result: **BLOCKED** - Contains `file_get_contents` keyword and `()` parentheses
 
-##### Deducing the Blacklist Through Trial and Error
+#### Deducing the Blacklist Through Trial and Error
 
 By trying different payloads, we can deduce what's filtered:
 
