@@ -30,13 +30,13 @@
     "release": "bumpp"
   },
   "dependencies": {
-    "@astrojs/mdx": "7.0.2",
-    "@astrojs/rss": "4.0.19",
-    "@astrojs/sitemap": "3.7.3",
-    "@astrojs/vue": "7.0.1",
+    "@astrojs/mdx": "^7.0.2",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/vue": "^7.0.1",
     "@unocss/astro": "^66.7.4",
     "@unocss/reset": "^66.7.4",
-    "astro": "7.0.6",
+    "astro": "^7.0.6",
     "chart.js": "^4.5.1",
     "nprogress": "^0.2.0",
     "satori": "^0.26.0",
