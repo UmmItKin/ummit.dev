@@ -1,6 +1,6 @@
 # UmmIt.dev — Agent Notes
 
-Personal blog: Astro 6 + Vue 3 + UnoCSS + MDX. Static SSG only. Requires Node 22+ (CI enforces 22, `engines` field is more lenient at `>=18`).
+Personal blog: Astro 7 + Vue 3 + UnoCSS + MDX. Static SSG only. Requires Node 22+ (CI enforces 22). The `engines` field is more lenient (`>=v18.17.1 || >=v20.3.0 || >=21`) but 22 is the only tested/CI'd version.
 
 ## Commands
 
@@ -28,7 +28,7 @@ ESLint flat config (`eslint.config.js`) using `@antfu/eslint-config` with `vue`,
 
 ## Content collections
 
-Defined in `src/content.config.ts` (Astro v6 content layer API). The blog-like collections `blog`, `infosec`, `ctf`, `research`, `paper`, `talks` share `postSchema` via `postCollection()` helper. `pages` has its own schema for static pages.
+Defined in `src/content.config.ts` (Astro content layer API + `glob` loader). The blog-like collections `blog`, `infosec`, `ctf`, `research`, `paper`, `talks` share `postSchema` via `postCollection()` helper. `pages` has its own schema (title/description/image, no `date`) for static pages.
 
 - Posts use `<slug>/index.md` convention with co-located assets.
 - `postSchema` uses `date` (not `publishDate`); `lastmod` is optional. Both are transformed to localized strings at build time.
@@ -88,10 +88,11 @@ Blog post OG images use the root `pages/og/[...slug].png.ts` catch-all — there
 
 ## Styles
 
-- UnoCSS atomic classes; design shortcuts (`bg-main`, `text-main`, `nav-link`, `container-link`, `magic-link`, etc.) in `uno.config.ts`.
-- Icons: only from installed sets `i-ri-*` (Remix), `i-simple-icons-*`. Don't invent names.
-- Dark theme only. No light mode toggle.
-- Locally-loaded fonts (Inter, DM Mono) via `@fontsource`, referenced in `BaseHead.astro`.
+- UnoCSS atomic classes (`presetWind3` = Tailwind v3 utilities; `text-2xs` does NOT exist, smallest is `text-xs`). Design shortcuts (`bg-main`, `text-main`, `nav-link`, `container-link`, `magic-link`, etc.) in `uno.config.ts`.
+- Icons: only from installed sets `i-ri-*` (Remix), `i-carbon-*`, `i-simple-icons-*`. Don't invent names. **Dynamically-referenced icons must be added to the `safelist` in `uno.config.ts`** — statically-written ones in `.astro`/`.vue` are picked up by the scanner automatically.
+- Dark theme only. No light mode toggle. Responsive breakpoint `md:` = 768px.
+- Fonts are **self-hosted**, not via `@fontsource` (despite older notes). Sans = Google Sans Flex, mono = Google Sans Code, declared in `src/styles/fonts.css` and imported by `BaseHead.astro`. UnoCSS `presetWebFonts` uses `provider: 'none'` so it only registers family names without fetching.
+- OG images use Satori which only supports TTF/OTF — `public/fonts/Inter-Bold.ttf` and `public/fonts/noto-sc-bold.ttf` exist for Satori only; the live site uses woff2.
 
 ## Astro component gotchas
 
