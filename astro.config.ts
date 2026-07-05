@@ -25,7 +25,7 @@ export default defineConfig({
     enabled: false,
   },
   server: {
-    port: 3199,
+    port: 4321,
   },
   prefetch: {
     prefetchAll: false,
