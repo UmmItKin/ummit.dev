@@ -57,7 +57,7 @@ function closeDrawer() {
           {{ link.text }}
         </a>
       </nav>
-      <div flex gap-x-6>
+      <div flex items-center gap-x-6>
         <a
           v-for="link in socialLinks"
           :key="link.text"

@@ -11,6 +11,8 @@ lang: en-US
 
 Secso CTF 2026. This is the writeup for what I solved, mostly crypto and web with two kernel-ish misc challenges thrown in.
 
+Honestly I almost missed this one. A friend dragged me in quite late, the competition was nearly over by the time I started. But I am glad I joined. It was a fun one.
+
 > Event Website: [Secso](https://ctf.secso.cc/)
 
 | Challenge | Category | Description |
@@ -20,6 +22,8 @@ Secso CTF 2026. This is the writeup for what I solved, mostly crypto and web wit
 | spot | Misc | Commit-reveal coin flip with vmsplice TOCTOU |
 | sudo but good | Misc | Setuid binary leaks secret via `/proc/<pid>/cmdline` |
 | whatsNew | Web | DOM clobbering + `<base>` exfiltration via filter bypass |
+
+![Secso CTF 2026](./images/SCONES%20CTF.png)
 
 ## Shared Primes
 
