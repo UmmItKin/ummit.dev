@@ -7,7 +7,7 @@ Personal blog: Astro 7 + Vue 3 + UnoCSS + MDX. Static SSG only. Requires Node 22
 Use **Bun only** (never npm/yarn):
 
 ```bash
-bun dev          # dev server, --host enabled (port 3199)
+bun dev          # dev server, --host enabled (port 4321)
 bun build        # production build (also runs in pre-commit hook)
 bun lint:fix     # auto-fix; runs in pre-commit via simple-git-hooks + lint-staged
 ```
@@ -98,6 +98,7 @@ Blog post OG images use the root `pages/og/[...slug].png.ts` catch-all — there
 
 - **Prose styles clobber children.** Use `not-prose` wrapper plus `!important` for `ul`/`li`/`::before` overrides.
 - `getHeadings()` from `render(entry)` returns `MarkdownHeading[]` with auto-slugged IDs.
+- **JSX eats whitespace between adjacent expressions.** Two `{expression}` blocks on separate lines render concatenated with no space. Put them on one line with an explicit space: `{count} {label}` not `{count}\n{label}`. Same goes for `<i />` followed by `{text}` on the next line. This bit the listing pages (count glued to "articles written") and the homepage social links (icon glued to label) and took three attempts to diagnose because it looked like a CSS issue.
 
 ## User content rules
 
