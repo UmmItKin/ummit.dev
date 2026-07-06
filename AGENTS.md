@@ -104,7 +104,10 @@ Blog post OG images use the root `pages/og/[...slug].png.ts` catch-all — there
 
 - No em-dashes (—) in body text. OK in titles/descriptions only.
 - Hover preview cards (`HoverPreviewLink.astro`) are text-only — no images.
-- **Always bump `lastmod`** when editing any content file (posts, pages, etc.). Use current date in `YYYY-MM-DDTHH:MM:SS+0800` format.
+- **Always bump `lastmod`** when editing any content file (posts, pages, etc.). Use current date in `YYYY-MM-DDTHH:MM:SS+0800` format. Generate it with:
+  ```bash
+  TZ='Asia/Hong_Kong' date '+%Y-%m-%dT%H:%M:%S+0800'
+  ```
 - Use placeholders (`<your-interface>`, `11:22:33:44:55:66`) instead of real personal data in commands.
 - When merging into existing articles, integrate content — never append separate sections.
 - CTF writeups: never include real flags.
