@@ -1,6 +1,6 @@
 # UmmIt.dev — Agent Notes
 
-Personal blog: Astro 7 + Vue 3 + UnoCSS + MDX. Static SSG only. Requires Node 22+ (CI enforces 22). The `engines` field is more lenient (`>=v18.17.1 || >=v20.3.0 || >=21`) but 22 is the only tested/CI'd version.
+Personal blog: Astro 7 + Vue 3 + UnoCSS + MDX. Static SSG only. Requires Node 24 (`engines` pinned to `24.x`, CI enforces 24).
 
 ## Commands
 

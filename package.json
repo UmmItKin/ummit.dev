@@ -18,7 +18,7 @@
     "UmmIt Kin"
   ],
   "engines": {
-    "node": ">=v18.17.1 || >=v20.3.0 || >=21"
+    "node": "24.x"
   },
   "scripts": {
     "prepare": "simple-git-hooks",
