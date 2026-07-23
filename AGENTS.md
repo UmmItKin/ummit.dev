@@ -1,6 +1,6 @@
 # UmmIt.dev — Agent Notes
 
-Personal blog: Astro 7 + Vue 3 + UnoCSS + MDX. Static SSG only. Requires Node 24 (`engines` pinned to `24.x`, CI enforces 24).
+Personal blog: Astro 7 + Vue 3 + UnoCSS + MDX. Static SSG only. `engines` pinned to `24.x`; CI and release workflows still use Node 22 (not yet bumped).
 
 ## Commands
 
@@ -18,7 +18,7 @@ Pre-commit hook runs `bun lint-staged && bun run build` — broken build blocks 
 
 ## Lint / Format
 
-ESLint flat config (`eslint.config.js`) using `@antfu/eslint-config` with `vue`, `typescript`, `astro`, `formatters.astro`, and `formatters.css`.
+ESLint flat config (`eslint.config.js`) using `@antfu/eslint-config` with `vue`, `typescript`, `astro`, `formatters.astro`, and `formatters.css`. Ignores `.agents/**` and `.opencode/**`. Import alias `@/` maps to `src/*` (tsconfig.json).
 
 - `prettier-plugin-astro` is brittle inside conditional JSX fragments `{cond && (<>…</>)}`:
   - **Hoist `<style>` and `<script>` blocks to top-level** of the `.astro` file (after the closing `}` of any fragment). Prettier chokes on them inside `<>`.
@@ -33,6 +33,7 @@ Defined in `src/content.config.ts` (Astro content layer API + `glob` loader). Th
 - Posts use `<slug>/index.md` convention with co-located assets.
 - `postSchema` uses `date` (not `publishDate`); `lastmod` is optional. Both are transformed to localized strings at build time.
 - `postSchema` has an optional `video: boolean` field — when true, `ListPosts.astro` renders a film icon next to the post.
+- `postSchema` has an optional `redirect: string` field — when set, `ListPosts.astro` links to that URL (opens in new tab) instead of the post page. Useful for cross-posted content.
 - Use `entry.id` (not `entry.slug` — removed in v6). Render via `import { render } from 'astro:content'` then `await render(entry)`.
 - The `generateId` function preserves original path casing, but all existing content dirs are lowercase kebab-case.
 - `PostKey` in `src/types.ts` must be kept in sync with collections.
