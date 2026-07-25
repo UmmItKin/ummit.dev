@@ -4,13 +4,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Personal website & blog — [ummit.dev](https://ummit.dev). Astro 6 + Vue 3 + UnoCSS + MDX, static SSG only. Forked from `astro-theme-vitesse` with extensive customizations. Requires **Node 22+** and **Bun** (npm/yarn not supported).
+Personal website & blog — [ummit.dev](https://ummit.dev). Astro 7 + Vue 3 + UnoCSS + MDX, static SSG only. Forked from `astro-theme-vitesse` with extensive customizations. Requires **Node 24.x** (`engines` pinned; CI/release still on 22) and **Bun** (npm/yarn not supported).
 
 ## Commands
 
+Use **Bun only** (never npm/yarn):
+
 ```bash
-bun dev          # dev server on port 3199, --host enabled
+bun install      # install dependencies
+bun dev          # dev server on port 4321, --host enabled
 bun build        # production build (also runs in pre-commit hook)
+bun preview      # preview the production build locally
 bun lint         # eslint check only
 bun lint:fix     # auto-fix lint issues (runs in pre-commit hook on staged files)
 bun release      # bump version via bumpp → triggers release.yml → changelogithub
