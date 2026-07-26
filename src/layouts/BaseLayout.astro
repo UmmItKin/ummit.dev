@@ -91,13 +91,15 @@ const previewDeadManSwitch = false
 </style>
 
 <script>
-  const overlay = document.getElementById('loading-overlay')
-
   document.addEventListener('astro:before-preparation', () => {
-    overlay?.classList.add('active')
+    document.getElementById('loading-overlay')?.classList.add('active')
+  })
+
+  document.addEventListener('astro:after-swap', () => {
+    document.getElementById('loading-overlay')?.classList.remove('active')
   })
 
   document.addEventListener('astro:page-load', () => {
-    overlay?.classList.remove('active')
+    document.getElementById('loading-overlay')?.classList.remove('active')
   })
 </script>
