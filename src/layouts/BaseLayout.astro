@@ -6,11 +6,11 @@ import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.astro'
 import ScrollToTop from '@/components/ScrollToTop.vue'
 import DeadManSwitch from '@/components/DeadManSwitch.vue'
+import { features } from '@/config/features'
 
 const { title, description, image, pageType } = Astro.props
 
 const buildTime = Date.now()
-const enableDeadManSwitch = false
 const previewDeadManSwitch = false
 ---
 
@@ -35,7 +35,11 @@ const previewDeadManSwitch = false
     >
       <slot />
       <ScrollToTop client:idle />
-      {enableDeadManSwitch && <DeadManSwitch client:only="vue" buildTime={buildTime} preview={previewDeadManSwitch} />}
+      {
+        features.deadMansSwitch && (
+          <DeadManSwitch client:only="vue" buildTime={buildTime} preview={previewDeadManSwitch} />
+        )
+      }
       <Footer />
     </main>
   </body>

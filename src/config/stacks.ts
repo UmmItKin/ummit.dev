@@ -1,0 +1,28 @@
+export const stacks: string[][] = [
+  [
+    'i-simple-icons-javascript',
+    'i-simple-icons-typescript',
+    'i-simple-icons-python',
+    'i-simple-icons-gnubash',
+    'i-simple-icons-linux',
+    'i-simple-icons-archlinux',
+    'i-simple-icons-nixos',
+    'i-simple-icons-debian',
+    'i-simple-icons-raspberrypi',
+    'i-simple-icons-neovim',
+    'i-simple-icons-git',
+  ],
+  [
+    'i-simple-icons-docker',
+    'i-simple-icons-nginx',
+    'i-simple-icons-cloudflare',
+    'i-simple-icons-wireguard',
+    'i-simple-icons-burpsuite',
+    'i-simple-icons-wireshark',
+    'i-simple-icons-kalilinux',
+    'i-simple-icons-metasploit',
+    'i-simple-icons-kdenlive',
+    'i-simple-icons-html5',
+    'i-simple-icons-css3',
+  ],
+]

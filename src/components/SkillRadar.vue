@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import type { SkillItem } from '@/types'
 import {
   Chart as ChartJS,
   Filler,
@@ -10,19 +11,25 @@ import {
 } from 'chart.js'
 import { Radar } from 'vue-chartjs'
 
+const props = defineProps<{
+  data?: SkillItem[]
+}>()
+
 ChartJS.register(Filler, Legend, LineElement, PointElement, RadialLinearScale, Tooltip)
 
-const data = {
-  labels: [
-    'GNU/Linux',
-    'Web Security',
-    'Digital Forensics',
-    'Red Teaming',
-  ],
+const skills = props.data ?? [
+  { label: 'GNU/Linux', value: 90 },
+  { label: 'Web Security', value: 70 },
+  { label: 'Digital Forensics', value: 60 },
+  { label: 'Red Teaming', value: 70 },
+]
+
+const chartData = {
+  labels: skills.map(s => s.label),
   datasets: [
     {
       label: 'Skills',
-      data: [90, 70, 60, 70],
+      data: skills.map(s => s.value),
       backgroundColor: 'rgba(139, 92, 246, 0.2)',
       borderColor: 'rgba(139, 92, 246, 0.8)',
       borderWidth: 2,
@@ -84,7 +91,7 @@ const options = {
 
 <template>
   <div class="radar-wrapper">
-    <Radar :data="data" :options="options" />
+    <Radar :data="chartData" :options="options" />
   </div>
 </template>
 

@@ -5,7 +5,7 @@ import process from 'node:process'
 import satori from 'satori'
 import { html } from 'satori-html'
 import sharp from 'sharp'
-import siteConfig from '@/site-config'
+import { siteConfig } from '@/config'
 
 const BIO = 'HKer, InfoSec enthusiast currently into Computer Forensics, Wireless Attack, Web Security, GNU/Linux, and Open source. Also hunting CVEs :D'
 

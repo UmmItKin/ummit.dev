@@ -1,5 +1,6 @@
 ---
-import siteConfig from '@/site-config'
+import { siteConfig } from '@/config'
+import { analytics } from '@/config/analytics'
 import '@/styles/fonts.css'
 import '@/styles/global.css'
 import '@/styles/prose.css'
@@ -40,7 +41,7 @@ function formatCanonicalURL(url: string | URL) {
 <meta name="generator" content={Astro.generator} />
 
 <!-- Preconnect to external origins -->
-<link rel="preconnect" href="https://links-rs.ummit.dev" crossorigin />
+{siteConfig.preconnect?.map((url: string) => <link rel="preconnect" href={url} crossorigin />)}
 
 <!-- Low Priority Global Metadata -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -67,8 +68,12 @@ function formatCanonicalURL(url: string | URL) {
 {resolvedImage?.src && <meta property="twitter:image" content={resolvedImage.src} />}
 {resolvedImage?.alt && <meta name="twitter:image:alt" content={resolvedImage?.alt} />}
 
-<!-- Umami Analytics -->
-<script defer src="https://cloud.umami.is/script.js" data-website-id="7e2c9847-d6a6-4449-bd8a-36a4c91e9666"></script>
+<!-- Analytics -->
+{
+  analytics.enabled && analytics.src && analytics.websiteId && (
+    <script is:inline defer src={analytics.src} data-website-id={analytics.websiteId} />
+  )
+}
 
 <script>
   import nprogress from 'nprogress'

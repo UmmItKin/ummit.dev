@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import siteConfig from '@/site-config'
+import { siteConfig } from '@/config'
 import { getLinkTarget } from '@/utils/link'
 
 interface SocialLink {

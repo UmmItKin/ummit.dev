@@ -1,184 +1,72 @@
 ---
-import { Image } from 'astro:assets'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import GitHubGraph from '@/components/GitHubGraph.vue'
 import SkillRadar from '@/components/SkillRadar.vue'
 import HoverPreviewLink from '@/components/HoverPreviewLink.astro'
 import Sponsor from '@/components/Sponsor.astro'
-import siteConfig from '@/site-config'
-import icedteaIcon from '@/assets/CTF/ICEDTEA.jpg'
-import tryhackmeIcon from '@/assets/tryhackme.svg'
-import heapunderflowIcon from '@/assets/heapunderflow.webp'
-import nhncIcon from '@/assets/nhnc-logo.webp'
-import thjccIcon from '@/assets/thjcc-logo.png'
-import ummitosIcon from '@/assets/ummitos-logo.png'
-import hkpugLogo from '@/assets/hkpug-logo.png'
-import cryptohackIcon from '@/assets/cryptohack-logo.png'
-import oscpCert from '@/assets/certs/oscp.webp'
-import cwesCert from '@/assets/certs/cwes.png'
-import cjcaCert from '@/assets/certs/cjca.png'
-import pt1Cert from '@/assets/certs/thm-pt1.png'
+import { siteConfig } from '@/config'
+import { profile } from '@/config/profile'
+import { skills } from '@/config/skills'
+import { stacks } from '@/config/stacks'
+import { timeline } from '@/config/timeline'
+import { competitions } from '@/config/competitions'
+import { features } from '@/config/features'
 import { fetchGitHubContributions } from '@/utils/github-contributions'
 
-const ogImage = { src: '/og/index.png', alt: 'UmmIt Kin Personal Website' }
+const ogImage = { src: '/og/index.png', alt: siteConfig.title }
 
-const contributions = await fetchGitHubContributions(siteConfig.github)
+const contributions = features.githubContributions ? await fetchGitHubContributions(siteConfig.github) : null
+
+const badgeGroups = [
+  { label: 'CTF Team', badges: profile.badges.teams ?? [] },
+  { label: 'Challenge Creator', badges: profile.badges.challenges ?? [] },
+  { label: 'Hacking', badges: profile.badges.platforms ?? [] },
+  { label: 'Creator', badges: profile.badges.projects ?? [] },
+  { label: 'Community', badges: profile.badges.community ?? [] },
+  { label: 'Candidate', badges: profile.badges.certifications ?? [] },
+].filter((g) => g.badges.length > 0)
 ---
 
 <BaseLayout description={siteConfig.description} image={ogImage}>
   <article class="prose">
     <h1 class="text-title flex items-center gap-2">
-      Kin =]
-      <i class="i-simple-icons-linux text-3xl"></i>
+      {profile.name}
+      {profile.taglineIcon && <i class:list={[profile.taglineIcon, 'text-3xl']} />}
     </h1>
-    <p>
-      HKer, InfoSec enthusiast currently into Computer Forensics, Wireless Attack, Web Security, GNU/Linux, and Open
-      source. Also hunting CVEs :D
-    </p>
-    <p class="mt-1 text-sm opacity-60">Aspiring to become a professional Red Team operator. INTP-T (MBTI)</p>
+    <p>{profile.intro}</p>
+    {profile.subtagline && <p class="mt-1 text-sm opacity-60">{profile.subtagline}</p>}
 
-    <p class="ctf-section">
-      CTF Team
-      <span class="ctf-links">
-        <HoverPreviewLink
-          href="https://ic3dt3a.org/"
-          title="ICEDTEA"
-          subtitle="CTF Team"
-          description="A Taiwan based CTF team that I am part of"
-        >
-          <span class="magic-link-icon"><Image src={icedteaIcon} alt="" width={500} height={500} /></span>ICEDTEA
-        </HoverPreviewLink>
-        <HoverPreviewLink
-          href="https://ctftime.org/team/405936/"
-          title="HeapUnderFlow"
-          subtitle="CTF Team"
-          description="My current Hong Kong based CTF team"
-        >
-          <span class="magic-link-icon"><Image src={heapunderflowIcon} alt="" width={500} height={500} /></span
-          >HeapUnderFlow
-        </HoverPreviewLink>
-      </span>
-      <br />
-      Challenge Creator
-      <span class="ctf-links">
-        <HoverPreviewLink
-          href="https://ctftime.org/event/2818/"
-          title="NHNC CTF"
-          subtitle="Challenge Creator"
-          description="I created challenges and helped with the design side for No Hack No CTF."
-        >
-          <span class="magic-link-icon"><Image src={nhncIcon} alt="" width={500} height={500} /></span>NHNC CTF
-        </HoverPreviewLink>
-        <HoverPreviewLink
-          href="https://thjcc.org"
-          title="THJCC CTF"
-          subtitle="Challenge Creator"
-          description="A Taiwai CTF event where I also contributed challenge-related work."
-        >
-          <span class="magic-link-icon"><Image src={thjccIcon} alt="" width={500} height={500} /></span>THJCC CTF
-        </HoverPreviewLink>
-      </span>
-      <br />
-      Hacking
-      <HoverPreviewLink
-        href="https://tryhackme.com/p/UmmIt"
-        title="TryHackMe"
-        subtitle="Practice Platform"
-        description="Used for rooms, labs, and certification tracks."
-      >
-        <span class="magic-link-icon"><i class="i-simple-icons-tryhackme text-[#C11111]"></i></span>TryHackMe
-      </HoverPreviewLink>
-      <HoverPreviewLink
-        href="https://app.hackthebox.com/users/2099997"
-        title="HackTheBox"
-        subtitle="Practice Platform"
-        description="Used for labs, boxes, and web exploitation practice."
-      >
-        <span class="magic-link-icon"><i class="i-simple-icons-hackthebox text-[#9FEF00]"></i></span>HackTheBox
-      </HoverPreviewLink>
-      <HoverPreviewLink
-        href="https://cryptohack.org/user/UmmIt/"
-        title="CryptoHack"
-        subtitle="Practice Platform"
-        description="A platform I use for learning and practicing cryptography."
-      >
-        <span class="magic-link-icon"><Image src={cryptohackIcon} alt="" width={500} height={500} /></span>CryptoHack
-      </HoverPreviewLink>
-      <br />
-      Creator
-      <HoverPreviewLink
-        href="https://docs.ummit.dev/"
-        title="UmmItOS"
-        subtitle="My Project"
-        description="My own Arch-based distribution and personal Linux experiment."
-      >
-        <span class="magic-link-icon"><Image src={ummitosIcon} alt="" width={500} height={500} /></span>UmmItOS
-      </HoverPreviewLink>
-      <br />
-      Community
-      <HoverPreviewLink
-        href="https://www.pycon.hk/"
-        title="Hong Kong Python User Group"
-        subtitle="Community"
-        description="I join HKPUG activities and occasionally give talks there."
-      >
-        <span class="magic-link-icon">
-          <Image src={hkpugLogo} alt="" width={256} height={256} />
-        </span>HKPUG
-      </HoverPreviewLink>
-      <br />
-      Candidate
-      <HoverPreviewLink
-        href="https://www.offsec.com/courses/pen-200/"
-        title="OSCP"
-        subtitle="Offensive Security"
-        description="Offensive Security Certified Professional - Advanced penetration testing certification."
-      >
-        <span class="magic-link-icon"><Image src={oscpCert} alt="" width={500} height={500} /></span>OSCP
-      </HoverPreviewLink>
-      <HoverPreviewLink
-        href="https://academy.hackthebox.com/preview/certifications/htb-certified-web-exploitation-specialist"
-        title="CWES"
-        subtitle="HackTheBox"
-        description="Certified Web Exploitation Specialist - Advanced web application security certification."
-      >
-        <span class="magic-link-icon"><Image src={cwesCert} alt="" width={500} height={500} /></span>CWES
-      </HoverPreviewLink>
-      <HoverPreviewLink
-        href="https://academy.hackthebox.com/preview/certifications/htb-certified-junior-cybersecurity-associate"
-        title="CJCA"
-        subtitle="HackTheBox"
-        description="Certified Junior Cybersecurity Associate - Entry-level cybersecurity fundamentals."
-      >
-        <span class="magic-link-icon"><Image src={cjcaCert} alt="" width={500} height={500} /></span>CJCA
-      </HoverPreviewLink>
-      <HoverPreviewLink
-        href="https://tryhackme.com/certification/junior-penetration-tester"
-        title="PT1"
-        subtitle="TryHackMe"
-        description="Junior Penetration Tester - Foundational penetration testing skills certification."
-      >
-        <span class="magic-link-icon"><Image src={pt1Cert} alt="" width={500} height={500} /></span>PT1
-      </HoverPreviewLink>
-    </p>
+    {
+      badgeGroups.length > 0 && (
+        <p class="ctf-section">
+          {badgeGroups.map((group, gi) => (
+            <>
+              {gi > 0 && <br />}
+              <span>{group.label} </span>
+              {group.badges.map((badge: any) => (
+                <HoverPreviewLink
+                  href={badge.href}
+                  title={badge.title}
+                  subtitle={badge.subtitle}
+                  description={badge.description}
+                >
+                  <span class="magic-link-icon">
+                    {badge.image ? (
+                      <img src={badge.image} alt="" width="500" height="500" />
+                    ) : (
+                      <i class:list={[badge.icon]} style={badge.color ? `color: ${badge.color}` : ''} />
+                    )}
+                  </span>
+                  {badge.title}
+                </HoverPreviewLink>
+              ))}
+            </>
+          ))}
+        </p>
+      )
+    }
 
-    <p>
-      I’ve been self-taught since I was a kid. Right now I'm studying InfoSec in Hong Kong, and the stuff I keep coming
-      back to is red teaming, reverse engineering, and web hacking. I started taking this seriously around middle
-      school. HTML, CSS, JavaScript first, then C#, VB.NET, a few others. I don't really touch those anymore. Lately
-      it's web hacking and red team work.
-    </p>
-    <p>
-      I'm a huge GNU/Linux enthusiast. I've tried at least 20 different distros over the years. My main system is Arch
-      Linux, seven years and counting. Yes, I'm still a student with over seven years of experience. I started back in
-      secondary school. Right now I'm running my own Arch-based distribution called{' '}
-      <a href="https://docs.ummit.dev" class="prose-link" target="_blank">UmmItOS</a>, named after my internet nickname.
-      XD
-    </p>
-    <p>
-      I used to be a Windows user, but I'm now 100% on GNU/Linux. I only touch Windows when I'm attacking Active
-      Directory. Lots of stories from the journey ... this is just a small part :D
-    </p>
+    {profile.bio.map((p: string) => <p>{p}</p>)}
 
     <hr class="hr-line" />
 
@@ -205,27 +93,36 @@ const contributions = await fetchGitHubContributions(siteConfig.github)
       </a>
     </div>
 
-    <a
-      class="prose-link inline-flex items-center gap-1 mt-3 text-xs opacity-40 whitespace-nowrap"
-      href="https://github.com/UmmItKin.gpg"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <i class="i-ri-key-2-line"></i>
-      GPG Key
-    </a>
+    {
+      profile.gpgKeyUrl && (
+        <a
+          class="prose-link inline-flex items-center gap-1 mt-3 text-xs opacity-40 whitespace-nowrap"
+          href={profile.gpgKeyUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="i-ri-key-2-line" />
+          GPG Key
+        </a>
+      )
+    }
 
     <hr class="hr-line" />
 
-    <section class="mt-8">
-      <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
-        <i class="i-ri-cup-line"></i>
-        Sponsor
-      </h2>
-      <Sponsor />
-    </section>
-
-    <hr class="hr-line" />
+    {
+      features.sponsor && (
+        <>
+          <section class="mt-8">
+            <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
+              <i class="i-ri-cup-line" />
+              Sponsor
+            </h2>
+            <Sponsor />
+          </section>
+          <hr class="hr-line" />
+        </>
+      )
+    }
 
     {
       contributions && (
@@ -237,337 +134,170 @@ const contributions = await fetchGitHubContributions(siteConfig.github)
             </h2>
             <GitHubGraph client:visible days={contributions.days} total={contributions.total} />
           </section>
-
           <hr class="hr-line" />
         </>
       )
     }
 
-    <section class="mt-8">
-      <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
-        <i class="i-ri-trophy-line"></i>
-        Skills
-      </h2>
-      <p class="text-sm opacity-70 mb-4">This is my skill :D</p>
-      <SkillRadar client:idle />
-    </section>
+    {
+      features.skills && (
+        <>
+          <section class="mt-8">
+            <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
+              <i class="i-ri-trophy-line" />
+              Skills
+            </h2>
+            <p class="text-sm opacity-70 mb-4">This is my skill :D</p>
+            <SkillRadar client:idle data={skills} />
+          </section>
+          <hr class="hr-line" />
+        </>
+      )
+    }
 
-    <hr class="hr-line" />
+    {
+      features.timeline && (
+        <>
+          <section class="mt-8">
+            <h2 class="text-xl font-semibold mb-6">Timeline</h2>
+            <div class="relative border-l-2 border-neutral-700 pl-6 space-y-8">
+              {timeline.map((entry) => (
+                <div class="relative">
+                  <div class="absolute -left-8 top-0 w-4 h-4 rounded-full bg-neutral-400 flex items-center justify-center">
+                    <i class:list={[entry.icon, 'text-black text-xs']} />
+                  </div>
+                  <h3 class="font-medium mt-0">
+                    {entry.title}
+                    {entry.url && (
+                      <a
+                        href={entry.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Visit ${entry.title} website`}
+                        class="timeline-link"
+                      >
+                        <i class="i-ri-external-link-line text-sm" />
+                      </a>
+                    )}
+                  </h3>
+                  <p class="text-sm opacity-70">{entry.date}</p>
+                  <p class="text-sm mt-2 opacity-80">{entry.role}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+          <hr class="hr-line" />
+        </>
+      )
+    }
 
-    <section class="mt-8">
-      <h2 class="text-xl font-semibold mb-6">Timeline</h2>
-      <div class="relative border-l-2 border-neutral-700 pl-6 space-y-8">
-        <div class="relative">
-          <div class="absolute -left-8 top-0 w-4 h-4 rounded-full bg-neutral-400 flex items-center justify-center">
-            <i class="i-ri-flag-line text-black text-xs"></i>
+    {
+      features.competitions && (
+        <>
+          <section class="mt-8">
+            <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
+              <i class="i-ri-trophy-line" />
+              Competition Experience
+            </h2>
+            <p class="text-xs opacity-45 -mt-3 mb-4">
+              Only the best runs are listed — I play other CTFs casually too, just not at full effort.
+            </p>
+
+            <div class="md:hidden divide-y divide-neutral-800">
+              {competitions.map((c) => (
+                <div class="py-3">
+                  <h3 class="font-medium mt-0">{c.name}</h3>
+                  <div class="text-sm opacity-70">
+                    {c.date} · {c.team}
+                    {c.division && c.division !== '\u2014' ? ` · ${c.division}` : ''}
+                  </div>
+                  <div class="text-sm mt-1">
+                    <strong>{c.placement}</strong>
+                    {c.details && c.details !== '\u2014' ? ` · ${c.details}` : ''}
+                  </div>
+                  {c.subDetails && <div class="text-xs opacity-45 mt-1">{c.subDetails}</div>}
+                </div>
+              ))}
+            </div>
+
+            <div class="hidden md:block overflow-x-auto">
+              <table class="competition-table w-full text-sm text-left">
+                <thead>
+                  <tr class="border-b border-neutral-700">
+                    <th class="pb-2 pr-3 font-medium opacity-70">Competition</th>
+                    <th class="pb-2 pr-3 font-medium opacity-70 whitespace-nowrap">Date</th>
+                    <th class="pb-2 pr-3 font-medium opacity-70">Team</th>
+                    <th class="pb-2 pr-3 font-medium opacity-70">Division</th>
+                    <th class="pb-2 pr-3 font-medium opacity-70 whitespace-nowrap">Placement</th>
+                    <th class="pb-2 font-medium opacity-70 whitespace-nowrap">Pts / Solves</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {competitions.map((c) => (
+                    <tr class="border-b border-neutral-800">
+                      <td class="py-2 pr-3 font-medium align-top">{c.name}</td>
+                      <td class="py-2 pr-3 opacity-70 whitespace-nowrap align-top">{c.date}</td>
+                      <td class="py-2 pr-3 align-top">
+                        {c.teamIcon && (
+                          <span class="magic-link-icon inline-block w-4 h-4 mr-1 align-text-bottom">
+                            <img src={c.teamIcon} alt="" width="40" height="40" />
+                          </span>
+                        )}
+                        {c.team}
+                      </td>
+                      <td class="py-2 pr-3 opacity-70 align-top">{c.division || '\u2014'}</td>
+                      <td class="py-2 pr-3 whitespace-nowrap align-top">
+                        <strong>{c.placement}</strong>
+                      </td>
+                      <td class="py-2 whitespace-nowrap align-top">
+                        {c.details || '\u2014'}
+                        {c.subDetails && <div class="text-xs opacity-45 mt-1">{c.subDetails}</div>}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <hr class="hr-line" />
+        </>
+      )
+    }
+
+    {
+      features.stacks && (
+        <section class="mt-8">
+          <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
+            <i class="i-ri-flashlight-line" />
+            Stacks
+          </h2>
+
+          <div class="stack-desc bg-neutral-800 rounded-lg px-4 py-3 mb-4 flex flex-col gap-1">
+            <span class="font-semibold text-base text-main flex items-center gap-2">
+              The Stacks for my development, hacking, and daily use.
+            </span>
+            <small class="text-xs text-main/60 italic mt-1"> Cannot list all here, just the main ones :) </small>
           </div>
-          <h3 class="font-medium mt-0">
-            ICEDTEA CTF
-            <a
-              href="https://ic3dt3a.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit ICEDTEA CTF website"
-              class="timeline-link"
-            >
-              <i class="i-ri-external-link-line text-sm"></i>
-            </a>
-          </h3>
-          <p class="text-sm opacity-70">2023 - Present</p>
-          <p class="text-sm mt-2 opacity-80">Team member</p>
-        </div>
 
-        <div class="relative">
-          <div class="absolute -left-8 top-0 w-4 h-4 rounded-full bg-neutral-400 flex items-center justify-center">
-            <i class="i-ri-flag-line text-black text-xs"></i>
-          </div>
-          <h3 class="font-medium mt-0">
-            HeapUnderFlow CTF
-            <a
-              href="https://ctftime.org/team/405936/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit HeapUnderFlow CTF website"
-              class="timeline-link"
-            >
-              <i class="i-ri-external-link-line text-sm"></i>
-            </a>
-          </h3>
-          <p class="text-sm opacity-70">2025 - Present</p>
-          <p class="text-sm mt-2 opacity-80">Core member</p>
-        </div>
-
-        <div class="relative">
-          <div class="absolute -left-8 top-0 w-4 h-4 rounded-full bg-neutral-400 flex items-center justify-center">
-            <i class="i-ri-edit-line text-black text-xs"></i>
-          </div>
-          <h3 class="font-medium mt-0">
-            No Hack No CTF
-            <a
-              href="https://ctftime.org/event/2818/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit No Hack No CTF on CTFtime"
-              class="timeline-link"
-            >
-              <i class="i-ri-external-link-line text-sm"></i>
-            </a>
-          </h3>
-          <p class="text-sm opacity-70">Challenge Creator & Web Designer</p>
-          <p class="text-sm mt-2 opacity-80">gitgit & Crackme challenges creator, website designer.</p>
-        </div>
-
-        <div class="relative">
-          <div class="absolute -left-8 top-0 w-4 h-4 rounded-full bg-neutral-400 flex items-center justify-center">
-            <i class="i-ri-terminal-box-line text-black text-xs"></i>
-          </div>
-          <h3 class="font-medium mt-0">
-            Hong Kong Python User Group (HKPUG)
-            <a
-              href="https://www.pycon.hk/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit Hong Kong Python User Group website"
-              class="timeline-link"
-            >
-              <i class="i-ri-external-link-line text-sm"></i>
-            </a>
-          </h3>
-          <p class="text-sm opacity-70">Member and Occasional talker :)</p>
-          <p class="text-sm mt-2 opacity-80">Join the Hong Kong Python community and occasionally give talks there.</p>
-        </div>
-
-        <div class="relative">
-          <div class="absolute -left-8 top-0 w-4 h-4 rounded-full bg-neutral-400 flex items-center justify-center">
-            <i class="i-ri-terminal-box-line text-black text-xs"></i>
-          </div>
-          <h3 class="font-medium mt-0">
-            TryHackMe
-            <a
-              href="https://tryhackme.com/p/UmmIt"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit TryHackMe profile"
-              class="timeline-link"
-            >
-              <i class="i-ri-external-link-line text-sm"></i>
-            </a>
-          </h3>
-          <p class="text-sm opacity-70">Active Player</p>
-          <p class="text-sm mt-2 opacity-80">Ranked in the top 4% of TryHackMe players</p>
-        </div>
-
-        <div class="relative">
-          <div class="absolute -left-8 top-0 w-4 h-4 rounded-full bg-neutral-400 flex items-center justify-center">
-            <i class="i-ri-bug-line text-black text-xs"></i>
-          </div>
-          <h3 class="font-medium mt-0">Zero-Day Hunting</h3>
-          <p class="text-sm opacity-70">Randomly hunting zero-day vulnerabilities</p>
-          <p class="text-sm mt-2 opacity-80">I do it for fun and learning purposes, no public disclosures yet.</p>
-        </div>
-      </div>
-    </section>
-
-    <hr class="hr-line" />
-
-    <section class="mt-8">
-      <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
-        <i class="i-ri-trophy-line"></i>
-        Competition Experience
-      </h2>
-      <p class="text-xs opacity-45 -mt-3 mb-4">
-        Only the best runs are listed — I play other CTFs casually too, just not at full effort.
-      </p>
-
-      <!-- Mobile: compact list layout -->
-      <div class="md:hidden divide-y divide-neutral-800">
-        <div class="py-3">
-          <h3 class="font-medium mt-0">DEF CON CTF Qualifiers 2026</h3>
-          <div class="text-sm opacity-70">May 22–24, 2026 · IB2XD</div>
-          <div class="text-sm mt-1">
-            <strong>26/686</strong> · 4,852 pts
-          </div>
-        </div>
-        <div class="py-3">
-          <h3 class="font-medium mt-0">PolyU CTF 2026</h3>
-          <div class="text-sm opacity-70">Mar 6–8, 2026 · HeapUnderFlow · Sub-degree</div>
-          <div class="text-sm mt-1">
-            <strong>3/20</strong> · 11,427 pts / 36 solves
-          </div>
-          <div class="text-xs opacity-45 mt-1">Global: <strong>20/179</strong></div>
-        </div>
-        <div class="py-3">
-          <h3 class="font-medium mt-0">HITCON CTF 2025</h3>
-          <div class="text-sm opacity-70">Aug 22–24, 2025 · ICEDTEA</div>
-          <div class="text-sm mt-1">
-            <strong>29/717</strong> · Taiwan Top 4
-          </div>
-        </div>
-        <div class="py-3">
-          <h3 class="font-medium mt-0">HKCERT CTF 2025</h3>
-          <div class="text-sm opacity-70">Dec 19–21, 2025 · HeapUnderFlow · Open</div>
-          <div class="text-sm mt-1">
-            <strong>29/597</strong>
-          </div>
-        </div>
-      </div>
-
-      <!-- Desktop: table layout -->
-      <div class="hidden md:block overflow-x-auto">
-        <table class="competition-table w-full text-sm text-left">
-          <thead>
-            <tr class="border-b border-neutral-700">
-              <th class="pb-2 pr-3 font-medium opacity-70">Competition</th>
-              <th class="pb-2 pr-3 font-medium opacity-70 whitespace-nowrap">Date</th>
-              <th class="pb-2 pr-3 font-medium opacity-70">Team</th>
-              <th class="pb-2 pr-3 font-medium opacity-70">Division</th>
-              <th class="pb-2 pr-3 font-medium opacity-70 whitespace-nowrap">Placement</th>
-              <th class="pb-2 font-medium opacity-70 whitespace-nowrap">Pts / Solves</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="border-b border-neutral-800">
-              <td class="py-2 pr-3 font-medium align-top">DEF CON CTF Qualifiers 2026</td>
-              <td class="py-2 pr-3 opacity-70 whitespace-nowrap align-top">May 22–24, 2026</td>
-              <td class="py-2 pr-3 align-top">IB2XD</td>
-              <td class="py-2 pr-3 opacity-70 align-top">—</td>
-              <td class="py-2 pr-3 whitespace-nowrap align-top">
-                <strong>26/686</strong>
-              </td>
-              <td class="py-2 whitespace-nowrap align-top">4,852</td>
-            </tr>
-            <tr class="border-b border-neutral-800">
-              <td class="py-2 pr-3 font-medium align-top">PolyU CTF 2026</td>
-              <td class="py-2 pr-3 opacity-70 whitespace-nowrap align-top">Mar 6–8, 2026</td>
-              <td class="py-2 pr-3 align-top">
-                <span class="magic-link-icon inline-block w-4 h-4 mr-1 align-text-bottom"
-                  ><Image src={heapunderflowIcon} alt="" width={40} height={40} /></span
-                >
-                HeapUnderFlow
-              </td>
-              <td class="py-2 pr-3 opacity-70 align-top">Sub-degree</td>
-              <td class="py-2 pr-3 whitespace-nowrap align-top">
-                <strong>3/20</strong>
-              </td>
-              <td class="py-2 whitespace-nowrap align-top">
-                11,427 / 36
-                <div class="text-xs opacity-45 mt-1">Global: <strong>20/179</strong></div>
-              </td>
-            </tr>
-            <tr class="border-b border-neutral-800">
-              <td class="py-2 pr-3 font-medium align-top">HITCON CTF 2025</td>
-              <td class="py-2 pr-3 opacity-70 whitespace-nowrap align-top">Aug 22–24, 2025</td>
-              <td class="py-2 pr-3 align-top">
-                <span class="magic-link-icon inline-block w-4 h-4 mr-1 align-text-bottom"
-                  ><Image src={icedteaIcon} alt="" width={40} height={40} /></span
-                >
-                ICEDTEA
-              </td>
-              <td class="py-2 pr-3 opacity-70 align-top">—</td>
-              <td class="py-2 pr-3 whitespace-nowrap align-top">
-                <strong>29/717</strong>
-              </td>
-              <td class="py-2 whitespace-nowrap align-top">
-                <span class="opacity-70">Taiwan Top 4</span>
-              </td>
-            </tr>
-            <tr>
-              <td class="py-2 pr-3 font-medium align-top">HKCERT CTF 2025</td>
-              <td class="py-2 pr-3 opacity-70 whitespace-nowrap align-top">Dec 19–21, 2025</td>
-              <td class="py-2 pr-3 align-top">
-                <span class="magic-link-icon inline-block w-4 h-4 mr-1 align-text-bottom"
-                  ><Image src={heapunderflowIcon} alt="" width={40} height={40} /></span
-                >
-                HeapUnderFlow
-              </td>
-              <td class="py-2 pr-3 opacity-70 align-top">Open</td>
-              <td class="py-2 pr-3 whitespace-nowrap align-top">
-                <strong>29/597</strong>
-              </td>
-              <td class="py-2 whitespace-nowrap opacity-70 align-top">—</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <hr class="hr-line" />
-
-    <section class="mt-8">
-      <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
-        <i class="i-ri-flashlight-line"></i>
-        Stacks
-      </h2>
-
-      <div class="stack-desc bg-neutral-800 rounded-lg px-4 py-3 mb-4 flex flex-col gap-1">
-        <span class="font-semibold text-base text-main flex items-center gap-2">
-          The Stacks for my development, hacking, and daily use.
-        </span>
-        <small class="text-xs text-main/60 italic mt-1"> Cannot list all here, just the main ones :) </small>
-      </div>
-
-      <div class="marquee-container">
-        <div class="marquee-track animate-marquee">
-          <div class="marquee-content">
-            <i class="i-simple-icons-javascript text-4xl opacity-60" title="JavaScript"></i>
-            <i class="i-simple-icons-typescript text-4xl opacity-60" title="TypeScript"></i>
-            <i class="i-simple-icons-python text-4xl opacity-60" title="Python"></i>
-            <i class="i-simple-icons-gnubash text-4xl opacity-60" title="Bash"></i>
-            <i class="i-simple-icons-linux text-4xl opacity-60" title="Linux"></i>
-            <i class="i-simple-icons-archlinux text-4xl opacity-60" title="Arch Linux"></i>
-            <i class="i-simple-icons-nixos text-4xl opacity-60" title="NixOS"></i>
-            <i class="i-simple-icons-debian text-4xl opacity-60" title="Debian"></i>
-            <i class="i-simple-icons-raspberrypi text-4xl opacity-60" title="Raspberry Pi"></i>
-            <i class="i-simple-icons-neovim text-4xl opacity-60" title="Neovim"></i>
-            <i class="i-simple-icons-git text-4xl opacity-60" title="Git"></i>
-          </div>
-          <div class="marquee-content" aria-hidden="true">
-            <i class="i-simple-icons-javascript text-4xl opacity-60"></i>
-            <i class="i-simple-icons-typescript text-4xl opacity-60"></i>
-            <i class="i-simple-icons-python text-4xl opacity-60"></i>
-            <i class="i-simple-icons-gnubash text-4xl opacity-60"></i>
-            <i class="i-simple-icons-linux text-4xl opacity-60"></i>
-            <i class="i-simple-icons-archlinux text-4xl opacity-60"></i>
-            <i class="i-simple-icons-nixos text-4xl opacity-60"></i>
-            <i class="i-simple-icons-debian text-4xl opacity-60"></i>
-            <i class="i-simple-icons-raspberrypi text-4xl opacity-60"></i>
-            <i class="i-simple-icons-neovim text-4xl opacity-60"></i>
-            <i class="i-simple-icons-git text-4xl opacity-60"></i>
-          </div>
-        </div>
-      </div>
-
-      <div class="marquee-container mt-4">
-        <div class="marquee-track animate-marquee-reverse">
-          <div class="marquee-content">
-            <i class="i-simple-icons-docker text-4xl opacity-60" title="Docker"></i>
-            <i class="i-simple-icons-nginx text-4xl opacity-60" title="Nginx"></i>
-            <i class="i-simple-icons-cloudflare text-4xl opacity-60" title="Cloudflare"></i>
-            <i class="i-simple-icons-wireguard text-4xl opacity-60" title="WireGuard"></i>
-            <i class="i-simple-icons-burpsuite text-4xl opacity-60" title="Burp Suite"></i>
-            <i class="i-simple-icons-wireshark text-4xl opacity-60" title="Wireshark"></i>
-            <i class="i-simple-icons-kalilinux text-4xl opacity-60" title="Kali Linux"></i>
-            <i class="i-simple-icons-metasploit text-4xl opacity-60" title="Metasploit"></i>
-            <i class="i-simple-icons-kdenlive text-4xl opacity-60" title="Kdenlive"></i>
-            <i class="i-simple-icons-html5 text-4xl opacity-60" title="HTML5"></i>
-            <i class="i-simple-icons-css3 text-4xl opacity-60" title="CSS3"></i>
-          </div>
-          <div class="marquee-content" aria-hidden="true">
-            <i class="i-simple-icons-docker text-4xl opacity-60"></i>
-            <i class="i-simple-icons-nginx text-4xl opacity-60"></i>
-            <i class="i-simple-icons-cloudflare text-4xl opacity-60"></i>
-            <i class="i-simple-icons-wireguard text-4xl opacity-60"></i>
-            <i class="i-simple-icons-burpsuite text-4xl opacity-60"></i>
-            <i class="i-simple-icons-wireshark text-4xl opacity-60"></i>
-            <i class="i-simple-icons-kalilinux text-4xl opacity-60"></i>
-            <i class="i-simple-icons-metasploit text-4xl opacity-60"></i>
-            <i class="i-simple-icons-kdenlive text-4xl opacity-60"></i>
-            <i class="i-simple-icons-html5 text-4xl opacity-60"></i>
-            <i class="i-simple-icons-css3 text-4xl opacity-60"></i>
-          </div>
-        </div>
-      </div>
-    </section>
+          {stacks.map((row, i) => (
+            <div class:list={['marquee-container', i > 0 && 'mt-4']}>
+              <div class:list={['marquee-track', i % 2 === 0 ? 'animate-marquee' : 'animate-marquee-reverse']}>
+                <div class="marquee-content">
+                  {row.map((icon) => (
+                    <i class:list={[icon, 'text-4xl opacity-60']} />
+                  ))}
+                </div>
+                <div class="marquee-content" aria-hidden="true">
+                  {row.map((icon) => (
+                    <i class:list={[icon, 'text-4xl opacity-60']} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </section>
+      )
+    }
   </article>
 </BaseLayout>
 
@@ -630,14 +360,6 @@ const contributions = await fetchGitHubContributions(siteConfig.github)
   .magic-link-icon i {
     font-size: 1em;
     opacity: 0.8;
-  }
-
-  .magic-link.no-hover {
-    cursor: default;
-  }
-
-  .magic-link.no-hover:hover {
-    background: rgba(136, 136, 136, 0.15);
   }
 
   .timeline-link {

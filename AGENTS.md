@@ -47,7 +47,7 @@ All 8 steps are required or routing/OG images break:
 2. `src/types.ts` — add name to `PostKey` union
 3. `src/pages/<name>/index.astro` — listing page
 4. `src/pages/<name>/[...slug].astro` — post pages (uses `PostLayout`)
-5. `src/site-config.ts` — add to `siteConfig.page.blogLinks` for nav
+5. `src/config/site.ts` — add to `siteConfig.page.blogLinks` for nav
 6. `src/pages/og/<name>.png.ts` — collection OG
 7. `src/pages/og/<name>/[...slug].png.ts` — per-post OG
 8. `src/components/PostLayout.astro` — handle in `getOgPath()`
@@ -74,15 +74,39 @@ Blog posts are served under `/posts/<id>`, **not** `/blog/<id>`. The `blog/` pat
 
 Blog post OG images use the root `pages/og/[...slug].png.ts` catch-all — there is no `/og/blog/` directory.
 
+## Config architecture
+
+All personal/site data lives in `src/config/*.ts` (barrel export via `src/config/index.ts`). Pages are dumb templates that render from config. Import pattern: `import { siteConfig, profile, skills } from '@/config'`.
+
+| File | Contents |
+|------|----------|
+| `site.ts` | Author, title, emails, social links, nav links, avatar, site start date, preconnect URLs |
+| `profile.ts` | Homepage bio, intro, tagline, GPG key, badge groups (teams, certs, platforms, etc.) |
+| `skills.ts` | Skill radar data (label + value pairs) |
+| `stacks.ts` | Tech stack marquee icons (array of icon-class rows) |
+| `timeline.ts` | Timeline entries (title, date, role, icon, url) |
+| `competitions.ts` | Competition results table entries |
+| `friends.ts` | Friend cards (name, avatar path, url, github, tooltip) |
+| `links.ts` | Link-in-bio page entries + tagline |
+| `gear.ts` | Hardware/software inventory sections |
+| `projects.ts` | Project categories and entries |
+| `sponsor.ts` | Sponsor links + text |
+| `analytics.ts` | Umami/analytics config (set `enabled: false` to disable) |
+| `features.ts` | Feature flags — toggle homepage sections (sponsor, skills, timeline, competitions, stacks, githubContributions, deadMansSwitch) |
+
+Badge/friend/avatar images live in `public/badges/`, `public/friends/`, and `public/avatar.webp` respectively. Config references them by path string (e.g. `'/badges/icedtea.jpg'`).
+
+`SkillRadar.vue` accepts a `data` prop (`SkillItem[]`); falls back to defaults if omitted.
+
 ## Static data
 
-`src/data/projects.ts` exports `projectData` (typed as `ProjectData` from `@/types`). Hardcoded categories and project entries. Do **not** put `.ts` files under `src/pages/` — they risk being treated as routes (this was the reason data was moved from `src/pages/projects/data.ts` to `src/data/projects.ts`).
+`src/config/projects.ts` exports `projectData` (typed as `ProjectData` from `@/types`). Do **not** put `.ts` files under `src/pages/` — they risk being treated as routes.
 
 ## Architecture quirks
 
 - **`src/components/` is flat** — no subdirectories. `PostLayout.astro` renders all collection post pages; `ListPosts.astro` renders all listing pages; `ListProjects.astro` renders the projects page (supports both icon-font classes and SVG `<img>` for local/remote icons).
-- `DeadManSwitch.vue` gated by `enableDeadManSwitch = false` in `src/layouts/BaseLayout.astro`. Don't re-enable without asking.
-- `SkillRadar.vue` — **do not modify**, user maintains it manually.
+- `DeadManSwitch.vue` gated by `features.deadMansSwitch = false` in `src/config/features.ts`. Don't re-enable without asking.
+- `SkillRadar.vue` accepts `data` prop from `src/config/skills.ts`. Edit skills there, not the component.
 - `src/utils/og-image.ts` imports `Buffer` from `node:buffer` — known LSP false positive, ignore.
 - Pre-existing build warnings (safe to ignore): two `INVALID_ANNOTATION` warnings from `@vueuse/core` in Vite build. Suppressed via `rollupOptions.onwarn` in `astro.config.ts`.
 - `astro.config.ts` raises `EventEmitter.defaultMaxListeners` to 30 to suppress MaxListeners dev warnings.

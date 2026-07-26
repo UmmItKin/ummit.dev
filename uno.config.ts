@@ -82,6 +82,7 @@ export default defineConfig({
     'i-ri-router-line',
     'i-ri-smartphone-line',
     'i-ri-wifi-line',
+    'i-ri-radar-line',
 
     // Development icons
     'i-ri-apps-line',
@@ -93,6 +94,11 @@ export default defineConfig({
     'i-ri-database-2-line',
     'i-ri-bug-line',
     'i-ri-flashlight-line',
+    'i-ri-download-2-line',
+    'i-ri-image-line',
+    'i-ri-git-branch-line',
+    'i-ri-video-line',
+    'i-ri-shield-line',
 
     // Tech stack icons
     'i-simple-icons-linux',
@@ -108,6 +114,7 @@ export default defineConfig({
     'i-simple-icons-typescript',
     'i-simple-icons-gnubash',
     'i-simple-icons-css3',
+    'i-simple-icons-kdenlive',
 
     // OS icons
     'i-simple-icons-archlinux',
@@ -125,6 +132,8 @@ export default defineConfig({
     'i-simple-icons-wireshark',
     'i-simple-icons-kalilinux',
     'i-simple-icons-metasploit',
+    'i-simple-icons-tryhackme',
+    'i-simple-icons-hackthebox',
 
     'i-ri-sketching-line',
     'i-ri-key-2-line',

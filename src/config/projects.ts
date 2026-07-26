@@ -18,7 +18,6 @@ export const projectData: ProjectData = [
       },
     ],
   },
-
   {
     title: 'Security',
     projects: [
@@ -42,7 +41,6 @@ export const projectData: ProjectData = [
       },
     ],
   },
-
   {
     title: 'CTF',
     projects: [
@@ -60,7 +58,6 @@ export const projectData: ProjectData = [
       },
     ],
   },
-
   {
     title: 'Tools',
     projects: [

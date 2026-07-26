@@ -1,99 +1,8 @@
 ---
-import { Image } from 'astro:assets'
 import BaseLayout from '@/layouts/BaseLayout.astro'
-
-import lemonteaImg from '@/assets/friends/lemontea.png'
-import chilinImg from '@/assets/friends/chilin.png'
-import frankImg from '@/assets/friends/frank.png'
-import elliotImg from '@/assets/friends/elliot.png'
-import yochanImg from '@/assets/friends/yochan.png'
-import kohiroImg from '@/assets/friends/kohiro.png'
-import robinImg from '@/assets/friends/robin.png'
-import auronImg from '@/assets/friends/auron.webp'
-import syuanImg from '@/assets/friends/syuan.png'
-import shirakamiNekoImg from '@/assets/friends/shirakami-neko.png'
-import wolfYuanImg from '@/assets/friends/wolf-yuan.png'
+import { friends } from '@/config/friends'
 
 const ogImage = { src: '/og/friends.png', alt: 'Friends' }
-
-const friendsList = [
-  {
-    image: lemonteaImg,
-    name: 'LemonTea',
-    url: 'https://blog-lemontea.pages.dev/',
-    github: 'https://github.com/LemonTeatw1',
-    tooltip: '',
-  },
-  {
-    image: chilinImg,
-    name: 'ChiLin.H',
-    url: 'https://neko70.net/',
-    github: 'https://github.com/qilin102223',
-    tooltip: '',
-  },
-  {
-    image: frankImg,
-    name: 'Frank',
-    url: 'https://frk.tw/',
-    github: 'https://github.com/Frank-Kam',
-    tooltip: '',
-  },
-  {
-    image: elliotImg,
-    name: 'Elliot',
-    url: 'https://elliot-tw.me/',
-    github: 'https://github.com/Elliot-32',
-    tooltip: '',
-  },
-  {
-    image: yochanImg,
-    name: 'Yochan',
-    url: 'https://yochan06.github.io/',
-    github: 'https://github.com/yochan06',
-    tooltip: '',
-  },
-  {
-    image: kohiroImg,
-    name: 'Kohiro',
-    url: 'https://github.com/kohiro961021',
-    github: 'https://github.com/kohiro961021',
-    tooltip: '',
-  },
-  {
-    image: robinImg,
-    name: 'Robin',
-    url: 'https://robin-tw.me/',
-    github: 'https://github.com/cxk228922',
-    tooltip: '',
-  },
-  {
-    image: auronImg,
-    name: 'Auron',
-    url: 'https://4ur0n.github.io/',
-    github: 'https://github.com/4ur0n',
-  },
-  {
-    image: syuanImg,
-    name: 'Syuan',
-    url: 'https://5yu4n.github.io/',
-    github: 'https://github.com/5yu4n',
-    tooltip: '',
-  },
-  {
-    image: shirakamiNekoImg,
-    name: '白上ねこ',
-    url: 'https://moe.lolicon.io',
-    github: 'https://github.com/shirakamiNeko',
-    tooltip: '香香軟軟糯糯可口的芋泥鮮奶🥛',
-  },
-  {
-    image: wolfYuanImg,
-    name: 'Wolf Yuan',
-    url: 'https://wolf-yuan.dev/',
-    github: 'https://github.com/wolf-yuan-6115',
-    tooltip: '',
-  },
-]
 ---
 
 <BaseLayout title="Friends" description="My friends and their awesome websites." image={ogImage}>
@@ -104,14 +13,14 @@ const friendsList = [
 
   <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
     {
-      friendsList.map((friend) => (
+      friends.map((friend) => (
         <div class="friend-card flex flex-col items-center p-3 md:p-4 rounded-xl border border-neutral-800 hover:border-neutral-600 hover:bg-neutral-500/5 transition-all duration-300 group">
           <a href={friend.url} target="_blank" rel="noopener noreferrer" class="relative">
-            <Image
+            <img
               src={friend.image}
               alt={`${friend.name}'s avatar`}
-              width={700}
-              height={700}
+              width="80"
+              height="80"
               class="friend-avatar w-16 h-16 md:w-20 md:h-20 rd-full object-cover group-hover:scale-105 transition-transform duration-300"
               loading="lazy"
             />

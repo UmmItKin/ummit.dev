@@ -1,0 +1,80 @@
+import type { FriendEntry } from '@/types'
+
+export const friends: FriendEntry[] = [
+  {
+    name: 'LemonTea',
+    image: '/friends/lemontea.png',
+    url: 'https://blog-lemontea.pages.dev/',
+    github: 'https://github.com/LemonTeatw1',
+    tooltip: '',
+  },
+  {
+    name: 'ChiLin.H',
+    image: '/friends/chilin.png',
+    url: 'https://neko70.net/',
+    github: 'https://github.com/qilin102223',
+    tooltip: '',
+  },
+  {
+    name: 'Frank',
+    image: '/friends/frank.png',
+    url: 'https://frk.tw/',
+    github: 'https://github.com/Frank-Kam',
+    tooltip: '',
+  },
+  {
+    name: 'Elliot',
+    image: '/friends/elliot.png',
+    url: 'https://elliot-tw.me/',
+    github: 'https://github.com/Elliot-32',
+    tooltip: '',
+  },
+  {
+    name: 'Yochan',
+    image: '/friends/yochan.png',
+    url: 'https://yochan06.github.io/',
+    github: 'https://github.com/yochan06',
+    tooltip: '',
+  },
+  {
+    name: 'Kohiro',
+    image: '/friends/kohiro.png',
+    url: 'https://github.com/kohiro961021',
+    github: 'https://github.com/kohiro961021',
+    tooltip: '',
+  },
+  {
+    name: 'Robin',
+    image: '/friends/robin.png',
+    url: 'https://robin-tw.me/',
+    github: 'https://github.com/cxk228922',
+    tooltip: '',
+  },
+  {
+    name: 'Auron',
+    image: '/friends/auron.webp',
+    url: 'https://4ur0n.github.io/',
+    github: 'https://github.com/4ur0n',
+  },
+  {
+    name: 'Syuan',
+    image: '/friends/syuan.png',
+    url: 'https://5yu4n.github.io/',
+    github: 'https://github.com/5yu4n',
+    tooltip: '',
+  },
+  {
+    name: '白上ねこ',
+    image: '/friends/shirakami-neko.png',
+    url: 'https://moe.lolicon.io',
+    github: 'https://github.com/shirakamiNeko',
+    tooltip: '香香軟軟糯糯可口的芋泥鮮奶',
+  },
+  {
+    name: 'Wolf Yuan',
+    image: '/friends/wolf-yuan.png',
+    url: 'https://wolf-yuan.dev/',
+    github: 'https://github.com/wolf-yuan-6115',
+    tooltip: '',
+  },
+]

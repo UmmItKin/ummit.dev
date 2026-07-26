@@ -1,37 +1,28 @@
 ---
-interface Props {
-  text?: string
-}
-
-const { text = 'Support my work' } = Astro.props
+import { sponsor } from '@/config/sponsor'
 ---
 
 <div class="sponsor-wrap">
   <p class="sponsor-text">
     <i class="i-ri-heart-fill"></i>
-    {text} — coffee fuels more CTF writeups, OSS, and zero-day hunting.
+    {sponsor.text}{sponsor.subtitle && ` \u2014 ${sponsor.subtitle}`}
   </p>
   <div class="sponsor-buttons">
-    <a
-      href="https://github.com/sponsors/UmmItKin"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="sponsor-button github"
-      aria-label="Sponsor UmmIt on GitHub"
-    >
-      <i class="i-ri-github-fill"></i>
-      <span>GitHub Sponsors</span>
-    </a>
-    <a
-      href="https://buymeacoffee.com/ummitc"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="sponsor-button bmc"
-      aria-label="Buy UmmIt a coffee"
-    >
-      <i class="i-simple-icons-buymeacoffee"></i>
-      <span>Buy Me a Coffee</span>
-    </a>
+    {
+      sponsor.links.map((link: any) => (
+        <a
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="sponsor-button"
+          style={link.hoverColor ? `--hover-color: ${link.hoverColor}` : ''}
+          aria-label={`${link.platform}`}
+        >
+          <i class={link.icon} />
+          <span>{link.platform}</span>
+        </a>
+      ))
+    }
   </div>
 </div>
 
@@ -86,15 +77,9 @@ const { text = 'Support my work' } = Astro.props
     font-size: 1.1rem;
   }
 
-  .sponsor-button.github:hover {
-    background: rgba(236, 72, 153, 0.12);
-    border-color: rgba(236, 72, 153, 0.45);
-    color: #f472b6;
-  }
-
-  .sponsor-button.bmc:hover {
-    background: rgba(255, 221, 0, 0.12);
-    border-color: rgba(255, 221, 0, 0.45);
-    color: #fde047;
+  .sponsor-button:hover {
+    background: color-mix(in srgb, var(--hover-color, #888) 12%, transparent);
+    border-color: color-mix(in srgb, var(--hover-color, #888) 45%, transparent);
+    color: var(--hover-color, #d4d4d4);
   }
 </style>

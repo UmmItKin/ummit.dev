@@ -1,5 +1,5 @@
 ---
-import siteConfig from '@/site-config'
+import { siteConfig } from '@/config'
 import { getLinkTarget } from '@/utils/link'
 
 const footerNavLinks = siteConfig.footer?.navLinks ?? []
@@ -29,15 +29,15 @@ const footerNavLinks = siteConfig.footer?.navLinks ?? []
   }
   <div class="flex">
     <a class="nav-link" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>
-    <span class="op-70">&nbsp;&nbsp;©&nbsp;&nbsp;{new Date().getFullYear()}&nbsp;&nbsp;{siteConfig.author}.</span>
+    <span class="op-70">&nbsp;&nbsp;&copy;&nbsp;&nbsp;{new Date().getFullYear()}&nbsp;&nbsp;{siteConfig.author}.</span>
   </div>
   <div class="op-50 text-xs font-mono">
-    Running for <span id="site-uptime">…</span>
+    Running for <span id="site-uptime">...</span>
   </div>
 </footer>
 
-<script>
-  const START = new Date('2023-10-20T16:57:50+0800').getTime()
+<script define:vars={{ startTime: siteConfig.siteStartedAt }}>
+  const START = new Date(startTime).getTime()
   function tick() {
     const el = document.getElementById('site-uptime')
     if (!el) {

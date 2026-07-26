@@ -1,63 +1,29 @@
 ---
-import { Image } from 'astro:assets'
 import BaseLayout from '@/layouts/BaseLayout.astro'
-import avatarImg from '@/assets/links.webp'
+import { siteConfig } from '@/config'
+import { links, linksTagline } from '@/config/links'
 
 const ogImage = { src: '/og/links.png', alt: 'Links' }
 
-const links = [
-  {
-    text: 'AUR',
-    href: 'https://aur.archlinux.org/account/UmmItKin',
-    icon: 'i-simple-icons-archlinux',
-  },
-  {
-    text: 'GitHub',
-    href: 'https://github.com/UmmItKin',
-    icon: 'i-simple-icons-github',
-  },
-  {
-    text: 'Buy me a Coffee',
-    href: 'https://buymeacoffee.com/ummit',
-    icon: 'i-simple-icons-buymeacoffee',
-  },
-  {
-    text: 'Blog',
-    href: '/blog',
-    icon: 'i-ri-rss-line',
-  },
-  {
-    text: 'Passthru',
-    href: 'https://gpu.passthru.info',
-    icon: 'i-ri-book-2-line',
-  },
-  {
-    text: 'Status',
-    href: 'https://status.ummit.dev',
-    icon: 'i-ri-signal-tower-line',
-  },
-]
+const domain = new URL(Astro.site ?? 'https://example.com').hostname
 ---
 
 <BaseLayout title="Links" description="All my links in one place." image={ogImage}>
   <div class="flex flex-col items-center justify-center min-h-70vh py-12">
-    <!-- Avatar -->
     <div class="mb-5">
-      <Image
-        src={avatarImg}
-        alt="UmmIt Kin"
-        width={500}
-        height={500}
+      <img
+        src={siteConfig.avatar}
+        alt={siteConfig.author}
+        width="128"
+        height="128"
         class="avatar-blur w-28 h-28 md:w-32 md:h-32 rounded-full border-2 border-neutral-500/25 transition-all duration-300"
         loading="eager"
       />
     </div>
 
-    <!-- Name -->
-    <h1 class="text-2xl font-bold">UmmIt Kin</h1>
-    <p class="text-sm opacity-45 mt-1 mb-8">HKer · InfoSec · GNU/Linux</p>
+    <h1 class="text-2xl font-bold">{siteConfig.author}</h1>
+    <p class="text-sm opacity-45 mt-1 mb-8">{linksTagline}</p>
 
-    <!-- Links -->
     <div class="flex flex-col gap-3 w-full max-w-md px-4">
       {
         links.map((link, i) => (
@@ -75,8 +41,7 @@ const links = [
       }
     </div>
 
-    <!-- Footer -->
-    <p class="mt-10 text-xs opacity-25">ummit.dev</p>
+    <p class="mt-10 text-xs opacity-25">{domain}</p>
   </div>
 </BaseLayout>
 
