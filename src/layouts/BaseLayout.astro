@@ -48,7 +48,7 @@ const previewDeadManSwitch = false
   </body>
 </html>
 
-<style>
+<style is:global>
   #loading-overlay {
     position: fixed;
     inset: 0;
@@ -71,7 +71,7 @@ const previewDeadManSwitch = false
     visibility: visible;
   }
 
-  .loading-text {
+  #loading-overlay .loading-text {
     font-size: 2rem;
     font-weight: 700;
     color: #fff;
