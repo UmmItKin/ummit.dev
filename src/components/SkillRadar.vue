@@ -9,6 +9,7 @@ import {
   RadialLinearScale,
   Tooltip,
 } from 'chart.js'
+import { computed } from 'vue'
 import { Radar } from 'vue-chartjs'
 
 const props = defineProps<{
@@ -17,30 +18,33 @@ const props = defineProps<{
 
 ChartJS.register(Filler, Legend, LineElement, PointElement, RadialLinearScale, Tooltip)
 
-const skills = props.data ?? [
+const defaultSkills: SkillItem[] = [
   { label: 'GNU/Linux', value: 90 },
   { label: 'Web Security', value: 70 },
   { label: 'Digital Forensics', value: 60 },
   { label: 'Red Teaming', value: 70 },
 ]
 
-const chartData = {
-  labels: skills.map(s => s.label),
-  datasets: [
-    {
-      label: 'Skills',
-      data: skills.map(s => s.value),
-      backgroundColor: 'rgba(139, 92, 246, 0.2)',
-      borderColor: 'rgba(139, 92, 246, 0.8)',
-      borderWidth: 2,
-      pointBackgroundColor: 'rgba(139, 92, 246, 1)',
-      pointBorderColor: '#1a1a1a',
-      pointBorderWidth: 2,
-      pointRadius: 5,
-      pointHoverRadius: 7,
-    },
-  ],
-}
+const chartData = computed(() => {
+  const skills = props.data ?? defaultSkills
+  return {
+    labels: skills.map(s => s.label),
+    datasets: [
+      {
+        label: 'Skills',
+        data: skills.map(s => s.value),
+        backgroundColor: 'rgba(139, 92, 246, 0.2)',
+        borderColor: 'rgba(139, 92, 246, 0.8)',
+        borderWidth: 2,
+        pointBackgroundColor: 'rgba(139, 92, 246, 1)',
+        pointBorderColor: '#1a1a1a',
+        pointBorderWidth: 2,
+        pointRadius: 5,
+        pointHoverRadius: 7,
+      },
+    ],
+  }
+})
 
 const options = {
   responsive: true,

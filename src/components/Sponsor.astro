@@ -1,5 +1,6 @@
 ---
 import { sponsor } from '@/config/sponsor'
+import type { SponsorLink } from '@/types'
 ---
 
 <div class="sponsor-wrap">
@@ -9,7 +10,7 @@ import { sponsor } from '@/config/sponsor'
   </p>
   <div class="sponsor-buttons">
     {
-      sponsor.links.map((link: any) => (
+      sponsor.links.map((link: SponsorLink) => (
         <a
           href={link.href}
           target="_blank"

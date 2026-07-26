@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import { gear } from '@/config/gear'
+import type { GearItem } from '@/types'
 
 const ogImage = { src: '/og/gear.png', alt: 'My Gear' }
 ---
@@ -22,7 +23,7 @@ const ogImage = { src: '/og/gear.png', alt: 'My Gear' }
           {section.subtitle && <p class="text-sm opacity-50 mb-4">{section.subtitle}</p>}
           {!section.subtitle && <div class="mb-4" />}
           <div class="grid gap-2">
-            {section.items.map((item: any) => (
+            {section.items.map((item: GearItem) => (
               <div class="flex flex-col sm:flex-row sm:items-center py-2 border-b border-neutral-800">
                 <span class="text-sm opacity-50 sm:w-40 shrink-0">{item.label}</span>
                 <span class="text-sm" set:html={item.value} />

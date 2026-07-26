@@ -11,6 +11,7 @@ import { stacks } from '@/config/stacks'
 import { timeline } from '@/config/timeline'
 import { competitions } from '@/config/competitions'
 import { features } from '@/config/features'
+import type { Badge } from '@/types'
 import { fetchGitHubContributions } from '@/utils/github-contributions'
 
 const ogImage = { src: '/og/index.png', alt: siteConfig.title }
@@ -43,7 +44,7 @@ const badgeGroups = [
             <>
               {gi > 0 && <br />}
               <span>{group.label} </span>
-              {group.badges.map((badge: any) => (
+              {group.badges.map((badge: Badge) => (
                 <HoverPreviewLink
                   href={badge.href}
                   title={badge.title}
