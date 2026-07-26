@@ -34,14 +34,14 @@ function activeLink(pathname: string) {
   </div>
 
   <div class="mb-8 p-4 rounded-lg bg-neutral-800/30 border border-neutral-700/50">
-    <div class="flex items-center gap-x-3 mb-1">
-      <span class="text-base font-semibold">
+    <div class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-1">
+      <span class="text-base font-semibold whitespace-nowrap">
         {levelInfo.count}{' '}{levelInfo.count === 1 ? 'writeup' : 'writeups'} published
       </span>
-      <span class="text-base opacity-50">·</span>
-      <span class="text-base font-medium text-green-400">{levelInfo.level}</span>
-      <span class="text-base opacity-50">·</span>
-      <span class="text-base opacity-50">Since {earliestYear}</span>
+      <span class="text-base opacity-50 whitespace-nowrap">·</span>
+      <span class="text-base font-medium whitespace-nowrap text-green-400">{levelInfo.level}</span>
+      <span class="text-base opacity-50 whitespace-nowrap">·</span>
+      <span class="text-base opacity-50 whitespace-nowrap">Since {earliestYear}</span>
     </div>
     <p class="text-sm opacity-70 italic">{levelInfo.message}</p>
   </div>
