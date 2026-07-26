@@ -21,9 +21,6 @@ const previewDeadManSwitch = false
     <ClientRouter />
   </head>
   <body class="bg-main text-main min-h-screen font-sans w-full bg-dot relative">
-    <div id="loading-overlay" transition:persist>
-      <span class="loading-text">Loading</span>
-    </div>
     <a
       href="#main-content"
       class="sr-only focus:not-sr-only focus:absolute focus:z-999 focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-main focus:text-link focus:rounded"
@@ -47,59 +44,3 @@ const previewDeadManSwitch = false
     </main>
   </body>
 </html>
-
-<style is:global>
-  #loading-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    background: rgba(13, 17, 23, 0.6);
-    opacity: 0;
-    visibility: hidden;
-    transition:
-      opacity 0.2s ease,
-      visibility 0.2s ease;
-  }
-
-  #loading-overlay.active {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  #loading-overlay .loading-text {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 0.05em;
-    animation: loading-pulse 1.5s ease-in-out infinite;
-  }
-
-  @keyframes loading-pulse {
-    0%,
-    100% {
-      opacity: 0.3;
-    }
-    50% {
-      opacity: 1;
-    }
-  }
-</style>
-
-<script>
-  document.addEventListener('astro:before-preparation', () => {
-    document.getElementById('loading-overlay')?.classList.add('active')
-  })
-
-  document.addEventListener('astro:after-swap', () => {
-    document.getElementById('loading-overlay')?.classList.remove('active')
-  })
-
-  document.addEventListener('astro:page-load', () => {
-    document.getElementById('loading-overlay')?.classList.remove('active')
-  })
-</script>
