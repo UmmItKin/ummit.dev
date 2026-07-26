@@ -92,18 +92,12 @@ const previewDeadManSwitch = false
 
 <script>
   const overlay = document.getElementById('loading-overlay')
-  let loadingTimeout: number | undefined
 
   document.addEventListener('astro:before-preparation', () => {
-    loadingTimeout = window.setTimeout(() => {
-      overlay?.classList.add('active')
-    }, 200)
+    overlay?.classList.add('active')
   })
 
   document.addEventListener('astro:page-load', () => {
-    if (loadingTimeout) {
-      clearTimeout(loadingTimeout)
-    }
     overlay?.classList.remove('active')
   })
 </script>
