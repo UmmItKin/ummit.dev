@@ -2,14 +2,14 @@
 title: "Configuring DNS Over HTTPS (DoH) on your system"
 description: "This step-by-step guide ensures encrypted DNS traffic with DoH"
 date: 2023-11-27T12:26:50+0800
-lastmod: 2023-12-03T11:05:02+0800
+lastmod: 2026-07-28T01:23:38+0800
 tag: "DNS, Privacy, Security"
 lang: en-US
 ---
 
 ## Introduction
 
-Securing your DNS (Domain Name System) queries is an essential step in enhancing your online privacy. DNS Over HTTPS (DoH) encrypts your DNS traffic, preventing potential eavesdropping and manipulation. This guide walks you through configuring DoH on any system, such as linux, windows and android.
+Securing your DNS (Domain Name System) queries is an important step for online privacy. DNS Over HTTPS (DoH) encrypts your DNS traffic, preventing eavesdropping and manipulation. This guide covers configuring DoH on Linux, Windows, and Android.
 
 A simpler explanation is shown in the following diagram:
 
@@ -206,7 +206,7 @@ Android is easier. Also has a GUI for it.
 
 ## Conclusion
 
-By following these steps, you've configured DNS Over HTTPS using systemd-resolved on your system, enhancing your privacy and securing your DNS queries. If you encounter issues, try the opportunistic DoH setting or experiment with different DNS server options.
+That's it. You've configured DNS Over HTTPS using systemd-resolved. If you run into issues, try the opportunistic DoH setting or experiment with different DNS server options.
 
 ## References
 

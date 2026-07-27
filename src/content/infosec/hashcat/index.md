@@ -1,15 +1,15 @@
 ---
 title: "Brute-Force Attack on MD5 Hash Using Hashcat"
-description: Learn password cracking techniques using Hashcat on Linux with wordlist-based brute-force attacks on MD5 hashes.
+description: Crack MD5 hashes with Hashcat on Linux using wordlist-based brute-force attacks.
 date: 2024-10-28T09:10:10+0800
-lastmod: 2024-12-31T06:45:40+0800
+lastmod: 2026-07-28T01:23:38+0800
 tag: "Password Cracking, Hashcat, Security"
 lang: en-US
 ---
 
 ## Introduction
 
-MD5 is a cryptographic hash function that produces a 128-bit hash value, and its one-way function. That means you can't reverse the hash value to the original value. But you can break it using brute-force attack. In this article, I’ll guide you through the process of breaking an MD5 hash using Hashcat on Arch Linux or any other GNU/Linux distribution.
+MD5 is a cryptographic hash function that produces a 128-bit hash value, and it's a one-way function. That means you can't reverse the hash value to the original value. But you can break it using brute-force attack. This article shows how to break an MD5 hash using Hashcat on Arch Linux or any other GNU/Linux distribution.
 
 >NOTICE: I'll not cover any guide on OSX or windows. Use GNU/Linux instead.
 
@@ -49,10 +49,10 @@ hashcat -m 0 -a 0 <value_of_md5> --show
 
 ## Advantages of Hashcat
 
-Hashcat is particularly useful for batch processing multiple hash values. You can leverage the `find` command to automate the process for all hashes in a specified directory. For example:
+Hashcat is useful for batch processing multiple hash values. You can use the `find` command to automate the process for all hashes in a specified directory. For example:
 
 ```bash
 find /usr/share/wordlists/ -type f -exec hashcat -m 0 -a 0 -d 2 hash {} \;
 ```
 
-This command will execute Hashcat for each file in the specified directory, making it an efficient way to handle multiple hashes.
+This command runs Hashcat for each file in the specified directory, an efficient way to handle multiple hashes.

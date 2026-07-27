@@ -1,15 +1,15 @@
 ---
 title: "A Simple Guide to Using Nmap for Network Scanning"
-description: "In this comprehensive guide, we will explore how to harness the capabilities of Nmap to check your Network Security."
+description: "How to use Nmap to scan networks, find open ports, detect services, and check for known vulnerabilities."
 date: 2021-12-14T17:07:28+0800
-lastmod: 2025-01-01T04:03:00+0800
+lastmod: 2026-07-28T01:23:38+0800
 tag: "Nmap, Network Security, Port Scanning"
 lang: en-US
 ---
 
 ## Introduction
 
-Nmap is a powerful tool for scanning networks. It helps you find open ports, services, and potential security issues in your home network or server. This guide will show you how to use Nmap to check your network security.
+Nmap scans networks to find open ports, services, and potential security issues. This guide covers the basics for checking your own network.
 
 ## Installing Nmap
 
@@ -207,4 +207,4 @@ nmap --script vulners --script-args mincvss=7 <target>
 
 ## Conclusion
 
-Nmap is a versatile tool that can help you identify potential security issues in your network. By scanning your network with Nmap, you can find open ports, services, and vulnerabilities that may be exploited by attackers :)
+Nmap can find open ports, services, and vulnerabilities on your network. Use it to check what you are exposing.

@@ -2,14 +2,14 @@
 title: "Cracking WiFi Passwords with Aircrack-NG"
 description: Educational guide to WiFi security testing using the Aircrack-ng suite for monitoring, capturing, and analyzing wireless networks.
 date: 2024-07-06T22:06:14+0800
-lastmod: 2026-04-13T21:00:50+0800
+lastmod: 2026-07-28T01:23:38+0800
 tag: "WiFi Security, Aircrack-NG"
 lang: en-US
 ---
 
 ## What Is Aircrack-ng?
 
-To make a long story short, Aircrack-ng is a network software suite consisting of WiFi security tools that can be used to assess the security of wireless networks. It focuses on different areas of WiFi security, including monitoring, attacking, testing, and cracking.
+Aircrack-ng is a network software suite of WiFi security tools for assessing the security of wireless networks. It covers monitoring, attacking, testing, and cracking.
 
 ### Disclaimer
 
