@@ -2,14 +2,14 @@
 title: "Disable Hugo Sitemap Generation After Building"
 description: "Disable Hugo sitemap.xml generation after building your static site to prevent duplicate content issues."
 date: 2023-09-03T23:33:40+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:35:00+0800
 tag: "Hugo, Static Site, Configuration"
 lang: en-US
 ---
 
 ## Introduction
 
-If you’re using Hugo, a popular static site generator, you might be aware that it automatically generates certain files, such as sitemaps, to enhance your website’s functionality and search engine optimization. However, there are cases where you might want to disable the sitemap generation. In this article, we’ll explore how to disable the sitemap in Hugo after generating your public files.
+If you're using Hugo, a popular static site generator, you might be aware that it automatically generates certain files, such as sitemaps, to help your website's functionality and search engine optimization. However, there are cases where you might want to disable the sitemap generation. This article shows how to disable the sitemap in Hugo after generating your public files.
 
 ## Why Disable the Sitemap?
 

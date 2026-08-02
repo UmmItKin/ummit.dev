@@ -2,7 +2,7 @@
 title: "Install XFCE Desktop on Gentoo Linux with OpenRC"
 description: "Install Xorg, XFCE desktop, and LightDM display manager on Gentoo Linux with OpenRC."
 date: 2023-09-20T16:40:21+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:40:00+0800
 tag: "Gentoo, XFCE, Desktop Environment"
 lang: en-US
 ---
@@ -13,7 +13,7 @@ In our previous blog, we successfully installed Gentoo Linux and set up the syst
 
 ### Why Choose XFCE?
 
-XFCE is an excellent choice for those seeking a lightweight and efficient desktop environment. Unlike resource-intensive alternatives like GNOME or KDE, XFCE is incredibly light on system resources, requiring less than 200MB of RAM to run smoothly. Its minimalistic design and efficient performance make it ideal for older hardware or users who prefer a snappy and responsive desktop experience. Additionally, XFCE has shorter compilation times during the installation process, making it an attractive option for Gentoo users. Let's dive into the installation process and get XFCE up and running on your Gentoo Linux system.
+XFCE is an excellent choice for those seeking a lightweight and efficient desktop environment. Unlike resource-intensive alternatives like GNOME or KDE, XFCE is incredibly light on system resources, requiring less than 200MB of RAM to run smoothly. Its minimalistic design and efficient performance make it ideal for older hardware or users who prefer a snappy and responsive desktop experience. Additionally, XFCE has shorter compilation times during the installation process, making it an attractive option for Gentoo users. Now let's install XFCE on your Gentoo Linux system.
 
 ## Step 0: Update Your System
 
@@ -68,7 +68,7 @@ Now, let's proceed confidently, knowing that our system is well-prepared for the
 
 A well-maintained system is a happy system. It's time to declutter your Gentoo environment and bid farewell to any unnecessary packages. This not only keeps your system running smoothly but also frees up precious space.
 
-Let's get started with the cleanup:
+Clean up the system:
 
 ```shell
 emerge --ask --depclean --verbose
@@ -100,7 +100,7 @@ With these steps complete, your Gentoo system is now primed and ready to welcome
 
 ## Gentoo: Installing XFCE
 
-Now comes the exciting part—installing XFCE, XORG and LightDM on your Gentoo system.
+Now comes the exciting part: installing XFCE, XORG and LightDM on your Gentoo system.
 
 ### Step 7: Installing XFCE
 
@@ -146,7 +146,7 @@ With everything set up and ready, it's time to test your Configuring XFCE on you
 startx
 ```
 
-And there you have it—your Gentoo system has DE installed (As shown in the image below):
+And there you have it: your Gentoo system has DE installed (As shown in the image below):
 
 ![Started XFCE](./Gentoo-xfce-start.png)
 

@@ -2,14 +2,14 @@
 title: "Git Global and Local Configuration Settings"
 description: Manage Git global and local configurations for different identities across multiple repositories and projects.
 date: 2023-12-27T02:21:38+08:00
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:35:00+0800
 tag: "Git, Configuration, DevOps"
 lang: en-US
 ---
 
 ## Introduction
 
-When working with Git, managing configurations is crucial for a seamless development experience. This guide explores setting up local and global configurations and provides a list of configurations for your reference.
+When working with Git, managing configurations is crucial for a smooth development experience. This guide explores setting up local and global configurations and provides a list of configurations for your reference.
 
 ## Global Configuration
 
@@ -65,7 +65,7 @@ Now, when you work on a specific repository, Git will use the local configuratio
 
 This setup is handy when contributing to projects with different identities. Adjust the local configurations for each repository, and global configurations will serve as the default for repositories without a specific local configuration.
 
-By following these steps and referring to the full config list, you can easily manage and switch between different identities when working on multiple Git repositories.
+With these steps and the full config list, you can easily manage and switch between different identities when working on multiple Git repositories.
 
 ## Reference
 

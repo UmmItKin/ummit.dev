@@ -2,14 +2,14 @@
 title: "Essential Gentoo Post-Installation Setup Tasks"
 description: "Essential post-installation tasks for Gentoo including user setup, sudo, logging, and Wi-Fi configuration."
 date: 2023-09-20T16:40:21+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:40:00+0800
 tag: "Gentoo, Linux, Post-Installation"
 lang: en-US
 ---
 
 ## Introduction
 
-In our previous article, we accomplished the installation of XFCE with XORG, setting the stage for a functional Gentoo Linux system. Now, as we delve into this comprehensive post-installation guide, we'll lead you through pivotal steps aimed at elevating the security, functionality, and performance of your Gentoo setup. By the time we wrap up, you'll have a fully operational Gentoo Linux system tailored to meet your daily computing needs.
+In our previous article, we accomplished the installation of XFCE with XORG, setting the stage for a functional Gentoo Linux system. Now, this post-installation guide walks through steps to improve the security, functionality, and performance of your Gentoo setup. By the end, you'll have a fully operational Gentoo Linux system tailored to meet your daily computing needs.
 
 ## User Management
 
@@ -172,7 +172,7 @@ To assist in managing your Gentoo system and packages, installing Gentoolkit is 
 emerge --ask --verbose app-portage/gentoolkit
 ```
 
-Once installed, you can leverage Gentoolkit to perform various tasks, including searching for package information, checking for reverse dependencies, and more. For instance, if you want to find out which packages depend on `www-client/firefox`, you can use the `equery` utility as follows:
+Once installed, you can use Gentoolkit to perform various tasks, including searching for package information, checking for reverse dependencies, and more. For instance, if you want to find out which packages depend on `www-client/firefox`, you can use the `equery` utility as follows:
 
 ```shell
 equery uses www-client/firefox
@@ -192,7 +192,7 @@ To set up `alsa-plugins` with the correct version for Firefox, use the following
 echo ">=media-plugins/alsa-plugins-1.2.7.1-r1 pulseaudio" > /etc/portage/package.use/alsa-plugins
 ```
 
-This command specifies the version and configuration for `alsa-plugins` to work seamlessly with Firefox. If the version changes in the future, running the installation command again will prompt you with the updated version, allowing you to input the correct information.
+This command specifies the version and configuration for `alsa-plugins` to work with Firefox. If the version changes in the future, running the installation command again will prompt you with the updated version, allowing you to input the correct information.
 
 #### Proceed to Install Firefox
 
@@ -226,7 +226,7 @@ For the pre-built binary version of Firefox:
 firefox-bin
 ```
 
-By following these steps, you'll have a fully configured Firefox web browser on your Gentoo system, ready for all your browsing needs.
+Firefox is now installed on your Gentoo system, ready for browsing.
 
 ## 8. Setting Up Time Synchronization with Chrony
 
@@ -254,7 +254,7 @@ Chrony offers accurate time synchronization, crucial for various system processe
 
 ## 9. Network Connectivity with NetworkManager
 
-NetworkManager is a versatile software crafted to efficiently manage an array of network connections, including wired, wireless, DSL, dial-up, VPN, WiMAX, and mobile broadband networks.
+NetworkManager is a tool crafted to manage an array of network connections, including wired, wireless, DSL, dial-up, VPN, WiMAX, and mobile broadband networks.
 
 ### Installation
 

@@ -2,7 +2,7 @@
 title: "Vim Quick Start Guide for Beginners"
 description: Comprehensive Vim editor guide covering modes, essential commands, and advanced features for efficient text editing.
 date: 2023-12-22T03:15:00+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:40:00+0800
 tag: "Vim, Text Editor, Linux"
 lang: en-US
 ---
@@ -97,7 +97,7 @@ Unlock the full potential of vim with advanced features.
 
 ## Conclusion
 
-As a Linux user, mastering a terminal-based text editor is essential. If you've become adept at Vim, you're a true Vim hacker—whether it's Vi, Vim, or Neovim! :D
+As a Linux user, mastering a terminal-based text editor is essential. If you've become adept at Vim, you're a true Vim hacker, whether it's Vi, Vim, or Neovim! :D
 
 In terms of skills, not many people have mastered Linux, let alone Vim. Although there are text editors like Nano, they lack the robust features of Vim or Neovim, making them less powerful options.
 
@@ -105,7 +105,7 @@ Just like Windows Notepad and Notepad++, Notepad serves as the default text edit
 
 So, I highly recommend learning Vi, Vim, Neovim, or Emacs as your daily file editor. Once you master them, you'll experience a significant change. Your computer skills will level up considerably.
 
-Leave GUI programs aside and delve into terminal-based tools to elevate your computer skills and become proficient in the art of terminal hacking.
+Leave GUI programs aside and use terminal-based tools to build your computer skills and become proficient in the art of terminal hacking.
 
 ## Reference
 

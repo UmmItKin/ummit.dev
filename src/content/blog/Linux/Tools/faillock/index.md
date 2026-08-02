@@ -2,18 +2,18 @@
 title: "Unlock a Linux User After Failed Login Attempts with faillock"
 description: "Unlock a Linux user account locked by too many failed login attempts using the faillock command."
 date: 2023-09-11T02:00:10+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:35:00+0800
 tag: "Linux, Security, Authentication"
 lang: en-US
 ---
 
 ## Introduction
 
-Linux systems are robust security,One such mechanism is designed to protect against unauthorized access by temporarily locking out a user after too many failed login attempts. While this feature enhances security, there may be situations where you need to manually unlock a user account. In this guide, we'll explore how to unlock a Linux user account using the `faillock` command.
+Linux systems are robust security,One such mechanism is designed to protect against unauthorized access by temporarily locking out a user after too many failed login attempts. While this feature helps with security, there may be situations where you need to manually unlock a user account. This guide shows how to unlock a Linux user account using the `faillock` command.
 
 ## Why Would You Need to Unlock a User Account?
 
-Before we delve into the process, let's understand why you might need to unlock a user account:
+Before we get into the process, let's understand why you might need to unlock a user account:
 
 1. **Accidental Lockout**: Users can sometimes forget their passwords or make multiple login attempts with incorrect credentials, resulting in a lockout.
 

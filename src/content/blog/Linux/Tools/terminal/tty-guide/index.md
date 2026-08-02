@@ -2,7 +2,7 @@
 title: "Linux TTY Guide"
 description: "Navigate Linux TTY virtual terminals for recovery, multi-session management, and troubleshooting GUI issues."
 date: 2023-11-19T00:28:05+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:35:00+0800
 tag: "Linux, Terminal, TTY"
 lang: en-US
 ---
@@ -33,7 +33,7 @@ To exit a TTY session, ensure you've logged out of the session by typing `exit` 
 
 ### TTY for Troubleshooting
 
-TTY becomes particularly useful when you encounter issues with the graphical interface. If your desktop environment is unresponsive, switching to a TTY session allows you to troubleshoot and potentially resolve issues through the command line.
+TTY becomes useful when you encounter issues with the graphical interface. If your desktop environment is unresponsive, switching to a TTY session allows you to troubleshoot and potentially resolve issues through the command line.
 
 ### Managing Multiple Sessions
 

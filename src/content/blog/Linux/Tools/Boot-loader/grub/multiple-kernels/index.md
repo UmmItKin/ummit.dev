@@ -2,14 +2,14 @@
 title: "Install and Manage Multiple Kernels with GRUB on Arch Linux"
 description: Install and manage multiple Linux kernels on Arch Linux with GRUB bootloader for flexibility and compatibility.
 date: 2023-12-26T05:33:45+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:35:00+0800
 tag: "GRUB, Arch Linux, Kernel"
 lang: en-US
 ---
 
 ## Overview
 
-GRUB (Grand Unified Bootloader) is a popular bootloader used on many Linux distributions, including Arch Linux. Installing multiple kernels alongside GRUB allows you to choose which kernel version to boot into, providing flexibility and compatibility. In this guide, we'll walk through the process of installing multiple kernels on Arch Linux.
+GRUB (Grand Unified Bootloader) is a popular bootloader used on many Linux distributions, including Arch Linux. Installing multiple kernels alongside GRUB allows you to choose which kernel version to boot into, providing flexibility and compatibility. This guide walks through installing multiple kernels on Arch Linux.
 
 ## Step 1: Install Kernels
 

@@ -2,7 +2,7 @@
 title: "Customize League of Legends Skins with CSLOL Manager"
 description: Use CSLOL Manager to install custom skins in League of Legends and bring back old champion designs.
 date: 2023-09-24T23:06:40+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:30:00+0800
 tag: "League of Legends, Gaming, Customization"
 lang: en-US
 ---
@@ -31,7 +31,7 @@ However, there's a slight risk of account suspension in some cases. To stay safe
 
 CSLOL Manager is an open-source program, and you can even build it yourself from the source code. Using it this way is considered safer. As for the skins themselves, it depends on your trust level. You can test files for viruses if you have the means, as CSLOL Manager serves as a convenient way to download these skins. The files are hosted on platforms like MediaFire, so exercise caution based on your level of trust.
 
-Now, let's delve into the steps to change your skins.
+Now, the steps to change your skins.
 
 ## Step 1: Install CSLOL Manager and Run the Program
 

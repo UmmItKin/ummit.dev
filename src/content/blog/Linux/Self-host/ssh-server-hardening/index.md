@@ -2,7 +2,7 @@
 title: "How to Secure Your Linux VPS Server"
 description: "Secure your Linux VPS with SSH key authentication, firewall rules, and fail2ban."
 date: 2023-06-29T01:23:00+08:00
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:35:00+0800
 tag: "VPS, Security, Server Administration"
 lang: en-US
 ---
@@ -192,4 +192,4 @@ By implementing these measures, you effectively prevent your server from respond
 
 ## Conclusion
 
-Security is an ongoing process. Regularly review and update your security measures to adapt to emerging threats. By following these steps and using the provided command lines, you significantly enhance your VPS hosting server's security, ensuring a safer environment for your applications and data.
+Security is an ongoing process. Regularly review and update your security measures to adapt to emerging threats. Using the provided commands, you can strengthen your VPS hosting server's security for a safer environment for your applications and data.

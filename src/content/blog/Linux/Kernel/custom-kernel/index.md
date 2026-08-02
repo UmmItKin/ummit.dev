@@ -2,7 +2,7 @@
 title: "How to Build a Custom Linux Kernel"
 description: "Build a custom Linux kernel from source with personalized configuration and systemd-boot support."
 date: 2023-08-22T14:20:50+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:35:00+0800
 tag: "Linux, Kernel, System Administration"
 lang: en-US
 ---
@@ -15,7 +15,7 @@ Building a custom Linux kernel on Arch Linux might appear intimidating at first,
 
 Throughout this tutorial, we'll use Linux kernel version 6.4.12 as an example. Keep in mind that you can adapt the steps for different kernel versions as needed.
 
-Let's dive in and demystify the process of crafting your very own custom Linux kernel on Arch Linux.
+Let's demystify the process of crafting your very own custom Linux kernel on Arch Linux.
 
 ## Step 1: Prepare Your System
 

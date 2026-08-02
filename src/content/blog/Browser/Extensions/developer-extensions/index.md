@@ -2,7 +2,7 @@
 title: "Firefox Extensions for Enhanced Developer Productivity"
 description: Essential Firefox extensions for developers including cookie management, custom styling, and technology detection tools.
 date: 2023-12-26T07:44:30+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:35:00+0800
 tag: "Firefox, Developer Tools, Extensions"
 lang: en-US
 ---
@@ -29,7 +29,7 @@ See the source code on [GitHub](https://github.com/openstyles/stylus/).
 
 ### [Wappalyzer](https://addons.mozilla.org/zh-TW/firefox/addon/wappalyzer/)
 
-Wappalyzer is a powerful tool for identifying the technologies and frameworks used on a website. It aids developers in quickly understanding the technical components of a site.
+Wappalyzer identifies the technologies and frameworks used on a website. It helps developers quickly understand the technical components of a site.
 
 >IMPORTANT: Wappalyzer seems to became paid service and no longer avilavble source code on GitHub. But you can still use the free version.
 

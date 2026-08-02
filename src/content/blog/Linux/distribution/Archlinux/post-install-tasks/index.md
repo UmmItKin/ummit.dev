@@ -2,7 +2,7 @@
 title: "10 Essential Post-Installation Tasks for Arch Linux"
 description: "10 things to do after installing Arch Linux including user setup, firewall, and system optimization."
 date: 2023-08-05T01:08:00+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:40:00+0800
 tag: "Arch Linux, Post-Installation, Configuration"
 lang: en-US
 ---
@@ -278,4 +278,4 @@ Once UFW is enabled, you can start managing your firewall rules to enhance the s
 
 ## Conclusion
 
-By following these steps, you've covered some of the most essential tasks to set up and optimize your Arch Linux system for daily use. Whether you're browsing the web, enjoying multimedia, or ensuring network security, you're well-equipped to make the most out of your Arch Linux experience.
+These steps cover some of the most essential tasks to set up and optimize your Arch Linux system for daily use, from browsing the web to ensuring network security.

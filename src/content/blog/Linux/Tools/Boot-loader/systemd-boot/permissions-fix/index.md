@@ -2,7 +2,7 @@
 title: "Fix systemd-boot Security Vulnerabilities"
 description: "Fix systemd-boot permission issues to secure your boot partition against unauthorized modifications."
 date: 2023-11-07T13:18:30+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:35:00+0800
 tag: "systemd-boot, Security, Linux"
 lang: en-US
 ---
@@ -86,7 +86,7 @@ If you do not restart your system after applying changes, your system will remai
 
 ## Conclusion
 
-By following these steps, you have successfully eliminated the security vulnerabilities in systemd-boot. Your Linux system is now shielded from unauthorized access, enhancing the overall security of your computing environment. Stay vigilant and proactive in maintaining your system's security to enjoy a seamless and protected Linux experience.
+With these steps, you've fixed the security vulnerabilities in systemd-boot. Your Linux system is now shielded from unauthorized access, improving the overall security of your computing environment.
 
 ## Reference
 

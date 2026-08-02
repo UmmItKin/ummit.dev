@@ -2,14 +2,14 @@
 title: "Resize LVM and LUKS Encrypted Btrfs Filesystems"
 description: "Safely resize Btrfs filesystems inside LVM volumes with LUKS encryption on Linux."
 date: 2023-12-22T04:23:37+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:40:00+0800
 tag: "Btrfs, LVM, Storage"
 lang: en-US
 ---
 
 ## Introduction
 
-Managing disk space efficiently is crucial for maintaining a well-organized system. In this guide, we'll explore the steps to resize a Btrfs filesystem within an LVM and LUKS encrypted setup. This process involves reducing, extending, and fixing the size of the filesystem to meet your storage needs.
+Managing disk space efficiently is crucial for maintaining a well-organized system. This guide covers the steps to resize a Btrfs filesystem within an LVM and LUKS encrypted setup. This process involves reducing, extending, and fixing the size of the filesystem to meet your storage needs.
 
 Also, Btrfs enables you to resize the filesystem online without disruption. Alternatively, you might need to create a bootable ISO using a live-ISO and then initiate the resizing of the filesystem.
 
@@ -69,4 +69,4 @@ Ensure that the sizes align with your expectations.
 
 ## Conclusion
 
-Resizing a Btrfs filesystem within an LVM and LUKS encrypted setup requires a careful and systematic approach. By following these steps, you can efficiently manage your storage space, whether you need to reduce, extend, or fix the size of the filesystem. Always double-check the sizes and perform these operations with caution to avoid data loss.
+Resizing a Btrfs filesystem within an LVM and LUKS encrypted setup requires a careful and systematic approach. These steps let you manage your storage space, whether you need to reduce, extend, or fix the size of the filesystem. Always double-check the sizes and perform these operations with caution to avoid data loss.

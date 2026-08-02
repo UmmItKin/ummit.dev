@@ -2,14 +2,14 @@
 title: "SCP and SSH Guide for Secure File Transfers"
 description: "Transfer files securely with SCP and manage SSH server access with key-based authentication."
 date: 2022-01-27T20:24:39+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:35:00+0800
 tag: "Linux, SSH, Remote Access"
 lang: en-US
 ---
 
 ## Introduction
 
-In the realm of remote server management, the ability to securely transfer files and efficiently access remote systems is of paramount importance. This is where the `scp` (secure copy) command and SSH (Secure Shell) login methods shine. `scp` allows you to securely transfer files between local and remote systems, while SSH ensures robust authentication and data encryption. In this guide, we will delve into the world of `scp` for file transfers and explore advanced features, including verbose mode and custom port usage, to elevate your file transfer experience.
+Securely transferring files and accessing remote systems is essential for remote server management. The `scp` (secure copy) command lets you transfer files between local and remote systems, while SSH (Secure Shell) handles authentication and data encryption. This guide covers `scp` for file transfers along with features like verbose mode and custom port usage.
 
 ## Secure File Transfer with SCP
 
@@ -55,4 +55,4 @@ ssh -p <custom_port> user@remote_host
 
 ## Conclusion
 
-By harnessing the power of `scp` for secure file transfers and leveraging advanced features such as verbose mode and custom port usage, you can significantly enhance your remote server management capabilities. These tools provide not only security and efficiency but also transparency and flexibility, ensuring that you have full control over your file transfers and remote access. Incorporate these techniques into your workflow to elevate your server administration prowess and streamline your interactions with remote systems.
+With `scp` for secure file transfers and features like verbose mode and custom port usage, you have the tools to manage remote servers with security and flexibility. Incorporate these into your workflow to keep control over file transfers and remote access.

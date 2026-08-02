@@ -2,7 +2,7 @@
 title: "Creating a Swap File on Your Linux VPS"
 description: "Create a swap file on your Linux VPS to improve memory management and prevent out-of-memory crashes."
 date: 2023-08-14T09:15:24+08:00
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:40:00+0800
 tag: "Linux, VPS, Memory Management"
 lang: en-US
 ---
@@ -17,7 +17,7 @@ Enabling swap on your Linux VPS system can significantly enhance its performance
 
 This is where a swap file comes into play. It acts as a supplementary form of memory that the system can utilize when physical RAM is exhausted. Here's why enabling swap is beneficial:
 
-1. **Improved Multitasking:** Swap facilitates smoother multitasking by providing supplementary memory capacity for processes and applications to operate effectively. This enhanced memory management ensures your VPS can seamlessly handle multiple tasks simultaneously.
+1. **Improved Multitasking:** Swap facilitates smoother multitasking by providing extra memory for processes and applications to operate effectively. This memory management helps your VPS handle multiple tasks at once.
 
 2. **Memory Safety Net:** In scenarios where memory-intensive processes surge unexpectedly, swap acts as a safety net, preventing your system from becoming unresponsive or crashing. This safety mechanism ensures the stability of your VPS during varying workloads.
 
@@ -77,7 +77,7 @@ Ensuring the continuity of the swap file's functionality after a system reboot r
 
 - **`defaults`:** This amalgamation of mount options consolidates prudent settings for a range of scenarios. It encompasses attributes like `rw` (read-write) and `auto` (automatic mounting during boot).
 - **`0`:** This numeric value serves as a lodestar for filesystem checkers (fsck), orchestrating the sequence for assessing filesystems. Since swap space merits examination after other filesystems, the value is judiciously set at 0.
-- **`0`:** This value exerts influence over whether the filesystem is subjected to backups through the `dump` command. Given swap space's unique nature—eschewing backups—this value stands resolutely at 0.
+- **`0`:** This value exerts influence over whether the filesystem is subjected to backups through the `dump` command. Given swap space's unique nature, it eschews backups, so this value stands resolutely at 0.
 
 In simpler terms, `defaults 0 0` deftly choreographs an automatic, tailored mount of the swap file during boot, follows with scrutiny of other filesystems, and gracefully sidesteps backup procedures.
 
@@ -95,7 +95,7 @@ sudo nano /etc/fstab
 /swapfile swap swap defaults 0 0
 ```
 
-3. Alternatively, should efficiency beckon, employ this optional command to seamlessly weave the required entry into the `/etc/fstab` fabric:
+3. Alternatively, should efficiency beckon, employ this optional command to add the required entry into `/etc/fstab`:
 
 ```shell
 sudo sh -c "echo '/swapfile swap swap defaults 0 0' >> /etc/fstab"
@@ -107,7 +107,7 @@ With this optional command, you artfully inscribe the necessary entry into the `
 - **`sh -c`:** This invocation of the shell (sh) with the `-c` flag births the execution of the ensuing command.
 - **`"echo '/swapfile swap swap defaults 0 0' >> /etc/fstab"`:** This command, encased in double quotes, journeys into the shell's domain for execution. The `echo` command composes the specified line (`/swapfile swap swap defaults 0 0`) onto the canvas of the `/etc/fstab` file. The `>>` operator graciously appends the output of the `echo` command to the file.
 
-In essence, the orchestrational prowess of `sh -c` enables you to wield a command as if you were speaking it directly into a shell—offering an elegant avenue for executing a singular command or succinct script within a tailored context.
+In essence, the orchestrational prowess of `sh -c` enables you to wield a command as if you were speaking it directly into a shell, offering an elegant avenue for executing a singular command or succinct script within a tailored context.
 
 ## Step 5: Adjusting Swappiness (Optional)
 
@@ -131,7 +131,7 @@ vm.swappiness=10
 
 3. Save the file and exit the text editor.
 
-Modifying the swappiness value can be particularly useful if you have sufficient RAM, and you want to minimize the use of swap space unless it's absolutely necessary. Conversely, if you find your system frequently using swap even when there's available RAM, you might consider raising the swappiness value to make more use of the swap space.
+Modifying the swappiness value is useful if you have sufficient RAM, and you want to minimize the use of swap space unless it's absolutely necessary. Conversely, if you find your system frequently using swap even when there's available RAM, you might consider raising the swappiness value to make more use of the swap space.
 
 ## Step 6: Rebooting Your VPS
 

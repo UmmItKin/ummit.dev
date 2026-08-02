@@ -2,14 +2,14 @@
 title: "Set Up SearXNG Search Engine on Your VPS with Docker"
 description: "Host your own private SearXNG metasearch engine on a VPS using Docker for privacy-respecting web searches."
 date: 2023-08-13T07:55:46+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:40:00+0800
 tag: "Self-Hosting, Docker, Privacy"
 lang: en-US
 ---
 
 ## Introduction
 
-SearXNG is a powerful metasearch engine that respects your privacy by aggregating results from various search engines while not tracking your searches. In this guide, we'll show you how to quickly set up a SearXNG instance on your SSH VPS server using Docker.
+SearXNG is a metasearch engine that respects your privacy by aggregating results from various search engines while not tracking your searches. This guide covers how to set up a SearXNG instance on your SSH VPS server using Docker.
 
 ## What's Included?
 

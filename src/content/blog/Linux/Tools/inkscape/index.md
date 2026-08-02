@@ -2,14 +2,14 @@
 title: "Converting SVG to PNG with Inkscape"
 description: Convert SVG vector graphics to PNG format using Inkscape command-line tools with custom dimensions.
 date: 2023-12-26T08:27:20+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:35:00+0800
 tag: "Inkscape, Graphics, Linux"
 lang: en-US
 ---
 
 ## Introduction
 
-If you're looking to convert SVG (Scalable Vector Graphics) files to PNG (Portable Network Graphics) format, ImageMagick provides a powerful and straightforward solution. In this guide, we'll explore a simple command-line approach using Inkscape, a vector graphics editor, to achieve this conversion.
+If you're looking to convert SVG (Scalable Vector Graphics) files to PNG (Portable Network Graphics) format, Inkscape provides a straightforward solution. This guide shows a simple command-line approach using Inkscape, a vector graphics editor, to do this conversion.
 
 ## Prerequisites
 

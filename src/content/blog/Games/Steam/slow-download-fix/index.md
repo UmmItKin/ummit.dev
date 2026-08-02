@@ -2,14 +2,14 @@
 title: "Fix Slow Steam Downloads on Linux by Disabling HTTP/2"
 description: Fix slow Steam download speeds on Linux by disabling HTTP/2 and optimizing connection settings.
 date: 2024-01-02T03:02:58+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:40:00+0800
 tag: "Steam, Gaming, Linux"
 lang: en-US
 ---
 
 ## Introduction
 
-Are you tired of sluggish download speeds on Steam while using Linux? Don't worry; there's a solution! In this quick guide, we'll explore steps to fix slow downloading issues on your Steam Linux.
+Are you tired of sluggish download speeds on Steam while using Linux? Don't worry; there's a solution! Here's how to fix slow downloading issues on your Steam Linux.
 
 ## Editing Steam's Configuration File
 

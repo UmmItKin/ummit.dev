@@ -2,14 +2,14 @@
 title: "Host a Website with NGINX and SSL Through Cloudflare"
 description: "Set up NGINX on a Linux VPS, host a website, and secure it with SSL through Cloudflare."
 date: 2023-09-11T04:00:50+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:30:00+0800
 tag: "NGINX, Web Server, SSL"
 lang: en-US
 ---
 
 ## Introduction
 
-In the world of web servers, NGINX stands out as a powerful and efficient choice for hosting websites and web applications. Whether you're running a personal blog, a small business website, or a complex web application, NGINX is a versatile tool that can handle the job with ease. In this blog post, we'll walk you through the process of setting up NGINX on a Linux VPS, hosting a website, and securing it with SSL using a self-signed TLS certificate through Cloudflare.
+NGINX is a popular web server for hosting websites and web applications. This guide covers setting up NGINX on a Linux VPS, hosting a website, and securing it with SSL using a self-signed TLS certificate through Cloudflare.
 
 ## Step 1: Provision a Linux VPS
 

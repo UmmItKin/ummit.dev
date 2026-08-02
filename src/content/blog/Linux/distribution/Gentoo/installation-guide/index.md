@@ -2,20 +2,20 @@
 title: "How to Install Gentoo Linux with OpenRC"
 description: "Install Gentoo Linux with OpenRC from scratch covering disk partitioning, kernel config, and base system."
 date: 2023-09-16T17:30:34+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:40:00+0800
 tag: "Gentoo, Linux Installation, OpenRC"
 lang: en-US
 ---
 
 ## Introduction
 
-Gentoo Linux is a distribution known for its flexibility, performance, and robustness. In this comprehensive guide, we will walk you through the process of installing Gentoo Linux step by step. By the end of this tutorial, you will have a fully functional Gentoo Linux system ready for your customization.
+Gentoo Linux is a distribution known for its flexibility, performance, and robustness. This guide walks through installing Gentoo Linux step by step. By the end, you will have a fully functional Gentoo Linux system ready for your customization.
 
 >Notes: This article has only the most basic settings.
 
 ## Prerequisites
 
-Before embarking on the exciting journey of installing Gentoo Linux, it's essential to ensure you have everything you need:
+Before installing Gentoo Linux, make sure you have everything you need:
 
 - **Linux Proficiency:** You should be comfortable with Linux, know How linux working. and have experience with tasks like installing Arch Linux. While Gentoo is known for its flexibility, don't know how the command working, otherwise the installation will be very painful. I think it will take at least one week to several weeks to install..
 
@@ -25,7 +25,7 @@ Before embarking on the exciting journey of installing Gentoo Linux, it's essent
 
 - **CPU cores:** There are many CPU cores. You need to know that everything in Gentoo is built using source code and not pre-built, so the cpu is very important as it depends on the compilation speed of your computer.
 
-Now, let's get started with the installation process:
+Now, let's start with the installation process:
 
 1. **Visit the Official Gentoo Website:** Open your web browser and navigate to [gentoo.org](https://www.gentoo.org/).
 
@@ -501,7 +501,7 @@ Finally, it's essential to confirm that the correct system profile has been sele
 eselect profile list
 ```
 
-By following these steps, you ensure that your Gentoo system is configured with the appropriate profile, setting the stage for a well-customized and efficient environment.
+These steps ensure your Gentoo system is configured with the appropriate profile, setting the stage for a well-customized and efficient environment.
 
 ## Selecting Fast Mirrors for Source Downloads (Optional)
 
@@ -677,7 +677,7 @@ Configuring the correct locale settings is crucial for defining your system's la
 
     Running `source /etc/profile` ensures that the changes to the locale settings take effect. It's an essential step to make sure your system correctly uses the specified language and regional settings.
 
-By following these steps, you can customize your Gentoo system's language and regional settings, tailoring it to your specific language preferences and requirements.
+With these steps, you can customize your Gentoo system's language and regional settings, tailoring it to your specific language preferences and requirements.
 
 #### `env-update`
 
@@ -819,7 +819,7 @@ rc-service dhcpcd start
 
 - `rc-service dhcpcd start`: Use this command to start the `dhcpcd` service immediately. It will configure network interfaces and establish network connectivity.
 
-By following these steps, you've configured network-related settings on your Gentoo Linux system, including hostname setup, host file editing, and the installation and configuration of a DHCP client for automatic network configuration. Your system should now be ready to communicate over the network.
+With these steps, you've configured network-related settings on your Gentoo Linux system, including hostname setup, host file editing, and the installation and configuration of a DHCP client for automatic network configuration. Your system should now be ready to communicate over the network.
 
 ## Step 20: Network Configuration
 
@@ -877,7 +877,7 @@ rc-update add net.enp1s0 default
 
 Make sure to replace "enp1s0" with the correct interface name for your system configuration.
 
-By following these steps, you'll properly configure your network interfaces in Gentoo, ensuring that they start automatically and provide stable connectivity for your system.
+With these steps, you'll properly configure your network interfaces in Gentoo, ensuring that they start automatically and provide stable connectivity for your system.
 
 ## Step 21: Setting the Root Password
 
@@ -1024,7 +1024,7 @@ Once your system has rebooted, you should see the login prompt. Log in using the
 
 Congratulations! You've successfully installed Gentoo Linux with using the OpenRC init system. This installation process, although detailed, provides you with a highly customizable and optimized Linux system tailored to your specific needs.
 
-Throughout this comprehensive guide, you've learned how to:
+Throughout this guide, you've learned how to:
 
 1. Set up the initial environment and prerequisites.
 2. Create and format partitions.
@@ -1034,7 +1034,7 @@ Throughout this comprehensive guide, you've learned how to:
 6. Install essential software and firmware.
 7. Configure the bootloader (GRUB for UEFI systems).
 
-Gentoo Linux's source-based package management system, Portage, allows you to fine-tune your system to your liking and keep it up to date. While the installation process may be intricate, the result is a highly customizable and efficient Linux distribution that can be tailored to your specific use cases.
+Gentoo Linux's source-based package management system, Portage, allows you to fine-tune your system to your liking and keep it up to date. The installation process is intricate, but the result is a highly customizable and efficient Linux distribution that can be tailored to your specific use cases.
 
 ## What next?
 

@@ -2,14 +2,14 @@
 title: "Manage, Import, and Verify GPG Keys on Linux"
 description: "Import, verify, and manage GPG keys for encrypted communication and software verification on Linux."
 date: 2023-09-07T03:00:02+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:35:00+0800
 tag: "GPG, Encryption, Security"
 lang: en-US
 ---
 
 ## What is GPG?
 
-**GPG**, or **GNU Privacy Guard**, is a powerful open-source encryption software that provides cryptographic privacy and authentication for data communication. GPG keys play a central role in GPG's functionality, enabling secure communication and verification of data integrity. In this guide, we'll explore GPG keys and how to manage, import, delete, list, and verify them.
+**GPG**, or **GNU Privacy Guard**, is an open-source encryption tool that provides cryptographic privacy and authentication for data communication. GPG keys play a central role in GPG's functionality, enabling secure communication and verification of data integrity. This guide covers managing, importing, deleting, listing, and verifying GPG keys.
 
 ## What Are GPG Keys?
 
@@ -84,4 +84,4 @@ Replace `DEADBEEF` with the key ID of the key you want to retrieve. GPG will fet
 
 ## Conclusion
 
-GPG keys are the foundation for secure communication and data authentication. In this lesson, you will learn how to manage, import, list, delete, and validate.
+GPG keys are the foundation for secure communication and data authentication. You now know how to manage, import, list, delete, and validate them.

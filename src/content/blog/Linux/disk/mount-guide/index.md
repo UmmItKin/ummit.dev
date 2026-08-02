@@ -2,7 +2,7 @@
 title: "How to Mount Internal Drives on Linux with fstab"
 description: Configure automatic mounting of internal hard drives on Linux using fstab and proper filesystem setup.
 date: 2023-12-07T21:53:02+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:40:00+0800
 tag: "Linux, Storage, Disk Management"
 lang: en-US
 ---
@@ -121,7 +121,7 @@ Replace `user` and `group` with your actual username and group. This adjustment 
 
 ## Conclusion
 
-Automounting your hard disk on Linux ensures convenient access to your storage space without manual intervention. This process allows you to seamlessly integrate additional storage capacity into your system.
+Automounting your hard disk on Linux ensures convenient access to your storage space without manual intervention. This process integrates additional storage capacity into your system.
 
 ## References
 

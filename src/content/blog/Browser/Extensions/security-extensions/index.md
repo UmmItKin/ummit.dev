@@ -2,14 +2,14 @@
 title: "Firefox Extensions to Block Annoying Malicious Code"
 description: Browser extensions that block trackers, ads, and malicious scripts to keep your browsing private and secure.
 date: 2023-09-15T10:15:50+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:35:00+0800
 tag: "Firefox, Privacy, Security Extensions"
 lang: en-US
 ---
 
 ## Introduction
 
-This guide introduces a selection of powerful browser extensions that can help you fortify your online traffic and surf the web with peace of mind. These extensions are designed to enhance your browsing security, protect your online traffic, and shield you from unwanted tracking and ads.
+This guide introduces a selection of browser extensions that can help you fortify your online traffic and surf the web with peace of mind. These extensions are designed to improve your browsing security, protect your online traffic, and shield you from unwanted tracking and ads.
 
 ### [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
 
@@ -29,7 +29,7 @@ See the source code on [GitHub](https://github.com/EFForg/privacybadger).
 
 ### [Decentraleyes](https://addons.mozilla.org/en-US/firefox/addon/decentraleyes/)
 
-Decentraleyes is a privacy tool that protects you from tracking by loading CND resources locally, reducing the need for external requests and enhancing your browsing speed and privacy.
+Decentraleyes is a privacy tool that protects you from tracking by loading CDN resources locally, reducing the need for external requests and improving your browsing speed and privacy.
 
 See the source code on [GitHub](https://git.synz.io/Synzvato/decentraleyes).
 
@@ -37,7 +37,7 @@ See the source code on [GitHub](https://git.synz.io/Synzvato/decentraleyes).
 
 ### [DuckDuckGo Privacy Essentials](https://addons.mozilla.org/en-US/firefox/addon/duckduckgo-for-firefox/)
 
-DuckDuckGo Privacy Essentials is a comprehensive privacy tool that blocks trackers, enforces encryption, and provides a privacy grade for each website you visit.
+DuckDuckGo Privacy Essentials is a privacy tool that blocks trackers, enforces encryption, and provides a privacy grade for each website you visit.
 
 See the source code on [GitHub](https://github.com/duckduckgo/duckduckgo-privacy-extension).
 

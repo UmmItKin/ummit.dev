@@ -2,7 +2,7 @@
 title: "Enable Secure Boot with Self-Signed Keys on Linux"
 description: "Enable Secure Boot on Linux with your own self-signed keys for better security without the lockout risk."
 date: 2023-11-07T10:54:50+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:40:00+0800
 tag: "Linux, UEFI, Secure Boot"
 lang: en-US
 ---
@@ -155,7 +155,7 @@ If all the results display `✓`, then it means you are good!
 
 ## Conclusion
 
-By following these steps, you've securely enabled Secure Boot with your self-certified keys, allowing your system to boot only trusted software, enhancing its overall security.
+That's it. Secure Boot now uses your self-certified keys, so your system only boots trusted software.
 
 ## References
 

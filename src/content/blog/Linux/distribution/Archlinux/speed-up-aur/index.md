@@ -2,14 +2,14 @@
 title: "Boost AUR Compilation in Arch Linux with ccache"
 description: "Speed up AUR package builds on Arch Linux with ccache caching and parallel compilation."
 date: 2023-08-13T07:55:46+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:40:00+0800
 tag: "Arch Linux, AUR, Optimization"
 lang: en-US
 ---
 
 ## Introduction
 
-Optimizing your Arch Linux experience goes beyond mere installation – it's about maximizing efficiency during software compilation. In this guide, we'll walk you through a powerful technique to dramatically reduce compilation times for AUR (Arch User Repository) packages using a tool called `ccache`.
+Optimizing your Arch Linux experience goes beyond mere installation: it's about maximizing efficiency during software compilation. This guide covers a technique to reduce compilation times for AUR (Arch User Repository) packages using a tool called `ccache`.
 
 ## Step 1: Install `ccache`
 
@@ -74,7 +74,7 @@ MAKEFLAGS="-j10"
 
 ## Step 5: Add `ccache` to PATH
 
-For seamless access to `ccache` commands, we'll add the `ccache` binary directory to your system's PATH. Open your shell's configuration file using your favorite text editor:
+For access to `ccache` commands, we'll add the `ccache` binary directory to your system's PATH. Open your shell's configuration file using your favorite text editor:
 
 ### For `bash` Users:
 
@@ -116,7 +116,7 @@ source ~/.zshrc
 
 Similarly, `source` is used to execute the commands in `~/.zshrc`, updating the configuration in your current terminal session.
 
-By using the `source` command, you ensure that your shell recognizes the updated PATH and other configuration changes, allowing you to use `ccache` seamlessly without needing to open a new terminal window.
+By using the `source` command, you ensure that your shell recognizes the updated PATH and other configuration changes, allowing you to use `ccache` without needing to open a new terminal window.
 
 ## Step 7: Verify PATH Configuration
 
@@ -142,7 +142,7 @@ This will display a list of directories that are part of your `$PATH`. You can t
 
 By incorporating `ccache` and optimizing your compilation settings, you've unlocked a new level of efficiency in your Arch Linux environment. The software installation process becomes remarkably faster, allowing you to focus on exploring and using the software you need without the wait.
 
-Harness the power of `ccache` to supercharge your AUR package compilation, making your Arch Linux journey even more seamless and enjoyable.
+Harness `ccache` to speed up your AUR package compilation, making your Arch Linux journey smoother and more enjoyable.
 
 ## Reference
 

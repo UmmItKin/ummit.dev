@@ -2,22 +2,22 @@
 title: "How to Set Up a Counter-Strike 1.6 Server with Zombie Plague and Bots"
 description: Set up a Counter-Strike 1.6 server on an Ubuntu VPS with Zombie Plague mod, yapb bots, and FastDL support.
 date: 2021-12-11T00:00:00+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:40:00+0800
 tag: "Counter-Strike, Server Setup, Gaming"
 lang: en-US
 ---
 
 ## Why Choose a VPS for Hosting?
 
-If you're considering hosting your own Counter-Strike 1.6 (CS 1.6) server and welcoming players to join your game world, opting for a Virtual Private Server (VPS) is a wise decision. A VPS offers various advantages, such as enhanced security and stability, making it an optimal choice for setting up your CS 1.6 server. This guide will provide you with step-by-step instructions on how to create and manage a CS 1.6 server on a Linux-based VPS running Ubuntu.
+If you want to host your own Counter-Strike 1.6 (CS 1.6) server for other players to join, a Virtual Private Server (VPS) is a good choice. A VPS gives you better security and stability than hosting at home. This guide walks through creating and managing a CS 1.6 server on an Ubuntu VPS.
 
 ## Step 1: Renting a VPS Server
 
-So, you've decided to embark on the journey of setting up your own CS 1.6 server, complete with all the exciting mods and features. The first step on this exciting adventure is to secure a Virtual Private Server (VPS) that will become the foundation of your gaming paradise. In this part of the guide, we'll explore the process of renting a VPS server, ensuring you have the necessary resources to create an unforgettable CS 1.6 experience.
+The first step is securing a Virtual Private Server (VPS) to host the server. This part of the guide covers renting a VPS with the resources you need.
 
 ### Why Opt for a VPS Server?
 
-Before we dive into the intricacies of VPS server rental, let's briefly touch on why a VPS is the preferred choice for hosting your CS 1.6 server. A VPS offers you a dedicated virtual environment, providing the resources and control necessary to create a seamless gaming experience. With the flexibility to choose your server's specifications and the ability to install custom software, a VPS is the perfect platform for your CS 1.6 ambitions.
+Why a VPS? It gives you a dedicated virtual environment with the resources and control needed to run a game server, plus the flexibility to choose your specifications and install custom software.
 
 ### Exploring VPS Providers
 
@@ -25,7 +25,7 @@ To begin your journey, you'll need to choose a VPS provider that aligns with you
 
 - **AWS Lightsail:** Amazon Web Services' (AWS) Lightsail offers an intuitive platform for launching and managing VPS instances. With a variety of pre-configured images and easy scaling options, Lightsail is an excellent choice for beginners and experienced users alike.
 
-- **DigitalOcean:** Known for its user-friendly interface and straightforward pricing, DigitalOcean provides a range of VPS solutions tailored to different needs. Whether you're a gaming enthusiast or a developer, DigitalOcean has options to suit your requirements.
+- **DigitalOcean:** Known for its user-friendly interface and straightforward pricing, DigitalOcean provides a range of VPS solutions tailored to different needs.
 
 - **Google Cloud:** Google Cloud's Compute Engine offers high-performance virtual machines that can handle the demands of a CS 1.6 server. With advanced networking features and a global network of data centers, Google Cloud provides a solid foundation for your gaming server.
 
@@ -33,7 +33,7 @@ To begin your journey, you'll need to choose a VPS provider that aligns with you
 
 ## Step 2: Logging into Your VPS Server
 
-With your VPS server in hand, it's time to roll up your sleeves and embark on the journey of creating your CS 1.6 gaming paradise. While we won't delve into the intricacies of VPS security (we're here to focus on the gaming action!), let's kick things off by getting you logged into your server.
+With your VPS ready, the next step is logging in. We won't cover VPS security in depth here, since the focus is on getting the game server running.
 
 ### Preparing for Server Access
 
@@ -61,7 +61,7 @@ Now that you're armed with the necessary information, let's get you logged into 
 
 5. **Welcome to Your VPS:** Congratulations! If all goes well, you should now be logged into your VPS server. You'll see a command prompt indicating that you're ready to start your CS 1.6 adventure.
 
-And there you have it! You've successfully logged into your VPS server using SSH, setting the stage for the exciting journey ahead. In the upcoming parts of this guide, we'll delve into the installation of essential tools and the step-by-step process of setting up your CS 1.6 server, complete with mods and features. Prepare to become the master of your CS 1.6 domain and let the gaming fun begin!
+That's it for logging in. The next parts cover installing the essential tools and setting up the CS 1.6 server with its mods and features.
 
 ## Step 3: Updating, Upgrading, and Port 22 Access: Laying the Foundation
 
@@ -91,7 +91,7 @@ With this rule in place, you're granting permission for SSH traffic to enter thr
 
 ## Step 4: Allowing Server Ports with UFW
 
-Imagine ports as the doorways to your server – they determine what type of traffic is allowed in and out. In this step, we're going to ensure that the necessary port for your CS 1.6 server is open and ready to receive players. Think of it as inviting gamers into your digital arena.
+Think of ports as the doorways to your server: they determine what traffic is allowed in and out. In this step, we're going to ensure that the necessary port for your CS 1.6 server is open and ready to receive players.
 
 Previously, we used `iptables` to manage ports, but for simplicity's sake, we're introducing `ufw` (Uncomplicated Firewall), a user-friendly alternative. We're going to allow port 27015 this time, which is a common choice for CS 1.6 servers.
 
@@ -246,7 +246,7 @@ With your server up and running, you've accomplished a major part of the setup p
 
 ## Step 8: Download Required Files for AMXXModX and Metamod
 
-To enhance your CS 1.6 server with additional features and functionalities, you'll need to install AMXXModX (Advanced Multi-Mod X) and Metamod. These plugins will allow you to create and add custom game modes, plugins, and more. Let's get started by downloading the necessary files
+To add more features to your CS 1.6 server, you'll need to install AMXXModX (Advanced Multi-Mod X) and Metamod. These plugins let you create and add custom game modes, plugins, and more. Download the necessary files:
 
 >Notes: Just follow me here, because AMXX are almost never updated. As for the explanation... it's a pity because no one plays 1.6, and the most stable version is 1.82...
 
@@ -540,7 +540,7 @@ Now that you've successfully installed the Zombie Plague mod on your CS 1.6 serv
 
 ## Step 14: Adding Yapb Bot to Your Zombie Plague Server
 
-Congratulations on successfully installing Zombie Plague on your server! However, playing alone on your server might not be as exciting as having other players. In this final step, we'll show you how to add Yapb bot to your Zombie Plague server using the bot's source code.
+Congratulations on successfully installing Zombie Plague on your server! However, playing alone on your server might not be as exciting as having other players. This final step covers how to add Yapb bot to your Zombie Plague server using the bot's source code.
 
 1. **Install Required Packages:**
    First, navigate to your home directory and install the necessary packages:
@@ -730,7 +730,7 @@ By configuring your DNS record in this way, you strike a balance between maintai
 
 ## Conclusion
 
-Congratulations! You've successfully transformed your Counter-Strike 1.6 server into an exciting Zombie Plague server complete with AI-controlled Yapb bots, Also using fastdl for HTTP download your server resources.
+Your Counter-Strike 1.6 server is now a Zombie Plague server complete with AI-controlled Yapb bots, Also using fastdl for HTTP download your server resources.
 
 Now, you can access your server with your custom domain, such as `cs.yourserver.io` or `download.yourserver.io.` Happy gaming!
 

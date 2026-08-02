@@ -2,7 +2,7 @@
 title: "Set Up LUKS on LVM Encryption in Arch Linux"
 description: "Set up LUKS encryption on top of LVM during Arch Linux installation for flexible encrypted storage."
 date: 2023-08-10T02:08:10+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:40:00+0800
 tag: "Arch Linux, LUKS, Encryption"
 lang: en-US
 ---
@@ -120,7 +120,7 @@ These commands create logical volumes for the swap, root, and home directories, 
 
 ## Format and Mount Partitions
 
-In this step, we will format and mount the partitions necessary for the Arch Linux installation. Properly configuring these partitions is crucial for ensuring a stable and functional system. We'll cover formatting the `root` and `home` volumes, as well as creating and enabling swap space. Let's delve into the details:
+In this step, we will format and mount the partitions necessary for the Arch Linux installation. Properly configuring these partitions is crucial for ensuring a stable and functional system. We'll cover formatting the `root` and `home` volumes, as well as creating and enabling swap space. Here are the details:
 
 ### Root and Home
 

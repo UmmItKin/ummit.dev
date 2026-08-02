@@ -2,14 +2,14 @@
 title: "Customize GNOME Desktop with Icon and Cursor Themes"
 description: "Install icon and cursor themes on GNOME desktop using Tweaks for a personalized look."
 date: 2023-08-14T08:47:50+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:40:00+0800
 tag: "GNOME, Customization, Themes"
 lang: en-US
 ---
 
 ## Introduction
 
-Customizing your GNOME desktop environment is a great way to add a personal touch and make your Linux experience truly your own. One of the easiest and most visually impactful ways to do this is by installing icon and cursor themes. In this guide, we'll walk you through the process of installing an icon and cursor theme on your GNOME desktop using the GNOME Tweaks tool.
+Customizing your GNOME desktop environment is a great way to add a personal touch and make your Linux experience truly your own. One of the easiest and most visually impactful ways to do this is by installing icon and cursor themes. This guide shows how to install an icon and cursor theme on your GNOME desktop using the GNOME Tweaks tool.
 
 ### Why Install Icon Themes?
 
@@ -41,7 +41,7 @@ These paths play a crucial role in determining the appearance of your icons acro
 
 ## Step 1: Install GNOME Tweaks
 
-Before you start the installation process, make sure you have GNOME Tweaks installed. GNOME Tweaks is a powerful tool that allows you to customize various aspects of your GNOME desktop, including themes, icons, fonts, and more.
+Before you start the installation process, make sure you have GNOME Tweaks installed. GNOME Tweaks lets you customize various aspects of your GNOME desktop, including themes, icons, fonts, and more.
 
 ### Option 1: Using Package Manager (Ubuntu/Debian)
 
@@ -73,7 +73,7 @@ Before you start the installation process, you need to choose an icon theme that
 
 ## Step 3: Installation - Icon theme
 
-Once you have GNOME Tweaks installed, it's time to add a new icon theme to your system. Follow these steps to use the Linux Pacman package manager for a seamless installation process.
+Once you have GNOME Tweaks installed, it's time to add a new icon theme to your system. Follow these steps to use the Linux Pacman package manager for installation.
 
 ### Option 1: Using Pacman (Arch Linux - Community)
 
@@ -113,7 +113,7 @@ After installing the icon theme, you'll want to update the icon cache to ensure 
 sudo gtk-update-icon-cache -q -t -f /usr/share/icons/Papirus
 ```
 
-By following either of these options and updating the icon cache, you can easily enhance your GNOME desktop with the stylish Papirus icon theme, giving your system a fresh and visually appealing look.
+After updating the icon cache, your GNOME desktop will pick up the stylish Papirus icon theme, giving your system a fresh and visually appealing look.
 
 ## Step 6: Applying the Icon Theme
 

@@ -2,14 +2,14 @@
 title: "How to Change DNS Servers on Linux"
 description: "Change DNS servers on Linux to Cloudflare, Google, or any custom resolver for faster and more private browsing."
 date: 2023-08-19T15:22:25+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:30:00+0800
 tag: "Linux, DNS, Networking"
 lang: en-US
 ---
 
 ## Introduction
 
-Efficient network connectivity is vital for a seamless online experience. One way to enhance your network performance is by utilizing faster and more reliable DNS (Domain Name System) servers. In this guide, we'll show you how to change DNS servers on a Linux system by modifying the `/etc/resolv.conf` file. We'll focus on configuring two popular DNS servers: Cloudflare DNS and Google DNS. By the end of this tutorial, you'll have the tools to optimize your network's performance and responsiveness.
+Faster DNS servers can speed up domain lookups and improve browsing. This guide shows how to change DNS servers on Linux by editing `/etc/resolv.conf`, using Cloudflare DNS and Google DNS as examples.
 
 ## Understanding DNS Servers
 
@@ -61,7 +61,7 @@ Google DNS is another popular choice, valued for its reliability and performance
 
 These lines indicate the Google DNS servers for your domain resolution needs.
 
-With these configurations in place, your Linux system will utilize either Cloudflare DNS or Google DNS for translating domain names to IP addresses. This can result in improved speed and responsiveness, ultimately enhancing your online experience.
+With these configurations in place, your Linux system will utilize either Cloudflare DNS or Google DNS for translating domain names to IP addresses. This can result in improved speed and responsiveness.
 
 ## Installation on Arch-Based Linux
 
@@ -93,4 +93,4 @@ This command will display the DNS server information currently in use by your sy
 
 ## Conclusion
 
-Changing DNS servers on your Linux system is a straightforward way to enhance network performance and reduce latency. By configuring popular DNS servers like Cloudflare DNS (1.1.1.1 and 1.0.0.1) or Google DNS (8.8.8.8 and 8.8.4.4), you can experience faster and more reliable domain name resolution. Whether you're looking to streamline your browsing experience or optimize online activities, adjusting your DNS settings can make a significant impact on your network's responsiveness.
+Changing DNS servers on Linux is a straightforward way to reduce latency. Cloudflare DNS (1.1.1.1 and 1.0.0.1) and Google DNS (8.8.8.8 and 8.8.4.4) both offer faster, more reliable domain name resolution than most defaults.

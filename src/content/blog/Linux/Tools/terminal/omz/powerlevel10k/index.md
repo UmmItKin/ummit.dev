@@ -2,7 +2,7 @@
 title: "Install the Powerlevel10k Theme for Oh My Zsh"
 description: "Install and configure the Powerlevel10k theme for Oh My Zsh with a clean, informative prompt."
 date: 2023-09-23T16:01:50+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:40:00+0800
 tag: "Zsh, Themes, Customization"
 lang: en-US
 ---
@@ -93,7 +93,7 @@ By following the steps in this guide, you've achieved the following:
 
 4. **Optional: Shortened Path Display:** Learned how to shorten the display of the current directory in your terminal for a cleaner and more efficient prompt.
 
-Now, your terminal not only looks great but is also a powerful tool that can boost your productivity. You can use it for coding, system administration, or any other tasks with ease.
+Now, your terminal not only looks great but is also a useful tool that can boost your productivity. You can use it for coding, system administration, or any other tasks with ease.
 
 ## References
 

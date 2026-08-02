@@ -2,14 +2,14 @@
 title: "Install GNOME, Wayland, and GDM on Gentoo with OpenRC"
 description: "Set up GNOME desktop with Wayland and GDM on Gentoo Linux using OpenRC."
 date: 2023-09-26T21:22:21+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:40:00+0800
 tag: "Gentoo, GNOME, Wayland"
 lang: en-US
 ---
 
 ## Introduction
 
-In the previous article, I demonstrated how to install XFCE. and in this comprehensive guide will walk you through the process of installing and configuring GNOME on your Gentoo system. (As shown in the image below):
+In the previous article, I demonstrated how to install XFCE. This guide covers installing and configuring GNOME on your Gentoo system. (As shown in the image below):
 
 ![gnome-gentoo](./neofetch.png)
 
@@ -49,7 +49,7 @@ INPUT_DEVICES="libinput"
 VIDEO_CARDS="qxl"
 ```
 
-Let's delve into the purpose of each USE flag:
+Here's the purpose of each USE flag:
 
 - **wayland:** Enabling this flag extends support for the Wayland display protocol, a contemporary alternative to the aging X11.
 
@@ -171,7 +171,7 @@ These final steps solidify GDM as your default display manager, ensuring a smoot
 
 ## Optional: Disabling GNOME Online Accounts
 
-GNOME offers built-in options for seamlessly connecting your online accounts. However, if you prefer not to utilize this feature, you can easily disable it by adjusting your USE flags. Follow these steps to disable GNOME Online Accounts:
+GNOME offers built-in options for connecting your online accounts. However, if you prefer not to use this feature, you can disable it by adjusting your USE flags. To disable GNOME Online Accounts:
 
 ### Step 1: Open your `make.conf` file
 

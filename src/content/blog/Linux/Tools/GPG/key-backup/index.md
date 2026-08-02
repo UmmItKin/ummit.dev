@@ -2,7 +2,7 @@
 title: "Backup and Restore Your GPG Keys"
 description: Export, secure, and restore your GPG keys for safe backup and transfer across different systems.
 date: 2024-09-28T21:14:50+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:40:00+0800
 tag: "GPG, Encryption, Linux"
 lang: en-US
 ---
@@ -13,7 +13,7 @@ Guess what! I bought a new laptop this week, so I have to work for my laptop dev
 
 ## Introduction
 
-GPG (GNU Privacy Guard) is a powerful tool for encrypting and signing data. Keeping your GPG keys backed up is crucial for maintaining access to encrypted files and messages. In this guide, we'll walk you through the process of exporting, securely transferring, and importing your GPG keys.
+GPG (GNU Privacy Guard) is a tool for encrypting and signing data. Keeping your GPG keys backed up is crucial for maintaining access to encrypted files and messages. This guide shows how to export, securely transfer, and import your GPG keys.
 
 ## Step 1: Export Your GPG Key
 

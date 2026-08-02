@@ -1,15 +1,15 @@
 ---
 title: "What to Know Before Buying a Raspberry Pi"
-description: Everything you need to know before purchasing a Raspberry Pi including required accessories and use cases.
+description: What to know before purchasing a Raspberry Pi, including required accessories and use cases.
 date: 2023-01-24T20:52:00+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:35:00+0800
 tag: "Raspberry Pi, Hardware, Linux"
 lang: en-US
 ---
 
 ## What is Raspberry Pi?
 
-In essence, Raspberry Pi is a versatile and compact computer system that operates exclusively with select Linux distributions. While its size might be modest, its capabilities are far-reaching, making it a popular choice for a range of projects and applications.
+In essence, Raspberry Pi is a compact computer system that operates exclusively with select Linux distributions. While its size might be modest, its capabilities are far-reaching, making it a popular choice for a range of projects and applications.
 
 ## Raspberry Pi: Pros and Cons
 
@@ -38,11 +38,11 @@ What can you accomplish with this compact computer? Raspberry Pi can function mu
 
 ## Essential Considerations Before Purchase
 
-Acquiring a Raspberry Pi entails more than just the device itself. Several additional components are essential for a seamless experience:
+Acquiring a Raspberry Pi entails more than just the device itself. Several additional components are essential:
 
 ### 1. Power Supply - Opt for a Reliable Source
 
-The Raspberry Pi power supply utilizes a Type-C port. While you can leverage an Android mobile phone cable for power, investing in the official power supply is recommended for optimal performance and convenience.
+The Raspberry Pi power supply utilizes a Type-C port. While you can use an Android mobile phone cable for power, investing in the official power supply is recommended for optimal performance and convenience.
 
 ![power-supply](https://raspberrypi.dk/wp-content/uploads/2019/06/usb-c-stroemforsyning-raspberry-pi-eu-5v-3a.jpg)
 
@@ -60,7 +60,7 @@ A keyboard is a necessity for typing, while a mouse is optional. Ensure you have
 
 ### 4. Micro HDMI Cable - Connect to Your Monitor
 
-For users accustomed to connecting devices with HDMI cables, a Micro HDMI Cable is required. Alternatively, a Micro HDMI Adapter can be employed for seamless connectivity.
+For users accustomed to connecting devices with HDMI cables, a Micro HDMI Cable is required. Alternatively, a Micro HDMI Adapter can be employed for connectivity.
 
 ![mirco-hdmi-cable](https://www.bhphotovideo.com/images/images2500x2500/Pearstone_hdd_1015_High_Speed_HDMI_to_Micro_888043.jpg)
 
@@ -70,6 +70,6 @@ Given that Raspberry Pi operates with Linux-based OS, a fundamental understandin
 
 ![linux-distro](https://149366088.v2.pressablecdn.com/wp-content/uploads/2020/01/distro-board.jpg)
 
-# Final Thoughts - Unleashing the Power of Raspberry Pi
+# Final Thoughts
 
-Before you dive into the world of Raspberry Pi, it's crucial to understand its features and requirements. Consider your specific needs and whether Raspberry Pi aligns with your goals. Armed with this knowledge, you can confidently embark on an exciting journey into the realm of Raspberry Pi technology!
+Before you dive into the world of Raspberry Pi, it's important to understand its features and requirements. Consider your specific needs and whether Raspberry Pi aligns with your goals. With this knowledge, you can confidently start working with Raspberry Pi.

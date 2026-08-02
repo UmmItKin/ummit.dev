@@ -2,7 +2,7 @@
 title: "Host Free Static Websites on Codeberg Pages with Custom Domain"
 description: "Host static websites for free on Codeberg Pages with custom domain support and automatic deployment."
 date: 2023-09-03T19:50:04+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:35:00+0800
 tag: "Git, Web Hosting, Codeberg"
 lang: en-US
 ---
@@ -11,7 +11,7 @@ lang: en-US
 
 Are you looking to host a website without the hassle of renting a server or dealing with complex backend setups? If your website is static, meaning it consists of only HTML, CSS, and JavaScript files, then Codeberg Pages might be the perfect solution for you. Not only can you host your static site for free, but you can also use your own custom domain to give it a personalized touch.
 
-In this tutorial, we'll walk you through the process of hosting a website with Codeberg Pages and customizing it with your own domain. Let's dive right in!
+This tutorial walks through hosting a website with Codeberg Pages and customizing it with your own domain.
 
 ## What Are Codeberg Pages?
 
@@ -85,7 +85,7 @@ Your website content is now uploaded to your 'pages' repository on Codeberg, mak
 
 ## Adding Your Custom Domain
 
-Now, let's personalize your website's domain name. Before proceeding, ensure you've already acquired your domain name through a domain provider like Cloudflare or Namecheap. We won't delve into the domain purchase process here, so let's begin the customization.
+Now, let's personalize your website's domain name. Before proceeding, ensure you've already acquired your domain name through a domain provider like Cloudflare or Namecheap. This guide assumes you already have a domain, so let's begin the customization.
 
 ### Step 1: DNS Setting
 
@@ -176,4 +176,4 @@ It might take a few minutes for your DNS changes to fully propagate. Once that's
 
 > **Tips**: If you're using Cloudflare CDN, make sure your DNS points to Cloudflare's DNS rather than your specific IP address. Afterward, if you decide to disable the proxy, simply click on the orange icon to turn it grey.
 
-And that's it! Congratulations on successfully hosting your static website with Codeberg Pages and customizing it with your own domain. Thank you for following these steps!
+And that's it! Your static website is now hosted with Codeberg Pages and customized with your own domain.
