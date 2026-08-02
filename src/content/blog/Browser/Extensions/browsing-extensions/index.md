@@ -2,7 +2,7 @@
 title: "Firefox Extensions to Enhance Your Browsing Experience"
 description: Practical Firefox extensions for everyday browsing including tab management, image search, and YouTube enhancements.
 date: 2023-12-26T07:44:30+0800
-lastmod: 2026-07-28T01:35:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Firefox, Extensions, Productivity"
 lang: en-US
 ---
@@ -37,7 +37,7 @@ See the source code on [GitHub](https://github.com/drive4ik/simple-tab-groups).
 
 ### [Tab Session Manager](https://addons.mozilla.org/zh-TW/firefox/addon/tab-session-manager/)
 
-Save and restore the state of windows and tabs effortlessly with Tab Session Manager. It supports auto-save and cloud sync, simplifying the management of your browsing sessions.
+Save and restore the state of windows and tabs with Tab Session Manager. It supports auto-save and cloud sync, simplifying the management of your browsing sessions.
 
 See the source code on [GitHub](https://github.com/sienori/Tab-Session-Manager).
 

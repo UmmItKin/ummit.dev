@@ -2,7 +2,7 @@
 title: "Bronco CTF 2025 Writeup"
 description: "Writeup for Bronco CTF 2025, covering reverse engineering, web, and miscellaneous challenges including Break the Battalion, Inspector Requestor, Mary's Lamb is a Little Phreak, and Rahhh-Sh."
 date: 2025-02-17T10:16:30+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Bronco CTF, 2025, Writeup, CTF"
 lang: en-US
 ---
@@ -104,7 +104,7 @@ For this challenge, we were given a link to a Google Form, but it said, `unfortu
 
 ### Solution
 
-The solution was straightforward: I simply browsed the source code of the page, and there it was—the flag.
+The solution was straightforward: I simply browsed the source code of the page, and there it was. The flag.
 
 ```
 Since you are here, here is the flag! Inspect element is fun.

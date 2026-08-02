@@ -2,7 +2,7 @@
 title: "21 Essential Linux Command Tips for Terminal Productivity"
 description: "21 Linux terminal tips including history tricks, process management, and text processing you will use every day."
 date: 2023-08-29T00:02:40+0800
-lastmod: 2026-07-28T01:40:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Linux, Terminal, Productivity"
 lang: en-US
 ---
@@ -23,7 +23,7 @@ Press TAB
 
 #### Switch Back to the Last Working Directory
 
-Effortlessly navigate back to your previous working directory by typing `cd -`. This nifty shortcut is useful when you're shuffling between two directories.
+Navigate back to your previous working directory by typing `cd -`. This nifty shortcut is useful when you're shuffling between two directories.
 
 ```shell
 cd -
@@ -47,7 +47,7 @@ command1; command2; command3
 
 #### Run Commands Sequentially
 
-Execute commands sequentially using double ampersands (&&), ensuring that each subsequent command runs only if the previous one was successful:
+Execute commands sequentially using double ampersands (&&), so each subsequent command runs only if the previous one was successful:
 
 ```shell
 command1 && command2

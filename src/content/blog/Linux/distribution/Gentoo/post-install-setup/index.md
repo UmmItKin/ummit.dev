@@ -2,7 +2,7 @@
 title: "Essential Gentoo Post-Installation Setup Tasks"
 description: "Essential post-installation tasks for Gentoo including user setup, sudo, logging, and Wi-Fi configuration."
 date: 2023-09-20T16:40:21+0800
-lastmod: 2026-07-28T01:40:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Gentoo, Linux, Post-Installation"
 lang: en-US
 ---
@@ -150,7 +150,7 @@ To configure Gentoo to use these CPU flags for all packages, create a file named
 echo "*/* $(cpuid2cpuflags)" > /etc/portage/package.use/00cpu-flags
 ```
 
-This file specifies the CPU flags for all packages, ensuring that software is compiled to take full advantage of your CPU's capabilities.
+This file specifies the CPU flags for all packages, so that software is compiled to take full advantage of your CPU's capabilities.
 
 ### 5. Install `neofetch` for System Information
 

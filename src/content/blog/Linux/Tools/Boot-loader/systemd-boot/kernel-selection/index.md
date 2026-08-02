@@ -2,14 +2,14 @@
 title: "Switch Linux Kernel Versions with systemd-boot"
 description: "Switch between different Linux kernel versions using systemd-boot and bootctl for testing or compatibility."
 date: 2023-08-22T13:32:01+0800
-lastmod: 2026-07-28T01:40:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "systemd-boot, UEFI, Linux"
 lang: en-US
 ---
 
 ### **Introduction**
 
-The Linux kernel forms the foundation of every Linux-based operating system, playing a vital role in hardware interactions and resource management. With the regular release of new kernel versions, users often seek to switch between them for reasons like compatibility testing and performance optimization. This post shows how to use systemd-boot and Bootctl to manage and boot into distinct Linux kernel versions through the creation of new configuration entries.
+The Linux kernel forms the foundation of every Linux-based operating system, handling hardware interactions and resource management. With the regular release of new kernel versions, users often seek to switch between them for reasons like compatibility testing and performance optimization. This post shows how to use systemd-boot and Bootctl to manage and boot into distinct Linux kernel versions through the creation of new configuration entries.
 
 ### **Understanding systemd-boot and Bootctl**
 

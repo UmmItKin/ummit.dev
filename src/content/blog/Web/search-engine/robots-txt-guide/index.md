@@ -2,7 +2,7 @@
 title: "Custom robots.txt Guide: Allow and Disallow Rules for SEO"
 description: "Write a robots.txt file with allow and disallow rules to control how search engines crawl your site."
 date: 2023-09-04T21:14:00+0800
-lastmod: 2026-07-28T01:35:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "SEO, Robots.txt, Web Development"
 lang: en-US
 ---
@@ -15,9 +15,9 @@ This guide covers controlling search engine crawlers using the robots.txt file's
 
 ## What is Robots.txt?
 
-At its core, the robots.txt file is a plain text file that website owners use to communicate with web crawlers, also known as spiders or bots. These automated programs, employed by search engines like Google, Bing, and others, traverse the web, indexing web pages to make them searchable.
+The robots.txt file is a plain text file that website owners use to communicate with web crawlers, also known as spiders or bots. These automated programs, employed by search engines like Google, Bing, and others, traverse the web, indexing web pages to make them searchable.
 
-The robots.txt file serves as a set of instructions for these crawlers. It tells them which parts of a website are open for exploration and indexing (using "Allow") and which should remain off-limits (using "Disallow"). In essence, it acts as both a "Welcome" and a "No Entry" sign for certain areas of your website.
+The robots.txt file is a set of instructions for these crawlers. It tells them which parts of a website are open for exploration and indexing (using "Allow") and which should remain off-limits (using "Disallow"). In essence, it acts as both a "Welcome" and a "No Entry" sign for certain areas of your website.
 
 To create and manage a robots.txt file, you don't need to be a coding wizard. It's a plain text file that sits at the root directory of your website, and you can create or edit it with a simple text editor.
 

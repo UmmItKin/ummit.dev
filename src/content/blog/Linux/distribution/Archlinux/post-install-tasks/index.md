@@ -2,7 +2,7 @@
 title: "10 Essential Post-Installation Tasks for Arch Linux"
 description: "10 things to do after installing Arch Linux including user setup, firewall, and system optimization."
 date: 2023-08-05T01:08:00+0800
-lastmod: 2026-07-28T01:40:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Arch Linux, Post-Installation, Configuration"
 lang: en-US
 ---
@@ -183,7 +183,7 @@ For Gnome users, elevate your browsing capabilities with the gnome-browser-conne
 sudo pacman -S gnome-browser-connector
 ```
 
-Once installed, you'll be able to effortlessly install extensions from [https://extensions.gnome.org/](https://extensions.gnome.org/).
+Once installed, you'll be able to install extensions from [https://extensions.gnome.org/](https://extensions.gnome.org/).
 
 By completing these tasks, you'll optimize your Arch Linux environment, enriching your experience and unleashing its full potential. Enjoy your enhanced system!
 
@@ -193,7 +193,7 @@ Arch Linux offers a default GNOME environment that's visually appealing, but you
 
 ### 8: Install Yay AUR Helper
 
-Simplifying software management on Arch Linux is the `yay` package manager, designed to streamline the acquisition and organization of software from the Arch User Repository (AUR)—a vibrant hub of community-contributed packages. Depending on your preference for customization and speed.
+Simplifying software management on Arch Linux is the `yay` package manager, designed to streamline the acquisition and organization of software from the Arch User Repository (AUR), a vibrant hub of community-contributed packages. Depending on your preference for customization and speed.
 
 1. **Install Git and Essential Development Tools:**
 
@@ -256,7 +256,7 @@ With Firefox and VLC installed, you now have access to a web browser and media p
 
 ### 10. Install Firewall (UFW)
 
-When it comes to securing your system, a firewall plays a crucial role in controlling incoming and outgoing network traffic. While Arch Linux doesn't come with a pre-installed firewall, you can easily set up the Uncomplicated Firewall (UFW) to manage network access.
+When it comes to securing your system, a firewall controls incoming and outgoing network traffic. While Arch Linux doesn't come with a pre-installed firewall, you can easily set up the Uncomplicated Firewall (UFW) to manage network access.
 
    #### Install UFW
 

@@ -2,7 +2,7 @@
 title: "How to Set Up a Counter-Strike 1.6 Server with Zombie Plague and Bots"
 description: Set up a Counter-Strike 1.6 server on an Ubuntu VPS with Zombie Plague mod, yapb bots, and FastDL support.
 date: 2021-12-11T00:00:00+0800
-lastmod: 2026-07-28T01:40:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Counter-Strike, Server Setup, Gaming"
 lang: en-US
 ---
@@ -29,7 +29,7 @@ To begin your journey, you'll need to choose a VPS provider that aligns with you
 
 - **Google Cloud:** Google Cloud's Compute Engine offers high-performance virtual machines that can handle the demands of a CS 1.6 server. With advanced networking features and a global network of data centers, Google Cloud provides a solid foundation for your gaming server.
 
-- **Linode:** Linode is renowned for its reliability and competitive pricing. With a focus on simplicity and performance, Linode's VPS offerings are designed to meet the needs of various projects, including game servers.
+- **Linode:** Linode is known for its reliability and competitive pricing. With a focus on simplicity and performance, Linode's VPS offerings are designed to meet the needs of various projects, including game servers.
 
 ## Step 2: Logging into Your VPS Server
 
@@ -37,7 +37,7 @@ With your VPS ready, the next step is logging in. We won't cover VPS security in
 
 ### Preparing for Server Access
 
-Before we dive into the thrilling world of CS 1.6 setup, you'll need a secure way to access your VPS. This is where SSH (Secure Shell) comes into play. SSH allows you to connect to your server over a secure channel, ensuring that your actions are encrypted and protected from prying eyes.
+Before we dive into the thrilling world of CS 1.6 setup, you'll need a secure way to access your VPS. This is where SSH (Secure Shell) comes into play. SSH allows you to connect to your server over a secure channel, so that your actions are encrypted and protected from prying eyes.
 
 Your VPS provider will have detailed documentation on how to access your server using SSH. This documentation will include crucial information like the server's IP address, username, and hostname. Make sure to have this information at hand before proceeding.
 
@@ -716,7 +716,7 @@ Here's what you need to know:
 
 **4. Maintaining Server Connectivity:** By setting your custom domain to `DNS Only` status in Cloudflare, you ensure that players can connect to your Counter-Strike 1.6 server without any encryption-related problems. This maintains the compatibility required for a seamless gaming experience.
 
-It's essential to follow these steps to guarantee that your custom domain and Cloudflare setup don't interfere with the connectivity of your Counter-Strike 1.6 server. By prioritizing non-proxy (DNS only) status, you'll ensure that players can effortlessly join your server without encountering any obstacles related to HTTPS compatibility.
+It's essential to follow these steps to guarantee that your custom domain and Cloudflare setup don't interfere with the connectivity of your Counter-Strike 1.6 server. By prioritizing non-proxy (DNS only) status, you'll ensure that players can join your server without encountering any obstacles related to HTTPS compatibility.
 
 ### DNS Record Configuration for Your Domain
 

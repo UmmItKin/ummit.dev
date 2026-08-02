@@ -2,7 +2,7 @@
 title: "Manage Remote Servers with the Screen Command"
 description: "Use the screen command for persistent terminal sessions on remote servers without losing your work."
 date: 2021-12-16T20:43:12+0800
-lastmod: 2026-07-28T01:40:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Linux, Server Management, Terminal"
 lang: en-US
 ---
@@ -13,7 +13,7 @@ In Linux server management, the `screen` command is a useful tool for managing m
 
 ## The Utility of the `screen` Command
 
-At its core, the `screen` command is a terminal multiplexer, a tool that enables you to create, manage, and navigate between multiple terminal sessions within a single window. This is useful when working with servers, as it allows you to maintain control over multiple tasks and sessions simultaneously, all while keeping your terminal organized.
+The `screen` command is a terminal multiplexer, a tool that enables you to create, manage, and navigate between multiple terminal sessions within a single window. This is useful when working with servers, as it allows you to maintain control over multiple tasks and sessions simultaneously, all while keeping your terminal organized.
 
 ## Installation
 

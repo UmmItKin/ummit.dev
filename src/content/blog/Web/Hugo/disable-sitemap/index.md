@@ -2,7 +2,7 @@
 title: "Disable Hugo Sitemap Generation After Building"
 description: "Disable Hugo sitemap.xml generation after building your static site to prevent duplicate content issues."
 date: 2023-09-03T23:33:40+0800
-lastmod: 2026-07-28T01:35:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Hugo, Static Site, Configuration"
 lang: en-US
 ---
@@ -99,7 +99,7 @@ Disabling the sitemap in Hugo is a straightforward process that allows you to ha
 
 ## See also
 
-In order to be added to the search engine completely unknowingly, check out this article:
+To be added to the search engine completely unknowingly, check out this article:
 
 [Search Engine Crawlers: A Guide to custom robots.txt with Disallow or allow Rule](/en/blog/web/search-engine/how-to-block-search-engine-with-robots.txt-and-custom/)
 

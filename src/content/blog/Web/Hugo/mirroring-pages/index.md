@@ -2,14 +2,14 @@
 title: "Mirror Hugo Sites Across GitLab and Cloudflare Pages"
 description: Deploy Hugo static sites across multiple platforms using GitLab Pages and Cloudflare Pages with dynamic baseURL configuration.
 date: 2023-12-31T12:15:20+0800
-lastmod: 2026-07-28T01:35:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Hugo, Cloudflare, Deployment"
 lang: en-US
 ---
 
 ## Introduction
 
-When mirroring your Hugo site with GitLab and Cloudflare, ensuring that the site is fully functional is crucial. The build process depends on the `baseURL` configuration in your Hugo `config.yaml`. To make this work without issues, you need to adjust the build command for both GitLab Pages and Cloudflare Pages. This guide walks you through the process.
+When mirroring your Hugo site with GitLab and Cloudflare, it's important that the site is fully functional. The build process depends on the `baseURL` configuration in your Hugo `config.yaml`. To make this work without issues, you need to adjust the build command for both GitLab Pages and Cloudflare Pages. This guide walks you through the process.
 
 ## Cloudflare Pages
 

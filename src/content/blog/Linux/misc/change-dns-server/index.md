@@ -2,7 +2,7 @@
 title: "How to Change DNS Servers on Linux"
 description: "Change DNS servers on Linux to Cloudflare, Google, or any custom resolver for faster and more private browsing."
 date: 2023-08-19T15:22:25+0800
-lastmod: 2026-07-28T01:30:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Linux, DNS, Networking"
 lang: en-US
 ---
@@ -21,7 +21,7 @@ Configuring DNS servers on your Linux system involves editing a specific configu
 
 ### Using Cloudflare DNS (1.1.1.1 and 1.0.0.1)
 
-Cloudflare DNS is renowned for its impressive speed, often outperforming other DNS servers. To set up your Linux system to utilize Cloudflare DNS, follow these steps:
+Cloudflare DNS is known for its impressive speed, often outperforming other DNS servers. To set up your Linux system to utilize Cloudflare DNS, follow these steps:
 
 1. Open a terminal window.
 

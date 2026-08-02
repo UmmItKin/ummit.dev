@@ -2,7 +2,7 @@
 title: "How to Build a Custom Linux Kernel"
 description: "Build a custom Linux kernel from source with personalized configuration and systemd-boot support."
 date: 2023-08-22T14:20:50+0800
-lastmod: 2026-07-28T01:35:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Linux, Kernel, System Administration"
 lang: en-US
 ---
@@ -381,7 +381,7 @@ This command ensures that your boot loader is aware of the new kernel entry and 
 
 ## Final Step: Reboot and Verify Your Custom Kernel
 
-Congratulations! You've successfully compiled and Installed your own custom Linux kernel. The process might have taken some time and effort, but now you have a tailored kernel that fits your system's requirements. Let's take the final steps to reboot your computer and ensure that your new custom kernel is up and running.
+You've compiled and installed your own custom Linux kernel. The process might have taken some time and effort, but now you have a tailored kernel that fits your system's requirements. Let's take the final steps to reboot your computer and ensure that your new custom kernel is up and running.
 
 ### 1. Reboot Your System
 
@@ -455,7 +455,7 @@ In addition to cleaning up the kernel-related files, it's important to remove th
 
    This ensures that your boot loader menu no longer lists the custom kernel as an option.
 
-By removing these configuration files, you're ensuring that your system no longer retains any traces of the custom kernel. This step completes the process of removing the custom kernel from your system, freeing up resources and streamlining your setup.
+Once you remove these configuration files, your system no longer retains any traces of the custom kernel. This step completes the process of removing the custom kernel from your system, freeing up resources and streamlining your setup.
 
 ### Step 5: Remove Kernel Modules
 
@@ -517,7 +517,7 @@ When you remove a custom kernel, it's a good practice to check both locations (`
 
 ### Step 6: Update the Bootloader (Optional)
 
-Updating the bootloader configuration is an optional step, but it's recommended for ensuring that your system accurately reflects the changes you've made. While modern bootloaders like `bootctl` are often smart enough to automatically detect changes to configuration files, manually updating the bootloader provides an extra layer of assurance. Here's how you can do it:
+Updating the bootloader configuration is an optional step, but it's recommended so that your system accurately reflects the changes you've made. While modern bootloaders like `bootctl` are often smart enough to automatically detect changes to configuration files, manually updating the bootloader provides an extra layer of assurance. Here's how you can do it:
 
    > **Note:** Modern bootloaders are designed to automatically detect changes to boot entries and configuration files. However, manually updating the bootloader provides additional peace of mind.
 
@@ -533,11 +533,11 @@ By performing this optional step, you're making sure that your bootloader's conf
 
 ## Conclusion
 
-Congratulations! You've successfully navigated the process of building a custom Linux kernel on your Arch Linux system. From acquiring the source code to configuring, compiling, and integrating the kernel into your boot loader, you've gained an in-depth understanding of the kernel's inner workings. This knowledge not only empowers you to fine-tune your system's performance and features but also deepens your grasp of the foundational components of your operating system.
+You've now built a custom Linux kernel on your Arch Linux system. From acquiring the source code to configuring, compiling, and integrating the kernel into your boot loader, you've gained an in-depth understanding of the kernel's inner workings. This knowledge lets you fine-tune your system's performance and features, and deepens your grasp of the foundational components of your operating system.
 
 Having crafted your own Linux kernel, you now possess the ability to tailor your system's behavior according to your preferences and requirements. The advantages of a customized kernel configuration are at your fingertips, enabling you to harness the full potential of your hardware.
 
-When it comes to removing a custom kernel from your Linux system, a cautious approach is key to maintaining system stability. By meticulously identifying the kernel, booting into an alternate version, and systematically removing associated files, you can safely eliminate a custom kernel. This method ensures that your system retains its functionality and efficiency, reflecting your current needs and choices.
+When it comes to removing a custom kernel from your Linux system, a cautious approach is key to maintaining system stability. Identify the kernel, boot into an alternate version, then remove the associated files to safely eliminate the custom kernel. This way your system retains its functionality and efficiency, reflecting your current needs and choices.
 
 ## References
 

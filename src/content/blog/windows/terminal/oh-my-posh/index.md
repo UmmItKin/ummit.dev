@@ -2,7 +2,7 @@
 title: "Customize Windows Terminal with Oh My Posh"
 description: "Install and customize Oh My Posh on Windows Terminal for a beautiful and informative command prompt."
 date: 2022-06-23T02:19:58+0800
-lastmod: 2026-07-28T01:40:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Windows, Oh My Posh, Terminal"
 lang: en-US
 ---
@@ -67,7 +67,7 @@ Nerd Fonts are specialized fonts that have been patched to include a wide range 
 
 ### Installing Fonts for Oh My Posh
 
-When it comes to personalizing your terminal experience with Oh My Posh, fonts play a crucial role. Nerd Fonts are fonts patched with a wide range of icons, which Oh My Posh needs to display theme icons. Here's how to install them.
+When it comes to personalizing your terminal experience with Oh My Posh, fonts are important. Nerd Fonts are fonts patched with a wide range of icons, which Oh My Posh needs to display theme icons. Here's how to install them.
 
 #### Way1: Using Oh My Posh's CLI for Font Installation
 

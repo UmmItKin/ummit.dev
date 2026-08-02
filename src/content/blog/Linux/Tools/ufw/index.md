@@ -2,7 +2,7 @@
 title: "UFW Firewall Guide for Linux"
 description: "Set up and manage UFW firewall on Linux to control incoming and outgoing traffic with simple rules."
 date: 2021-12-15T03:06:48+0800
-lastmod: 2026-07-28T01:30:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Linux, Firewall, Security"
 lang: en-US
 ---
@@ -13,7 +13,7 @@ Network security matters. Protecting your Linux system from unauthorized access 
 
 ## What is UFW?
 
-Uncomplicated Firewall (UFW) serves as an essential front-end for iptables, offering a straightforward and intuitive means to handle firewall rules. It caters to both newcomers and seasoned professionals, abstracting the complexities of iptables while retaining its powerful functionalities. With UFW, you can define rules to regulate inbound and outbound network traffic, significantly enhancing the security of your system.
+Uncomplicated Firewall (UFW) is an essential front-end for iptables, offering a straightforward and intuitive means to handle firewall rules. It caters to both newcomers and seasoned professionals, abstracting the complexities of iptables while retaining its powerful functionalities. With UFW, you can define rules to regulate inbound and outbound network traffic, significantly enhancing the security of your system.
 
 ## Installation and Initial Steps
 

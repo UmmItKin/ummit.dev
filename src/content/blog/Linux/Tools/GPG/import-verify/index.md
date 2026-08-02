@@ -2,7 +2,7 @@
 title: "Manage, Import, and Verify GPG Keys on Linux"
 description: "Import, verify, and manage GPG keys for encrypted communication and software verification on Linux."
 date: 2023-09-07T03:00:02+0800
-lastmod: 2026-07-28T01:35:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "GPG, Encryption, Security"
 lang: en-US
 ---
@@ -13,7 +13,7 @@ lang: en-US
 
 ## What Are GPG Keys?
 
-At its core, GPG uses a pair of keys to secure your data: the **public key** and the **private key**. These keys are mathematically related but serve different purposes:
+GPG uses a pair of keys to secure your data: the **public key** and the **private key**. These keys are mathematically related but serve different purposes:
 
 - **Public Key**: This key is used to encrypt data and verify digital signatures. It can be shared openly with others.
 - **Private Key**: This key is used to decrypt data and create digital signatures. It must be kept secret and should never be shared.

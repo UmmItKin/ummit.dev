@@ -2,7 +2,7 @@
 title: "Install XFCE Desktop on Gentoo Linux with OpenRC"
 description: "Install Xorg, XFCE desktop, and LightDM display manager on Gentoo Linux with OpenRC."
 date: 2023-09-20T16:40:21+0800
-lastmod: 2026-07-28T01:40:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Gentoo, XFCE, Desktop Environment"
 lang: en-US
 ---
@@ -66,7 +66,7 @@ Now, let's proceed confidently, knowing that our system is well-prepared for the
 
 ### Step 4: Declutter for a Pristine System
 
-A well-maintained system is a happy system. It's time to declutter your Gentoo environment and bid farewell to any unnecessary packages. This not only keeps your system running smoothly but also frees up precious space.
+A well-maintained system is a happy system. It's time to declutter your Gentoo environment and remove any unnecessary packages. This keeps your system running smoothly and frees up space.
 
 Clean up the system:
 
@@ -243,7 +243,7 @@ Using TTY mode provides an alternative way to access your system and perform tas
 
 ## What Comes After?
 
-Congratulations! You've successfully set up your Gentoo system and are now equipped with a powerful foundation for your Linux journey. However, this isn't the end; it's just the beginning.
+You've set up your Gentoo system and now have a solid foundation for your Linux journey. This isn't the end; it's just the beginning.
 
 For a detailed guide on these post-installation steps, check out [this link](/en/blog/linux/gentoo/gentoo-post-installation/) to take your Gentoo experience to the next level.
 

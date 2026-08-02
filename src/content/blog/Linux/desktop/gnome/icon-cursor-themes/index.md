@@ -2,7 +2,7 @@
 title: "Customize GNOME Desktop with Icon and Cursor Themes"
 description: "Install icon and cursor themes on GNOME desktop using Tweaks for a personalized look."
 date: 2023-08-14T08:47:50+0800
-lastmod: 2026-07-28T01:40:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "GNOME, Customization, Themes"
 lang: en-US
 ---
@@ -37,7 +37,7 @@ For individual user-specific icon themes, the path is:
 ~/.local/share/icons/
 ```
 
-These paths play a crucial role in determining the appearance of your icons across the system. Whether you choose a global or local installation, these directories ensure that your selected icon themes are accessible and enhance the visual experience of your desktop environment.
+These paths determine the appearance of your icons across the system. Whether you choose a global or local installation, these directories ensure that your selected icon themes are accessible and enhance the visual experience of your desktop environment.
 
 ## Step 1: Install GNOME Tweaks
 

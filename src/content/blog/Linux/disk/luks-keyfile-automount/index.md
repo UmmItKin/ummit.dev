@@ -2,7 +2,7 @@
 title: "Auto-Mount LUKS Encrypted Disks with Keyfile on Linux"
 description: Set up automatic disk encryption and decryption using LUKS with keyfile-based authentication on Linux.
 date: 2023-12-08T10:10:02+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "LUKS, Encryption, Linux"
 lang: en-US
 ---
@@ -92,7 +92,7 @@ As we have created a new mapper for the encrypted disk (`4tbhdd`), we also need 
 mkfs.btrfs /dev/mapper/4tbhdd
 ```
 
-This command initializes a Btrfs file system on the specified mapper, ensuring that the encrypted disk is ready for use.
+This command initializes a Btrfs file system on the specified mapper, so the encrypted disk is ready for use.
 
 ## Step 7: Create Keyfile
 
@@ -174,7 +174,7 @@ UUID=<UUID-of-mapper>  /mnt/4tbhdd     btrfs       defaults        0 0
 Explanation:
 
 - The `blkid` command is used to retrieve the UUID of the mapper (`4tbhdd`).
-- The obtained UUID is then appended to the `/etc/fstab` file, ensuring that the mapper is mounted automatically during the system boot-up.
+- The obtained UUID is then appended to the `/etc/fstab` file, so that the mapper is mounted automatically during the system boot-up.
 
 ## Step 14: Create Mounting Point
 

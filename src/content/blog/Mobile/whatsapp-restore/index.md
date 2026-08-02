@@ -2,7 +2,7 @@
 title: "Restore WhatsApp Chats on GrapheneOS from Google Drive"
 description: "Restore WhatsApp chat history from Google Drive backup on GrapheneOS with proper Google Play Services permissions."
 date: 2025-01-26T18:40:00+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "GrapheneOS, WhatsApp, Mobile"
 lang: en-US
 ---
@@ -15,7 +15,7 @@ However, I encountered a problem when trying to restore my chat history from Goo
 
 After some research, I discovered that the issue was actually quite simple. The problem stemmed from permission restrictions on GrapheneOS. Specifically, Google Play Services needed the appropriate permissions to access my contacts.
 
-Through this article, I want to share the solution I found for restoring chat history from Google Drive on GrapheneOS. By ensuring that Google Play Services has the necessary permissions, you can successfully restore your WhatsApp chats and enjoy all the features that come with using WhatsApp as your main device.
+Through this article, I want to share the solution I found for restoring chat history from Google Drive on GrapheneOS. Once Google Play Services has the necessary permissions, you can successfully restore your WhatsApp chats and enjoy all the features that come with using WhatsApp as your main device.
 
 ### Quick Guide
 
@@ -44,7 +44,7 @@ Let’s assume you have a GrapheneOS device and have installed WhatsApp through 
 
 ## Disable Google Play Services Permission
 
-I’ve noticed that the contacts permission for Google Play Services plays a crucial role in Google login detection. You can enable this permission when you need to log into any Google service, so you won’t have to log in manually again, as you’re already logged in through Google Play Services. The key point is to only allow the permission to access contacts when necessary.
+I’ve noticed that the contacts permission for Google Play Services is important for Google login detection. You can enable this permission when you need to log into any Google service, so you won’t have to log in manually again, as you’re already logged in through Google Play Services. The key point is to only allow the permission to access contacts when necessary.
 
 Moreover, I recommend disabling this permission after you finish the restore process because Google Play Services doesn’t need access to your contacts afterward. It’s a good practice to limit the permissions granted to Google Play Services.
 

@@ -2,7 +2,7 @@
 title: "Installing Oh My Zsh and Customizing Themes"
 description: "Install Oh My Zsh and customize your shell with themes and plugins for a better terminal experience."
 date: 2023-08-11T09:21:50+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Linux, Zsh, Terminal Customization"
 lang: en-US
 ---
@@ -102,7 +102,7 @@ Voila! You've successfully changed the theme of your Oh My Zsh-powered terminal.
 
 ### Command 1: `omz update`
 
-Staying up-to-date is vital, and the `omz update` command is your shortcut to ensuring that your Oh My Zsh installation and its components are current. From plugins to themes, running this command keeps you on the cutting edge, enjoying bug fixes, feature enhancements, and performance boosts.
+Staying up-to-date is vital, and the `omz update` command is your shortcut to keeping your Oh My Zsh installation and its components current. From plugins to themes, running this command keeps you on the cutting edge, enjoying bug fixes, feature enhancements, and performance boosts.
 
 To execute the update, simply open your terminal and type:
 
@@ -112,7 +112,7 @@ omz update
 
 ### Command 2: `omz help`
 
-When uncertainty arises, the `omz help` command is your trusty companion. A one-stop repository of Oh My Zsh's commands and features, this command serves as your instant reference guide. It displays a comprehensive list of available commands alongside concise explanations of their purposes.
+When uncertainty arises, the `omz help` command is your trusty companion. A one-stop repository of Oh My Zsh's commands and features, this command is your instant reference guide. It displays a comprehensive list of available commands alongside concise explanations of their purposes.
 
 Access the help documentation with a simple command:
 
@@ -122,7 +122,7 @@ omz help
 
 ### Command 3: `omz reload`
 
-The `omz reload` command is for applying changes without the need to restart your shell. Whenever you modify your Oh My Zsh configuration or add new plugins, a simple execution of this command refreshes your environment, ensuring that the changes take effect immediately.
+The `omz reload` command is for applying changes without the need to restart your shell. Whenever you modify your Oh My Zsh configuration or add new plugins, a simple execution of this command refreshes your environment, so that the changes take effect immediately.
 
 type the following command in your terminal:
 

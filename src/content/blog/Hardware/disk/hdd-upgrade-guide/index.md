@@ -2,7 +2,7 @@
 title: "How to Install a New Hard Drive in Your Computer"
 description: How to physically install a new hard drive in your desktop computer and get it recognized by the system.
 date: 2023-12-07T19:19:20+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Hardware, Storage, Installation"
 lang: en-US
 ---
@@ -33,7 +33,7 @@ Remove the left and right side plates from the computer case. Identify the HDD s
 
 ### Step 2: Find the Cables
 
-You'll need two cables for the installation—usually found in the motherboard and power supply boxes.
+You'll need two cables for the installation, usually found in the motherboard and power supply boxes.
 
 #### Power Supply Unit Cable
 

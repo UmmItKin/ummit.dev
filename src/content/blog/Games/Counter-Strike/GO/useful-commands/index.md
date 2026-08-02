@@ -2,7 +2,7 @@
 title: "Enhance Your CS:GO Gameplay with These Essential Console Commands"
 description: Essential CS:GO console commands for optimizing crosshair, practicing grenades, and improving your gameplay.
 date: 2023-09-23T20:29:30+0800
-lastmod: 2026-07-28T01:30:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "CS:GO, Gaming, Console Commands"
 lang: en-US
 ---
@@ -57,7 +57,7 @@ Same, Once you’ve enabled the developer console, you can press the tilde key t
 bind shift "+speed; r_cleardecals"
 ```
 
-One of the subtle yet effective commands in CS:GO is the ability to clear bullet decals from surfaces. By binding this action to your "shift" key, you can clean up bullet holes and blood splatters quickly, ensuring that your view remains unobstructed during intense firefights.
+One of the subtle yet effective commands in CS:GO is the ability to clear bullet decals from surfaces. By binding this action to your "shift" key, you can clean up bullet holes and blood splatters quickly, so your view remains unobstructed during intense firefights.
 
 ### 2. Perfect Your Jump Throws
 

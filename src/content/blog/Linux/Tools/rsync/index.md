@@ -2,7 +2,7 @@
 title: "The Complete Guide to Rsync for File Synchronization"
 description: "Sync files between local and remote systems with rsync for efficient backups and transfers."
 date: 2023-08-28T22:26:52+0800
-lastmod: 2026-07-28T01:40:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Linux, File Sync, Backup"
 lang: en-US
 ---
@@ -13,7 +13,7 @@ The need to efficiently synchronize data across various devices, servers, or loc
 
 ## What is Rsync?
 
-Rsync, which stands for "remote synchronization," is a command-line utility available on Unix-based operating systems like Linux and macOS. It's designed to synchronize and transfer files between two locations, ensuring that the destination location mirrors the source location. Rsync's primary goal is to minimize the amount of data transferred during synchronization, making it an efficient tool for both local and remote file synchronization tasks.
+Rsync, which stands for "remote synchronization," is a command-line utility available on Unix-based operating systems like Linux and macOS. It's designed to synchronize and transfer files between two locations, so that the destination location mirrors the source location. Rsync's primary goal is to minimize the amount of data transferred during synchronization, making it an efficient tool for both local and remote file synchronization tasks.
 
 ## Install Rsync
 
@@ -155,4 +155,4 @@ By combining these options, rsync provides a powerful mechanism to orchestrate c
 
 ### Conclusion
 
-In the realm of data synchronization, **rsync** stands as an efficient tool that simplifies the process of copying and updating files between different locations. Its ability to transfer only the changed portions of files, along with preserving attributes, makes it a go-to choice for various scenarios, from basic local file copying to complex remote data synchronization. By understanding the core concepts and the various options, you'll be equipped to use rsync's capabilities to keep your data organized, up-to-date, and readily accessible.
+**rsync** is an efficient tool that simplifies copying and updating files between different locations. Its ability to transfer only the changed portions of files, along with preserving attributes, makes it a go-to choice for various scenarios, from basic local file copying to complex remote data synchronization. By understanding the core concepts and the various options, you'll be equipped to use rsync's capabilities to keep your data organized, up-to-date, and readily accessible.

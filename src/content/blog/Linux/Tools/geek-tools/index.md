@@ -2,7 +2,7 @@
 title: "Essential Linux Terminal Tools for Power Users"
 description: Collection of powerful command-line tools for Linux including terminal emulators, file managers, and productivity utilities.
 date: 2024-01-01T04:15:29+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Linux, Terminal, CLI Tools"
 lang: en-US
 ---
@@ -39,7 +39,7 @@ sudo pacman -S htop btop
 
 ### 3. Neovim and Vim - Text Editing Wizards
 
-Neovim and Vim redefine text editing in the terminal. Packed with features and extensibility, they're more than just text editors—they're lifestyle choices.
+Neovim and Vim redefine text editing in the terminal. Packed with features and extensibility, they're lifestyle choices.
 
 ```shell
 sudo pacman -S neovim
@@ -88,7 +88,7 @@ sudo pacman -S ncdu
 ![ncdu](./ncdu.png)
 
 ### 9. Hollywood - Terminal Fun
-Hollywood adds a touch of entertainment with cool effects inspired by movie and TV hacking scenes. It's not just about productivity; it's about having fun in the terminal.
+Hollywood adds a touch of entertainment with cool effects inspired by movie and TV hacking scenes. It's about having fun in the terminal.
 
 ```shell
 yay -S hollywood

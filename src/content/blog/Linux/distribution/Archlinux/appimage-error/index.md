@@ -2,7 +2,7 @@
 title: "Fix dlopen Shared Library Errors on Arch Linux"
 description: "Fix the dlopen shared library error on Arch Linux when running AppImages and other dynamically linked applications."
 date: 2023-02-14T20:04:00+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Arch Linux, AppImage, Troubleshooting"
 lang: en-US
 ---
@@ -35,7 +35,7 @@ As you embark on this journey to troubleshoot the dlopen() error and ensure the 
 
 ## How It Works
 
-The installation of `fuse2` and, optionally, `fuse` and `squashfuse`, serves as a gateway to an enhanced Appimage adventure. These libraries form the bridge between FUSE-based applications and your system's filesystem, offering a conduit through which applications can interact and manipulate data as if they were operating at the kernel level.
+The installation of `fuse2` and, optionally, `fuse` and `squashfuse`, is a gateway to an enhanced Appimage adventure. These libraries form the bridge between FUSE-based applications and your system's filesystem, offering a conduit through which applications can interact and manipulate data as if they were operating at the kernel level.
 
 By presenting these essential libraries, the notorious dlopen() error, often triggered by missing or mismatched dependencies, is effectively neutralized. When you fire up your Appimage, it elegantly loads and interacts with the necessary libraries, ensuring a seamless, error-free exploration of your chosen application.
 

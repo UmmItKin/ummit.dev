@@ -2,7 +2,7 @@
 title: "How to Install Gentoo Linux with OpenRC"
 description: "Install Gentoo Linux with OpenRC from scratch covering disk partitioning, kernel config, and base system."
 date: 2023-09-16T17:30:34+0800
-lastmod: 2026-07-28T01:40:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Gentoo, Linux Installation, OpenRC"
 lang: en-US
 ---
@@ -155,7 +155,7 @@ By executing this command, you're linking your Gentoo root partition (/dev/vda3)
 
 ## Step 3: Setting the System Clock
 
-Now, ensuring your system's clock is accurate is crucial. An incorrect system time can cause download errors and lead to issues post-installation. Here's a quick guide on how to verify and set the date and time in Gentoo.
+Now, an accurate system clock is important. An incorrect system time can cause download errors and lead to issues post-installation. Here's a quick guide on how to verify and set the date and time in Gentoo.
 
 ### Checking Current Date and Time
 
@@ -201,7 +201,7 @@ Now, it’s time to download Stage3 Tarball.
 
 ### Navigate to the Installation Directory
 
-Begin by changing your working directory to `/mnt/gentoo`, which is where you'll install Gentoo. This location serves as the foundation for your Gentoo Linux system.
+Begin by changing your working directory to `/mnt/gentoo`, which is where you'll install Gentoo. This location is the foundation for your Gentoo Linux system.
 
 ```shell
 cd /mnt/gentoo
@@ -246,7 +246,7 @@ rm -rfv stage3-*.tar.xz
 
 ## Step 6: Configuring make.conf
 
-Gentoo Linux is renowned for its customization potential, offering users the ability to compile and configure their systems according to specific needs. In this step, we'll focus on enhancing compilation speed, refining the aesthetics of terminal output and GPU Support.
+Gentoo Linux is known for its customization potential, offering users the ability to compile and configure their systems according to specific needs. In this step, we'll focus on enhancing compilation speed, refining the aesthetics of terminal output and GPU Support.
 
 ### Edit `make.conf`
 
@@ -308,7 +308,7 @@ VIDEO_CARDS="nouveau"
 VIDEO_CARDS="amdgpu radeonsi radeon"
 ```
 
-These configurations provide comprehensive support for input devices and graphics cards on your Gentoo system. Customize these settings based on your specific hardware and preferences, ensuring a seamless and optimized computing experience.
+These configurations provide comprehensive support for input devices and graphics cards on your Gentoo system. Customize these settings based on your specific hardware and preferences.
 
 ## Step 7: Repository Configuration
 
@@ -558,7 +558,7 @@ The `emerge --depclean` command helps free up disk space and improve system perf
 
 ## Step 14: Licensing
 
-Software licenses play a crucial role in Gentoo, as they determine which software can be installed based on your acceptance or rejection of these licenses. By default, Gentoo requires you to manually configure your license preferences. Here, we'll set up Gentoo to accept all licenses, but you can customize this based on your preferences.
+Software licenses are important in Gentoo, as they determine which software can be installed based on your acceptance or rejection of these licenses. By default, Gentoo requires you to manually configure your license preferences. Here, we'll set up Gentoo to accept all licenses, but you can customize this based on your preferences.
 
 ### Edit make.conf
 
@@ -584,7 +584,7 @@ ACCEPT_LICENSE="*"
 
 By setting `ACCEPT_LICENSE="*"`, you configure Gentoo to accept all licenses, thereby enabling the installation of software without license-based restrictions.
 
-Customizing your license acceptance preferences in Gentoo provides flexibility while also ensuring that you comply with software licenses. Make sure to choose the option that aligns with your licensing preferences and requirements.
+Customizing your license acceptance preferences in Gentoo provides flexibility, as long as you still comply with software licenses. Make sure to choose the option that aligns with your licensing preferences and requirements.
 
 ## Step 15: Time Zone Configuration
 
@@ -610,7 +610,7 @@ echo "Asia/Taipei" > /etc/timezone
 
 >Notes: Replace "Asia/Taipei" with the path to your specific time zone file.
 
-This command specifies your preferred time zone, ensuring that your Gentoo system displays the correct local time.
+This command specifies your preferred time zone, so that your Gentoo system displays the correct local time.
 
 ### Configure Time Zone Data
 
@@ -681,7 +681,7 @@ With these steps, you can customize your Gentoo system's language and regional s
 
 #### `env-update`
 
-In Gentoo Linux, the `env-update` command plays a vital role in synchronizing system settings configured in various files with the actual runtime environment of your system. It ensures that changes made to important configuration files are immediately reflected in the environment, enabling the system to function correctly based on the updated settings.
+In Gentoo Linux, the `env-update` command is important for synchronizing system settings configured in various files with the actual runtime environment of your system. It ensures that changes made to important configuration files are immediately reflected in the environment, enabling the system to function correctly based on the updated settings.
 
 Here's how `env-update` works:
 
@@ -693,7 +693,7 @@ Here's how `env-update` works:
 
 To illustrate its importance, consider the locale configuration discussed earlier. After configuring locales in Gentoo, running `env-update` ensures that your chosen language and regional settings are consistently applied across all applications and processes without any delay.
 
-In summary, `env-update` serves as a critical bridge between the static configuration files and the dynamic runtime environment of Gentoo Linux. Its role is fundamental in maintaining system-wide consistency and facilitating the swift application of system-wide changes.
+In summary, `env-update` is a critical bridge between the static configuration files and the dynamic runtime environment of Gentoo Linux. Its role is fundamental in maintaining system-wide consistency and facilitating the swift application of system-wide changes.
 
 ## Step 17: Firmware and Kernel
 
@@ -725,7 +725,7 @@ This step involves installing essential firmware and the Gentoo kernel to ensure
    emerge --ask sys-kernel/gentoo-kernel
    ```
 
-   Install the Gentoo kernel, a critical component of your Gentoo Linux system. The kernel serves as the core of the operating system, providing essential hardware support and system functionality.
+   Install the Gentoo kernel, a critical component of your Gentoo Linux system. The kernel is the core of the operating system, providing essential hardware support and system functionality.
 
 4. **List Available Kernels:**
 
@@ -735,7 +735,7 @@ This step involves installing essential firmware and the Gentoo kernel to ensure
 
    List the available kernels to help you select the appropriate one for your system. This step is crucial to ensure that you choose the correct kernel configuration that matches your hardware and requirements.
 
-Installing firmware and the Gentoo kernel is vital for the proper functioning of your Gentoo Linux system, ensuring that it's equipped with the necessary hardware support and system core.
+Installing firmware and the Gentoo kernel is vital for the proper functioning of your Gentoo Linux system, so that it's equipped with the necessary hardware support and system core.
 
 ## Step 18: Filesystem Configuration
 
@@ -768,7 +768,7 @@ Here's an explanation of each entry:
 2. `/dev/vda2` is designated as a swap partition.
 3. `/dev/vda3` is mounted as the root directory and uses the Btrfs filesystem. It also specifies mount options, such as "defaults" and "noatime."
 
-Ensure that you adjust these entries to match your actual disk partitioning and filesystem choices. Properly configuring `/etc/fstab` is essential for ensuring that your system mounts and utilizes partitions correctly during startup and operation.
+Ensure that you adjust these entries to match your actual disk partitioning and filesystem choices. Properly configuring `/etc/fstab` is essential so that your system mounts and utilizes partitions correctly during startup and operation.
 
 ## Step 19: Setting Network Information
 
@@ -877,7 +877,7 @@ rc-update add net.enp1s0 default
 
 Make sure to replace "enp1s0" with the correct interface name for your system configuration.
 
-With these steps, you'll properly configure your network interfaces in Gentoo, ensuring that they start automatically and provide stable connectivity for your system.
+With these steps, you'll properly configure your network interfaces in Gentoo, so that they start automatically and provide stable connectivity for your system.
 
 ## Step 21: Setting the Root Password
 
@@ -933,7 +933,7 @@ First, we need to specify the GRUB platform as "efi-64" in your `make.conf` file
 echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf
 ```
 
-This command appends the `GRUB_PLATFORMS` setting to your `make.conf` file, ensuring that GRUB is configured correctly for EFI booting.
+This command appends the `GRUB_PLATFORMS` setting to your `make.conf` file, so that GRUB is configured correctly for EFI booting.
 
 ### Install GRUB
 
@@ -1006,13 +1006,13 @@ reboot
 
 - `reboot`: Execute this command to reboot your system gracefully. After the reboot, you'll encounter the GRUB menu, which allows you to select your desired operating system. Use the arrow keys to highlight "Gentoo" and then press Enter to boot into your freshly installed Gentoo Linux system.
 
-Rebooting is the final step in the installation process, and once your system restarts, you'll have access to your new Gentoo Linux environment. Congratulations on successfully installing Gentoo!
+Rebooting is the final step in the installation process, and once your system restarts, you'll have access to your new Gentoo Linux environment.
 
 ![Grub has been installed!](./grub-done.png)
 
 ## Final Step: Testing Your System
 
-Congratulations! You've successfully installed Gentoo Linux, and now it's time to test your system to ensure everything is working as expected.
+You've installed Gentoo Linux, and now it's time to test your system to ensure everything is working as expected.
 
 ### Login your system
 
@@ -1022,7 +1022,7 @@ Once your system has rebooted, you should see the login prompt. Log in using the
 
 ## Conclusion
 
-Congratulations! You've successfully installed Gentoo Linux with using the OpenRC init system. This installation process, although detailed, provides you with a highly customizable and optimized Linux system tailored to your specific needs.
+You've installed Gentoo Linux using the OpenRC init system. This installation process, although detailed, provides you with a highly customizable and optimized Linux system tailored to your specific needs.
 
 Throughout this guide, you've learned how to:
 

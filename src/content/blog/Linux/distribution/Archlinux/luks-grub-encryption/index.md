@@ -103,7 +103,7 @@ If you are unfamiliar with the process, please refer to this article:
 
 ### Step 4: Configure mkinitcpio.conf
 
-Edit the `/etc/mkinitcpio.conf` file, ensuring that the `HOOKS` line includes `lvm2` and `sd-encrypt`. It should look like this. Or you can just directly copy this line.
+Edit the `/etc/mkinitcpio.conf` file so that the `HOOKS` line includes `lvm2` and `sd-encrypt`. It should look like this. Or you can just directly copy this line.
 
 ```shell
 HOOKS=(systemd autodetect microcode modconf kms keyboard keymap sd-vconsole sd-encrypt block lvm2 filesystems fsck)

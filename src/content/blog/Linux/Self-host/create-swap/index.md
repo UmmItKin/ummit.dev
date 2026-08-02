@@ -2,7 +2,7 @@
 title: "Creating a Swap File on Your Linux VPS"
 description: "Create a swap file on your Linux VPS to improve memory management and prevent out-of-memory crashes."
 date: 2023-08-14T09:15:24+08:00
-lastmod: 2026-07-28T01:40:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Linux, VPS, Memory Management"
 lang: en-US
 ---
@@ -13,7 +13,7 @@ Adding a swap file to your Linux Virtual Private Server (VPS) can significantly 
 
 ## Why Enable Swap?
 
-Enabling swap on your Linux VPS system can significantly enhance its performance and ensure smoother operations. Linux is renowned for its ability to run efficiently on low-spec hardware, making it possible to operate servers even with limited resources such as 512MB RAM or 1GB RAM. However, there are instances when these resources may prove inadequate for certain workloads.
+Enabling swap on your Linux VPS system can significantly enhance its performance and ensure smoother operations. Linux is known for its ability to run efficiently on low-spec hardware, making it possible to operate servers even with limited resources such as 512MB RAM or 1GB RAM. However, there are instances when these resources may prove inadequate for certain workloads.
 
 This is where a swap file comes into play. It acts as a supplementary form of memory that the system can utilize when physical RAM is exhausted. Here's why enabling swap is beneficial:
 
@@ -73,10 +73,10 @@ sudo swapon /swapfile
 
 ## Step 4: Making the Swap File Permanent
 
-Ensuring the continuity of the swap file's functionality after a system reboot requires creating an entry in the `/etc/fstab` file. This file holds a pivotal role in delineating filesystems and devices, including the essential swap space. Let's illuminate the significance of the `defaults 0 0` parameters:
+To keep the swap file working after a system reboot, create an entry in the `/etc/fstab` file. This file defines filesystems and devices, including the essential swap space. Let's illuminate the significance of the `defaults 0 0` parameters:
 
 - **`defaults`:** This amalgamation of mount options consolidates prudent settings for a range of scenarios. It encompasses attributes like `rw` (read-write) and `auto` (automatic mounting during boot).
-- **`0`:** This numeric value serves as a lodestar for filesystem checkers (fsck), orchestrating the sequence for assessing filesystems. Since swap space merits examination after other filesystems, the value is judiciously set at 0.
+- **`0`:** This numeric value tells filesystem checkers (fsck) the order to check filesystems. Since swap space should be examined after other filesystems, the value is set at 0.
 - **`0`:** This value exerts influence over whether the filesystem is subjected to backups through the `dump` command. Given swap space's unique nature, it eschews backups, so this value stands resolutely at 0.
 
 In simpler terms, `defaults 0 0` deftly choreographs an automatic, tailored mount of the swap file during boot, follows with scrutiny of other filesystems, and gracefully sidesteps backup procedures.

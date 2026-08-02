@@ -171,7 +171,7 @@ sudo aireplay-ng -0 10 -a <MAC address of the AP> -c <MAC address of the client 
 
 ## Deauthentication Is Not Always Required
 
-Deauthentication is one way to force a client to reconnect in order to capture the handshake. However, you can also simply wait for a legitimate client to connect (or attempt a failed connection) and capture the handshake naturally.
+Deauthentication is one way to force a client to reconnect to capture the handshake. However, you can also simply wait for a legitimate client to connect (or attempt a failed connection) and capture the handshake naturally.
 
 >***Deauthentication essentially acts as a DoS attack against the AP, but it is not strictly required to crack the AP password.***
 

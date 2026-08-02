@@ -2,7 +2,7 @@
 title: "Install the Powerlevel10k Theme for Oh My Zsh"
 description: "Install and configure the Powerlevel10k theme for Oh My Zsh with a clean, informative prompt."
 date: 2023-09-23T16:01:50+0800
-lastmod: 2026-07-28T01:40:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Zsh, Themes, Customization"
 lang: en-US
 ---
@@ -81,7 +81,7 @@ With these steps, you'll have successfully enhanced your Oh My Zsh experience wi
 
 ## Conclusion
 
-Congratulations! You've successfully transformed your Oh My Zsh terminal into a powerful and beautifully customized environment with the Powerlevel10k theme. This elegant theme not only enhances the aesthetics of your terminal but also provides useful features and configurations for a more efficient workflow.
+You've transformed your Oh My Zsh terminal into a powerful and beautifully customized environment with the Powerlevel10k theme. This elegant theme enhances the aesthetics of your terminal and provides useful features and configurations for a more efficient workflow.
 
 By following the steps in this guide, you've achieved the following:
 

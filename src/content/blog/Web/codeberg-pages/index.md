@@ -2,7 +2,7 @@
 title: "Host Free Static Websites on Codeberg Pages with Custom Domain"
 description: "Host static websites for free on Codeberg Pages with custom domain support and automatic deployment."
 date: 2023-09-03T19:50:04+0800
-lastmod: 2026-07-28T01:35:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Git, Web Hosting, Codeberg"
 lang: en-US
 ---
@@ -138,7 +138,7 @@ Please note that DNS changes can take some time to propagate across the internet
 
   When a user enters `www.yourdomain.com` in a web browser, the DNS system redirects them to `yourdomain.com`. CNAMEs are often used to create shorter, more user-friendly URLs that point to longer or canonical domain names.
 
-These DNS record types play a crucial role in ensuring that when someone accesses your custom domain, they are directed to the correct server and resources associated with that domain.
+These DNS record types are important for directing visitors to the correct server and resources when they access your custom domain.
 
 >For more detailed instructions on configuring your custom domain, refer to the [Codeberg Pages documentation](https://docs.codeberg.org/codeberg-pages/using-custom-domain/).
 

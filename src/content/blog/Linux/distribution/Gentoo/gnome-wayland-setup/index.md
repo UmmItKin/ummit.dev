@@ -2,7 +2,7 @@
 title: "Install GNOME, Wayland, and GDM on Gentoo with OpenRC"
 description: "Set up GNOME desktop with Wayland and GDM on Gentoo Linux using OpenRC."
 date: 2023-09-26T21:22:21+0800
-lastmod: 2026-07-28T01:40:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Gentoo, GNOME, Wayland"
 lang: en-US
 ---
@@ -29,7 +29,7 @@ eselect profile set 6
 
 ## Step 2: Configuring make.conf for GNOME Installation
 
-With your chosen Gentoo profile set, it's time to fine-tune your system to ensure a flawless GNOME installation. This step involves configuring your `make.conf` file, which plays a pivotal role in managing package compilation and runtime behavior. Follow these instructions to adjust the necessary settings:
+With your chosen Gentoo profile set, it's time to fine-tune your system to ensure a flawless GNOME installation. This step involves configuring your `make.conf` file, which is important for managing package compilation and runtime behavior. Follow these instructions to adjust the necessary settings:
 
 ### 1. Open your `make.conf` file
 
@@ -63,15 +63,15 @@ Here's the purpose of each USE flag:
 
 - **minimal:** Opting for a minimal installation ensures that only essential GNOME components are included, effectively sidestepping unnecessary bloat.
 
-- **-X:** The exclusion of the `-X` flag signifies that you're not enabling X Window System compatibility, as Wayland serves as the primary display protocol.
+- **-X:** The exclusion of the `-X` flag signifies that you're not enabling X Window System compatibility, as Wayland is the primary display protocol.
 
-By meticulously configuring these variables within your `make.conf` file using the provided settings, you're effectively preparing your system's package management system for a seamless GNOME installation. Each flag serves a distinct purpose, collectively ensuring that GNOME functions optimally within the Gentoo ecosystem.
+These settings in your `make.conf` file prepare the package manager for the GNOME installation. Each flag has a distinct purpose, so that GNOME runs well within the Gentoo ecosystem.
 
 ### 3. Save your changes
 
 After making these modifications, save the changes to your `make.conf` file. In the "nano" text editor, you can typically save changes by pressing "Ctrl + O" and then confirming the file name with "Enter." To exit the editor, press "Ctrl + X."
 
-By meticulously configuring these variables within your `make.conf` file using the provided settings, you're effectively preparing your system's package management system for a seamless GNOME installation. Each flag serves a distinct purpose, collectively ensuring that GNOME functions optimally within the Gentoo ecosystem.
+These settings in your `make.conf` file prepare the package manager for the GNOME installation. Each flag has a distinct purpose, so that GNOME runs well within the Gentoo ecosystem.
 
 ## Step 3: Set Package Versions
 
@@ -105,7 +105,7 @@ env-update && source /etc/profile
 
 ## Step 6: Enabling Elogind for Enhanced GNOME Experience
 
-Elogind is a vital component that enhances your GNOME desktop environment, ensuring a seamless and feature-rich experience. It provides essential services for managing user sessions, enabling features like auto-login and power management. Here's how to enable Elogind:
+Elogind is a vital component that enhances your GNOME desktop environment. It provides essential services for managing user sessions, enabling features like auto-login and power management. Here's how to enable Elogind:
 
 ### Add Elogind to the System Startup
 
@@ -207,7 +207,7 @@ To activate these changes, simply reboot your Gentoo system. Once completed, you
 
 ## Summary
 
-Congratulations! You've successfully installed GNOME on your Gentoo system. Enjoy your gentoo system!
+You've installed GNOME on your Gentoo system. Enjoy your gentoo system!
 
 ## References
 

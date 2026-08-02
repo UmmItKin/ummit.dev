@@ -2,7 +2,7 @@
 title: "Top 10 Essential GNOME Extensions for Productivity"
 description: "Top GNOME extensions for window management, system monitoring, and workflow improvements."
 date: 2023-08-05T01:47:00+0800
-lastmod: 2026-07-28T01:40:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "GNOME, Extensions, Productivity"
 lang: en-US
 ---
@@ -13,7 +13,7 @@ Gnome extensions are plug-ins designed for gnome users to enhance your experienc
 
 ## How to install
 
-Enhance your GNOME desktop experience by effortlessly installing useful extensions through your web browser. Follow these steps for a smooth setup:
+Enhance your GNOME desktop experience by installing useful extensions through your web browser. Follow these steps for a smooth setup:
 
 ### 1. Install Browser Extensions
 

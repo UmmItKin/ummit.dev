@@ -2,14 +2,14 @@
 title: "Reset All GNOME Settings from the Terminal"
 description: "Reset all GNOME settings to default with a single dconf command when things go wrong."
 date: 2023-11-18T21:34:55+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "GNOME, Linux, Desktop Environment"
 lang: en-US
 ---
 
 ## Introduction
 
-Customizing your GNOME desktop environment on Linux can lead to various tweaks and adjustments. However, there may come a time when you want to revert all your GNOME settings to their default configurations. In such cases, the `dconf reset` command is your go-to solution. This quick guide will walk you through the simple steps to reset all your GNOME settings effortlessly.
+Customizing your GNOME desktop environment on Linux can lead to various tweaks and adjustments. However, there may come a time when you want to revert all your GNOME settings to their default configurations. In such cases, the `dconf reset` command is your go-to solution. This quick guide will walk you through the simple steps to reset all your GNOME settings.
 
 ### Why?
 

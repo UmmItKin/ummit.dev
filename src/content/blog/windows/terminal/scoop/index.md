@@ -2,7 +2,7 @@
 title: "Manage Windows Software with Scoop Package Manager"
 description: "Install and manage software on Windows with Scoop package manager from the command line."
 date: 2021-12-11T03:55:19+0800
-lastmod: 2026-07-28T01:30:00+0800
+lastmod: 2026-07-28T01:50:00+0800
 tag: "Windows, Package Manager, Scoop"
 lang: en-US
 ---
@@ -43,7 +43,7 @@ And that's it! You now have Scoop installed and ready to use!
 
 With Scoop Package manage, you can start exploring its capabilities:
 
-- **Installing Packages:** Use the `scoop install` command followed by the name of the package to install software effortlessly. For example:
+- **Installing Packages:** Use the `scoop install` command followed by the name of the package to install software. For example:
 
   ```powershell
   scoop install git
@@ -123,7 +123,7 @@ Have you ever found yourself frustrated by the need to repeatedly right-click to
 
 ### Install gsudo Globally
 
-To make the most of `gsudo`, I recommend a global installation. This way, the tool will be available system-wide, ensuring that you can use it from any user account. Let's go through the steps:
+To make the most of `gsudo`, I recommend a global installation. This way, the tool will be available system-wide, so you can use it from any user account. Here are the steps:
 
 1. **Open the Terminal as Superuser**: Begin by opening the terminal with superuser privileges. This step is crucial as you'll need superuser access to install packages globally.
 
