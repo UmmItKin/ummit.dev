@@ -46,7 +46,7 @@ See **[AGENTS.md](./AGENTS.md)** for the full reference — it is the authoritat
 | `src/components/PostLayout.astro` | Renders all collection post pages |
 | `src/components/ListPosts.astro` | Renders all listing pages |
 | `src/layouts/BaseLayout.astro` | Root layout wrapper |
-| `astro.config.ts` | Astro config (integrations, port 3199, `INVALID_ANNOTATION` warnings suppressed) |
+| `astro.config.ts` | Astro config (integrations, dev port 4321, `INVALID_ANNOTATION` warnings suppressed) |
 | `uno.config.ts` | UnoCSS shortcuts, presets, **icon safelist** (new icons must be added here) |
 | `src/styles/fonts.css` | Self-hosted @font-face declarations for Google Sans Flex + Google Sans Code |
 | `src/data/projects.ts` | Project showcase data |
