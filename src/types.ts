@@ -82,7 +82,6 @@ export interface CompetitionEntry {
   name: string
   date: string
   team: string
-  teamIcon?: string
   division?: string
   placement: string
   details?: string

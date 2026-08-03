@@ -225,34 +225,30 @@ const badgeGroups = [
               <table class="competition-table w-full text-sm text-left">
                 <thead>
                   <tr class="border-b border-neutral-700">
-                    <th class="pb-2 pr-3 font-medium opacity-70">Competition</th>
-                    <th class="pb-2 pr-3 font-medium opacity-70 whitespace-nowrap">Date</th>
-                    <th class="pb-2 pr-3 font-medium opacity-70">Team</th>
-                    <th class="pb-2 pr-3 font-medium opacity-70">Division</th>
-                    <th class="pb-2 pr-3 font-medium opacity-70 whitespace-nowrap">Placement</th>
-                    <th class="pb-2 font-medium opacity-70 whitespace-nowrap">Pts / Solves</th>
+                    <th class="pb-2 pr-4 font-medium opacity-70">Competition</th>
+                    <th class="pb-2 pr-4 font-medium opacity-70 whitespace-nowrap">Date</th>
+                    <th class="pb-2 pr-4 font-medium opacity-70">Team</th>
+                    <th class="pb-2 pr-4 font-medium opacity-70 text-right whitespace-nowrap">Placement</th>
+                    <th class="pb-2 font-medium opacity-70 text-right whitespace-nowrap">Pts / Solves</th>
                   </tr>
                 </thead>
                 <tbody>
                   {competitions.map((c) => (
                     <tr class="border-b border-neutral-800">
-                      <td class="py-2 pr-3 font-medium align-top">{c.name}</td>
-                      <td class="py-2 pr-3 opacity-70 whitespace-nowrap align-top">{c.date}</td>
-                      <td class="py-2 pr-3 align-top">
-                        {c.teamIcon && (
-                          <span class="magic-link-icon inline-block w-4 h-4 mr-1 align-text-bottom">
-                            <img src={c.teamIcon} alt="" width="40" height="40" />
-                          </span>
-                        )}
+                      <td class="py-2.5 pr-4 font-medium align-baseline">{c.name}</td>
+                      <td class="py-2.5 pr-4 opacity-60 whitespace-nowrap align-baseline">{c.date}</td>
+                      <td class="py-2.5 pr-4 align-baseline">
                         {c.team}
+                        {c.division && c.division !== '\u2014' && (
+                          <span class="text-xs opacity-45 ml-1.5">{c.division}</span>
+                        )}
                       </td>
-                      <td class="py-2 pr-3 opacity-70 align-top">{c.division || '\u2014'}</td>
-                      <td class="py-2 pr-3 whitespace-nowrap align-top">
+                      <td class="py-2.5 pr-4 text-right tabular-nums whitespace-nowrap align-baseline">
                         <strong>{c.placement}</strong>
                       </td>
-                      <td class="py-2 whitespace-nowrap align-top">
-                        {c.details || '\u2014'}
-                        {c.subDetails && <div class="text-xs opacity-45 mt-1">{c.subDetails}</div>}
+                      <td class="py-2.5 text-right tabular-nums whitespace-nowrap align-baseline">
+                        {c.details && c.details !== '\u2014' ? c.details : <span class="opacity-25">{'\u2014'}</span>}
+                        {c.subDetails && <div class="text-xs opacity-45 mt-0.5">{c.subDetails}</div>}
                       </td>
                     </tr>
                   ))}
