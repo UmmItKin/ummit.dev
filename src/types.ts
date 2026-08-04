@@ -139,6 +139,13 @@ export interface AnalyticsConfig {
   websiteId?: string
 }
 
+// Post view counter (Firestore REST API)
+export interface ViewsConfig {
+  enabled: boolean
+  projectId: string
+  collection: string
+}
+
 // Feature flags
 export interface FeaturesConfig {
   sponsor: boolean

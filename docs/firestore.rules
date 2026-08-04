@@ -1,0 +1,30 @@
+rules_version = '2';
+
+// Paste these into Firebase console > Firestore Database > Rules.
+//
+// The counter is written by anonymous visitors, so the rules are the only
+// thing standing between the collection and someone with curl. They allow
+// exactly one operation: bumping `count` by 1 on a views document.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /views/{postId} {
+      allow read: if true;
+
+      // Creating a counter is only allowed at count == 1.
+      allow create: if request.resource.data.keys().hasOnly(['count'])
+                    && request.resource.data.count == 1;
+
+      // Updates must increment by exactly 1 and touch nothing else.
+      // Without the +1 check a visitor could POST any number they like.
+      allow update: if request.resource.data.keys().hasOnly(['count'])
+                    && request.resource.data.count == resource.data.count + 1;
+
+      allow delete: if false;
+    }
+
+    // Everything else stays closed.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

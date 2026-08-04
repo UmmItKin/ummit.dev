@@ -1,0 +1,61 @@
+---
+import { views } from '@/config/views'
+
+interface Props {
+  slug: string
+}
+
+const { slug } = Astro.props
+// Firestore document ids cannot contain '/', so flatten nested post ids.
+const docId = slug.replace(/\//g, '_')
+const dbRoot = `projects/${views.projectId}/databases/(default)`
+// docPath is the id Firestore expects in a write, docUrl is the same document
+// as a REST url. Derive one from the other so they cannot drift apart.
+const docPath = `${dbRoot}/documents/${views.collection}/${docId}`
+const api = 'https://firestore.googleapis.com/v1'
+---
+
+{
+  views.enabled && (
+    <span
+      class="view-counter"
+      data-doc-path={docPath}
+      data-doc-url={`${api}/${docPath}`}
+      data-commit-url={`${api}/${dbRoot}/documents:commit`}
+    >
+      <span class="view-count tabular-nums" />
+    </span>
+  )
+}
+
+<script>
+  import { fetchViews } from '@/utils/views'
+
+  // The separator lives here so a blocked or failed fetch leaves no stray dot.
+  function show(el: Element, n: number) {
+    el.textContent = ` · ${n.toLocaleString()} ${n === 1 ? 'view' : 'views'}`
+  }
+
+  async function countView(el: HTMLElement) {
+    const { docPath, docUrl, commitUrl } = el.dataset
+    const out = el.querySelector('.view-count')
+    if (!docPath || !docUrl || !commitUrl || !out) {
+      return
+    }
+    const n = await fetchViews(commitUrl, docUrl, docPath)
+    if (n !== null) {
+      show(out, n)
+    }
+  }
+
+  function initViewCounter() {
+    document.querySelectorAll('.view-counter').forEach((el) => {
+      if (el instanceof HTMLElement && !el.dataset.bound) {
+        el.dataset.bound = '1'
+        countView(el)
+      }
+    })
+  }
+  initViewCounter()
+  document.addEventListener('astro:page-load', initViewCounter)
+</script>
