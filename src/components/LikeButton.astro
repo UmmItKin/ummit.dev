@@ -37,10 +37,10 @@ const api = 'https://firestore.googleapis.com/v1'
 <style>
   .like-toast {
     position: fixed;
-    inset: auto 0 2rem 0;
-    margin: 0 auto;
+    inset: auto 1.5rem 1.5rem auto;
+    margin: 0;
     width: fit-content;
-    max-width: calc(100vw - 2rem);
+    max-width: calc(100vw - 3rem);
     padding: 0.6rem 1rem;
     border: 1px solid rgba(115, 115, 115, 0.28);
     border-radius: 0.6rem;
@@ -53,7 +53,7 @@ const api = 'https://firestore.googleapis.com/v1'
     align-items: center;
     gap: 0.5rem;
     opacity: 0;
-    transform: translateY(0.5rem);
+    transform: translateX(0.75rem);
     transition:
       opacity 0.2s ease,
       transform 0.2s ease;
@@ -63,6 +63,17 @@ const api = 'https://firestore.googleapis.com/v1'
   .like-toast:popover-open {
     opacity: 1;
     transform: none;
+  }
+
+  /* ScrollToTop sits at right-5 bottom-30, so keep clear of it on narrow
+     screens where there is no room to sit beside it. */
+  @media (max-width: 640px) {
+    .like-toast {
+      inset: auto 1rem 1rem 1rem;
+      width: auto;
+      max-width: none;
+      justify-content: center;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
