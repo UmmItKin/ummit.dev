@@ -80,7 +80,7 @@ const targets = [
     </div>
 
     <div class="flex items-center gap-2 p-2 rd-2 border border-neutral-700">
-      <span class="share-url flex-1 min-w-0 text-xs font-mono opacity-60 truncate pl-1 select-all">{url}</span>
+      <span class="share-url flex-1 min-w-0 text-xs font-mono opacity-60 truncate pl-1">{url}</span>
       <button
         type="button"
         class="share-copy inline-flex items-center gap-1.5 text-xs px-3 py-2 rd-1 bg-neutral-500/15 hover:bg-neutral-500/25 transition-colors duration-200 cursor-pointer border-0 text-inherit shrink-0"
@@ -136,7 +136,7 @@ const targets = [
 </style>
 
 <script>
-  import { copyText, selectElement } from '@/utils/share'
+  import { copyText } from '@/utils/share'
 
   function initShareDialog() {
     document.querySelectorAll('.share-dialog').forEach((dialog) => {
@@ -173,37 +173,16 @@ const targets = [
 
       const icon = copyBtn?.querySelector('.copy-icon')
       const label = copyBtn?.querySelector('.copy-label')
-      const urlEl = dialog.querySelector('.share-url')
-      let resetAt = 0
 
       copyBtn?.addEventListener('click', () => {
-        copyText(url, dialog).then((ok) => {
+        copyText(url, dialog).then(() => {
           if (!icon || !label) {
             return
           }
-          icon.classList.remove('i-ri-file-copy-line', 'i-ri-check-line', 'i-ri-error-warning-line')
-
-          if (ok) {
-            icon.classList.add('i-ri-check-line')
-            label.textContent = 'Copied'
-          }
-          if (!ok) {
-            // Surface the failure and select the URL so it can be copied by hand.
-            icon.classList.add('i-ri-error-warning-line')
-            label.textContent = 'Select it'
-            if (urlEl) {
-              selectElement(urlEl)
-            }
-          }
-
-          const mine = Date.now()
-          resetAt = mine
+          icon.classList.replace('i-ri-file-copy-line', 'i-ri-check-line')
+          label.textContent = 'Copied'
           setTimeout(() => {
-            if (resetAt !== mine) {
-              return
-            }
-            icon.classList.remove('i-ri-check-line', 'i-ri-error-warning-line')
-            icon.classList.add('i-ri-file-copy-line')
+            icon.classList.replace('i-ri-check-line', 'i-ri-file-copy-line')
             label.textContent = 'Copy'
           }, 2000)
         })
