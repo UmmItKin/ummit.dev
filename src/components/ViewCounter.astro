@@ -55,9 +55,8 @@ const api = 'https://firestore.googleapis.com/v1'
 <script>
   import { fetchViews } from '@/utils/views'
 
-  // The separator lives here so a blocked or failed fetch leaves no stray dot.
   function show(el: Element, n: number) {
-    el.textContent = `· ${n.toLocaleString()} ${n === 1 ? 'view' : 'views'}`
+    el.textContent = `${n.toLocaleString()} ${n === 1 ? 'view' : 'views'}`
   }
 
   async function countView(el: HTMLElement) {

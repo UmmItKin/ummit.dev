@@ -17,7 +17,7 @@ const api = 'https://firestore.googleapis.com/v1'
   views.enabled && (
     <button
       type="button"
-      class="like-button inline-flex items-center gap-2 text-sm px-3 py-2 rd-1 hover:bg-neutral-500/10 transition-all duration-200 cursor-pointer bg-transparent border-0 text-inherit"
+      class="like-button inline-flex items-center gap-1.5 text-sm px-2 py-1 rd-1 hover:bg-neutral-500/10 cursor-pointer bg-transparent border-0 text-inherit"
       data-doc-path={docPath}
       data-doc-url={`${api}/${docPath}`}
       data-commit-url={`${api}/${dbRoot}/documents:commit`}
@@ -82,8 +82,9 @@ const api = 'https://firestore.googleapis.com/v1'
     }
   }
 
-  /* The count arrives after render, so ease it in rather than letting it pop. */
-  .like-count {
+  /* The count arrives after render, so ease the whole control in together
+     rather than blurring the number beside an already sharp heart. */
+  .like-button {
     opacity: 0;
     filter: blur(4px);
     transition:
@@ -91,27 +92,17 @@ const api = 'https://firestore.googleapis.com/v1'
       filter 0.4s ease;
   }
 
-  .like-count.is-loaded {
-    opacity: 1;
-    filter: none;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .like-count {
-      transition: none;
-    }
-  }
-
   /* Dim only until liked. Opacity on top of red would mute it to a dull grey. */
-  .like-button {
+  .like-button.is-ready {
+    filter: none;
     opacity: 0.6;
   }
 
-  .like-button:hover {
+  .like-button.is-ready:hover {
     opacity: 1;
   }
 
-  .like-button.is-active {
+  .like-button.is-ready.is-active {
     opacity: 1;
     color: #f87171;
   }
@@ -171,7 +162,7 @@ const api = 'https://firestore.googleapis.com/v1'
     const n = count ?? 0
     out.textContent = `${n.toLocaleString()} ${n === 1 ? 'like' : 'likes'}`
     // Next frame, so the blurred state paints before the transition runs.
-    requestAnimationFrame(() => out.classList.add('is-loaded'))
+    requestAnimationFrame(() => el.classList.add('is-ready'))
   }
 
   function initLikeButton() {
