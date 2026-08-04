@@ -1,11 +1,17 @@
 ---
 import type { CollectionPosts } from '@/types'
+import { views as viewsConfig } from '@/config/views'
 
 interface Props {
   list: CollectionPosts[]
 }
 
 const { list = [] } = Astro.props
+
+const dbRoot = `projects/${viewsConfig.projectId}/databases/(default)`
+const batchUrl = `https://firestore.googleapis.com/v1/${dbRoot}/documents:batchGet`
+// Firestore document ids cannot contain '/', so flatten nested post ids.
+const statIds = list.map((post) => post.id.replace(/\//g, '_'))
 
 function getDate(date: string) {
   return new Date(date).toISOString()
@@ -73,6 +79,7 @@ function getYear(date: Date | string | number) {
               {post.data.duration && <span class="ws-nowrap">· {post.data.duration}</span>}
               {post.data.tag && <span>· {post.data.tag}</span>}
               {post.data.lang?.includes('zh') && <span class="ws-nowrap">· 中文</span>}
+              {viewsConfig.enabled && <span class="post-stats ws-nowrap" data-stat-id={post.id.replace(/\//g, '_')} />}
             </div>
             <div class="opacity-50 text-sm">{post.data.description}</div>
           </a>
@@ -81,3 +88,52 @@ function getYear(date: Date | string | number) {
     )
   }
 </ul>
+
+{
+  viewsConfig.enabled && statIds.length > 0 && (
+    <div
+      class="post-stats-loader hidden"
+      data-batch-url={batchUrl}
+      data-db-root={dbRoot}
+      data-ids={statIds.join(',')}
+    />
+  )
+}
+
+<script>
+  import { fetchStats } from '@/utils/stats'
+
+  async function initPostStats() {
+    const loader = document.querySelector('.post-stats-loader')
+    if (!(loader instanceof HTMLElement) || loader.dataset.bound) {
+      return
+    }
+    loader.dataset.bound = '1'
+
+    const { batchUrl, dbRoot, ids } = loader.dataset
+    if (!batchUrl || !dbRoot || !ids) {
+      return
+    }
+
+    const stats = await fetchStats(batchUrl, dbRoot, ids.split(','))
+    document.querySelectorAll('.post-stats').forEach((el) => {
+      const id = el instanceof HTMLElement ? el.dataset.statId : null
+      const s = id ? stats.get(id) : undefined
+      // A post nobody has opened has no document, so show nothing at all
+      // rather than a row of zeroes.
+      if (!s || (s.views === 0 && s.likes === 0)) {
+        return
+      }
+      const parts = []
+      if (s.views > 0) {
+        parts.push(`${s.views.toLocaleString()} views`)
+      }
+      if (s.likes > 0) {
+        parts.push(`${s.likes.toLocaleString()} likes`)
+      }
+      el.textContent = `· ${parts.join(' · ')}`
+    })
+  }
+  initPostStats()
+  document.addEventListener('astro:page-load', initPostStats)
+</script>

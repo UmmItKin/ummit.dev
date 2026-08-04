@@ -28,6 +28,15 @@ const api = 'https://firestore.googleapis.com/v1'
   )
 }
 
+<style>
+  /* The meta line sits inside op-50 and opacity cannot be undone by a child,
+     so lift the colour to near white to compensate. */
+  .view-counter {
+    font-weight: 600;
+    color: #fff;
+  }
+</style>
+
 <script>
   import { fetchViews } from '@/utils/views'
 

@@ -99,6 +99,9 @@ function getOutdatedInfo(dateStr: string, lastmodStr?: string) {
       {tag && <span> · {tag}</span>}
       <ViewCounter slug={post.id} />
     </p>
+    <div class="not-prose -ml-3 mb-6">
+      <LikeButton slug={post.id} />
+    </div>
     {
       (() => {
         const outdatedInfo = post.collection === 'blog' ? getOutdatedInfo(date, lastmod) : null
@@ -122,8 +125,7 @@ function getOutdatedInfo(dateStr: string, lastmodStr?: string) {
     <TableOfContents headings={headings} />
     <Content />
   </article>
-  <div class="mt-8 pt-6 border-t border-neutral-800 flex items-center gap-2 -ml-3">
-    <LikeButton slug={post.id} />
+  <div class="mt-8 pt-6 border-t border-neutral-800 -ml-3">
     <ShareButton title={title} url={shareUrl} />
   </div>
 </BaseLayout>
