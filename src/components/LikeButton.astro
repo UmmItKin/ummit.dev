@@ -1,0 +1,108 @@
+---
+import { views } from '@/config/views'
+
+interface Props {
+  slug: string
+}
+
+const { slug } = Astro.props
+// Firestore document ids cannot contain '/', so flatten nested post ids.
+const docId = slug.replace(/\//g, '_')
+const dbRoot = `projects/${views.projectId}/databases/(default)`
+const docPath = `${dbRoot}/documents/likes/${docId}`
+const api = 'https://firestore.googleapis.com/v1'
+---
+
+{
+  views.enabled && (
+    <button
+      type="button"
+      class="like-button inline-flex items-center gap-2 text-sm px-3 py-2 rd-1 opacity-60 hover:opacity-100 hover:bg-neutral-500/10 transition-all duration-200 cursor-pointer bg-transparent border-0 text-inherit"
+      data-doc-path={docPath}
+      data-doc-url={`${api}/${docPath}`}
+      data-commit-url={`${api}/${dbRoot}/documents:commit`}
+      aria-pressed="false"
+      aria-label="Like this post"
+    >
+      <i class="like-icon i-ri-heart-line" />
+      <span class="like-count tabular-nums" />
+    </button>
+  )
+}
+
+<style>
+  /* Pop the heart on like, but never on the initial render. */
+  .like-button.is-liked .like-icon {
+    animation: like-pop 0.28s cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  @keyframes like-pop {
+    50% {
+      transform: scale(1.3);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .like-button.is-liked .like-icon {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  import { hasLiked, readLikes, toggleLike } from '@/utils/likes'
+
+  function paint(el: HTMLElement, count: number | null, liked: boolean, animate: boolean) {
+    const icon = el.querySelector('.like-icon')
+    const out = el.querySelector('.like-count')
+    if (!icon || !out) {
+      return
+    }
+    icon.classList.toggle('i-ri-heart-fill', liked)
+    icon.classList.toggle('i-ri-heart-line', !liked)
+    el.classList.toggle('text-red-400', liked)
+    el.classList.toggle('opacity-100', liked)
+    el.setAttribute('aria-pressed', String(liked))
+    // The animation class is what triggers the pop, so only add it on a click.
+    if (animate) {
+      el.classList.add('is-liked')
+    }
+    out.textContent = count === null ? '' : String(count)
+  }
+
+  function initLikeButton() {
+    document.querySelectorAll('.like-button').forEach((el) => {
+      if (!(el instanceof HTMLElement) || el.dataset.bound) {
+        return
+      }
+      el.dataset.bound = '1'
+
+      const { docPath, docUrl, commitUrl } = el.dataset
+      if (!docPath || !docUrl || !commitUrl) {
+        return
+      }
+
+      let liked = hasLiked(docPath)
+      readLikes(docUrl).then((n) => paint(el, n, liked, false))
+
+      let busy = false
+      el.addEventListener('click', async () => {
+        // Ignore repeat taps while a write is in flight, otherwise a double
+        // click sends +1 and -1 and the cookie ends up out of sync.
+        if (busy) {
+          return
+        }
+        busy = true
+        el.classList.remove('is-liked')
+        const res = await toggleLike(commitUrl, docPath)
+        if (res) {
+          liked = res.liked
+          paint(el, res.count, res.liked, res.liked)
+        }
+        busy = false
+      })
+    })
+  }
+  initLikeButton()
+  document.addEventListener('astro:page-load', initLikeButton)
+</script>

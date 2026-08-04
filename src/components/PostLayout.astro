@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
+import LikeButton from '@/components/LikeButton.astro'
 import ShareButton from '@/components/ShareButton.astro'
 import TableOfContents from '@/components/TableOfContents.astro'
 import ViewCounter from '@/components/ViewCounter.astro'
@@ -121,7 +122,8 @@ function getOutdatedInfo(dateStr: string, lastmodStr?: string) {
     <TableOfContents headings={headings} />
     <Content />
   </article>
-  <div class="mt-8 pt-6 border-t border-neutral-800">
+  <div class="mt-8 pt-6 border-t border-neutral-800 flex items-center gap-2 -ml-3">
+    <LikeButton slug={post.id} />
     <ShareButton title={title} url={shareUrl} />
   </div>
 </BaseLayout>

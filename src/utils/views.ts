@@ -20,7 +20,11 @@ export function isFreshView(id: string): boolean {
  * Atomic server-side increment, so two readers arriving at once cannot
  * clobber each other the way a read-then-write would.
  */
-async function increment(commitUrl: string, docPath: string): Promise<number | null> {
+export async function increment(
+  commitUrl: string,
+  docPath: string,
+  by: number = 1,
+): Promise<number | null> {
   const res = await fetch(commitUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -29,7 +33,7 @@ async function increment(commitUrl: string, docPath: string): Promise<number | n
         {
           transform: {
             document: docPath,
-            fieldTransforms: [{ fieldPath: 'count', increment: { integerValue: '1' } }],
+            fieldTransforms: [{ fieldPath: 'count', increment: { integerValue: String(by) } }],
           },
         },
       ],
@@ -43,7 +47,7 @@ async function increment(commitUrl: string, docPath: string): Promise<number | n
   return Number.isFinite(n) ? n : null
 }
 
-async function read(docUrl: string): Promise<number | null> {
+export async function read(docUrl: string): Promise<number | null> {
   const res = await fetch(docUrl)
   if (!res.ok) {
     return null
