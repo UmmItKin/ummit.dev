@@ -73,8 +73,9 @@ function closeDrawer() {
   </header>
 
   <nav
+    class="nav-drawer"
     sm:hidden fixed h-screen z-50 left-0 top-0 min-w-32vw max-w-50vw
-    bg-main p-6 text-lg flex flex-col gap-5 transition-transform
+    p-6 text-lg flex flex-col gap-5 transition-transform
     :class="isDrawerOpen ? 'translate-x-0' : 'translate-x--100%'"
   >
     <i i-ri-menu-2-fill />
@@ -94,13 +95,38 @@ function closeDrawer() {
   <Transition name="fade">
     <div
       v-if="isDrawerOpen"
-      fixed inset-0 z-49 bg-black:50
+      class="nav-overlay"
+      fixed inset-0 z-49
       @click="closeDrawer"
     />
   </Transition>
 </template>
 
 <style scoped>
+.nav-drawer {
+  /* Prefixed first: the minifier drops the unprefixed one if it comes first. */
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  background: rgba(13, 17, 23, 0.72);
+  border-right: 1px solid rgba(115, 115, 115, 0.28);
+}
+
+.nav-overlay {
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Blur needs a translucent base, so fall back to the solid panel without it. */
+@supports not (backdrop-filter: blur(16px)) {
+  .nav-drawer {
+    background: #0d1117;
+  }
+  .nav-overlay {
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;
