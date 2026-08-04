@@ -31,6 +31,7 @@ const targets = [
 ---
 
 <button
+  type="button"
   class="share-open inline-flex items-center gap-2 text-sm px-3 py-2 -ml-3 rd-1 opacity-60 hover:opacity-100 hover:bg-neutral-500/10 transition-all duration-200 cursor-pointer bg-transparent border-0 text-inherit"
   aria-label="Share this post"
 >
@@ -43,6 +44,7 @@ const targets = [
     <div class="flex items-center justify-between mb-5">
       <h2 class="text-base font-medium m-0">Share</h2>
       <button
+        type="button"
         class="share-close inline-flex items-center justify-center w-8 h-8 rd-full opacity-60 hover:opacity-100 hover:bg-neutral-500/15 transition-all duration-200 cursor-pointer bg-transparent border-0 text-inherit"
         aria-label="Close"
       >
@@ -67,6 +69,7 @@ const targets = [
         ))
       }
       <button
+        type="button"
         class="share-native hidden flex-col items-center gap-2 shrink-0 w-16 opacity-80 hover:opacity-100 transition-opacity duration-200 cursor-pointer bg-transparent border-0 text-inherit p-0"
       >
         <span class="inline-flex items-center justify-center w-12 h-12 rd-full bg-neutral-500/15">
@@ -79,6 +82,7 @@ const targets = [
     <div class="flex items-center gap-2 p-2 rd-2 border border-neutral-700">
       <span class="share-url flex-1 min-w-0 text-xs font-mono opacity-60 truncate pl-1 select-all">{url}</span>
       <button
+        type="button"
         class="share-copy inline-flex items-center gap-1.5 text-xs px-3 py-2 rd-1 bg-neutral-500/15 hover:bg-neutral-500/25 transition-colors duration-200 cursor-pointer border-0 text-inherit shrink-0"
       >
         <i class="i-ri-file-copy-line copy-icon"></i>
@@ -132,59 +136,7 @@ const targets = [
 </style>
 
 <script>
-  // Must stay synchronous: execCommand only works inside the user gesture,
-  // so it cannot be deferred to a microtask.
-  function runCopyCommand() {
-    return document.execCommand('copy')
-  }
-
-  // host must be the open dialog: while showModal() is active everything
-  // outside it is inert, and a textarea appended to body cannot be selected.
-  function legacyCopy(text: string, host: HTMLElement) {
-    const ta = document.createElement('textarea')
-    ta.value = text
-    ta.contentEditable = 'true'
-    ta.style.position = 'fixed'
-    ta.style.top = '0'
-    ta.style.left = '0'
-    ta.style.width = '1px'
-    ta.style.height = '1px'
-    ta.style.padding = '0'
-    ta.style.border = 'none'
-    // iOS zooms the page when focusing a field under 16px.
-    ta.style.fontSize = '16px'
-    host.appendChild(ta)
-
-    // iOS Safari ignores select() on a programmatic textarea, it needs a Range.
-    const range = document.createRange()
-    range.selectNodeContents(ta)
-    const sel = window.getSelection()
-    sel?.removeAllRanges()
-    sel?.addRange(range)
-    ta.setSelectionRange(0, text.length)
-
-    const ok = runCopyCommand()
-    sel?.removeAllRanges()
-    host.removeChild(ta)
-    return ok
-  }
-
-  function copyText(text: string, host: HTMLElement) {
-    // Try the synchronous path first. Awaiting the async clipboard API and then
-    // falling back would run execCommand outside the user gesture, where mobile
-    // browsers refuse it.
-    if (legacyCopy(text, host)) {
-      return Promise.resolve(true)
-    }
-    // navigator.clipboard is undefined on non-secure origins (plain http over LAN).
-    if (navigator.clipboard && window.isSecureContext) {
-      return navigator.clipboard
-        .writeText(text)
-        .then(() => true)
-        .catch(() => false)
-    }
-    return Promise.resolve(false)
-  }
+  import { copyText, selectElement } from '@/utils/share'
 
   function initShareDialog() {
     document.querySelectorAll('.share-dialog').forEach((dialog) => {
@@ -240,11 +192,7 @@ const targets = [
             icon.classList.add('i-ri-error-warning-line')
             label.textContent = 'Select it'
             if (urlEl) {
-              const r = document.createRange()
-              r.selectNodeContents(urlEl)
-              const s = window.getSelection()
-              s?.removeAllRanges()
-              s?.addRange(r)
+              selectElement(urlEl)
             }
           }
 
