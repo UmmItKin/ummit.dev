@@ -65,6 +65,15 @@ export default defineConfig({
     'i-ri-mail-line',
     'i-ri-edit-line',
     'i-ri-alert-line',
+    'i-ri-share-line',
+    'i-ri-check-line',
+    'i-ri-close-line',
+    'i-ri-more-line',
+    'i-ri-file-copy-line',
+    'i-ri-error-warning-line',
+    'i-simple-icons-telegram',
+    'i-simple-icons-reddit',
+    'i-simple-icons-linkedin',
 
     // Social icons
     'i-carbon-campsite',

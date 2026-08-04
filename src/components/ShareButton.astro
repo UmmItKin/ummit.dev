@@ -1,0 +1,267 @@
+---
+interface Props {
+  title: string
+  url: string
+}
+
+const { title, url } = Astro.props
+
+const targets = [
+  {
+    name: 'X',
+    icon: 'i-simple-icons-x',
+    href: `https://x.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
+  },
+  {
+    name: 'Telegram',
+    icon: 'i-simple-icons-telegram',
+    href: `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
+  },
+  {
+    name: 'Reddit',
+    icon: 'i-simple-icons-reddit',
+    href: `https://www.reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`,
+  },
+  {
+    name: 'LinkedIn',
+    icon: 'i-simple-icons-linkedin',
+    href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+  },
+]
+---
+
+<button
+  class="share-open inline-flex items-center gap-2 text-sm px-3 py-2 -ml-3 rd-1 opacity-60 hover:opacity-100 hover:bg-neutral-500/10 transition-all duration-200 cursor-pointer bg-transparent border-0 text-inherit"
+  aria-label="Share this post"
+>
+  <i class="i-ri-share-line"></i>
+  <span>Share</span>
+</button>
+
+<dialog class="share-dialog bg-transparent border-0 p-0 text-main" data-url={url} data-title={title}>
+  <div class="share-panel w-full max-w-md bg-hex-161b22 rd-3 p-5 shadow-lg">
+    <div class="flex items-center justify-between mb-5">
+      <h2 class="text-base font-medium m-0">Share</h2>
+      <button
+        class="share-close inline-flex items-center justify-center w-8 h-8 rd-full opacity-60 hover:opacity-100 hover:bg-neutral-500/15 transition-all duration-200 cursor-pointer bg-transparent border-0 text-inherit"
+        aria-label="Close"
+      >
+        <i class="i-ri-close-line"></i>
+      </button>
+    </div>
+
+    <div class="flex gap-4 overflow-x-auto pb-2 mb-5">
+      {
+        targets.map((t) => (
+          <a
+            href={t.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex flex-col items-center gap-2 shrink-0 w-16 opacity-80 hover:opacity-100 transition-opacity duration-200 decoration-none !border-none text-inherit"
+          >
+            <span class="inline-flex items-center justify-center w-12 h-12 rd-full bg-neutral-500/15">
+              <i class:list={[t.icon, 'text-xl']} />
+            </span>
+            <span class="text-xs">{t.name}</span>
+          </a>
+        ))
+      }
+      <button
+        class="share-native hidden flex-col items-center gap-2 shrink-0 w-16 opacity-80 hover:opacity-100 transition-opacity duration-200 cursor-pointer bg-transparent border-0 text-inherit p-0"
+      >
+        <span class="inline-flex items-center justify-center w-12 h-12 rd-full bg-neutral-500/15">
+          <i class="i-ri-more-line text-xl"></i>
+        </span>
+        <span class="text-xs">More</span>
+      </button>
+    </div>
+
+    <div class="flex items-center gap-2 p-2 rd-2 border border-neutral-700">
+      <span class="share-url flex-1 min-w-0 text-xs font-mono opacity-60 truncate pl-1 select-all">{url}</span>
+      <button
+        class="share-copy inline-flex items-center gap-1.5 text-xs px-3 py-2 rd-1 bg-neutral-500/15 hover:bg-neutral-500/25 transition-colors duration-200 cursor-pointer border-0 text-inherit shrink-0"
+      >
+        <i class="i-ri-file-copy-line copy-icon"></i>
+        <span class="copy-label">Copy</span>
+      </button>
+    </div>
+  </div>
+</dialog>
+
+<style>
+  .share-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+
+  .share-dialog {
+    margin: auto;
+    max-width: 100vw;
+  }
+
+  .share-dialog[open] .share-panel {
+    animation: share-in 0.2s cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  @keyframes share-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .share-dialog[open] .share-panel {
+      animation: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .share-dialog {
+      width: calc(100% - 2rem);
+    }
+    .share-panel {
+      max-width: 100%;
+    }
+  }
+</style>
+
+<script>
+  // Must stay synchronous: execCommand only works inside the user gesture,
+  // so it cannot be deferred to a microtask.
+  function runCopyCommand() {
+    return document.execCommand('copy')
+  }
+
+  // host must be the open dialog: while showModal() is active everything
+  // outside it is inert, and a textarea appended to body cannot be selected.
+  function legacyCopy(text: string, host: HTMLElement) {
+    const ta = document.createElement('textarea')
+    ta.value = text
+    ta.contentEditable = 'true'
+    ta.style.position = 'fixed'
+    ta.style.top = '0'
+    ta.style.left = '0'
+    ta.style.width = '1px'
+    ta.style.height = '1px'
+    ta.style.padding = '0'
+    ta.style.border = 'none'
+    // iOS zooms the page when focusing a field under 16px.
+    ta.style.fontSize = '16px'
+    host.appendChild(ta)
+
+    // iOS Safari ignores select() on a programmatic textarea, it needs a Range.
+    const range = document.createRange()
+    range.selectNodeContents(ta)
+    const sel = window.getSelection()
+    sel?.removeAllRanges()
+    sel?.addRange(range)
+    ta.setSelectionRange(0, text.length)
+
+    const ok = runCopyCommand()
+    sel?.removeAllRanges()
+    host.removeChild(ta)
+    return ok
+  }
+
+  function copyText(text: string, host: HTMLElement) {
+    // Try the synchronous path first. Awaiting the async clipboard API and then
+    // falling back would run execCommand outside the user gesture, where mobile
+    // browsers refuse it.
+    if (legacyCopy(text, host)) {
+      return Promise.resolve(true)
+    }
+    // navigator.clipboard is undefined on non-secure origins (plain http over LAN).
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard
+        .writeText(text)
+        .then(() => true)
+        .catch(() => false)
+    }
+    return Promise.resolve(false)
+  }
+
+  function initShareDialog() {
+    document.querySelectorAll('.share-dialog').forEach((dialog) => {
+      if (!(dialog instanceof HTMLDialogElement) || dialog.dataset.bound) {
+        return
+      }
+      dialog.dataset.bound = '1'
+
+      const url = dialog.dataset.url || location.href
+      const title = dialog.dataset.title || document.title
+      const openBtn = document.querySelector('.share-open')
+      const closeBtn = dialog.querySelector('.share-close')
+      const copyBtn = dialog.querySelector('.share-copy')
+      const nativeBtn = dialog.querySelector('.share-native')
+
+      openBtn?.addEventListener('click', () => dialog.showModal())
+      closeBtn?.addEventListener('click', () => dialog.close())
+
+      // Click on the backdrop area closes, clicks inside the panel do not.
+      dialog.addEventListener('click', (e) => {
+        if (e.target === dialog) {
+          dialog.close()
+        }
+      })
+
+      // navigator.share needs a secure context, so only offer it when present.
+      if (navigator.share && nativeBtn instanceof HTMLElement) {
+        nativeBtn.classList.remove('hidden')
+        nativeBtn.classList.add('flex')
+        nativeBtn.addEventListener('click', () => {
+          navigator.share({ title, url }).catch(() => {})
+        })
+      }
+
+      const icon = copyBtn?.querySelector('.copy-icon')
+      const label = copyBtn?.querySelector('.copy-label')
+      const urlEl = dialog.querySelector('.share-url')
+      let resetAt = 0
+
+      copyBtn?.addEventListener('click', () => {
+        copyText(url, dialog).then((ok) => {
+          if (!icon || !label) {
+            return
+          }
+          icon.classList.remove('i-ri-file-copy-line', 'i-ri-check-line', 'i-ri-error-warning-line')
+
+          if (ok) {
+            icon.classList.add('i-ri-check-line')
+            label.textContent = 'Copied'
+          }
+          if (!ok) {
+            // Surface the failure and select the URL so it can be copied by hand.
+            icon.classList.add('i-ri-error-warning-line')
+            label.textContent = 'Select it'
+            if (urlEl) {
+              const r = document.createRange()
+              r.selectNodeContents(urlEl)
+              const s = window.getSelection()
+              s?.removeAllRanges()
+              s?.addRange(r)
+            }
+          }
+
+          const mine = Date.now()
+          resetAt = mine
+          setTimeout(() => {
+            if (resetAt !== mine) {
+              return
+            }
+            icon.classList.remove('i-ri-check-line', 'i-ri-error-warning-line')
+            icon.classList.add('i-ri-file-copy-line')
+            label.textContent = 'Copy'
+          }, 2000)
+        })
+      })
+    })
+  }
+  initShareDialog()
+  document.addEventListener('astro:page-load', initShareDialog)
+</script>

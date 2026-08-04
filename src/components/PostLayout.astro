@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
+import ShareButton from '@/components/ShareButton.astro'
 import TableOfContents from '@/components/TableOfContents.astro'
 import type { CollectionPosts, PostKey } from '@/types'
 import { getPosts } from '@/utils/posts'
@@ -32,6 +33,7 @@ function getOgPath() {
   return `/og/${post.id}.png`
 }
 const ogImage = getOgPath()
+const shareUrl = new URL(Astro.url.pathname, Astro.site).href
 
 function getDate(dateStr: string) {
   return new Date(dateStr).toISOString()
@@ -117,6 +119,9 @@ function getOutdatedInfo(dateStr: string, lastmodStr?: string) {
     <TableOfContents headings={headings} />
     <Content />
   </article>
+  <div class="mt-8 pt-6 border-t border-neutral-800">
+    <ShareButton title={title} url={shareUrl} />
+  </div>
 </BaseLayout>
 
 <style is:global>
