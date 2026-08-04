@@ -166,11 +166,12 @@ const api = 'https://firestore.googleapis.com/v1'
     if (animate) {
       el.classList.add('is-liked')
     }
-    out.textContent = count === null ? '' : String(count)
-    if (count !== null) {
-      // Next frame, so the blurred state paints before the transition runs.
-      requestAnimationFrame(() => out.classList.add('is-loaded'))
-    }
+    // A post nobody has liked has no document, which reads as null. Show it as
+    // zero so the button is never just a bare heart with no number.
+    const n = count ?? 0
+    out.textContent = `${n.toLocaleString()} ${n === 1 ? 'like' : 'likes'}`
+    // Next frame, so the blurred state paints before the transition runs.
+    requestAnimationFrame(() => out.classList.add('is-loaded'))
   }
 
   function initLikeButton() {
