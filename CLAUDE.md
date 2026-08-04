@@ -22,6 +22,8 @@ bun release      # bump version via bumpp → triggers release.yml → changelog
 
 No test suite exists. CI (`.github/workflows/ci.yml`) runs `bun run lint` only.
 
+Because nothing tests behaviour, **grep the built output in `dist/` after a change** rather than trusting a green build. A passing build only proves the syntax parsed. Real bugs found this way include a URL missing a path segment, a dropped CSS property, and a literal `—` in the HTML, all of which built and linted cleanly.
+
 Pre-commit hook (simple-git-hooks + lint-staged): runs `bun lint-staged && bun run build`. A broken build blocks commits.
 
 ## Architecture
@@ -33,7 +35,14 @@ See **[AGENTS.md](./AGENTS.md)** for the full reference — it is the authoritat
 - **Styles** — UnoCSS shortcuts in `uno.config.ts`; icons only from `i-ri-*` (Remix) and `i-simple-icons-*` sets; dark theme only. New icons must be safelisted in `uno.config.ts`. Only Tailwind v3 utility classes exist — `text-2xs` does NOT work (smallest is `text-xs`).
 - **Fonts** — self-hosted Google Sans Flex (sans) + Google Sans Code (mono) via `src/styles/fonts.css`. Long unicode-range lines trigger Prettier; run `bun lint:fix` after editing. OG images use Satori which only supports TTF/OTF — `public/fonts/Inter-Bold.ttf` is for Satori only, the site uses woff2.
 - **Responsive** — breakpoint `md:` = 768px. Pattern: `class="md:hidden"` for mobile-only + `class="hidden md:block"` for desktop-only. Tables on mobile get a separate card/list layout.
+- **Write `-webkit-backdrop-filter` before the unprefixed `backdrop-filter`.** In the other order the minifier drops the unprefixed one and the blur silently dies in Firefox and Chrome. Always grep the built CSS in `dist/` to confirm both survived.
+- **Child `opacity` cannot undo a parent's.** Anything inside `op-50` stays dimmed; raise its `color` instead. `opacity: 2` is invalid and clamps to 1.
+- **Deferred content needs two frames to animate in.** Set the text, then add the class inside `requestAnimationFrame`, otherwise the browser coalesces both into one paint and the transition never runs.
 - **Astro component gotchas** — Prettier fragility inside conditional JSX fragments, inline `<script>` is plain JS not TS, `} else {` formatting conflicts.
+
+**`try`/`catch` cannot be used in an inline `<script>` in a `.astro` file.** `format/prettier` wants `} catch {` on one line and `style/brace-style` wants it split, so the two rules deadlock and `lint:fix` cannot resolve it. Since the pre-commit hook runs a build, this blocks commits. Move the logic into a `.ts` module under `src/utils/` and import it: there the repo's Allman style (`}` newline `catch {`) lints cleanly. `src/utils/share.ts`, `views.ts` and `likes.ts` all exist for this reason.
+
+**Escapes like `'—'` only work in JS string position.** Putting one in JSX text renders the literal characters `—`. Use `{'—'}` or paste the real character.
 - **Content rules** — no em-dashes in body text, use placeholders not real data, integrate into existing articles rather than appending.
 
 ## Key files
@@ -41,7 +50,7 @@ See **[AGENTS.md](./AGENTS.md)** for the full reference — it is the authoritat
 | File | Purpose |
 |------|---------|
 | `src/content.config.ts` | Content collection definitions (Astro v6 content layer) |
-| `src/site-config.ts` | Site-wide config (nav, social links, blog sub-nav) |
+| `src/config/` | All site config, re-exported through `src/config/index.ts`. Import as `@/config`, not from individual files. `site.ts` holds nav/social/sub-nav; `features.ts` holds the homepage section flags |
 | `src/types.ts` | `PostKey` union (must stay in sync with collections) |
 | `src/components/PostLayout.astro` | Renders all collection post pages |
 | `src/components/ListPosts.astro` | Renders all listing pages |
@@ -49,9 +58,20 @@ See **[AGENTS.md](./AGENTS.md)** for the full reference — it is the authoritat
 | `astro.config.ts` | Astro config (integrations, dev port 4321, `INVALID_ANNOTATION` warnings suppressed) |
 | `uno.config.ts` | UnoCSS shortcuts, presets, **icon safelist** (new icons must be added here) |
 | `src/styles/fonts.css` | Self-hosted @font-face declarations for Google Sans Flex + Google Sans Code |
-| `src/data/projects.ts` | Project showcase data |
 | `src/pages/index.astro` | Homepage (bio, CTF teams, competition table, timeline, stacks) |
+| `docs/firestore.rules` | Security rules for the view/like counters. Must be pasted into the Firebase console by hand, nothing deploys them |
 | `public/fonts/` | Self-hosted woff2 font files + Inter-Bold.ttf (for Satori OG images) |
+
+## View and like counters
+
+The site is static SSG with no server, so both counters talk to the **Firestore REST API** directly from the browser. No Firebase SDK, no dependency, no API key: `src/config/views.ts` holds only `projectId`, which is public by design and ships in every page's HTML.
+
+- **`views` and `likes` are separate Firestore collections.** Document ids are post ids with `/` replaced by `_`, since Firestore rejects `/` in ids.
+- **Writes use `fieldTransforms` with `increment`**, which is atomic server-side. A read-then-write would lose counts when two people open a post at once.
+- **`docs/firestore.rules` is the only access control.** The endpoint is public and unauthenticated, so the rules must stay restrictive: `+1` only, `count` field only, everything outside the two collections closed. Allowing `-1` would let anyone script a count down to zero, which is why likes are one way.
+- **Listing pages use `batchGet`** (`src/utils/stats.ts`), one request for the whole page instead of two per post. **The response order does not match the request order**, so read the id back off each `found.name` rather than by index.
+- Views increment once per session (`sessionStorage`); likes are one way and remembered in a cookie. Both are client-side, so clearing storage lets a visitor count again. Preventing that needs real auth.
+- A missing document reads as `null`. Likes show that as `0`; views leave it blank, because a view is written on load so `null` there means the fetch actually failed.
 
 ## Component conventions
 
