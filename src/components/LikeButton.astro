@@ -82,6 +82,26 @@ const api = 'https://firestore.googleapis.com/v1'
     }
   }
 
+  /* The count arrives after render, so ease it in rather than letting it pop. */
+  .like-count {
+    opacity: 0;
+    filter: blur(4px);
+    transition:
+      opacity 0.4s ease,
+      filter 0.4s ease;
+  }
+
+  .like-count.is-loaded {
+    opacity: 1;
+    filter: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .like-count {
+      transition: none;
+    }
+  }
+
   /* Dim only until liked. Opacity on top of red would mute it to a dull grey. */
   .like-button {
     opacity: 0.6;
@@ -147,6 +167,10 @@ const api = 'https://firestore.googleapis.com/v1'
       el.classList.add('is-liked')
     }
     out.textContent = count === null ? '' : String(count)
+    if (count !== null) {
+      // Next frame, so the blurred state paints before the transition runs.
+      requestAnimationFrame(() => out.classList.add('is-loaded'))
+    }
   }
 
   function initLikeButton() {

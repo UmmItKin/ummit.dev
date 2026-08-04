@@ -29,20 +29,34 @@ const api = 'https://firestore.googleapis.com/v1'
 }
 
 <style>
-  /* The meta line sits inside op-50 and opacity cannot be undone by a child,
-     so lift the colour to near white to compensate. */
   .view-counter {
     font-weight: 600;
-    color: #fff;
+    font-size: 0.875rem;
+    opacity: 0;
+    filter: blur(4px);
+    transition:
+      opacity 0.4s ease,
+      filter 0.4s ease;
+  }
+
+  /* Matches the like button's resting dim so the two sit level. */
+  .view-counter.is-loaded {
+    opacity: 0.6;
+    filter: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .view-counter {
+      transition: none;
+    }
   }
 </style>
 
 <script>
   import { fetchViews } from '@/utils/views'
 
-  // The separator lives here so a blocked or failed fetch leaves no stray dot.
   function show(el: Element, n: number) {
-    el.textContent = ` · ${n.toLocaleString()} ${n === 1 ? 'view' : 'views'}`
+    el.textContent = `${n.toLocaleString()} ${n === 1 ? 'view' : 'views'}`
   }
 
   async function countView(el: HTMLElement) {
@@ -54,6 +68,8 @@ const api = 'https://firestore.googleapis.com/v1'
     const n = await fetchViews(commitUrl, docUrl, docPath)
     if (n !== null) {
       show(out, n)
+      // Next frame, so the blurred state paints before the transition runs.
+      requestAnimationFrame(() => el.classList.add('is-loaded'))
     }
   }
 
