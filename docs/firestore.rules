@@ -22,8 +22,8 @@ service cloud.firestore {
       allow delete: if false;
     }
 
-    // Likes can be taken back, so unlike views this allows -1 as well.
-    // The count is still floored at 0 so it cannot be driven negative.
+    // Likes are one way, so this is +1 only, same as views. Allowing -1 would
+    // let anyone script a post's count back down to zero.
     match /likes/{postId} {
       allow read: if true;
 
@@ -31,9 +31,7 @@ service cloud.firestore {
                     && request.resource.data.count == 1;
 
       allow update: if request.resource.data.keys().hasOnly(['count'])
-                    && request.resource.data.count >= 0
-                    && (request.resource.data.count == resource.data.count + 1
-                        || request.resource.data.count == resource.data.count - 1);
+                    && request.resource.data.count == resource.data.count + 1;
 
       allow delete: if false;
     }

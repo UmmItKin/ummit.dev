@@ -26,23 +26,21 @@ export function hasLiked(id: string): boolean {
 }
 
 /**
- * Toggle the like and return the new total, or null if the write failed.
- * The cookie is only updated once Firestore confirms, so a failed request
- * cannot leave the button showing a like that was never recorded.
+ * Likes are one way: once given they cannot be taken back. The cookie is only
+ * written after Firestore confirms, so a failed request cannot leave the
+ * button looking liked when nothing was recorded.
  */
-export async function toggleLike(
-  commitUrl: string,
-  docPath: string,
-): Promise<{ count: number, liked: boolean } | null> {
-  const liked = hasLiked(docPath)
+export async function addLike(commitUrl: string, docPath: string): Promise<number | null> {
+  if (hasLiked(docPath)) {
+    return null
+  }
   try {
-    const count = await increment(commitUrl, docPath, liked ? -1 : 1)
+    const count = await increment(commitUrl, docPath, 1)
     if (count === null) {
       return null
     }
-    const ids = readCookie()
-    writeCookie(liked ? ids.filter(i => i !== docPath) : [...ids, docPath])
-    return { count, liked: !liked }
+    writeCookie([...readCookie(), docPath])
+    return count
   }
   catch {
     return null

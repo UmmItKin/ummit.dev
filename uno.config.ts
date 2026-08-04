@@ -147,8 +147,6 @@ export default defineConfig({
     'i-ri-key-2-line',
     'i-ri-heart-fill',
     'i-ri-heart-line',
-    // Toggled from JS by the like button, so the scanner cannot see them.
-    'text-red-400',
     'i-ri-github-fill',
     'i-simple-icons-buymeacoffee',
   ],

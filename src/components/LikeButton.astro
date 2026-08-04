@@ -17,11 +17,10 @@ const api = 'https://firestore.googleapis.com/v1'
   views.enabled && (
     <button
       type="button"
-      class="like-button inline-flex items-center gap-2 text-sm px-3 py-2 rd-1 opacity-60 hover:opacity-100 hover:bg-neutral-500/10 transition-all duration-200 cursor-pointer bg-transparent border-0 text-inherit"
+      class="like-button inline-flex items-center gap-2 text-sm px-3 py-2 rd-1 hover:bg-neutral-500/10 transition-all duration-200 cursor-pointer bg-transparent border-0 text-inherit"
       data-doc-path={docPath}
       data-doc-url={`${api}/${docPath}`}
       data-commit-url={`${api}/${dbRoot}/documents:commit`}
-      aria-pressed="false"
       aria-label="Like this post"
     >
       <i class="like-icon i-ri-heart-line" />
@@ -30,7 +29,62 @@ const api = 'https://firestore.googleapis.com/v1'
   )
 }
 
+<div class="like-toast" popover="manual" role="status">
+  <i class="i-ri-heart-fill text-red-400"></i>
+  <span class="like-toast-text"></span>
+</div>
+
 <style>
+  .like-toast {
+    position: fixed;
+    inset: auto 0 2rem 0;
+    margin: 0 auto;
+    width: fit-content;
+    max-width: calc(100vw - 2rem);
+    padding: 0.6rem 1rem;
+    border: 1px solid rgba(115, 115, 115, 0.28);
+    border-radius: 0.6rem;
+    background: rgba(22, 27, 34, 0.9);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    color: #bbb;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    transform: translateY(0.5rem);
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+    overflow: visible;
+  }
+
+  .like-toast:popover-open {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .like-toast {
+      transition: none;
+    }
+  }
+
+  /* Dim only until liked. Opacity on top of red would mute it to a dull grey. */
+  .like-button {
+    opacity: 0.6;
+  }
+
+  .like-button:hover {
+    opacity: 1;
+  }
+
+  .like-button.is-active {
+    opacity: 1;
+    color: #f87171;
+  }
+
   /* Pop the heart on like, but never on the initial render. */
   .like-button.is-liked .like-icon {
     animation: like-pop 0.28s cubic-bezier(0.2, 0, 0, 1);
@@ -50,7 +104,23 @@ const api = 'https://firestore.googleapis.com/v1'
 </style>
 
 <script>
-  import { hasLiked, readLikes, toggleLike } from '@/utils/likes'
+  import { addLike, hasLiked, readLikes } from '@/utils/likes'
+
+  let hideTimer = 0
+
+  function toast(message: string) {
+    const el = document.querySelector('.like-toast')
+    const text = el?.querySelector('.like-toast-text')
+    if (!(el instanceof HTMLElement) || !text) {
+      return
+    }
+    text.textContent = message
+    clearTimeout(hideTimer)
+    // showPopover throws if it is already open, so close first.
+    el.hidePopover()
+    el.showPopover()
+    hideTimer = window.setTimeout(() => el.hidePopover(), 2400)
+  }
 
   function paint(el: HTMLElement, count: number | null, liked: boolean, animate: boolean) {
     const icon = el.querySelector('.like-icon')
@@ -60,9 +130,7 @@ const api = 'https://firestore.googleapis.com/v1'
     }
     icon.classList.toggle('i-ri-heart-fill', liked)
     icon.classList.toggle('i-ri-heart-line', !liked)
-    el.classList.toggle('text-red-400', liked)
-    el.classList.toggle('opacity-100', liked)
-    el.setAttribute('aria-pressed', String(liked))
+    el.classList.toggle('is-active', liked)
     // The animation class is what triggers the pop, so only add it on a click.
     if (animate) {
       el.classList.add('is-liked')
@@ -87,17 +155,25 @@ const api = 'https://firestore.googleapis.com/v1'
 
       let busy = false
       el.addEventListener('click', async () => {
-        // Ignore repeat taps while a write is in flight, otherwise a double
-        // click sends +1 and -1 and the cookie ends up out of sync.
         if (busy) {
           return
         }
+        // Likes cannot be taken back, so say so instead of doing nothing.
+        if (liked) {
+          toast('You already liked this post')
+          return
+        }
+
         busy = true
         el.classList.remove('is-liked')
-        const res = await toggleLike(commitUrl, docPath)
-        if (res) {
-          liked = res.liked
-          paint(el, res.count, res.liked, res.liked)
+        const count = await addLike(commitUrl, docPath)
+        if (count !== null) {
+          liked = true
+          paint(el, count, true, true)
+          toast('Thanks for the like')
+        }
+        if (count === null) {
+          toast('Could not save your like, try again')
         }
         busy = false
       })
