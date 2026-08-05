@@ -1,8 +1,8 @@
 ---
 title: "CCCTF 2026 — Writeup"
 description: "CCCTF 2026 writeup covering the challenges I solved across Web, Crypto, Misc, and Reverse: a flag hidden before a Rick Roll redirect, a weak Flask secret key, a nested field-selector IDOR, XOR key reuse, JPEG-comment stego, a ZIP appended to a PNG, and a Windows keygen."
-date: 2026-08-06T01:10:38+0800
-lastmod: 2026-08-06T01:30:00+0800
+date: 2026-08-06T01:30:55+0800
+lastmod: 2026-08-06T01:30:55+0800
 tag: "CCCTF, CTF, WriteUp"
 lang: en-US
 ---
