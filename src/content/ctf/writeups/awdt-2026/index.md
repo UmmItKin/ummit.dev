@@ -2,7 +2,7 @@
 title: "AWDT 2026 — Writeup"
 description: "Full attack-and-defense writeups for AWDT 2026: prototype pollution, XXE, SSRF-to-Redis, Phar deserialization, JWT forgery, Nginx off-by-slash traversal, sandbox escape RCE, ML data poisoning, an async TOCTOU race, stored XSS, and a seccomp ORW pwn, each with the minimal patch."
 date: 2026-08-04T18:42:42+0800
-lastmod: 2026-08-06T01:45:15+0800
+lastmod: 2026-08-06T01:54:08+0800
 tag: "CTF, AWDT, Attack-With-Defense, WriteUp"
 lang: en-US
 ---
@@ -40,15 +40,11 @@ patch.
 
 ### SecurePortal
 
-| | |
-|---|---|
-| **Event** | AWDT-2026 (AWDP / attack + defense) |
-| **Category** | WEB |
-| **Difficulty** | Easy |
-| **Points** | 5 |
-| **Flag** | `flag{a7c4c86c-adf0-46a0-851f-abb70b22cc23}` |
+- **Difficulty:** Easy
+- **Points:** 5
+- **Flag:** `flag{a7c4c86c-adf0-46a0-851f-abb70b22cc23}`
 
-#### Challenge
+#### Overview
 
 > An enterprise has deployed a JWT-based internal security portal, **SecurePortal**,
 > utilizing the **HS256** algorithm for authentication. Operations personnel have
@@ -62,7 +58,7 @@ Because this is an **AWDP** challenge, there are two objectives:
 2. **Defense:** submit a patch package that closes the vulnerability while keeping
    the service working, to earn per-round defense points.
 
-#### Recon: source review
+#### Recon
 
 The attachment (`secureportal_<hash>.zip`) contains a single file: `index.php`.
 The relevant logic:
@@ -203,9 +199,9 @@ flag{a7c4c86c-adf0-46a0-851f-abb70b22cc23}
 Flag read from /flag | Role: admin
 ```
 
-**Flag:** `flag{a7c4c86c-adf0-46a0-851f-abb70b22cc23}`
+- **Flag:** `flag{a7c4c86c-adf0-46a0-851f-abb70b22cc23}`
 
-#### Defense: AWDP patch package
+#### Defense
 
 ##### Root cause
 
@@ -327,14 +323,12 @@ without breaking the service.
 
 ### TicketX
 
-- **Event:** AWDT-2026
-- **Category:** WEB (Easy), Attack & Defense
 - **Points:** 5
 - **Target:** `https://eci-2zei673opu7bug9gx3hc.cloudeci1.ichunqiu.com:80`
 - **Flag:** `flag{9a7f0c1a-16b2-4fc3-ab12-33f475f09799}`
 
 
-#### 1. Challenge Overview
+#### Overview
 
 > An enterprise has deployed an internal ticketing system, TicketX, where employees
 > can submit tickets with fault descriptions. The system features a built-in admin
@@ -357,7 +351,7 @@ list. That is the usual shape of a client-side (stored XSS) challenge.
 | `admin.php` | *Not shipped in the zip.* Admin-only page that holds the flag |
 
 
-#### 2. Recon
+#### Recon
 
 Probing the live target confirms the intended surface:
 
@@ -380,7 +374,7 @@ Two facts fall out of this one request:
    running in the admin's context can read `document.cookie`.
 
 
-#### 3. Vulnerability Analysis
+#### Vulnerability analysis
 
 ##### 3.1 What is safe
 
@@ -429,7 +423,7 @@ Reading `/admin.php` directly from JS and exfiltrating its body works too, but
 stealing the non-HttpOnly cookie is simpler.
 
 
-#### 4. Exploitation
+#### Exploitation
 
 > A self-contained automation of this whole chain is in [`exploit.py`](./exploit.py):
 > `python3 exploit.py https://eci-2zei673opu7bug9gx3hc.cloudeci1.ichunqiu.com:80`.
@@ -492,10 +486,10 @@ curl -sk "$U/admin.php" -H "Cookie: PHPSESSID=nrdigkprte54tt5nlmlmvg7g26"
 <p class="info">The flag is read from /flag</p>
 ```
 
-**Flag:** `flag{9a7f0c1a-16b2-4fc3-ab12-33f475f09799}`
+- **Flag:** `flag{9a7f0c1a-16b2-4fc3-ab12-33f475f09799}`
 
 
-#### 5. Defense (Patch)
+#### Defense
 
 The defense side of this challenge is scored separately (another 5 points). The
 platform hands you the constraints directly:
@@ -592,7 +586,7 @@ or rely on inline behavior) and cost you availability points. The one-line outpu
 encoding is the safe, sufficient submission.
 
 
-#### 6. Key Takeaways
+#### Takeaways
 
 - **Escape on output, every field.** Prepared statements stopped SQLi but did
   nothing for the stored HTML context. One missing `htmlspecialchars` was the whole
@@ -607,13 +601,11 @@ encoding is the safe, sufficient submission.
 
 ### EmpPortal
 
-- **Event:** AWDT-2026 (AWD Plus / AWDP format)
-- **Category:** WEB (Easy)
 - **Points:** 5
 - **Stack:** Nginx + PHP-FPM
 - **Flag:** `flag{bad6d089-abb7-47d1-ac12-7ac5c8a50622}`
 
-#### 1. Challenge Overview
+#### Overview
 
 An enterprise "Employee Management System" (EmpPortal) served over an
 **Nginx + PHP-FPM** architecture. The flag is stored at `/flag` on the
@@ -629,7 +621,7 @@ two independent scoring paths:
 
 This writeup covers both.
 
-#### 2. Recon
+#### Recon
 
 Homepage fingerprint confirms PHP (`PHPSESSID` cookie, `X-Powered-By`-style
 headers) and shows the app's navigation:
@@ -673,7 +665,7 @@ server {
 }
 ```
 
-#### 3. The vulnerability: Nginx off-by-slash `alias` path traversal
+#### The vulnerability: Nginx off-by-slash `alias` path traversal
 
 The bug lives in the `/static` block:
 
@@ -713,7 +705,7 @@ This is the well-known **"off-by-slash"** misconfiguration (Orange Tsai,
 "Breaking Parser Logic"). Any `location /x { alias /y/; }` where the location
 lacks the trailing slash is vulnerable.
 
-#### 4. Exploitation
+#### Exploitation
 
 The one critical trick: use `curl --path-as-is` so the client does **not**
 normalize `/static../` away before the request is sent. Nginx must receive the
@@ -785,7 +777,7 @@ def read_file(base_url, remote_path):
 
 Dependency: `pip install requests`.
 
-#### 5. Defense: AWDP patch package
+#### Defense
 
 AWDP awards defense points for a validated patch. On this platform the patch
 must be an `update.tar.gz` in a **strict, specific format**, and the script may
@@ -911,7 +903,7 @@ check passes and the defense scores. If any legitimate route breaks, the
 platform resets the environment and penalizes over-patching, so keep the change
 to the single trailing slash.
 
-#### 6. Remediation (real-world)
+#### Remediation (real-world)
 
 For production Nginx, any of these fully closes the class of bug:
 
@@ -923,7 +915,7 @@ For production Nginx, any of these fully closes the class of bug:
 3. Keep secret/sensitive files (like `/flag`) out of any web-reachable root and
    off the same filesystem the web user can read.
 
-#### 7. Key Takeaways
+#### Takeaways
 
 - `location /prefix { alias /dir/; }` **without** a trailing slash on the
   location is a path-traversal footgun. Always match the slashes.
@@ -937,15 +929,12 @@ For production Nginx, any of these fully closes the class of bug:
 
 ### MyHome
 
-**Event:** AWDT 2026
-**Category:** Web
-**Difficulty:** Easy
-**Points:** 5
-**Type:** Attack & Defend (AWD-T). Exploit the live service, then submit a patch.
+- **Difficulty:** Easy
+- **Points:** 5
+- **Type:** Attack & Defend (AWD-T). Exploit the live service, then submit a patch.
+- **Flag:** `flag{3019e7d8-30e4-489c-ad9e-908fac8b48c7}`
 
-**Flag:** `flag{3019e7d8-30e4-489c-ad9e-908fac8b48c7}`
-
-#### 1. Challenge Overview
+#### Overview
 
 > The service is a personal homepage preference center. A normal user can edit a JSON
 > preference dictionary for the homepage layout, theme, and widgets.
@@ -962,7 +951,7 @@ The target is a small Node.js HTTP service (`server.js`, no framework, just the 
 
 The user is hardcoded as a non-admin guest, and there is no login. The only way to reach the flag on `/admin` is to make the server *believe* the guest is an admin, and no endpoint ever sets `isAdmin`.
 
-#### 2. Source Code Analysis
+#### Source analysis
 
 ##### 2.1 The vulnerable merge
 
@@ -1037,7 +1026,7 @@ POST /api/preferences  →  JSON.parse(body)  →  merge(clone(defaults), body) 
 GET /admin  →  currentUser().isAdmin  ◀───────── prototype chain lookup ────────────────┘
 ```
 
-#### 3. Why `__proto__` in JSON works
+#### Why `__proto__` in JSON works
 
 Two subtle mechanics make this exploitable:
 
@@ -1059,7 +1048,7 @@ Two subtle mechanics make this exploitable:
 Note `isPlainObject` even *helps* the attacker: `{ isAdmin: true }` is a plain object,
 so the code takes the recursive branch and descends into the prototype.
 
-#### 4. Exploitation
+#### Exploitation
 
 Two requests. First pollute, then collect the flag.
 
@@ -1158,7 +1147,7 @@ $ python3 exploit.py https://eci-2ze5zaips9u93ispddb6.cloudeci1.ichunqiu.com:80
 > attacker pollutes the shared prototype, every guest hitting `/admin` sees the flag
 > until the service restarts.
 
-#### 5. Defense: Patch Submission
+#### Defense
 
 The defensive half of the challenge requires uploading a `.gz` (≤150 MB) containing an
 `update.sh`. Constraints given by the platform:
@@ -1326,7 +1315,7 @@ Once uploaded, `update.sh` copies the patched file to `/app/server.js` and the p
 restarts the service, closing the flag leak on `/admin` while `/api/preferences` keeps
 working for normal users.
 
-#### 6. Root Cause & Takeaways
+#### Root cause
 
 - **Root cause:** a recursive object merge that trusts attacker-controlled keys,
   combined with an authorization check that reads a property off the prototype chain
@@ -1348,7 +1337,7 @@ working for normal users.
 5. Consider `Object.freeze(Object.prototype)` at process start as a blunt but effective
    backstop against runtime prototype mutation.
 
-#### 7. Timeline (TL;DR)
+#### Timeline
 
 1. `POST /api/preferences` with `{"__proto__":{"isAdmin":true}}` → pollutes `Object.prototype.isAdmin`.
 2. `GET /admin` → `user.isAdmin` resolves `true` via prototype → flag disclosed.
@@ -1369,7 +1358,7 @@ flag{3019e7d8-30e4-489c-ad9e-908fac8b48c7}
 > Example flag: `flag{a415fa68-db01-477a-84d4-de8b00321002}` (per-instance)
 
 
-#### 0. Overview
+#### Overview
 
 The service is an "external link inspection" bot: you submit a URL, the backend fetches it and returns a short text preview. The homepage leaves a telling comment:
 
@@ -1385,7 +1374,7 @@ This is AWDP, so there are two scoring lanes:
 - **Defense**: upload a patch package that fixes the vuln without breaking the platform's health-check (5 pts/round).
 
 
-#### 1. Reconnaissance
+#### Recon
 
 ##### Endpoints
 
@@ -1431,7 +1420,7 @@ Reaching it via a decimal-IP bypass (below) returns the author's roadmap:
 - `handoff: local redirect helper is enabled` → `/internal/redirect` is the pivot.
 
 
-#### 2. The vulnerability chain
+#### The vulnerability chain
 
 ```
  attacker
@@ -1455,7 +1444,7 @@ Reaching it via a decimal-IP bypass (below) returns the author's roadmap:
 Five weaknesses, each a necessary link.
 
 
-#### 3. Attack, step by step
+#### Attack, step by step
 
 ##### 3.1 SSRF + WAF bypass (decimal IP)
 
@@ -1576,7 +1565,7 @@ curl -sk https://eci-2zeefb13f7r1ve1eidkz.cloudeci1.ichunqiu.com:5000/claim
 Flag obtained. Bonus: the `source` field is a source-leak route; once `/claim` passes you can `curl` it to download the full `app.py` and review the logic.
 
 
-#### 4. Full exploit (PoC)
+#### Full exploit (PoC)
 
 ```python
 #!/usr/bin/env python3
@@ -1615,7 +1604,7 @@ print(json.loads(r)["flag"])
 ```
 
 
-#### 5. Bonus: cloud metadata SSRF
+#### Bonus: cloud metadata SSRF
 
 The open redirect also reaches the Aliyun ECI metadata service (no re-check after the redirect):
 
@@ -1634,7 +1623,7 @@ POST /preview url=http://2130706433:5000/internal/redirect?next_b64=...
 Note: `/preview` truncates to 800 chars and user-data is 2352, so this path yields only a partial flag (cut mid-UUID). The complete flag must come through `/claim`. Metadata is the "almost-there" alternate line and shows the SSRF's blast radius.
 
 
-#### 6. Defense: the patch
+#### Defense
 
 This part took the most iteration. AWDP defense must do two things at once:
 1. Break the attack (flag no longer obtainable).
@@ -1719,7 +1708,7 @@ LF line endings are required (`tar zcvf update.tar.gz update app` on Linux).
 | All checks suddenly fail + `502 容器不存在` | the ECI container expired. Re-deploy (重新下发) from the platform |
 
 
-#### 7. Timeline
+#### Timeline
 
 1. Recon → found `/preview`, `/claim`, `/internal/*`.
 2. Decimal-IP WAF bypass → read `/internal/cache/status` hint map.
@@ -1732,7 +1721,7 @@ LF line endings are required (`tar zcvf update.tar.gz update app` on Linux).
 9. Container expired mid-work → re-deployed → final patch accepted.
 
 
-#### 8. Key takeaways
+#### Takeaways
 
 - SSRF WAFs that match strings instead of resolving are bypassable by every IP encoding (decimal/hex/octal/short/IPv6-mapped). The `loopback_alias` hint was the giveaway.
 - Open redirects plus blind redirect-following are a full SSRF multiplier: the initial-URL WAF is moot if the redirect target isn't re-validated.
@@ -1752,14 +1741,12 @@ flag{a415fa68-db01-477a-84d4-de8b00321002}
 
 ### Profile Forge
 
-- **Event:** AWDT 2026
-- **Category:** WEB (Attack & Defense with Traceback)
 - **Difficulty:** Medium
 - **Points:** 5
 - **Flag:** `flag{b11c8e15-5fca-4d1b-b3bd-3fd78714a3e9}`
 
 
-#### 1. Challenge Overview
+#### Overview
 
 > Profile Forge is a personal profile import center. Users can submit a JSON profile
 > document to update display information, contact preferences, privacy settings, and
@@ -1779,7 +1766,7 @@ The task has two phases:
    keeping the app working.
 
 
-#### 2. Recon
+#### Recon
 
 ##### Homepage (`/`)
 
@@ -1824,7 +1811,7 @@ $ curl -sk https://eci-2ze5moyf27tohdauwxot.cloudeci1.ichunqiu.com:80/admin/audi
 So the goal is clear: make the server believe **`viewer.isAdmin === true`**.
 
 
-#### 3. Vulnerability Analysis
+#### Vulnerability analysis
 
 The full `src/profileStore.js` (verbatim, abbreviated to the two relevant functions):
 
@@ -1895,7 +1882,7 @@ request. The admin check `viewer.isAdmin` reads the polluted prototype and retur
 > actual pollution primitive.
 
 
-#### 4. Exploitation
+#### Exploitation
 
 Single request pollutes the prototype; a second request reads the flag.
 
@@ -1994,7 +1981,7 @@ python3 exploit.py https://eci-2ze5moyf27tohdauwxot.cloudeci1.ichunqiu.com:80
 ```
 
 
-#### 5. Defense (Patch)
+#### Defense
 
 ##### Constraints
 
@@ -2244,7 +2231,7 @@ with the patched version and the service auto-restarts. After the restart:
   without breaking the service check.
 
 
-#### 6. Key Takeaways
+#### Takeaways
 
 - A recursive merge or clone over attacker JSON is a classic prototype-pollution sink.
   Any `for (const key in obj)` loop that reads `target[key]` and recurses can be steered
@@ -2261,15 +2248,13 @@ with the patched version and the service auto-restarts. After the restart:
 
 ### Async Report
 
-- **Event:** AWDT 2026
-- **Category:** WEB
 - **Difficulty:** Medium
 - **Points:** 5
 - **Target:** `https://eci-2zei673opu7bu4fa8rja.cloudeci1.ichunqiu.com:80`
 - **Flag:** `flag{bd1f4404-ac87-4371-9303-85088fd89170}`
 
 
-#### 1. Challenge overview
+#### Overview
 
 > The service is an enterprise async data report generator. To share request-level
 > report configuration, a developer incorrectly stores the current user group in a
@@ -2289,7 +2274,7 @@ two parts:
    while the service keeps its normal behavior.
 
 
-#### 2. Source analysis
+#### Source analysis
 
 The server exposes a few GET endpoints through a manual `dispatch()` router:
 
@@ -2377,7 +2362,7 @@ request leaking its transient state into another.
 ```
 
 
-#### 3. Exploitation
+#### Exploitation
 
 The plan:
 
@@ -2440,14 +2425,14 @@ Content-Type: application/json; charset=utf-8
 {"ok": true, "type": "heavy-preview", "group": "root", "export_path": "/tmp/root_preview.csv"}
 ```
 
-**Flag:** `flag{bd1f4404-ac87-4371-9303-85088fd89170}`
+- **Flag:** `flag{bd1f4404-ac87-4371-9303-85088fd89170}`
 
 > Note: the 2-second sleep makes the window very wide, so no repeated hammering is
 > needed. A single well-timed second request wins every time. In a real system the
 > window is usually microseconds and takes many attempts, but the bug is the same.
 
 
-#### 4. The patch (defense / AWD phase)
+#### Defense
 
 Constraints given by the platform:
 
@@ -2535,7 +2520,7 @@ The admin export now returns 403 even during the heavy-preview window, while
 response shapes. Functionality (SLA) is preserved and the vulnerability is gone.
 
 
-#### 5. Defensive analysis
+#### Defensive analysis
 
 ##### 6.1 How the AWD patch mechanism works
 
@@ -2604,7 +2589,7 @@ production fix would go further with defense in depth:
   and never hold an elevated value across an `await`.
 
 
-#### 6. Lessons learned
+#### Takeaways
 
 - Do not store request-scoped state in process globals. In any concurrent server
   (threads, async, or multiple processes with shared memory) a global is shared by
@@ -2642,8 +2627,6 @@ production fix would go further with defense in depth:
 
 ### Regex Sync Rules
 
-- **Event:** AWDT 2026 (AWD Plus / AWDP format)
-- **Category:** WEB (Hard)
 - **Points:** 5, plus persistent attack/defense points per round
 - **Target:** `https://eci-2ze9j9q4h4ds5bp4bx8i.cloudeci1.ichunqiu.com:5000`
 - **Flag:** `flag{37c73aa9-66f8-4a0a-b4a3-f3ba5030f126}`
@@ -2651,7 +2634,7 @@ production fix would go further with defense in depth:
 - **Fix:** replace `eval()` with a safe recursive-descent interpreter for the legacy grammar
 
 
-#### 1. Challenge Overview
+#### Overview
 
 The application is an "enterprise cloud-sync platform" tool that previews filename normalization rules. An admin supplies three things:
 
@@ -2680,7 +2663,7 @@ The useful hint is in `/api/info`:
 "Expression replacement mode" is the tell. The replacement is turned into a real expression and evaluated.
 
 
-#### 2. Recon
+#### Recon
 
 ##### 2.1 Home page and API
 
@@ -2723,7 +2706,7 @@ The `expr` field gives the game away. The server translates the replacement into
 If we can control that expression, we control the `eval()`.
 
 
-#### 3. Probing the Sandbox
+#### Probing the Sandbox
 
 ##### 3.1 Attribute access and function calls work
 
@@ -2768,7 +2751,7 @@ type, list, dict, chr, ord, ... -> not defined
 So there is no `getattr` and no builtins. But full attribute access and subscripting on real objects is permitted, and the blocklist is only a naive substring filter.
 
 
-#### 4. Exploitation: Sandbox Escape to RCE
+#### Exploitation: Sandbox Escape to RCE
 
 ##### 4.1 Strategy
 
@@ -2889,7 +2872,7 @@ def rce(cmd, popen_idx):
 ```
 
 
-#### 5. Root Cause (source analysis)
+#### Root Cause (source analysis)
 
 After getting RCE, `/app/app.py` was retrieved. The vulnerable core:
 
@@ -2913,7 +2896,7 @@ def apply_rule(pattern, replacement, filenames):
 Neither is a real sandbox. The vulnerability is evaluating attacker-controlled expressions at all.
 
 
-#### 6. Defense (AWDP patch)
+#### Defense
 
 ##### 6.1 Constraints
 
@@ -3122,7 +3105,7 @@ chmod 644 /app/app.py
 `app.py` is the fixed source (see repo). `update.sh` uses only the whitelisted commands `cp` and `chmod`.
 
 
-#### 7. Timeline / TL;DR
+#### Timeline
 
 1. `/api/info` advertises "legacy expression replacement mode", and the `expr` field proves the replacement is `eval`'d.
 2. Attribute access works, only `{str, len}` builtins exist, and a naive substring blocklist guards `eval`.
@@ -3130,7 +3113,7 @@ chmod 644 /app/app.py
 4. Call `Popen(['cat','/fl'+'ag'],-1,None,None,-1).communicate()[0]` (positional `stdout`, split `flag`) to read the flag.
 5. Patch: delete `eval`, implement a safe recursive-descent interpreter for the documented grammar, and ship it via `update.sh` (`cp`/`chmod`).
 
-#### 8. Key Takeaways
+#### Takeaways
 
 - Never `eval()` user input. A blocklist plus a restricted `__builtins__` is not a sandbox, because live Python objects leak the entire class graph through attribute access.
 - Substring WAFs fall to concatenation and `__dict__` subscripting, as in `'__subcla'+'sses__'`.
@@ -3140,12 +3123,10 @@ chmod 644 /app/app.py
 
 ### Blind Invoice XML
 
-**Event:** AWDT-2026
-**Category:** WEB — Hard (5 pts)
-**Flag:** `flag{5d33dbc0-f424-4500-83be-18a8d0d229d7}`
+- **Flag:** `flag{5d33dbc0-f424-4500-83be-18a8d0d229d7}`
 
 
-#### 1. Challenge overview
+#### Overview
 
 An "enterprise invoice exchange gateway" (`InvoiceLink Gateway`) takes a single
 invoice XML document, pre-validates it, and returns only an import status plus a
@@ -3169,7 +3150,7 @@ The landing page points at two endpoints:
 ```
 
 
-#### 2. Recon
+#### Recon
 
 ##### 2.1 `/api/info`
 
@@ -3213,7 +3194,7 @@ The fields come back verbatim in `summary`, which gives us a reflection surface 
 abuse.
 
 
-#### 3. Finding the XXE
+#### Finding the XXE
 
 ##### 3.1 The default profile blocks DTDs
 
@@ -3277,7 +3258,7 @@ So `/flag` is present and readable, but blinded. We need out-of-band
 exfiltration.
 
 
-#### 4. Exploitation: OOB XXE
+#### Exploitation: OOB XXE
 
 ##### 4.1 Confirm egress
 
@@ -3340,7 +3321,7 @@ reads (see section 5). That works in our favor: it makes multi-line and binary
 content transport-safe, so the same technique cleanly dumps `/app/app.py` too.
 
 
-#### 5. Root cause (from leaked `/app/app.py`)
+#### Root cause (from leaked `/app/app.py`)
 
 Running the same OOB technique against `file:///app/app.py` recovered the full
 source. The bug is a deliberately dangerous legacy parser:
@@ -3386,7 +3367,7 @@ Also present: `POST /__checker/secret-proof`, the grader's HMAC oracle over
 `load_flag()`. The defense has to keep it and `/__checker/health` working.
 
 
-#### 6. Defense and patch
+#### Defense
 
 This is an attack-with-defense round, so after grabbing the flag we also have to
 patch the service. The constraints:
@@ -3504,7 +3485,7 @@ the SSRF/OOB paths are gone, and the boolean oracle disappears with them because
 a DOCTYPE now fails before any resolution happens.
 
 
-#### 7. TL;DR
+#### Timeline
 
 1. `/api/info` leaks the legacy profile and its two selector headers.
 2. The default profile blocks DTDs; the legacy profile (headers) enables entity
@@ -3553,14 +3534,12 @@ Upload payload (headers `X-Partner-Channel: HKRIC-B2B-XML`,
 
 ### Phar Gallery
 
-- **Event:** AWDT 2026 (AWDP / attack-and-defense-plus format)
-- **Category:** WEB, Hard
 - **Value:** 5 (attack) + 5 (defense) per round
 - **Target:** `https://eci-2ze3oet7h253uo9buvgp.cloudeci1.ichunqiu.com:5000`
 - **Flag:** `flag{0c8e9f26-e5e0-4f84-a45f-07c22d7cbeac}`
 
 
-#### 1. Overview
+#### Overview
 
 "Phar Gallery" is a compliance attachment-preview service written in PHP 8. Staff
 upload contract scans, expense vouchers, and PDFs by case number, generate preview
@@ -3583,7 +3562,7 @@ chains a filter bypass with a POP gadget to get an arbitrary file write, which f
 the approval "proof" file and unlocks the flag through `/claim`.
 
 
-#### 2. The win condition
+#### The win condition
 
 `/claim` returns the flag only when a proof file on disk matches an expected value:
 
@@ -3619,7 +3598,7 @@ control (`caseId` matches `^[a-zA-Z0-9_-]{3,32}$`).
 Nothing in the normal business flow writes that file. Only a destructor gadget does.
 
 
-#### 3. The write primitive: `StorageWriter::__destruct`
+#### The write primitive: `StorageWriter::__destruct`
 
 `lib/StorageWriter.php`:
 
@@ -3654,7 +3633,7 @@ simplest.
 What we still need is an unserialization sink for attacker-controlled data.
 
 
-#### 4. The sink: PHAR deserialization in `/check`
+#### The sink: PHAR deserialization in `/check`
 
 `index.php` `/check`:
 
@@ -3756,7 +3735,7 @@ reject it. A JSON body keeps the `%70` intact until `decodeForWorker` runs the s
 controlled `rawurldecode`. That is what lines up the check/use gap.
 
 
-#### 5. Weaponizing the upload: a polyglot JPEG/PHAR
+#### Weaponizing the upload: a polyglot JPEG/PHAR
 
 `AttachmentStore::saveUploaded` enforces two things:
 
@@ -3793,7 +3772,7 @@ The metadata is the serialized `StorageWriter{target:'approval-proof', value:'ap
 The `value` matches the proof string for the `caseId` we will claim (`casetest123`).
 
 
-#### 6. Full exploit
+#### Full exploit
 
 ```bash
 URL="https://eci-2ze3oet7h253uo9buvgp.cloudeci1.ichunqiu.com:5000"
@@ -3842,7 +3821,7 @@ upload polyglot jpg/phar  (magic-byte sniff bypassed)
 ```
 
 
-#### 7. Root causes
+#### Root cause
 
 1. Order-of-operations bug (TOCTOU): the blocklist is applied to the raw string, but
    the value is `rawurldecode`d afterwards, so encoded schemes bypass the filter.
@@ -3855,7 +3834,7 @@ upload polyglot jpg/phar  (magic-byte sniff bypassed)
    "is it a jpg" header check, so the file is a phar/jpg polyglot.
 
 
-#### 8. Defense (AWDP patch)
+#### Defense
 
 Constraints: project at `/app/`; `update.sh` may only use `mv`, `cp`, `chmod`; the
 whole business workflow must keep working (upload/preview/check/claim/api/errors); no
@@ -4016,7 +3995,7 @@ Upload `patch.tar.gz` as the defense package. After `update.sh` runs, the platfo
 restarts the service and the defense point is scored on every following round.
 
 
-#### 9. Takeaways
+#### Takeaways
 
 - Never validate a string and then transform it (decode or normalize) before use.
   Validate the final value, or re-validate after every transform.
@@ -4035,14 +4014,12 @@ restarts the service and the defense point is scored on every following round.
 
 ### ColdChain Drift
 
-**Event:** AWDT 2026 (AWD Plus)
-**Category:** AI / Machine Learning Security
-**Points:** 5 (Attack) + 5 (Defense)
-**Target:** `https://eci-2zei3oczjahy1rzlbnp4.cloudeci1.ichunqiu.com:5000/` (ephemeral AWD container)
-**Flag:** `flag{a08d64b8-454f-4cc1-af2b-12917e960d86}`
+- **Points:** 5 (Attack) + 5 (Defense)
+- **Target:** `https://eci-2zei3oczjahy1rzlbnp4.cloudeci1.ichunqiu.com:5000/` (ephemeral AWD container)
+- **Flag:** `flag{a08d64b8-454f-4cc1-af2b-12917e960d86}`
 
 
-#### 1. Challenge overview
+#### Overview
 
 A cold-chain logistics platform runs a container **risk-verification** service. On every upload it:
 
@@ -4062,7 +4039,7 @@ The target's original label is `high_risk`, and its baseline retrained score is 
 - Distribution drift must pass: **per-feature mean/std drift ≤ 0.05**, **per-cell drift ≤ 0.18** (both normalized by the feature's business range).
 
 
-#### 2. Reconnaissance
+#### Recon
 
 Uploading the **unmodified** dataset returns a JSON response that leaks the retrained **model weights** and the exact **risk score**:
 
@@ -4114,7 +4091,7 @@ Computing the target's standardized position (z-score using column mean/std) sho
 This is precisely what makes it read as "risky."
 
 
-#### 3. The vulnerability: training-data poisoning via distribution shift
+#### The vulnerability: training-data poisoning via distribution shift
 
 The target row is locked, but the model **normalizes/scales each feature using the whole column** and **retrains** on the attacker-controlled rows. So even without touching `CC-7319`, an attacker can move:
 
@@ -4146,7 +4123,7 @@ baseline score: 0.549645   (server: 0.549645)  ✓
 ```
 
 
-#### 4. Exploitation
+#### Exploitation
 
 Rather than solve the constrained optimization analytically, a single well-chosen coordinated shift is enough. Shift every non-target row by `0.2 · σ` (per-feature standard deviation) in the helpful direction, clamped to the business range and rounded to integers where the column is integral (`over_temp_minutes`, `door_open_count`):
 
@@ -4288,7 +4265,7 @@ if __name__ == "__main__":
 Verified against the locally reproduced server model: the builder locks the target row and drives the retrained score `0.549645 → 0.378704` (< 0.5). The full copy lives at `exploit.py` in this directory.
 
 
-#### 5. Defense
+#### Defense
 
 ##### What the original `validator.py` checks (and misses)
 
@@ -4543,7 +4520,7 @@ Simulating the full `/upload` flow with the patch installed via `update.sh`:
 Both layers independently block the exploit; benign traffic is unaffected. Neither the model, dataset, flags, nor platform scripts are touched.
 
 
-#### 6. Key takeaways
+#### Takeaways
 
 - **Retraining on untrusted input is the attack surface.** If the model is rebuilt from user-supplied data every request, "the target row is locked" is *not* enough. Normalization statistics and the decision boundary are global and fully attacker-influenced.
 - **Per-feature guardrails compose poorly.** Eight independent "≤ 0.05" checks silently permit a combined shift far larger than any single one. Always bound the *aggregate*.
@@ -4569,7 +4546,6 @@ Both layers independently block the exploit; benign traffic is unaffected. Neith
 
 ### VaultKeeper
 
-- **Category:** PWN (Attack-With-Defense / AWDT)
 - **Difficulty:** Medium
 - **Points:** 5
 - **Remote:** `nc 47.95.207.40 30723`
@@ -4579,7 +4555,7 @@ VaultKeeper is a command-line credential vault. Players interact with *text
 vaults* and *key vaults*, then abuse flawed **clone** / **export** semantics to
 leak pointers and build an **ORW** (open/read/write) ROP chain under `seccomp`.
 
-#### 1. Recon
+#### Recon
 
 ```
 $ file vaultkeeper
@@ -4633,7 +4609,7 @@ syscall ROP chain. No libc is needed; everything comes from the PIE image.
 No `execve`, no `mmap`/`mprotect`, no `fork`. Classic **ORW**: the flag must be
 `open`ed, `read` into memory, and `write`n to stdout.
 
-#### 2. Data structures
+#### Data structures
 
 ##### Vault table
 
@@ -4675,7 +4651,7 @@ The first field is a function pointer that is later called.
 4. edit vault             8. quit
 ```
 
-#### 3. The vulnerabilities
+#### The vulnerabilities
 
 Two flawed operations combine to give a full exploit.
 
@@ -4731,7 +4707,7 @@ convert 1    -> type 1    (text, ptr = K, size 0x218) # now index1 == text view 
 - **index 0** is still a *key* vault pointing at `K`.
 - **index 1** is a *text* vault pointing at the same `K`.
 
-#### 4. Exploitation
+#### Exploitation
 
 ##### 4.1 Info leak to defeat PIE
 
@@ -4912,9 +4888,9 @@ $ python3 exploit.py REMOTE
 FLAGOUT:flag{b93ebd6d-d6ba-4234-a060-4e41cfde7804}
 ```
 
-**Flag:** `flag{b93ebd6d-d6ba-4234-a060-4e41cfde7804}`
+- **Flag:** `flag{b93ebd6d-d6ba-4234-a060-4e41cfde7804}`
 
-#### 5. Defense (AWDT patch)
+#### Defense
 
 AWDT requires patching `/app/vaultkeeper` and submitting a `.tar.gz`. After
 `update.sh` runs, the service restarts. Only these commands are whitelisted in
@@ -5031,7 +5007,7 @@ both, and the patch removes the single step that produced them.
 - SLA intact: create text/key, show, edit, clone, and list all behave normally.
   `export` still prints `"converted in-place"`; it is just harmless now.
 
-#### 6. Takeaways
+#### Takeaways
 
 - Shallow copy means aliasing. Cloning a container by copying its handle,
   embedded pointers included, leaves two owners of one buffer.
