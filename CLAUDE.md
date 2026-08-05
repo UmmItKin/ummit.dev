@@ -44,6 +44,10 @@ See **[AGENTS.md](./AGENTS.md)** for the full reference — it is the authoritat
 
 **Escapes like `'—'` only work in JS string position.** Putting one in JSX text renders the literal characters `—`. Use `{'—'}` or paste the real character.
 - **Content rules** — no em-dashes in body text, use placeholders not real data, integrate into existing articles rather than appending.
+- **Humanize all prose** — apply the `/humanizer:humanizer` style to every piece of user-facing writing (posts, page copy, UI strings, commit messages, PR text), not just CTF writeups. No rule-of-three, no `not X but Y` aphorisms, no mechanical bold emphasis or promotional phrasing (`is gold`, `the whole game`, `vibrant`, `seamless`), no signposting (`let's dive in`), vary sentence length, prefer plain `is/are/has`. Humanize prose only: leave code, frontmatter values, flags, and data untouched. The em-dash in a writeup **title** is house style and stays.
+- **CTF writeup titles** — call it `<Event> — Official Writeup` only when the user hosted or authored that CTF/challenge. If the user merely competed in someone else's event, the title is just `<Event> — Writeup`.
+- **CTF writeup structure** — lives in `src/content/ctf/writeups/<slug>/index.md`. Combine every challenge into one page. Category as `##`, challenge as `###`, and four `####` phases per challenge in this order: `Overview`, `Insight`, `Exploitation`, `Root cause`. Open with a `## Contents` table (Category / Challenge / bug class). Use `date` for the competition date and `lastmod` for when the writeup was actually written (they differ for late writeups). Prefer an `Overview` heading over `Setup`.
+- **Source writeups are often mixed Chinese/English with filler** (e.g. "suggested image placement" notes, dead `step_N.png` image links). Compose clean English and drop the filler and broken links rather than copying verbatim. Verify every challenge dir is covered; do not invent flags for challenges whose source never recorded one.
 
 ## Key files
 
