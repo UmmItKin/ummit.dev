@@ -2,7 +2,7 @@
 title: "AWDT 2026 — Writeup"
 description: "Full attack-and-defense writeups for AWDT 2026: prototype pollution, XXE, SSRF-to-Redis, Phar deserialization, JWT forgery, Nginx off-by-slash traversal, sandbox escape RCE, ML data poisoning, an async TOCTOU race, stored XSS, and a seccomp ORW pwn, each with the minimal patch."
 date: 2026-08-04T18:42:42+0800
-lastmod: 2026-08-06T01:54:08+0800
+lastmod: 2026-08-06T01:56:18+0800
 tag: "CTF, AWDT, Attack-With-Defense, WriteUp"
 lang: en-US
 ---
@@ -40,9 +40,11 @@ patch.
 
 ### SecurePortal
 
-- **Difficulty:** Easy
-- **Points:** 5
-- **Flag:** `flag{a7c4c86c-adf0-46a0-851f-abb70b22cc23}`
+| | |
+|---|---|
+| **Difficulty** | Easy |
+| **Points** | 5 |
+| **Flag** | `flag{a7c4c86c-adf0-46a0-851f-abb70b22cc23}` |
 
 #### Overview
 
@@ -323,9 +325,11 @@ without breaking the service.
 
 ### TicketX
 
-- **Points:** 5
-- **Target:** `https://eci-2zei673opu7bug9gx3hc.cloudeci1.ichunqiu.com:80`
-- **Flag:** `flag{9a7f0c1a-16b2-4fc3-ab12-33f475f09799}`
+| | |
+|---|---|
+| **Points** | 5 |
+| **Target** | `https://eci-2zei673opu7bug9gx3hc.cloudeci1.ichunqiu.com:80` |
+| **Flag** | `flag{9a7f0c1a-16b2-4fc3-ab12-33f475f09799}` |
 
 
 #### Overview
@@ -601,9 +605,11 @@ encoding is the safe, sufficient submission.
 
 ### EmpPortal
 
-- **Points:** 5
-- **Stack:** Nginx + PHP-FPM
-- **Flag:** `flag{bad6d089-abb7-47d1-ac12-7ac5c8a50622}`
+| | |
+|---|---|
+| **Points** | 5 |
+| **Stack** | Nginx + PHP-FPM |
+| **Flag** | `flag{bad6d089-abb7-47d1-ac12-7ac5c8a50622}` |
 
 #### Overview
 
@@ -929,10 +935,12 @@ For production Nginx, any of these fully closes the class of bug:
 
 ### MyHome
 
-- **Difficulty:** Easy
-- **Points:** 5
-- **Type:** Attack & Defend (AWD-T). Exploit the live service, then submit a patch.
-- **Flag:** `flag{3019e7d8-30e4-489c-ad9e-908fac8b48c7}`
+| | |
+|---|---|
+| **Difficulty** | Easy |
+| **Points** | 5 |
+| **Type** | Attack & Defend (AWD-T). Exploit the live service, then submit a patch. |
+| **Flag** | `flag{3019e7d8-30e4-489c-ad9e-908fac8b48c7}` |
 
 #### Overview
 
@@ -1741,9 +1749,11 @@ flag{a415fa68-db01-477a-84d4-de8b00321002}
 
 ### Profile Forge
 
-- **Difficulty:** Medium
-- **Points:** 5
-- **Flag:** `flag{b11c8e15-5fca-4d1b-b3bd-3fd78714a3e9}`
+| | |
+|---|---|
+| **Difficulty** | Medium |
+| **Points** | 5 |
+| **Flag** | `flag{b11c8e15-5fca-4d1b-b3bd-3fd78714a3e9}` |
 
 
 #### Overview
@@ -2248,10 +2258,12 @@ with the patched version and the service auto-restarts. After the restart:
 
 ### Async Report
 
-- **Difficulty:** Medium
-- **Points:** 5
-- **Target:** `https://eci-2zei673opu7bu4fa8rja.cloudeci1.ichunqiu.com:80`
-- **Flag:** `flag{bd1f4404-ac87-4371-9303-85088fd89170}`
+| | |
+|---|---|
+| **Difficulty** | Medium |
+| **Points** | 5 |
+| **Target** | `https://eci-2zei673opu7bu4fa8rja.cloudeci1.ichunqiu.com:80` |
+| **Flag** | `flag{bd1f4404-ac87-4371-9303-85088fd89170}` |
 
 
 #### Overview
@@ -2627,11 +2639,13 @@ production fix would go further with defense in depth:
 
 ### Regex Sync Rules
 
-- **Points:** 5, plus persistent attack/defense points per round
-- **Target:** `https://eci-2ze9j9q4h4ds5bp4bx8i.cloudeci1.ichunqiu.com:5000`
-- **Flag:** `flag{37c73aa9-66f8-4a0a-b4a3-f3ba5030f126}`
-- **Vulnerability:** sandboxed `eval()` on a user-controlled "legacy replacement" expression, leading to a sandbox escape and RCE
-- **Fix:** replace `eval()` with a safe recursive-descent interpreter for the legacy grammar
+| | |
+|---|---|
+| **Points** | 5, plus persistent attack/defense points per round |
+| **Target** | `https://eci-2ze9j9q4h4ds5bp4bx8i.cloudeci1.ichunqiu.com:5000` |
+| **Flag** | `flag{37c73aa9-66f8-4a0a-b4a3-f3ba5030f126}` |
+| **Vulnerability** | sandboxed `eval()` on a user-controlled "legacy replacement" expression, leading to a sandbox escape and RCE |
+| **Fix** | replace `eval()` with a safe recursive-descent interpreter for the legacy grammar |
 
 
 #### Overview
@@ -3123,8 +3137,11 @@ chmod 644 /app/app.py
 
 ### Blind Invoice XML
 
-- **Flag:** `flag{5d33dbc0-f424-4500-83be-18a8d0d229d7}`
-
+| | |
+|---|---|
+| **Difficulty** | Hard |
+| **Points** | 5 |
+| **Flag** | `flag{5d33dbc0-f424-4500-83be-18a8d0d229d7}` |
 
 #### Overview
 
@@ -3534,9 +3551,11 @@ Upload payload (headers `X-Partner-Channel: HKRIC-B2B-XML`,
 
 ### Phar Gallery
 
-- **Value:** 5 (attack) + 5 (defense) per round
-- **Target:** `https://eci-2ze3oet7h253uo9buvgp.cloudeci1.ichunqiu.com:5000`
-- **Flag:** `flag{0c8e9f26-e5e0-4f84-a45f-07c22d7cbeac}`
+| | |
+|---|---|
+| **Value** | 5 (attack) + 5 (defense) per round |
+| **Target** | `https://eci-2ze3oet7h253uo9buvgp.cloudeci1.ichunqiu.com:5000` |
+| **Flag** | `flag{0c8e9f26-e5e0-4f84-a45f-07c22d7cbeac}` |
 
 
 #### Overview
@@ -4014,9 +4033,11 @@ restarts the service and the defense point is scored on every following round.
 
 ### ColdChain Drift
 
-- **Points:** 5 (Attack) + 5 (Defense)
-- **Target:** `https://eci-2zei3oczjahy1rzlbnp4.cloudeci1.ichunqiu.com:5000/` (ephemeral AWD container)
-- **Flag:** `flag{a08d64b8-454f-4cc1-af2b-12917e960d86}`
+| | |
+|---|---|
+| **Points** | 5 (Attack) + 5 (Defense) |
+| **Target** | `https://eci-2zei3oczjahy1rzlbnp4.cloudeci1.ichunqiu.com:5000/` (ephemeral AWD container) |
+| **Flag** | `flag{a08d64b8-454f-4cc1-af2b-12917e960d86}` |
 
 
 #### Overview
@@ -4546,10 +4567,12 @@ Both layers independently block the exploit; benign traffic is unaffected. Neith
 
 ### VaultKeeper
 
-- **Difficulty:** Medium
-- **Points:** 5
-- **Remote:** `nc 47.95.207.40 30723`
-- **Binary path on server:** `/app/vaultkeeper`
+| | |
+|---|---|
+| **Difficulty** | Medium |
+| **Points** | 5 |
+| **Remote** | `nc 47.95.207.40 30723` |
+| **Binary path on server** | `/app/vaultkeeper` |
 
 VaultKeeper is a command-line credential vault. Players interact with *text
 vaults* and *key vaults*, then abuse flawed **clone** / **export** semantics to
