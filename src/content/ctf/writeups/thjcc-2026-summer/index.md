@@ -17,6 +17,8 @@ noise.
 
 > Our SOC pulled the HTTP logs off chal.thjcc.org after an alert fired overnight. Find the secret message within these logs :)
 
+![NoNo challenge on CTFd](./NoNo-CTFd.png)
+
 | | |
 |---|---|
 | **Difficulty** | Easy |

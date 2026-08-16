@@ -15,6 +15,8 @@ lang: zh-TW
 
 > Our SOC pulled the HTTP logs off chal.thjcc.org after an alert fired overnight. Find the secret message within these logs :)
 
+![NoNo 在 CTFd 上的題目卡](./NoNo-CTFd.png)
+
 | | |
 |---|---|
 | **難度** | Easy |
