@@ -1,7 +1,7 @@
 ---
 title: "AWDT 2026 — Writeup"
 description: "Full attack-and-defense writeups for AWDT 2026: prototype pollution, XXE, SSRF-to-Redis, Phar deserialization, JWT forgery, Nginx off-by-slash traversal, sandbox escape RCE, ML data poisoning, an async TOCTOU race, stored XSS, and a seccomp ORW pwn, each with the minimal patch."
-date: 2026-08-06T01:56:18+0800
+date: 2026-08-04T18:42:42+0800
 lastmod: 2026-08-06T01:56:18+0800
 tag: "CTF, AWDT, Attack-With-Defense, WriteUp"
 lang: en-US

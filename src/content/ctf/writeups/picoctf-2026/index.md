@@ -1,8 +1,8 @@
 ---
 title: "picoCTF 2026 — Writeup"
 description: "A picoCTF writeup covering 11 challenges across Web, Cryptography, Forensics, and Reverse Engineering: IDOR via MD5, SQLi to hash cracking, a Flask session OTP leak, LFSR-AES, Diffie-Hellman key reuse, an RSA key hidden in JPEG metadata, bitstream and git-history forensics, XOR unpacking, and a Heartbleed-style heap over-read."
-date: 2026-08-06T00:53:28+0800
-lastmod: 2026-08-06T00:53:28+0800
+date: 2026-08-06T00:51:33+0800
+lastmod: 2026-08-06T00:51:33+0800
 tag: "CTF, picoCTF, WriteUp"
 lang: en-US
 ---
