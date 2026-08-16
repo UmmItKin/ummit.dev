@@ -23,6 +23,10 @@ own config is a code-execution surface.
 
 ### Git Playground
 
+| | |
+|---|---|
+| **Flag** | `hitcon{Bu5yb0X_34511y_cR4sH_Wh3N_bu117_w17h_C14Ng?}` |
+
 #### Overview
 
 `run.sh` builds a minimal chroot with only `/bin`, `/root`, `/work`, and
@@ -105,11 +109,15 @@ touch a && git add a && git commit -qm x
 FLAG="hitcon{demo}" script -qec 'git log' /dev/null   # -> hitcon{demo}
 ```
 
+The `hitcon{demo}` value is just a placeholder for the local run. On the remote jail
+the same steps print the real flag from its `FLAG` variable.
+
+Flag: `hitcon{Bu5yb0X_34511y_cR4sH_Wh3N_bu117_w17h_C14Ng?}`
+
 #### Root cause
 
 The jail treats a git repo's own metadata as ordinary user data. Any sandbox that
 hands a user a real git repo plus arbitrary writes inside it inherits git's full
 config-driven code-execution surface: `core.pager`, `core.fsmonitor`,
 `core.sshCommand`, aliases, hooks, and more. Blacklisting the word `hook` closes one
-door and leaves the rest open. The `hitcon{demo}` value above is only a placeholder
-for the local run; the real flag comes from the `FLAG` variable on the remote jail.
+door and leaves the rest open.
