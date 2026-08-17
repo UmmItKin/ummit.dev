@@ -55,6 +55,9 @@ export default defineConfig({
   ],
 
   safelist: [
+    // Toggled from JS by the footer build-freshness check.
+    'text-emerald-400',
+    'text-yellow-500',
     // UI icons
     'i-ri-file-list-2-line',
     'i-ri-rss-line',

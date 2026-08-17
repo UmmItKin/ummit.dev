@@ -1,8 +1,18 @@
 ---
+import { execSync } from 'node:child_process'
 import { siteConfig } from '@/config'
 import { getLinkTarget } from '@/utils/link'
 
 const footerNavLinks = siteConfig.footer?.navLinks ?? []
+
+// Commit this build was cut from, baked in at build time.
+let buildCommit = 'unknown'
+try {
+  buildCommit = execSync('git rev-parse HEAD').toString().trim()
+} catch {
+  // Not a git checkout (e.g. some CI). Leave it as unknown.
+}
+const repoApi = 'https://api.github.com/repos/UmmItKin/ummit.dev/commits/master'
 ---
 
 <footer
@@ -34,6 +44,22 @@ const footerNavLinks = siteConfig.footer?.navLinks ?? []
   <div class="op-50 text-xs font-mono">
     Running for <span id="site-uptime">...</span>
   </div>
+  {
+    buildCommit !== 'unknown' && (
+      <div class="op-50 text-xs font-mono flex items-center gap-1.5" data-build={buildCommit} data-api={repoApi}>
+        <span>Build</span>
+        <a
+          class="nav-link"
+          href={`https://github.com/UmmItKin/ummit.dev/commit/${buildCommit}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {buildCommit.slice(0, 7)}
+        </a>
+        <span id="build-status" class="build-status op-70" />
+      </div>
+    )
+  }
 </footer>
 
 <script define:vars={{ startTime: siteConfig.siteStartedAt }}>
@@ -54,3 +80,55 @@ const footerNavLinks = siteConfig.footer?.navLinks ?? []
   tick()
   document.addEventListener('astro:page-load', tick)
 </script>
+
+<script>
+  import { checkBuildFreshness } from '@/utils/build-status'
+
+  async function updateBuildStatus() {
+    const el = document.querySelector('[data-build]')
+    const status = document.getElementById('build-status')
+    if (!(el instanceof HTMLElement) || !status || el.dataset.checked) {
+      return
+    }
+    el.dataset.checked = '1'
+
+    const { build, api } = el.dataset
+    if (!build || !api) {
+      return
+    }
+
+    const result = await checkBuildFreshness(api, build)
+    if (!result) {
+      return
+    }
+    const fresh = result === 'fresh'
+    status.textContent = fresh ? 'up to date' : 'update available'
+    status.classList.toggle('text-emerald-400', fresh)
+    status.classList.toggle('text-yellow-500', !fresh)
+    // Next frame, so the blurred state paints before the transition runs.
+    requestAnimationFrame(() => status.classList.add('is-loaded'))
+  }
+  updateBuildStatus()
+  document.addEventListener('astro:page-load', updateBuildStatus)
+</script>
+
+<style>
+  .build-status {
+    opacity: 0;
+    filter: blur(4px);
+    transition:
+      opacity 0.4s ease,
+      filter 0.4s ease;
+  }
+
+  .build-status.is-loaded {
+    opacity: 1;
+    filter: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .build-status {
+      transition: none;
+    }
+  }
+</style>
