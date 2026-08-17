@@ -1,4 +1,4 @@
-import type { APIRoute, GetStaticPaths } from 'astro'
+import type { APIRoute } from 'astro'
 import type { PostKey } from '@/types'
 import { Buffer } from 'node:buffer'
 import { readFile } from 'node:fs/promises'
@@ -146,10 +146,7 @@ export function makeOgPageRoute(section: string, title: string): APIRoute {
 }
 
 // Per-post OG route: one image per entry in a collection, labelled `section`.
-export function makeOgSlugRoute(collection: PostKey, section: string): {
-  getStaticPaths: GetStaticPaths
-  GET: APIRoute
-} {
+export function makeOgSlugRoute(collection: PostKey, section: string) {
   return {
     getStaticPaths: async () => {
       const posts = await getCollection(collection)
