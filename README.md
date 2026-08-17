@@ -22,13 +22,15 @@ All the packages are using the latest versions and are upgraded by me regularly.
 
 Extensions on top of the original Vitesse theme:
 
-- **Astro 6** with the new content layer API
+- **Astro 7** with the content layer API
 - **7 content collections** — `blog`, `infosec`, `ctf`, `talks`, `research`, `paper`, `pages`
 - **Auto OG image generation** — dynamic Open Graph images per page and per post (Satori)
+- **View and like counters** — serverless, straight to the Firestore REST API (no SDK, no key)
+- **Build freshness stamp** — the footer shows the build's commit and checks it against GitHub
 - **Per-post `lastmod`** support
 - **Self-hosted variable fonts** — Google Sans Flex + Google Sans Code (no external font requests)
 - **Competition experience** — table with CTF placements and rankings
-- **Friends page** — card layout with hover effects
+- **Friends page** — clean list layout
 - **Gear page** — share your setup and tools
 - **Links page** — linktree-style with stagger animation
 - **Projects page** — showcase with category grouping
@@ -37,7 +39,7 @@ Extensions on top of the original Vitesse theme:
 
 ## Getting Started
 
-Requires [Bun](https://bun.sh/) and Node 22+ (npm/yarn not supported here).
+Requires [Bun](https://bun.sh/) and Node 24.x (npm/yarn not supported here).
 
 ```bash
 bun install      # install dependencies
@@ -48,8 +50,8 @@ bun lint:fix     # auto-fix lint issues
 
 ## Contributing
 
-- [`CLAUDE.md`](./CLAUDE.md) — orientation for Claude Code and other AI coding tools
-- [`AGENTS.md`](./AGENTS.md) — full reference for OpenCode; covers repo conventions, content rules, and the checklist for adding a new content collection
+- [`CLAUDE.md`](./CLAUDE.md) — the single reference for repo conventions, content rules, architecture, and the checklist for adding a new content collection
+- [`AGENTS.md`](./AGENTS.md) — a thin pointer to `CLAUDE.md` for OpenCode and other agents
 
 ## License
 

@@ -28,10 +28,12 @@ Pre-commit hook (simple-git-hooks + lint-staged): runs `bun lint-staged && bun r
 
 ## Architecture
 
-See **[AGENTS.md](./AGENTS.md)** for the full reference — it is the authoritative document for this repo's conventions. Key sections:
+This file is the authoritative reference for the repo's conventions.
 
 - **Content collections** — 7 collections (`blog`, `infosec`, `ctf`, `research`, `paper`, `talks`, `pages`) defined in `src/content.config.ts` using Astro v6 content layer API. All blog-like collections share `postSchema`. Checklist for adding a new collection.
 - **Routing table** — blog posts live at `/posts/<id>`, not `/blog/<id>`; `/blog` is only for filtered listing pages. Root `[...slug].astro` handles static pages.
+- **Shared route helpers, don't hand-roll `getStaticPaths`** — collection post pages call `createPostPaths(collection)` from `PostLayout.astro`; OG routes call `makeOgPageRoute(section, title)` (static page) or `makeOgSlugRoute(collection, section)` (per-post) from `src/utils/og-image.ts`. The blog per-post OG (`og/[...slug].png.ts`) stays hand-written because it uses `getPosts()` to filter drafts, which the `getCollection`-based factory does not.
+- **Footer build stamp** — `Footer.astro` bakes the build commit via `execSync('git rev-parse HEAD')` in frontmatter (build-time), then the client compares it against the GitHub commits API to show up-to-date/stale. Compare logic lives in `src/utils/build-status.ts` (a `.ts` file, not the inline script, because of the `try`/`catch` lint deadlock).
 - **Styles** — UnoCSS shortcuts in `uno.config.ts`; icons only from `i-ri-*` (Remix) and `i-simple-icons-*` sets; dark theme only. New icons must be safelisted in `uno.config.ts`. Only Tailwind v3 utility classes exist — `text-2xs` does NOT work (smallest is `text-xs`).
 - **Fonts** — self-hosted Google Sans Flex (sans) + Google Sans Code (mono) via `src/styles/fonts.css`. Long unicode-range lines trigger Prettier; run `bun lint:fix` after editing. OG images use Satori which only supports TTF/OTF — `public/fonts/Inter-Bold.ttf` is for Satori only, the site uses woff2.
 - **Responsive** — breakpoint `md:` = 768px. Pattern: `class="md:hidden"` for mobile-only + `class="hidden md:block"` for desktop-only. Tables on mobile get a separate card/list layout.
@@ -62,7 +64,7 @@ See **[AGENTS.md](./AGENTS.md)** for the full reference — it is the authoritat
 | `astro.config.ts` | Astro config (integrations, dev port 4321, `INVALID_ANNOTATION` warnings suppressed) |
 | `uno.config.ts` | UnoCSS shortcuts, presets, **icon safelist** (new icons must be added here) |
 | `src/styles/fonts.css` | Self-hosted @font-face declarations for Google Sans Flex + Google Sans Code |
-| `src/pages/index.astro` | Homepage (bio, CTF teams, competition table, timeline, stacks) |
+| `src/pages/index.astro` | Homepage (bio, CTF teams, competition table, CTF contributions, stacks) |
 | `docs/firestore.rules` | Security rules for the view/like counters. Must be pasted into the Firebase console by hand, nothing deploys them |
 | `public/fonts/` | Self-hosted woff2 font files + Inter-Bold.ttf (for Satori OG images) |
 
