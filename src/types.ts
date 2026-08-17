@@ -49,6 +49,7 @@ export interface ProfileConfig {
   taglineIcon?: string
   intro: string
   subtagline?: string
+  mbti?: string
   bio: string[]
   gpgKeyUrl?: string
   badges: {
@@ -65,16 +66,6 @@ export interface ProfileConfig {
 export interface SkillItem {
   label: string
   value: number
-}
-
-// Timeline
-export interface TimelineEntry {
-  title: string
-  date: string
-  role: string
-  description: string
-  url?: string
-  icon: string
 }
 
 // Competitions
@@ -151,7 +142,6 @@ export interface FeaturesConfig {
   sponsor: boolean
   githubContributions: boolean
   skills: boolean
-  timeline: boolean
   competitions: boolean
   stacks: boolean
   deadMansSwitch: boolean

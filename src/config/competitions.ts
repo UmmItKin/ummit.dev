@@ -35,3 +35,15 @@ export const competitions: CompetitionEntry[] = [
     details: '\u2014',
   },
 ]
+
+export interface ContributionEntry {
+  event: string
+  role: string
+}
+
+export const contributions: ContributionEntry[] = [
+  { event: 'No Hack No CTF 2025', role: 'Challenge Author, Website Design' },
+  { event: 'No Hack No CTF 2026', role: 'Challenge Author, Website Design' },
+  { event: 'THJCC 2026', role: 'Challenge Author' },
+  { event: 'THJCC 2026 Summer', role: 'Challenge Author' },
+]

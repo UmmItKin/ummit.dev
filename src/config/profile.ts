@@ -5,7 +5,8 @@ export const profile: ProfileConfig = {
   taglineIcon: 'i-simple-icons-linux',
   intro:
     'HKer, InfoSec enthusiast currently into Computer Forensics, Wireless Attack, Web Security, GNU/Linux, and Open source. Also hunting CVEs :D',
-  subtagline: 'Aspiring to become a professional Red Team operator. INTP-T (MBTI)',
+  subtagline: 'Aspiring to become a professional Red Team operator.',
+  mbti: 'INTP-T',
   gpgKeyUrl: 'https://github.com/UmmItKin.gpg',
   bio: [
     'I\u2019ve been self-taught since I was a kid. Right now I\'m studying InfoSec in Hong Kong, and the stuff I keep coming back to is red teaming, reverse engineering, and web hacking. I started taking this seriously around middle school. HTML, CSS, JavaScript first, then C#, VB.NET, a few others. I don\'t really touch those anymore. Lately it\'s web hacking and red team work.',
@@ -32,15 +33,15 @@ export const profile: ProfileConfig = {
     challenges: [
       {
         href: 'https://ctftime.org/event/2818/',
-        title: 'NHNC CTF',
-        subtitle: 'Challenge Creator',
+        title: 'No Hack No CTF',
+        subtitle: 'CTF Contributor',
         description: 'I created challenges and helped with the design side for No Hack No CTF.',
         image: '/badges/nhnc.webp',
       },
       {
         href: 'https://thjcc.org',
         title: 'THJCC CTF',
-        subtitle: 'Challenge Creator',
+        subtitle: 'CTF Contributor',
         description: 'A Taiwai CTF event where I also contributed challenge-related work.',
         image: '/badges/thjcc.png',
       },

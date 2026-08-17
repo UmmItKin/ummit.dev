@@ -8,8 +8,7 @@ import { siteConfig } from '@/config'
 import { profile } from '@/config/profile'
 import { skills } from '@/config/skills'
 import { stacks } from '@/config/stacks'
-import { timeline } from '@/config/timeline'
-import { competitions } from '@/config/competitions'
+import { competitions, contributions as ctfContributions } from '@/config/competitions'
 import { features } from '@/config/features'
 import type { Badge } from '@/types'
 import { fetchGitHubContributions } from '@/utils/github-contributions'
@@ -20,7 +19,7 @@ const contributions = features.githubContributions ? await fetchGitHubContributi
 
 const badgeGroups = [
   { label: 'CTF Team', badges: profile.badges.teams ?? [] },
-  { label: 'Challenge Creator', badges: profile.badges.challenges ?? [] },
+  { label: 'CTF Contributor', badges: profile.badges.challenges ?? [] },
   { label: 'Hacking', badges: profile.badges.platforms ?? [] },
   { label: 'Creator', badges: profile.badges.projects ?? [] },
   { label: 'Community', badges: profile.badges.community ?? [] },
@@ -35,7 +34,19 @@ const badgeGroups = [
       {profile.taglineIcon && <i class:list={[profile.taglineIcon, 'text-3xl']} />}
     </h1>
     <p>{profile.intro}</p>
-    {profile.subtagline && <p class="mt-1 text-sm opacity-60">{profile.subtagline}</p>}
+    {
+      (profile.subtagline || profile.mbti) && (
+        <p class="mt-1 text-sm opacity-60 flex items-center gap-2 flex-wrap">
+          {profile.subtagline && <span>{profile.subtagline}</span>}
+          {profile.mbti && (
+            <span class="inline-flex items-center gap-1 text-xs px-1.5 py-0.5 rd-1 bg-neutral-500/15">
+              <i class="i-ri-brain-3-fill opacity-70" />
+              {profile.mbti}
+            </span>
+          )}
+        </p>
+      )
+    }
 
     {
       badgeGroups.length > 0 && (
@@ -157,42 +168,6 @@ const badgeGroups = [
     }
 
     {
-      features.timeline && (
-        <>
-          <section class="mt-8">
-            <h2 class="text-xl font-semibold mb-6">Timeline</h2>
-            <div class="relative border-l-2 border-neutral-700 pl-6 space-y-8">
-              {timeline.map((entry) => (
-                <div class="relative">
-                  <div class="absolute -left-8 top-0 w-4 h-4 rounded-full bg-neutral-400 flex items-center justify-center">
-                    <i class:list={[entry.icon, 'text-black text-xs']} />
-                  </div>
-                  <h3 class="font-medium mt-0">
-                    {entry.title}
-                    {entry.url && (
-                      <a
-                        href={entry.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`Visit ${entry.title} website`}
-                        class="timeline-link"
-                      >
-                        <i class="i-ri-external-link-line text-sm" />
-                      </a>
-                    )}
-                  </h3>
-                  <p class="text-sm opacity-70">{entry.date}</p>
-                  <p class="text-sm mt-2 opacity-80">{entry.role}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-          <hr class="hr-line" />
-        </>
-      )
-    }
-
-    {
       features.competitions && (
         <>
           <section class="mt-8">
@@ -250,6 +225,42 @@ const badgeGroups = [
                         {c.details && c.details !== '\u2014' ? c.details : <span class="opacity-25">{'\u2014'}</span>}
                         {c.subDetails && <div class="text-xs opacity-45 mt-0.5">{c.subDetails}</div>}
                       </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="mt-8">
+            <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
+              <i class="i-ri-flag-line" />
+              CTF Contributions
+            </h2>
+            <p class="text-xs opacity-45 -mt-3 mb-4">Events I have authored challenges for or otherwise helped run.</p>
+
+            <div class="md:hidden divide-y divide-neutral-800">
+              {ctfContributions.map((c) => (
+                <div class="py-3 flex items-center justify-between gap-3">
+                  <span class="font-medium">{c.event}</span>
+                  <span class="text-xs opacity-60 whitespace-nowrap">{c.role}</span>
+                </div>
+              ))}
+            </div>
+
+            <div class="hidden md:block overflow-x-auto">
+              <table class="competition-table w-full text-sm text-left">
+                <thead>
+                  <tr class="border-b border-neutral-700">
+                    <th class="pb-2 pr-4 font-medium opacity-70">Event</th>
+                    <th class="pb-2 font-medium opacity-70 whitespace-nowrap">Role</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {ctfContributions.map((c) => (
+                    <tr class="border-b border-neutral-800">
+                      <td class="py-2.5 pr-4 font-medium align-baseline">{c.event}</td>
+                      <td class="py-2.5 opacity-60 whitespace-nowrap align-baseline">{c.role}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -357,18 +368,6 @@ const badgeGroups = [
   .magic-link-icon i {
     font-size: 1em;
     opacity: 0.8;
-  }
-
-  .timeline-link {
-    margin-left: 0.5rem;
-    opacity: 0.5;
-    transition: opacity 0.2s ease;
-    border: none !important;
-  }
-
-  .timeline-link:hover {
-    opacity: 1;
-    border: none !important;
   }
 
   .competition-table tbody tr {
