@@ -1,15 +1,8 @@
 ---
-import PostLayout from '@/components/PostLayout.astro'
+import PostLayout, { createPostPaths } from '@/components/PostLayout.astro'
 import type { CollectionPosts } from '@/types'
-import { getPosts } from '@/utils/posts'
 
-export async function getStaticPaths() {
-  const posts = await getPosts()
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: { post },
-  }))
-}
+export const getStaticPaths = () => createPostPaths('blog')
 
 type Props = { post: CollectionPosts }
 

@@ -1,7 +1,10 @@
+import type { APIRoute, GetStaticPaths } from 'astro'
+import type { PostKey } from '@/types'
 import { Buffer } from 'node:buffer'
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import process from 'node:process'
+import { getCollection } from 'astro:content'
 import satori from 'satori'
 import { html } from 'satori-html'
 import sharp from 'sharp'
@@ -135,4 +138,23 @@ export function ogResponse(png: Buffer) {
       'Cache-Control': 'public, max-age=31536000, immutable',
     },
   })
+}
+
+// Static-page OG route: one image per page.
+export function makeOgPageRoute(section: string, title: string): APIRoute {
+  return async () => ogResponse(await generateOgImage(section, title))
+}
+
+// Per-post OG route: one image per entry in a collection, labelled `section`.
+export function makeOgSlugRoute(collection: PostKey, section: string): {
+  getStaticPaths: GetStaticPaths
+  GET: APIRoute
+} {
+  return {
+    getStaticPaths: async () => {
+      const posts = await getCollection(collection)
+      return posts.map(post => ({ params: { slug: post.id }, props: { title: post.data.title } }))
+    },
+    GET: async ({ props }) => ogResponse(await generateOgImage(section, (props as { title: string }).title)),
+  }
 }

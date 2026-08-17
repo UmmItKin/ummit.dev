@@ -1,7 +1,3 @@
-import type { APIRoute } from 'astro'
-import { generateOgImage, ogResponse } from '@/utils/og-image'
+import { makeOgPageRoute } from '@/utils/og-image'
 
-export const GET: APIRoute = async () => {
-  const png = await generateOgImage('Page', 'Blog')
-  return ogResponse(png)
-}
+export const GET = makeOgPageRoute('Page', 'Blog')
