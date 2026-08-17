@@ -11,55 +11,57 @@ const ogImage = { src: '/og/friends.png', alt: 'Friends' }
     <p class="text-sm opacity-45 mt-2">Cool people and their corners of the internet.</p>
   </div>
 
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
+  <ul class="flex flex-col divide-y divide-neutral-800/70">
     {
       friends.map((friend) => (
-        <div class="friend-card flex flex-col items-center p-3 md:p-4 rounded-xl border border-neutral-800 hover:border-neutral-600 hover:bg-neutral-500/5 transition-all duration-300 group">
-          <a href={friend.url} target="_blank" rel="noopener noreferrer" class="relative">
+        <li class="friend-row flex items-center gap-5 md:gap-6 py-5 md:py-6">
+          <a href={friend.url} target="_blank" rel="noopener noreferrer" class="shrink-0">
             <img
               src={friend.image}
               alt={`${friend.name}'s avatar`}
               width="80"
               height="80"
-              class="friend-avatar w-16 h-16 md:w-20 md:h-20 rd-full object-cover group-hover:scale-105 transition-transform duration-300"
+              class="friend-avatar w-16 h-16 md:w-20 md:h-20 rd-full object-cover"
               loading="lazy"
             />
           </a>
-          <a
-            href={friend.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mt-2 md:mt-3 text-xs md:text-sm font-medium opacity-85 hover:opacity-100 transition-opacity decoration-none"
-          >
-            {friend.name}
-          </a>
-          {friend.tooltip && (
-            <span class="mt-1 text-2xs md:text-xs opacity-40 text-center leading-snug px-1">{friend.tooltip}</span>
-          )}
-          <div class="mt-2 flex gap-2 md:gap-3 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-            <a
-              href={friend.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-1 text-xs opacity-45 hover:opacity-100 transition-opacity decoration-none"
-            >
-              <i class="i-simple-icons-github text-xs md:text-sm" />
-              <span class="md:hidden">GitHub</span>
-            </a>
+
+          <div class="min-w-0">
             <a
               href={friend.url}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-1 text-xs opacity-45 hover:opacity-100 transition-opacity decoration-none"
+              class="text-lg md:text-xl font-medium opacity-90 hover:opacity-100 transition-opacity decoration-none"
             >
-              <i class="i-ri-global-line text-xs md:text-sm" />
-              <span class="md:hidden">Web</span>
+              {friend.name}
             </a>
+            {friend.tooltip && <p class="text-sm opacity-40 mt-1 leading-snug truncate">{friend.tooltip}</p>}
+
+            <div class="flex items-center gap-4 mt-2">
+              <a
+                href={friend.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${friend.name}'s website`}
+                class="inline-flex opacity-40 hover:opacity-100 transition-opacity duration-200 decoration-none"
+              >
+                <i class="i-ri-global-line text-lg" />
+              </a>
+              <a
+                href={friend.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${friend.name}'s GitHub`}
+                class="inline-flex opacity-40 hover:opacity-100 transition-opacity duration-200 decoration-none"
+              >
+                <i class="i-simple-icons-github text-base" />
+              </a>
+            </div>
           </div>
-        </div>
+        </li>
       ))
     }
-  </div>
+  </ul>
 </BaseLayout>
 
 <style>
