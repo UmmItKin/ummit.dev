@@ -2,7 +2,7 @@
 title: "Install GNOME, Wayland, and GDM on Gentoo with OpenRC"
 description: "Set up GNOME desktop with Wayland and GDM on Gentoo Linux using OpenRC."
 date: 2023-09-26T21:22:21+0800
-lastmod: 2026-07-28T01:50:00+0800
+lastmod: 2026-08-17T23:47:32+0800
 tag: "Gentoo, GNOME, Wayland"
 lang: en-US
 ---
@@ -57,7 +57,7 @@ Here's the purpose of each USE flag:
 
 - **gnome:** The presence of this flag communicates your intent to install GNOME, prompting the system to fetch the necessary dependencies.
 
-- **dbus:** Activation of D-Bus support is crucial for establishing seamless communication between applications and the GNOME desktop environment.
+- **dbus:** Applications talk to the GNOME desktop over D-Bus, so this support is required.
 
 - **elogind:** Enabling this flag ensures proper integration with elogind, a critical component for managing user sessions in Gentoo.
 
@@ -123,7 +123,7 @@ You can initiate Elogind immediately using the following command:
 rc-service elogind start
 ```
 
-Enabling Elogind is a crucial step in preparing your Gentoo system to deliver a flawless GNOME desktop experience. Its role in managing user sessions is pivotal, and it paves the way for the activation of various GNOME features.
+Elogind manages user sessions, and various GNOME features depend on it.
 
 ## Step 7: Installing the Display Manager Initialization Script
 

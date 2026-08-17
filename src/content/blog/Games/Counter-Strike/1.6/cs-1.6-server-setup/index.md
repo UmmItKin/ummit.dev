@@ -2,7 +2,7 @@
 title: "How to Set Up a Counter-Strike 1.6 Server with Zombie Plague and Bots"
 description: Set up a Counter-Strike 1.6 server on an Ubuntu VPS with Zombie Plague mod, yapb bots, and FastDL support.
 date: 2021-12-11T00:00:00+0800
-lastmod: 2026-07-28T01:50:00+0800
+lastmod: 2026-08-17T23:47:32+0800
 tag: "Counter-Strike, Server Setup, Gaming"
 lang: en-US
 ---
@@ -37,13 +37,13 @@ With your VPS ready, the next step is logging in. We won't cover VPS security in
 
 ### Preparing for Server Access
 
-Before we dive into the thrilling world of CS 1.6 setup, you'll need a secure way to access your VPS. This is where SSH (Secure Shell) comes into play. SSH allows you to connect to your server over a secure channel, so that your actions are encrypted and protected from prying eyes.
+You access the VPS over SSH, which encrypts the connection.
 
 Your VPS provider will have detailed documentation on how to access your server using SSH. This documentation will include crucial information like the server's IP address, username, and hostname. Make sure to have this information at hand before proceeding.
 
 ### Logging In with SSH
 
-Now that you're armed with the necessary information, let's get you logged into your server using SSH. Here's how it's done:
+To log in with SSH:
 
 1. **Open a Terminal:** On your local machine, open a terminal. If you're using a Windows machine, you can use tools like PuTTY or Windows Subsystem for Linux (WSL) to access SSH.
 
@@ -65,11 +65,11 @@ That's it for logging in. The next parts cover installing the essential tools an
 
 ## Step 3: Updating, Upgrading, and Port 22 Access: Laying the Foundation
 
-Now that you're logged into your VPS server, it's time to ensure that your system is up to date and that you have the necessary port access to maintain a seamless connection. In this segment, we'll be using the reliable Ubuntu distribution to guide us through the process. Ubuntu's stability and performance make it an excellent choice for hosting game servers.
+Now that you are logged in, update the system and make sure port 22 stays open so you do not lock yourself out. This guide uses Ubuntu, which works well for game server hosting.
 
 ### Up to date Your System
 
-Before we get into the nitty-gritty of gaming, let's make sure your system is fresh and up to date. Run the following commands to update, upgrade, and perform a distribution upgrade on your system:
+Update the system first. These commands update, upgrade, and distribution-upgrade:
 
 ```shell
 sudo apt-get update -y
@@ -392,7 +392,7 @@ Before proceeding to the next step of installing Zombie Plague, let's ensure tha
 
 ## Step 12: Installing the Zombie Plague Mod
 
-Prepare to infuse the Zombie Plague mod into your CS 1.6 server. Follow these steps meticulously for a seamless installation:
+Now install the Zombie Plague mod into your CS 1.6 server:
 
 1. **Obtaining the Zombie Plague Mod:**
 
@@ -714,7 +714,7 @@ Here's what you need to know:
 
 **3. Non-Proxy (DNS Only) Status:** To ensure that players can connect to your Counter-Strike 1.6 server, you must set the custom domain to `DNS Only` status in Cloudflare. This configuration will route the traffic directly to your server without going through Cloudflare's proxy servers. This is crucial because, as mentioned, CS 1.6 doesn't support HTTPS, and forcing HTTPS through Cloudflare will result in connection issues.
 
-**4. Maintaining Server Connectivity:** By setting your custom domain to `DNS Only` status in Cloudflare, you ensure that players can connect to your Counter-Strike 1.6 server without any encryption-related problems. This maintains the compatibility required for a seamless gaming experience.
+**4. Maintaining Server Connectivity:** By setting your custom domain to `DNS Only` status in Cloudflare, you ensure that players can connect to your Counter-Strike 1.6 server without any encryption-related problems. This keeps client connections working.
 
 It's essential to follow these steps to guarantee that your custom domain and Cloudflare setup don't interfere with the connectivity of your Counter-Strike 1.6 server. By prioritizing non-proxy (DNS only) status, you'll ensure that players can join your server without encountering any obstacles related to HTTPS compatibility.
 

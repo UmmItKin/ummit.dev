@@ -2,14 +2,14 @@
 title: "Essential Pacman Commands for Arch Linux Package Management"
 description: "Every Pacman command you need for installing, updating, and managing packages on Arch Linux."
 date: 2023-08-29T00:35:40+0800
-lastmod: 2026-07-28T01:40:00+0800
+lastmod: 2026-08-17T23:47:32+0800
 tag: "Arch Linux, Pacman, Package Management"
 lang: en-US
 ---
 
 ## Introduction
 
-If you're an Arch Linux user, you're undoubtedly familiar with Pacman, the package manager that defines the Arch Linux experience. Known for its speed, efficiency, and simplicity, Pacman is your go-to tool for installing, updating, and managing software on your Arch Linux system. This guide covers the essential Pacman commands that are pivotal for efficient system management.
+If you're an Arch Linux user, you're undoubtedly familiar with Pacman, the package manager that defines the Arch Linux experience. Known for its speed, efficiency, and simplicity, Pacman is your go-to tool for installing, updating, and managing software on your Arch Linux system. This guide covers the Pacman commands you will actually use.
 
 ### Installing Packages
 

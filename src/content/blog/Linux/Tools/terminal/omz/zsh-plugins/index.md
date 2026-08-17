@@ -2,7 +2,7 @@
 title: "Must-Have Oh My Zsh Plugins for Productivity"
 description: "Must-have Oh My Zsh plugins for syntax highlighting, auto-suggestions, and command completion."
 date: 2023-08-11T10:05:30+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-08-17T23:47:32+0800
 tag: "Linux, Zsh, Productivity"
 lang: en-US
 ---
@@ -13,7 +13,7 @@ Oh-My-Zsh plugins are the secret sauce that can transform your terminal life. Im
 
 ## Git Plugin: Your Versatile Commandeer
 
-Harnessing the power of the Git plugin within Oh My Zsh is a seamless journey that yields incredible results. By default, this plugin is already activated upon installation, ready to elevate your terminal prowess. However, if you ever wish to ensure its presence, these steps will guide your way:
+The Git plugin is enabled by default. To make sure it is there:
 
 1. Unlock the gateway to configuration by opening your `~/.zshrc` file:
 
@@ -67,8 +67,5 @@ plugins=(zsh-autosuggestions)
 
 #### See the effect
 
-1. Close your terminal, allowing the old to merge with the new.
-2. As you reopen your terminal, a new epoch emerges.
-3. Evoke your commands with a renewed sense of purpose, as zsh-autosuggestions weave their enchantment.
-
-Each keystroke becomes an act of collaboration. The terminal's uncanny intelligence draws from your history, guiding your commands with remarkable precision. Suggestions gracefully unfurl, a testament to the harmony of instinct and technology. The terminal transcends its role as a mere tool, transforming into an intuitive companion that empowers your journey through the digital realm.
+1. Close and reopen your terminal.
+2. Type a command you have run before. zsh-autosuggestions will suggest the rest of it in grey as you type; press the right arrow to accept.

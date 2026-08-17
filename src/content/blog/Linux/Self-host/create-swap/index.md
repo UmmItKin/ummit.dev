@@ -2,7 +2,7 @@
 title: "Creating a Swap File on Your Linux VPS"
 description: "Create a swap file on your Linux VPS to improve memory management and prevent out-of-memory crashes."
 date: 2023-08-14T09:15:24+08:00
-lastmod: 2026-07-28T01:50:00+0800
+lastmod: 2026-08-17T23:47:32+0800
 tag: "Linux, VPS, Memory Management"
 lang: en-US
 ---
@@ -17,17 +17,7 @@ Enabling swap on your Linux VPS system can significantly enhance its performance
 
 This is where a swap file comes into play. It acts as a supplementary form of memory that the system can utilize when physical RAM is exhausted. Here's why enabling swap is beneficial:
 
-1. **Improved Multitasking:** Swap facilitates smoother multitasking by providing extra memory for processes and applications to operate effectively. This memory management helps your VPS handle multiple tasks at once.
-
-2. **Memory Safety Net:** In scenarios where memory-intensive processes surge unexpectedly, swap acts as a safety net, preventing your system from becoming unresponsive or crashing. This safety mechanism ensures the stability of your VPS during varying workloads.
-
-3. **Smooth Operations:** With swap in place, your VPS can gracefully navigate through instances of high memory demand. This results in consistently smooth and reliable performance, even during periods of resource strain.
-
-4. **Optimal Performance:** By harmonizing physical RAM with swap space, your VPS achieves an equilibrium that optimizes its performance. This equilibrium empowers your system to proficiently manage memory-intensive tasks without compromising its overall responsiveness.
-
-5. **Enhanced Workload Capacity:** Enabling swap effectively broadens the spectrum of tasks your VPS can adeptly handle. By extending its capabilities through additional memory, your system becomes more adaptable to diverse workloads, ensuring a seamless user experience regardless of hardware limitations.
-
-Enabling swap effectively extends the capabilities of your VPS, allowing it to handle a broader range of workloads and ensuring a seamless user experience, even when operating with modest hardware resources.
+Swap gives your VPS extra memory headroom. When processes need more RAM than you have, the kernel moves inactive pages to swap instead of killing them, so memory-hungry workloads keep running and the system does not freeze or crash. On a small-RAM VPS that alone can be the difference between working and OOM.
 
 ## Step 1: Checking Existing Swap Space (Optional)
 
@@ -73,41 +63,35 @@ sudo swapon /swapfile
 
 ## Step 4: Making the Swap File Permanent
 
-To keep the swap file working after a system reboot, create an entry in the `/etc/fstab` file. This file defines filesystems and devices, including the essential swap space. Let's illuminate the significance of the `defaults 0 0` parameters:
+To keep the swap file after a reboot, add an entry to `/etc/fstab`. What the fields mean:
 
-- **`defaults`:** This amalgamation of mount options consolidates prudent settings for a range of scenarios. It encompasses attributes like `rw` (read-write) and `auto` (automatic mounting during boot).
-- **`0`:** This numeric value tells filesystem checkers (fsck) the order to check filesystems. Since swap space should be examined after other filesystems, the value is set at 0.
-- **`0`:** This value exerts influence over whether the filesystem is subjected to backups through the `dump` command. Given swap space's unique nature, it eschews backups, so this value stands resolutely at 0.
+- **`defaults`:** standard mount options, including `rw` (read-write) and `auto` (mount at boot).
+- **`0`:** the fsck check order. Swap is not checked, so 0.
+- **`0`:** the `dump` backup flag. Swap is never dumped, so 0.
 
-In simpler terms, `defaults 0 0` deftly choreographs an automatic, tailored mount of the swap file during boot, follows with scrutiny of other filesystems, and gracefully sidesteps backup procedures.
-
-Now, let's give life to this insight:
-
-1. Wield a text editor, such as nano, to unveil the `/etc/fstab` file's internal mechanisms:
+1. Open `/etc/fstab` with a text editor such as nano:
 
 ```shell
 sudo nano /etc/fstab
 ```
 
-2. There, an unblemished canvas awaits your artistic touch. Paint a promising future with the following strokes:
+2. Add this line:
 
 ```plaintext
 /swapfile swap swap defaults 0 0
 ```
 
-3. Alternatively, should efficiency beckon, employ this optional command to add the required entry into `/etc/fstab`:
+3. Or add the entry with one command:
 
 ```shell
 sudo sh -c "echo '/swapfile swap swap defaults 0 0' >> /etc/fstab"
 ```
 
-With this optional command, you artfully inscribe the necessary entry into the `/etc/fstab` tapestry.
+This optional command adds the swap entry to `/etc/fstab`.
 
-- **`sudo`:** This command elevates subsequent commands with superuser privileges, often necessitated by administrator permissions.
-- **`sh -c`:** This invocation of the shell (sh) with the `-c` flag births the execution of the ensuing command.
-- **`"echo '/swapfile swap swap defaults 0 0' >> /etc/fstab"`:** This command, encased in double quotes, journeys into the shell's domain for execution. The `echo` command composes the specified line (`/swapfile swap swap defaults 0 0`) onto the canvas of the `/etc/fstab` file. The `>>` operator graciously appends the output of the `echo` command to the file.
-
-In essence, the orchestrational prowess of `sh -c` enables you to wield a command as if you were speaking it directly into a shell, offering an elegant avenue for executing a singular command or succinct script within a tailored context.
+- **`sudo`:** runs the command as root, needed because `/etc/fstab` is root-owned.
+- **`sh -c`:** runs the quoted string as a shell command, so the `>>` redirect is done by that shell rather than your current one.
+- **`echo ... >>`:** appends the swap line to `/etc/fstab`.
 
 ## Step 5: Adjusting Swappiness (Optional)
 
@@ -143,7 +127,7 @@ sudo reboot
 
 ## Step 7: Verifying Swap Activation
 
-Ensuring the successful activation of your swap file is imperative. You can employ tools like `htop`, `btop`, or the command `swapon --show` to validate the presence and utilization of your swap space.
+Check that the swap file is active with `htop`, `btop`, or `swapon --show`.
 
 - **htop:** Launch the `htop` utility to visualize system processes and memory usage. Look for the swap entry in the memory information section.
 
@@ -151,7 +135,7 @@ Ensuring the successful activation of your swap file is imperative. You can empl
 
 - **`swapon --show`:** Alternatively, execute the command `swapon --show` in the terminal. This will provide a concise overview of active swap devices and their respective sizes.
 
-Confirming the presence and engagement of swap space ensures that your VPS is equipped to gracefully manage memory and handle resource-intensive tasks.
+If swap shows up with a size, it is working.
 
 ## Bonus: Deleting a Swap File (If Needed)
 

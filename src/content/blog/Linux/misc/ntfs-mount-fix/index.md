@@ -2,14 +2,14 @@
 title: "Fix NTFS Mount Errors on Linux"
 description: "Fix the unknown filesystem type ntfs error and get your Windows NTFS drives mounting properly on Linux."
 date: 2023-08-11T05:56:25+0800
-lastmod: 2026-07-28T01:30:00+0800
+lastmod: 2026-08-17T23:47:32+0800
 tag: "Linux, NTFS, Troubleshooting"
 lang: en-US
 ---
 
 ## NTFS Compatibility
 
-The need to interact with NTFS filesystems, commonly used by Windows operating systems, is not limited to a specific Linux distribution. Both Arch Linux and Gentoo users may encounter challenges when attempting to mount NTFS partitions. Fortunately, both distributions offer solutions to address this issue and enable seamless interaction with NTFS filesystems.
+NTFS is the Windows filesystem, and mounting NTFS partitions comes up on both Arch and Gentoo. Both have packages for it.
 
 ## The Common Challenge
 

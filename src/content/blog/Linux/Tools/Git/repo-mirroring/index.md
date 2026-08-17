@@ -2,7 +2,7 @@
 title: "Set Up Git Repository Mirroring Across Platforms"
 description: Set up automated repository mirroring between GitHub, GitLab, Codeberg, and other Git platforms for redundancy.
 date: 2023-12-29T03:09:45+08:00
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-08-17T23:47:32+0800
 tag: "Git, Repository Mirroring, DevSecOps"
 lang: en-US
 ---
@@ -40,7 +40,7 @@ Click `Synchronize` to force a sync for the first time. Be patient and wait a fe
 
 Check your GitLab mirror repository. You should observe the source tree syncing with the mirrored repository, indicating a successful setup.
 
-Now, with these steps, you've established a mirrored repository, enhancing the efficiency of your DevSecOps workflow. Enjoy seamless collaboration and version control!
+That's it, the repository is now mirrored.
 
 ## Conclusion
 

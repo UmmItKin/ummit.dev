@@ -2,7 +2,7 @@
 title: "Set Up LUKS on LVM Encryption in Arch Linux"
 description: "Set up LUKS encryption on top of LVM during Arch Linux installation for flexible encrypted storage."
 date: 2023-08-10T02:08:10+0800
-lastmod: 2026-07-28T01:40:00+0800
+lastmod: 2026-08-17T23:47:32+0800
 tag: "Arch Linux, LUKS, Encryption"
 lang: en-US
 ---
@@ -378,7 +378,7 @@ Now, we'll configure the systemd-boot bootloader to manage the boot process for 
 
 ### Add Encryption Options
 
-To ensure that your encrypted partition is properly decrypted during the boot process, you need to add encryption options to the bootloader configuration. This step is crucial for seamless decryption and access to your encrypted root volume.
+To ensure that your encrypted partition is properly decrypted during the boot process, you need to add encryption options to the bootloader configuration. Without this step, the encrypted root volume will not unlock at boot.
 
 1. Add the UUID of the encrypted partition to the bootloader configuration. First, obtain the UUID of the encrypted partition using the `blkid` command:
 

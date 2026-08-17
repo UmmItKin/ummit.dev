@@ -2,7 +2,7 @@
 title: "10 Essential Post-Installation Tasks for Arch Linux"
 description: "10 things to do after installing Arch Linux including user setup, firewall, and system optimization."
 date: 2023-08-05T01:08:00+0800
-lastmod: 2026-07-28T01:50:00+0800
+lastmod: 2026-08-17T23:47:32+0800
 tag: "Arch Linux, Post-Installation, Configuration"
 lang: en-US
 ---
@@ -193,7 +193,7 @@ Arch Linux offers a default GNOME environment that's visually appealing, but you
 
 ### 8: Install Yay AUR Helper
 
-Simplifying software management on Arch Linux is the `yay` package manager, designed to streamline the acquisition and organization of software from the Arch User Repository (AUR), a vibrant hub of community-contributed packages. Depending on your preference for customization and speed.
+`yay` is an AUR helper that manages packages from the Arch User Repository.
 
 1. **Install Git and Essential Development Tools:**
 

@@ -2,7 +2,7 @@
 title: "How to Install Gentoo Linux with OpenRC"
 description: "Install Gentoo Linux with OpenRC from scratch covering disk partitioning, kernel config, and base system."
 date: 2023-09-16T17:30:34+0800
-lastmod: 2026-07-28T01:50:00+0800
+lastmod: 2026-08-17T23:47:32+0800
 tag: "Gentoo, Linux Installation, OpenRC"
 lang: en-US
 ---
@@ -151,7 +151,7 @@ Now, it's time to associate the root partition with the mount point:
 mount /dev/vda3 /mnt/gentoo
 ```
 
-By executing this command, you're linking your Gentoo root partition (/dev/vda3) with the `/mnt/gentoo` directory. This association allows you to access and configure the contents of your Gentoo installation within this directory. It's a pivotal step in setting up your Gentoo Linux system.
+By executing this command, you're linking your Gentoo root partition (/dev/vda3) with the `/mnt/gentoo` directory. This lets you access and configure your Gentoo installation under that directory.
 
 ## Step 3: Setting the System Clock
 
@@ -268,7 +268,7 @@ Within `make.conf`, you can set compiler flags to optimize system performance. A
 
 ### Understanding the Flags
 
-In Gentoo Linux, `make.conf` is a pivotal configuration file enabling you to optimize software package compilation and overall performance. The following flags offer customization options:
+`make.conf` controls how packages are compiled. Useful flags:
 
 #### `COMMON_FLAGS="-march=native -O2 -pipe"`
 

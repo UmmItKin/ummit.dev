@@ -2,7 +2,7 @@
 title: "Download HLS Encrypted Videos with FFmpeg"
 description: "Download HLS encrypted video streams using FFmpeg with cookies extracted from your browser."
 date: 2023-12-25T05:27:10+0800
-lastmod: 2026-05-17T23:05:04+0800
+lastmod: 2026-08-17T23:47:32+0800
 tag: "FFmpeg, Video Download, HLS"
 lang: en-US
 ---
@@ -19,7 +19,7 @@ we'll walk you through a direct approach using FFMPEG. Let's unwrap the steps!
 
 Before we dive in, ensure you have the following tools ready:
 
-- `FFMPEG` (for seamless file transfer)
+- `FFMPEG` (to download the stream)
 - Terminal (for executing commands)
 - Browser (for extracting the essential URL)
 
