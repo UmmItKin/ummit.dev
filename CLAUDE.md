@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Personal website & blog — [ummit.dev](https://ummit.dev). Astro 7 + Vue 3 + UnoCSS + MDX, static SSG only. Forked from `astro-theme-vitesse` with extensive customizations. Requires **Node 24.x** (`engines` pinned; CI/release still on 22) and **Bun** (npm/yarn not supported).
 
+`AGENTS.md` just redirects here — this file is the single source of truth for any agent. `opencode.json` configures the OpenCode tool's ponytail plugin and is unrelated to Claude; leave it alone.
+
 ## Commands
 
 Use **Bun only** (never npm/yarn):
@@ -67,6 +69,7 @@ This file is the authoritative reference for the repo's conventions.
 | `src/pages/index.astro` | Homepage (bio, CTF teams, competition table, CTF contributions, stacks) |
 | `docs/firestore.rules` | Security rules for the view/like counters. Must be pasted into the Firebase console by hand, nothing deploys them |
 | `public/fonts/` | Self-hosted woff2 font files + Inter-Bold.ttf (for Satori OG images) |
+| `scripts/migrate-hugo.ts` | One-off migration: converts Hugo `Article/` posts + frontmatter into `src/content/blog`. Kept for reference, not part of the build |
 
 ## View and like counters
 
