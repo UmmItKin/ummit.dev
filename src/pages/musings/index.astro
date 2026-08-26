@@ -1,12 +1,12 @@
 ---
-import ListPosts from '@/components/ListPosts.astro'
 import BaseLayout from '@/layouts/BaseLayout.astro'
+import ListPosts from '@/components/ListPosts.astro'
 import { siteConfig } from '@/config'
-import { getWriterLevel } from '@/utils/level'
 import { getPosts } from '@/utils/posts'
+import { getWriterLevel } from '@/utils/level'
 
-const ogImage = { src: '/og/paper.png', alt: 'Papers' }
-const posts = await getPosts(undefined, 'paper')
+const ogImage = { src: '/og/musings.png', alt: 'Musings' }
+const posts = await getPosts(undefined, 'musings')
 const levelInfo = getWriterLevel(posts.length)
 
 // Get the earliest year from posts
@@ -18,7 +18,7 @@ function activeLink(pathname: string) {
 }
 ---
 
-<BaseLayout title="Papers" description="Technical papers and in-depth security analyses." image={ogImage}>
+<BaseLayout title="Musings" description="Personal notes and reflections." image={ogImage}>
   <div class="flex flex-col gap-2 sm:flex-row sm:gap-4 flex-wrap mb-4">
     {
       siteConfig.page.blogLinks.map((nav) => (
@@ -36,7 +36,7 @@ function activeLink(pathname: string) {
   <div class="mb-8 p-4 rounded-lg bg-neutral-800/30 border border-neutral-700/50">
     <div class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-1">
       <span class="text-base font-semibold whitespace-nowrap">
-        {levelInfo.count}{' '}{levelInfo.count === 1 ? 'paper' : 'papers'} published
+        {levelInfo.count}{' '}{levelInfo.count === 1 ? 'piece' : 'pieces'} written
       </span>
       <span class="text-base opacity-50 whitespace-nowrap">·</span>
       <span class="text-base font-medium whitespace-nowrap text-purple-400">{levelInfo.level}</span>

@@ -28,7 +28,7 @@ function dateTransform(val: string | number | Date) {
   })
 }
 
-// Shared schema for blog-like collections (blog, talks, ctf, research, paper)
+// Shared schema for blog-like collections (blog, musings, ctf, research, infosec)
 // Preprocess copies the raw `date` into `dateRaw` before the field transform
 // below turns `date` into a display string that drops the time of day. The sort
 // in posts.ts reads `dateRaw` so same-day posts stay in real chronological order.
@@ -79,10 +79,9 @@ function postCollection(base: string) {
 }
 
 const blog = postCollection('./src/content/blog')
-const talks = postCollection('./src/content/talks')
+const musings = postCollection('./src/content/musings')
 const ctf = postCollection('./src/content/ctf')
 const research = postCollection('./src/content/research')
-const paper = postCollection('./src/content/paper')
 const infosec = postCollection('./src/content/infosec')
 
-export const collections = { pages, blog, talks, ctf, research, paper, infosec }
+export const collections = { pages, blog, musings, ctf, research, infosec }

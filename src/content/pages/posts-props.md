@@ -5,7 +5,7 @@ description: Reference for the supported frontmatter fields in posts and static 
 
 ## Blog-like collections
 
-Applies to `blog`, `infosec`, `ctf`, `research`, `paper`, and `talks`.
+Applies to `blog`, `infosec`, `ctf`, `research`, and `musings`.
 
 | Field       | Required | Type                  | Default   | Description                                     |
 | :---------- | :------- | :-------------------- | :-------- | :---------------------------------------------- |
