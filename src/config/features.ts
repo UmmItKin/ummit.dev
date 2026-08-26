@@ -5,6 +5,7 @@ export const features: FeaturesConfig = {
   githubContributions: true,
   skills: true,
   competitions: true,
+  conferences: true,
   stacks: true,
   deadMansSwitch: false,
 }

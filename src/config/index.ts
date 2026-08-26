@@ -1,5 +1,6 @@
 export { analytics } from './analytics'
 export { competitions } from './competitions'
+export { conferences } from './conferences'
 export { features } from './features'
 export { friends } from './friends'
 export { gear } from './gear'

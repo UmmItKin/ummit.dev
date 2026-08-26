@@ -1,0 +1,63 @@
+import type { ConferenceEntry } from '@/types'
+
+// `date` / `dateEnd` are ISO (YYYY-MM-DD); the homepage formats and sorts them.
+export const conferences: ConferenceEntry[] = [
+  {
+    event: 'HITCON 2026',
+    detail: 'When AI Acts: Hacking the Age of Agentic Systems',
+    date: '2026-08-21',
+    dateEnd: '2026-08-22',
+    role: 'Attendee',
+    href: 'https://hitcon.org/2026/zh-TW/',
+  },
+  {
+    event: 'HKPUG #99 - "Lie" to me, Python',
+    detail: 'Hong Kong Python User Group',
+    date: '2026-06-27',
+    role: 'Attendee',
+    href: 'https://www.meetup.com/pythonhk/events/315242135/',
+  },
+  {
+    event: '香港 Linux 用家聚會 (2026 春)',
+    detail: 'Hong Kong Linux User Group',
+    date: '2026-05-04',
+    role: 'Attendee',
+    href: 'https://www.meetup.com/hong-kong-linux-user-group/events/314395884/',
+  },
+  {
+    event: 'HKPUG #96 - Project Cool Down: Build a Smart AC AI with Python',
+    detail: 'Hong Kong Python User Group',
+    date: '2026-03-28',
+    role: 'Attendee',
+    href: 'https://www.meetup.com/pythonhk/events/313621864/',
+  },
+  {
+    event: 'HKPUG #94 - Controlling Reality: Tests & AI Memory',
+    detail: 'Hong Kong Python User Group',
+    date: '2026-02-13',
+    role: 'Attendee',
+    href: 'https://www.meetup.com/pythonhk/events/312888626/',
+  },
+  {
+    event: 'HKPUG #92 - The Hacker and Refactor',
+    detail: 'Hong Kong Python User Group',
+    date: '2025-11-29',
+    role: 'Speaker',
+    href: 'https://www.meetup.com/pythonhk/events/311740779/',
+  },
+  {
+    event: 'PyCon HK 2025',
+    detail: 'Sailing Together: "Raise the Sail, Let Python Prevail"',
+    date: '2025-10-11',
+    dateEnd: '2025-10-12',
+    role: 'Attendee',
+    href: 'https://www.meetup.com/pythonhk/events/310985620/',
+  },
+  {
+    event: 'HKPUG #91 - Python Gems for Real World',
+    detail: 'Hong Kong Python User Group',
+    date: '2025-09-22',
+    role: 'Attendee',
+    href: 'https://www.meetup.com/pythonhk/events/310907812/',
+  },
+]

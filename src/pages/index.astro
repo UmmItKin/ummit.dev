@@ -4,7 +4,7 @@ import GitHubGraph from '@/components/GitHubGraph.vue'
 import SkillRadar from '@/components/SkillRadar.vue'
 import HoverPreviewLink from '@/components/HoverPreviewLink.astro'
 import Sponsor from '@/components/Sponsor.astro'
-import { siteConfig } from '@/config'
+import { siteConfig, conferences } from '@/config'
 import { profile } from '@/config/profile'
 import { skills } from '@/config/skills'
 import { stacks } from '@/config/stacks'
@@ -25,6 +25,20 @@ const badgeGroups = [
   { label: 'Community', badges: profile.badges.community ?? [] },
   { label: 'Candidate', badges: profile.badges.certifications ?? [] },
 ].filter((g) => g.badges.length > 0)
+
+const conferenceMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+function formatConferenceDate(start: string, end?: string) {
+  const [sy, sm, sd] = start.split('-').map(Number)
+  if (!end) return `${conferenceMonths[sm - 1]} ${sd}, ${sy}`
+
+  const [ey, em, ed] = end.split('-').map(Number)
+  if (sy === ey && sm === em) return `${conferenceMonths[sm - 1]} ${sd}-${ed}, ${sy}`
+  if (sy === ey) return `${conferenceMonths[sm - 1]} ${sd} - ${conferenceMonths[em - 1]} ${ed}, ${sy}`
+  return `${conferenceMonths[sm - 1]} ${sd}, ${sy} - ${conferenceMonths[em - 1]} ${ed}, ${ey}`
+}
+
+const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a.date))
 ---
 
 <BaseLayout description={siteConfig.description} image={ogImage}>
@@ -261,6 +275,100 @@ const badgeGroups = [
                     <tr class="border-b border-neutral-800">
                       <td class="py-2.5 pr-4 font-medium align-baseline">{c.event}</td>
                       <td class="py-2.5 opacity-60 whitespace-nowrap align-baseline">{c.role}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <hr class="hr-line" />
+        </>
+      )
+    }
+
+    {
+      features.conferences && (
+        <>
+          <section class="mt-8">
+            <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
+              <i class="i-ri-calendar-event-line" />
+              Conferences
+            </h2>
+            <p class="text-xs opacity-45 -mt-3 mb-4">Conferences and community meetups I attend.</p>
+
+            <div class="md:hidden divide-y divide-neutral-800">
+              {sortedConferences.map((c) => (
+                <div class="py-3">
+                  <div class="flex items-start justify-between gap-3">
+                    <span class="font-medium">
+                      {c.href ? (
+                        <a class="prose-link" href={c.href} target="_blank" rel="noopener noreferrer">
+                          {c.event}
+                        </a>
+                      ) : (
+                        c.event
+                      )}
+                    </span>
+                    <span
+                      class:list={[
+                        'text-xs whitespace-nowrap inline-flex items-center gap-1',
+                        c.role === 'Speaker' ? 'opacity-90' : 'opacity-60',
+                      ]}
+                    >
+                      <i class:list={[c.role === 'Speaker' ? 'i-ri-mic-line' : 'i-ri-user-line']} />
+                      {c.role}
+                    </span>
+                  </div>
+                  {c.detail && <div class="text-xs opacity-45 mt-1">{c.detail}</div>}
+                  <div class="text-xs opacity-60 mt-1 inline-flex items-center gap-1">
+                    <i class="i-ri-calendar-line" />
+                    {formatConferenceDate(c.date, c.dateEnd)}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div class="hidden md:block overflow-x-auto">
+              <table class="competition-table w-full text-sm text-left">
+                <thead>
+                  <tr class="border-b border-neutral-700">
+                    <th class="pb-2 pr-4 font-medium opacity-70">Event</th>
+                    <th class="pb-2 pr-4 font-medium opacity-70 whitespace-nowrap">Date</th>
+                    <th class="pb-2 font-medium opacity-70 whitespace-nowrap text-right">Role</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {sortedConferences.map((c) => (
+                    <tr class="border-b border-neutral-800">
+                      <td class="py-2.5 pr-4 align-baseline">
+                        <span class="font-medium">
+                          {c.href ? (
+                            <a class="prose-link" href={c.href} target="_blank" rel="noopener noreferrer">
+                              {c.event}
+                            </a>
+                          ) : (
+                            c.event
+                          )}
+                        </span>
+                        {c.detail && <div class="text-xs opacity-45 mt-0.5">{c.detail}</div>}
+                      </td>
+                      <td class="py-2.5 pr-4 opacity-60 whitespace-nowrap align-baseline">
+                        <span class="inline-flex items-center gap-1">
+                          <i class="i-ri-calendar-line" />
+                          {formatConferenceDate(c.date, c.dateEnd)}
+                        </span>
+                      </td>
+                      <td
+                        class:list={[
+                          'py-2.5 whitespace-nowrap align-baseline text-right',
+                          c.role === 'Speaker' ? 'opacity-90' : 'opacity-60',
+                        ]}
+                      >
+                        <span class="inline-flex items-center gap-1">
+                          <i class:list={[c.role === 'Speaker' ? 'i-ri-mic-line' : 'i-ri-user-line']} />
+                          {c.role}
+                        </span>
+                      </td>
                     </tr>
                   ))}
                 </tbody>

@@ -79,6 +79,16 @@ export interface CompetitionEntry {
   subDetails?: string
 }
 
+// Conferences
+export interface ConferenceEntry {
+  event: string
+  detail?: string
+  date: string
+  dateEnd?: string
+  role: string
+  href?: string
+}
+
 // Friends
 export interface FriendEntry {
   name: string
@@ -143,6 +153,7 @@ export interface FeaturesConfig {
   githubContributions: boolean
   skills: boolean
   competitions: boolean
+  conferences: boolean
   stacks: boolean
   deadMansSwitch: boolean
 }
