@@ -23,7 +23,7 @@ All the packages are using the latest versions and are upgraded by me regularly.
 Extensions on top of the original Vitesse theme:
 
 - **Astro 7** with the content layer API
-- **7 content collections** — `blog`, `infosec`, `ctf`, `talks`, `research`, `paper`, `pages`
+- **6 content collections** — `blog`, `infosec`, `ctf`, `musings`, `research`, `pages`
 - **Auto OG image generation** — dynamic Open Graph images per page and per post (Satori)
 - **View and like counters** — serverless, straight to the Firestore REST API (no SDK, no key)
 - **Build freshness stamp** — the footer shows the build's commit and checks it against GitHub

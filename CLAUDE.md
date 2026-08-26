@@ -32,7 +32,7 @@ Pre-commit hook (simple-git-hooks + lint-staged): runs `bun lint-staged && bun r
 
 This file is the authoritative reference for the repo's conventions.
 
-- **Content collections** — 7 collections (`blog`, `infosec`, `ctf`, `research`, `paper`, `talks`, `pages`) defined in `src/content.config.ts` using Astro v6 content layer API. All blog-like collections share `postSchema`. Checklist for adding a new collection.
+- **Content collections** — 6 collections (`blog`, `infosec`, `ctf`, `research`, `musings`, `pages`) defined in `src/content.config.ts` using Astro v6 content layer API. All blog-like collections share `postSchema`. Checklist for adding a new collection.
 - **Routing table** — blog posts live at `/posts/<id>`, not `/blog/<id>`; `/blog` is only for filtered listing pages. Root `[...slug].astro` handles static pages.
 - **Shared route helpers, don't hand-roll `getStaticPaths`** — collection post pages call `createPostPaths(collection)` from `PostLayout.astro`; OG routes call `makeOgPageRoute(section, title)` (static page) or `makeOgSlugRoute(collection, section)` (per-post) from `src/utils/og-image.ts`. The blog per-post OG (`og/[...slug].png.ts`) stays hand-written because it uses `getPosts()` to filter drafts, which the `getCollection`-based factory does not.
 - **Footer build stamp** — `Footer.astro` bakes the build commit via `execSync('git rev-parse HEAD')` in frontmatter (build-time), then the client compares it against the GitHub commits API to show up-to-date/stale. Compare logic lives in `src/utils/build-status.ts` (a `.ts` file, not the inline script, because of the `try`/`catch` lint deadlock).
@@ -92,4 +92,5 @@ The site is static SSG with no server, so both counters talk to the **Firestore 
 ## Git
 
 - Conventional commits, single line, simple English.
+- No trailers in commit messages: never add `Co-Authored-By` or `Claude-Session` lines.
 - Pre-commit auto-runs `bun lint:fix` on staged files — expect auto-edits from lint-staged.
