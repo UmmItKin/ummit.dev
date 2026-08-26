@@ -300,9 +300,14 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
               {sortedConferences.map((c) => (
                 <div class="py-3">
                   <div class="flex items-start justify-between gap-3">
-                    <span class="font-medium">
+                    <span class="font-medium min-w-0">
                       {c.href ? (
-                        <a class="prose-link" href={c.href} target="_blank" rel="noopener noreferrer">
+                        <a
+                          class="prose-link !whitespace-normal"
+                          href={c.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           {c.event}
                         </a>
                       ) : (
@@ -343,7 +348,12 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
                       <td class="py-2.5 pr-4 align-baseline">
                         <span class="font-medium">
                           {c.href ? (
-                            <a class="prose-link" href={c.href} target="_blank" rel="noopener noreferrer">
+                            <a
+                              class="prose-link !whitespace-normal"
+                              href={c.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
                               {c.event}
                             </a>
                           ) : (
