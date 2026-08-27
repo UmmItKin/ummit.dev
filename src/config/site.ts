@@ -40,7 +40,6 @@ export const siteConfig = {
       alt: 'Logo Image',
     },
     navLinks: [
-      { text: 'About', href: '/about' },
       { text: 'Blog', href: '/blog' },
       { text: 'Projects', href: '/projects' },
       { text: 'Friends', href: '/friends' },
@@ -63,6 +62,7 @@ export const siteConfig = {
       { text: 'Posts Props', href: '/posts-props' },
       { text: 'Markdown Style', href: '/md-style' },
       { text: 'Todo', href: '/todo' },
+      { text: 'Verify', href: '/verify' },
     ] as NavLink[],
   },
 }

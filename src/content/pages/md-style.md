@@ -19,7 +19,7 @@ This page demonstrates all supported Markdown elements in the UmmIt theme. Use i
 
 **Bold text** · _Italic text_ · **_Bold + italic_** · `inline code` · ~~strikethrough~~
 
-[External link](https://ummit.dev) and [internal link](/about).
+[External link](https://ummit.dev) and [internal link](/verify).
 
 ## Blockquotes
 

@@ -1,6 +1,6 @@
 ---
-title: About
-description: About UmmIt Kin and the real domains tied to this website.
+title: Verify
+description: The real domains tied to UmmIt Kin and this website.
 ---
 
 This page is here to make one thing clear.
@@ -9,7 +9,6 @@ The only domains that are actually mine and have a real `CNAME` pointing to my s
 
 - `lamkin.me`
 - `ummit.dev`
-- `withkin.me`
 
 If you see any other domain pretending to be me, referencing me, or trying to look related to my work, assume it is fake unless I explicitly mention it on one of the domains above.
 
