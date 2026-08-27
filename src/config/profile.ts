@@ -6,7 +6,6 @@ export const profile: ProfileConfig = {
   intro:
     'HKer, InfoSec enthusiast currently into Computer Forensics, Wireless Attack, Web Security, GNU/Linux, and Open source. Also hunting CVEs :D',
   subtagline: 'Aspiring to become a professional Red Team operator.',
-  mbti: 'INTP-T',
   gpgKeyUrl: 'https://github.com/UmmItKin.gpg',
   bio: [
     'I\u2019ve been self-taught since I was a kid. Right now I\'m studying InfoSec in Hong Kong, and the stuff I keep coming back to is red teaming, reverse engineering, and web hacking. I started taking this seriously around middle school. HTML, CSS, JavaScript first, then C#, VB.NET, a few others. I don\'t really touch those anymore. Lately it\'s web hacking and red team work.',
@@ -56,7 +55,7 @@ export const profile: ProfileConfig = {
         color: '#C11111',
       },
       {
-        href: 'https://app.hackthebox.com/users/2099997',
+        href: 'https://app.hackthebox.com/public/users/2099997',
         title: 'HackTheBox',
         subtitle: 'Practice Platform',
         description: 'Used for labs, boxes, and web exploitation practice.',
@@ -94,6 +93,15 @@ export const profile: ProfileConfig = {
         subtitle: 'Community',
         description: 'I join Hong Kong Linux User Group meetups.',
         image: '/badges/hklug.png',
+      },
+    ],
+    mbti: [
+      {
+        href: 'https://www.16personalities.com/intp-personality',
+        title: 'INTP-T',
+        subtitle: 'MBTI',
+        description: 'Logician, turbulent variant. I take a system apart before I trust it.',
+        icon: 'i-ri-brain-3-fill',
       },
     ],
     certifications: [

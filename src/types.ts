@@ -49,7 +49,6 @@ export interface ProfileConfig {
   taglineIcon?: string
   intro: string
   subtagline?: string
-  mbti?: string
   bio: string[]
   gpgKeyUrl?: string
   badges: {
@@ -58,6 +57,7 @@ export interface ProfileConfig {
     platforms?: Badge[]
     projects?: Badge[]
     community?: Badge[]
+    mbti?: Badge[]
     certifications?: Badge[]
   }
 }
