@@ -256,9 +256,9 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
 
             <div class="md:hidden divide-y divide-neutral-800">
               {ctfContributions.map((c) => (
-                <div class="py-3 flex items-center justify-between gap-3">
-                  <span class="font-medium">{c.event}</span>
-                  <span class="text-xs opacity-60 whitespace-nowrap">{c.role}</span>
+                <div class="py-3">
+                  <div class="font-medium">{c.event}</div>
+                  <div class="text-xs opacity-60 mt-0.5">{c.role}</div>
                 </div>
               ))}
             </div>
