@@ -36,15 +36,17 @@ This file is the authoritative reference for the repo's conventions.
 - **Routing table** — blog posts live at `/posts/<id>`, not `/blog/<id>`; `/blog` is only for filtered listing pages. Root `[...slug].astro` handles static pages.
 - **Shared route helpers, don't hand-roll `getStaticPaths`** — collection post pages call `createPostPaths(collection)` from `PostLayout.astro`; OG routes call `makeOgPageRoute(section, title)` (static page) or `makeOgSlugRoute(collection, section)` (per-post) from `src/utils/og-image.ts`. The blog per-post OG (`og/[...slug].png.ts`) stays hand-written because it uses `getPosts()` to filter drafts, which the `getCollection`-based factory does not.
 - **Footer build stamp** — `Footer.astro` bakes the build commit via `execSync('git rev-parse HEAD')` in frontmatter (build-time), then the client compares it against the GitHub commits API to show up-to-date/stale. Compare logic lives in `src/utils/build-status.ts` (a `.ts` file, not the inline script, because of the `try`/`catch` lint deadlock).
-- **Styles** — UnoCSS shortcuts in `uno.config.ts`; icons only from `i-ri-*` (Remix) and `i-simple-icons-*` sets; dark theme only. New icons must be safelisted in `uno.config.ts`. Only Tailwind v3 utility classes exist — `text-2xs` does NOT work (smallest is `text-xs`).
+- **Styles** — UnoCSS shortcuts in `uno.config.ts`; dark theme only. `presetIcons` locks no `collections`, so any set in the already-installed `@iconify/json` works: mostly `i-ri-*` (Remix) and `i-simple-icons-*`, plus `i-circle-flags-*` for country flags. **Every icon must be safelisted in `uno.config.ts`** — a name built at runtime (`` `i-circle-flags-${code}` ``) is invisible to the scanner and silently renders nothing.
+- **Not every Tailwind utility exists here.** `text-2xs` and `leading-snug` emit no rule at all, and `lh-1.4` is read off the *spacing* scale (`line-height: .35rem`). Use `lh-[1.4]` for an arbitrary line-height, `text-xs` for the smallest text. Nothing warns you — grep the built CSS in `dist/_astro/` for the selector.
 - **Fonts** — self-hosted Google Sans Flex (sans) + Google Sans Code (mono) via `src/styles/fonts.css`. Long unicode-range lines trigger Prettier; run `bun lint:fix` after editing. OG images use Satori which only supports TTF/OTF — `public/fonts/Inter-Bold.ttf` is for Satori only, the site uses woff2.
 - **Responsive** — breakpoint `md:` = 768px. Pattern: `class="md:hidden"` for mobile-only + `class="hidden md:block"` for desktop-only. Tables on mobile get a separate card/list layout.
-- **Write `-webkit-backdrop-filter` before the unprefixed `backdrop-filter`.** In the other order the minifier drops the unprefixed one and the blur silently dies in Firefox and Chrome. Always grep the built CSS in `dist/` to confirm both survived.
+- **Write `-webkit-backdrop-filter` before the unprefixed `backdrop-filter`.** The minifier keeps only the last one, so the order picks the survivor. Written first, the prefix is dropped and the unprefixed rule lives, which is what Firefox and Chrome need; reversed, the blur silently dies everywhere but old Safari. No `-webkit-backdrop-filter` reaches `dist/` at all, so grep for the unprefixed one only.
+- **The `prose-link` shortcut bakes in `text-nowrap`.** Any long title using it overflows on mobile instead of wrapping. Add `!whitespace-normal` at the call site; do not edit the shortcut, it is site-wide.
 - **Child `opacity` cannot undo a parent's.** Anything inside `op-50` stays dimmed; raise its `color` instead. `opacity: 2` is invalid and clamps to 1.
 - **Deferred content needs two frames to animate in.** Set the text, then add the class inside `requestAnimationFrame`, otherwise the browser coalesces both into one paint and the transition never runs.
 - **Astro component gotchas** — Prettier fragility inside conditional JSX fragments, inline `<script>` is plain JS not TS, `} else {` formatting conflicts.
 
-**`try`/`catch` cannot be used in an inline `<script>` in a `.astro` file.** `format/prettier` wants `} catch {` on one line and `style/brace-style` wants it split, so the two rules deadlock and `lint:fix` cannot resolve it. Since the pre-commit hook runs a build, this blocks commits. Move the logic into a `.ts` module under `src/utils/` and import it: there the repo's Allman style (`}` newline `catch {`) lints cleanly. `src/utils/share.ts`, `views.ts` and `likes.ts` all exist for this reason.
+**`try`/`catch` cannot be used in an inline `<script>` in a `.astro` file.** `format/prettier` wants `} catch {` on one line and `style/brace-style` wants it split, so the two rules deadlock and `lint:fix` cannot resolve it. A single-line `if (x) return` in the same position deadlocks the same way (`lint:fix` splits it and leaves a trailing space prettier then rejects) — restructure so the guard is unnecessary rather than fighting it. Since the pre-commit hook runs a build, this blocks commits. Move the logic into a `.ts` module under `src/utils/` and import it: there the repo's Allman style (`}` newline `catch {`) lints cleanly. `src/utils/share.ts`, `views.ts` and `likes.ts` all exist for this reason.
 
 **Escapes like `'—'` only work in JS string position.** Putting one in JSX text renders the literal characters `—`. Use `{'—'}` or paste the real character.
 - **Content rules** — no em-dashes in body text, use placeholders not real data, integrate into existing articles rather than appending.
@@ -66,7 +68,7 @@ This file is the authoritative reference for the repo's conventions.
 | `astro.config.ts` | Astro config (integrations, dev port 4321, `INVALID_ANNOTATION` warnings suppressed) |
 | `uno.config.ts` | UnoCSS shortcuts, presets, **icon safelist** (new icons must be added here) |
 | `src/styles/fonts.css` | Self-hosted @font-face declarations for Google Sans Flex + Google Sans Code |
-| `src/pages/index.astro` | Homepage (bio, CTF teams, competition table, CTF contributions, stacks) |
+| `src/pages/index.astro` | Homepage (bio, badge groups, competitions, CTF contributions, conferences, stacks) |
 | `docs/firestore.rules` | Security rules for the view/like counters. Must be pasted into the Firebase console by hand, nothing deploys them |
 | `public/fonts/` | Self-hosted woff2 font files + Inter-Bold.ttf (for Satori OG images) |
 | `scripts/migrate-hugo.ts` | One-off migration: converts Hugo `Article/` posts + frontmatter into `src/content/blog`. Kept for reference, not part of the build |
@@ -87,6 +89,7 @@ The site is static SSG with no server, so both counters talk to the **Firestore 
 - Components are flat in `src/components/` — no subdirectories.
 - `SkillRadar.vue` — do not modify; user maintains it manually.
 - `DeadManSwitch.vue` — gated by `enableDeadManSwitch` in `BaseLayout.astro`; currently disabled. Don't re-enable without asking.
+- `ConferenceHeatmap.astro` — month grid + hover card for `src/config/conferences.ts`. Its card is `position: fixed` and placed by an inline script reading `getBoundingClientRect()`, because an absolute card gets pinned to the ~240px grid instead of tracking the cell. Do not wrap it in a `container-type` element or an `overflow` container: layout containment makes that element the containing block for fixed descendants, and the script's viewport coordinates then land in the wrong place.
 - OG image generation uses Satori (`src/utils/og-image.ts`), with per-collection and per-post endpoints under `src/pages/og/`.
 
 ## Git
