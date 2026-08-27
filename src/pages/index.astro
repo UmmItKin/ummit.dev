@@ -204,15 +204,33 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
               {competitions.map((c) => (
                 <div class="py-3">
                   <h3 class="font-medium mt-0">{c.name}</h3>
-                  <div class="text-sm opacity-70">
-                    {c.date} · {c.team}
-                    {c.division && c.division !== '\u2014' ? ` · ${c.division}` : ''}
+                  <div class="text-xs opacity-60 mt-1 flex flex-col items-start gap-1">
+                    <span class="inline-flex items-center gap-1">
+                      <i class="i-ri-calendar-line" />
+                      {c.date}
+                    </span>
+                    <span class="inline-flex items-center gap-1">
+                      <i class="i-ri-team-line" />
+                      {c.team}
+                      {c.division && c.division !== '\u2014' && <span class="opacity-70">({c.division})</span>}
+                    </span>
+                    <span class="inline-flex items-center gap-1">
+                      <i class="i-ri-medal-line" />
+                      <strong class="opacity-90">{c.placement}</strong>
+                    </span>
+                    {c.details && c.details !== '\u2014' && (
+                      <span class="inline-flex items-center gap-1">
+                        <i class="i-ri-bar-chart-line" />
+                        {c.details}
+                      </span>
+                    )}
+                    {c.subDetails && (
+                      <span class="inline-flex items-center gap-1">
+                        <i class="i-ri-earth-line" />
+                        {c.subDetails}
+                      </span>
+                    )}
                   </div>
-                  <div class="text-sm mt-1">
-                    <strong>{c.placement}</strong>
-                    {c.details && c.details !== '\u2014' ? ` · ${c.details}` : ''}
-                  </div>
-                  {c.subDetails && <div class="text-xs opacity-45 mt-1">{c.subDetails}</div>}
                 </div>
               ))}
             </div>
@@ -293,22 +311,8 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
                   {ctfContributions.map((c) => (
                     <tr class="border-b border-neutral-800">
                       <td class="py-2.5 pr-4 font-medium align-baseline">{c.event}</td>
-                      <td class="py-2.5 pr-4 opacity-60 whitespace-nowrap align-baseline">
-                        <span class="inline-flex items-center gap-1">
-                          <i class="i-ri-calendar-line" />
-                          {c.date}
-                        </span>
-                      </td>
-                      <td class="py-2.5 opacity-60 whitespace-nowrap align-baseline">
-                        <span class="inline-flex items-center gap-x-2">
-                          {c.role.split(', ').map((r) => (
-                            <span class="inline-flex items-center gap-1">
-                              <i class:list={[contributionRoleIcons[r] ?? 'i-ri-user-line']} />
-                              {r}
-                            </span>
-                          ))}
-                        </span>
-                      </td>
+                      <td class="py-2.5 pr-4 opacity-60 whitespace-nowrap align-baseline">{c.date}</td>
+                      <td class="py-2.5 opacity-60 whitespace-nowrap align-baseline">{c.role}</td>
                     </tr>
                   ))}
                 </tbody>

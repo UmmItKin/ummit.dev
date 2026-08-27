@@ -88,6 +88,13 @@ export const profile: ProfileConfig = {
         description: 'I join HKPUG activities and occasionally give talks there.',
         image: '/badges/hkpug.png',
       },
+      {
+        href: 'https://www.meetup.com/hong-kong-linux-user-group/',
+        title: 'HKLUG',
+        subtitle: 'Community',
+        description: 'I join Hong Kong Linux User Group meetups.',
+        image: '/badges/hklug.png',
+      },
     ],
     certifications: [
       {
