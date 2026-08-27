@@ -83,6 +83,8 @@ export interface CompetitionEntry {
 export interface ConferenceEntry {
   event: string
   detail?: string
+  // ISO 3166-1 alpha-2, lowercased: renders as an `i-circle-flags-<code>` icon.
+  country?: string
   date: string
   dateEnd?: string
   role: string

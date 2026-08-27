@@ -16,6 +16,9 @@ function days(c: ConferenceEntry) {
   return `${start}-${Number(c.dateEnd.slice(8))}`
 }
 
+const total = conferences.length
+const spoken = conferences.filter((c) => c.role === 'Speaker').length
+
 const years = [...new Set(conferences.map((c) => c.date.slice(0, 4)))].sort()
 
 const rows = years.map((year) => ({
@@ -29,51 +32,64 @@ const rows = years.map((year) => ({
 }))
 ---
 
-<div class="heatmap conference-heatmap">
-  <div class="rows">
-    <div class="row">
-      <span class="rail"></span>
-      {months.map((m) => <span class="month">{m.charAt(0)}</span>)}
+<div class="conference-heatmap wrap">
+  <div class="heatmap">
+    <div class="rows">
+      <div class="row">
+        <span class="rail"></span>
+        {months.map((m) => <span class="month">{m.charAt(0)}</span>)}
+      </div>
+
+      {
+        rows.map((row) => (
+          <div class="row">
+            <span class="rail">{row.year}</span>
+            {row.cells.map((cell) => (
+              <span
+                class:list={['cell', `level-${Math.min(cell.events.length, 3)}`, cell.events.length > 0 && 'filled']}
+              >
+                {cell.events.length > 0 && (
+                  <span class="card">
+                    <span class="card-inner">
+                      <span class="card-subtitle">
+                        {cell.label} {row.year} · {cell.events.length} {cell.events.length === 1 ? 'event' : 'events'}
+                      </span>
+                      {cell.events.map((e) => (
+                        <span class="card-event">
+                          <span class="card-title">
+                            {e.country && <i class:list={[`i-circle-flags-${e.country}`, 'mr-1 align-middle']} />}
+                            {e.event}
+                          </span>
+                          <span class="card-meta">
+                            {cell.label} {days(e)} · {e.role}
+                            {e.detail ? ` · ${e.detail}` : ''}
+                          </span>
+                        </span>
+                      ))}
+                    </span>
+                  </span>
+                )}
+              </span>
+            ))}
+          </div>
+        ))
+      }
     </div>
 
-    {
-      rows.map((row) => (
-        <div class="row">
-          <span class="rail">{row.year}</span>
-          {row.cells.map((cell) => (
-            <span class:list={['cell', `level-${Math.min(cell.events.length, 3)}`, cell.events.length > 0 && 'filled']}>
-              {cell.events.length > 0 && (
-                <span class="card">
-                  <span class="card-inner">
-                    <span class="card-subtitle">
-                      {cell.label} {row.year} · {cell.events.length} {cell.events.length === 1 ? 'event' : 'events'}
-                    </span>
-                    {cell.events.map((e) => (
-                      <span class="card-event">
-                        <span class="card-title">{e.event}</span>
-                        <span class="card-meta">
-                          {cell.label} {days(e)} · {e.role}
-                          {e.detail ? ` · ${e.detail}` : ''}
-                        </span>
-                      </span>
-                    ))}
-                  </span>
-                </span>
-              )}
-            </span>
-          ))}
-        </div>
-      ))
-    }
+    <div class="legend">
+      <span>Less</span>
+      <span class="cell level-0"></span>
+      <span class="cell level-1"></span>
+      <span class="cell level-2"></span>
+      <span class="cell level-3"></span>
+      <span>More</span>
+    </div>
   </div>
 
-  <div class="legend">
-    <span>Less</span>
-    <span class="cell level-0"></span>
-    <span class="cell level-1"></span>
-    <span class="cell level-2"></span>
-    <span class="cell level-3"></span>
-    <span>More</span>
+  <div class="stat">
+    <span class="stat-value">{total}</span>
+    <span class="stat-label">conferences joined</span>
+    <span class="stat-sub">{spoken} as speaker</span>
   </div>
 </div>
 
@@ -97,9 +113,48 @@ const rows = years.map((year) => ({
 </script>
 
 <style>
+  .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+  }
+
   .heatmap {
     width: max-content;
     max-width: 100%;
+  }
+
+  /* No `margin-left: auto`: an auto margin still eats the free space once the
+     block wraps onto its own line, stranding it against the right edge. */
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1;
+  }
+
+  .stat-value {
+    font-family: 'Google Sans Code', ui-monospace, monospace;
+    font-size: 2.4rem;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    color: rgba(139, 92, 246, 0.9);
+  }
+
+  .stat-label {
+    margin-top: 0.4rem;
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    opacity: 0.5;
+  }
+
+  .stat-sub {
+    margin-top: 0.25rem;
+    font-size: 0.66rem;
+    opacity: 0.3;
   }
 
   .rows {
@@ -223,6 +278,20 @@ const rows = years.map((year) => ({
     font-size: 0.72rem;
     line-height: 1.35;
     opacity: 0.6;
+  }
+
+  /* Stack explicitly instead of relying on wrap: the wrap point moves with the
+     label width, so there is no fixed breakpoint to align the centering against. */
+  @media (max-width: 640px) {
+    .wrap {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stat {
+      align-items: center;
+    }
   }
 
   /* Touch devices never resolve :hover cleanly, so the card only exists where hover is real. */

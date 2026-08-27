@@ -143,6 +143,8 @@ export default defineConfig({
     'i-ri-calendar-line',
     'i-ri-mic-line',
     'i-ri-user-line',
+    'i-circle-flags-hk',
+    'i-circle-flags-tw',
     'i-simple-icons-burpsuite',
     'i-simple-icons-wireshark',
     'i-simple-icons-kalilinux',
