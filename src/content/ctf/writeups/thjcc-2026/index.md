@@ -34,7 +34,7 @@ This is the full write-up of the challenge for 0422, r2s, Simple Hack and I use 
 
 For the source code of the challenge, please visit my GitHub.
 
->https://github.com/UmmItKin/THJCC-Chals
+> [UmmItKin/CTFs-chal · THJCC 2026](https://github.com/UmmItKin/CTFs-chal/tree/master/THJCC%202026)
 
 ## I use arch btw
 
