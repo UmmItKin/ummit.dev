@@ -102,18 +102,6 @@ export const gear: GearSection[] = [
     ],
   },
   {
-    title: 'Mobile Devices (Fallback)',
-    subtitle: 'Secondary Mobile Device that I used.',
-    icon: 'i-ri-smartphone-line',
-    items: [
-      { label: 'Device', value: 'Google Pixel 6A' },
-      { label: 'RAM', value: '8GB' },
-      { label: 'Storage', value: '128GB' },
-      { label: 'OS', value: 'GrapheneOS' },
-      { label: 'Device Color', value: 'Black' },
-    ],
-  },
-  {
     title: 'Favorite Software',
     subtitle: 'Some of my favorite software that I use daily.',
     icon: 'i-ri-apps-line',
