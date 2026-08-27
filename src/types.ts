@@ -71,6 +71,7 @@ export interface SkillItem {
 // Competitions
 export interface CompetitionEntry {
   name: string
+  href?: string
   date: string
   team: string
   division?: string
