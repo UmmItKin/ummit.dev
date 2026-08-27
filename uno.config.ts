@@ -143,6 +143,8 @@ export default defineConfig({
     'i-ri-calendar-line',
     'i-ri-mic-line',
     'i-ri-user-line',
+    'i-ri-puzzle-line',
+    'i-ri-palette-line',
     'i-circle-flags-hk',
     'i-circle-flags-tw',
     'i-simple-icons-burpsuite',

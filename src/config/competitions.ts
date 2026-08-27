@@ -38,12 +38,13 @@ export const competitions: CompetitionEntry[] = [
 
 export interface ContributionEntry {
   event: string
+  date: string
   role: string
 }
 
 export const contributions: ContributionEntry[] = [
-  { event: 'No Hack No CTF 2025', role: 'Challenge Author, Website Design' },
-  { event: 'No Hack No CTF 2026', role: 'Challenge Author, Website Design' },
-  { event: 'THJCC 2026', role: 'Challenge Author' },
-  { event: 'THJCC 2026 Summer', role: 'Challenge Author' },
+  { event: 'No Hack No CTF 2025', date: 'Jul 5-7, 2025', role: 'Challenge Author, Website Design' },
+  { event: 'No Hack No CTF 2026', date: 'Jul 4-6, 2026', role: 'Challenge Author, Website Design' },
+  { event: 'THJCC 2026', date: 'Feb 21-22, 2026', role: 'Challenge Author' },
+  { event: 'THJCC 2026 Summer', date: 'Aug 15-16, 2026', role: 'Challenge Author' },
 ]
