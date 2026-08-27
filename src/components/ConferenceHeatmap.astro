@@ -1,0 +1,241 @@
+---
+import type { ConferenceEntry } from '@/types'
+
+interface Props {
+  conferences: ConferenceEntry[]
+}
+
+const { conferences } = Astro.props
+
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+// The card header already carries the month, so a cell only needs the day numbers.
+function days(c: ConferenceEntry) {
+  const start = Number(c.date.slice(8))
+  if (!c.dateEnd || c.dateEnd.slice(0, 7) !== c.date.slice(0, 7)) return `${start}`
+  return `${start}-${Number(c.dateEnd.slice(8))}`
+}
+
+const years = [...new Set(conferences.map((c) => c.date.slice(0, 4)))].sort()
+
+const rows = years.map((year) => ({
+  year,
+  cells: months.map((label, i) => ({
+    label,
+    events: conferences
+      .filter((c) => c.date.startsWith(`${year}-${String(i + 1).padStart(2, '0')}`))
+      .sort((a, b) => a.date.localeCompare(b.date)),
+  })),
+}))
+---
+
+<div class="heatmap conference-heatmap">
+  <div class="rows">
+    <div class="row">
+      <span class="rail"></span>
+      {months.map((m) => <span class="month">{m.charAt(0)}</span>)}
+    </div>
+
+    {
+      rows.map((row) => (
+        <div class="row">
+          <span class="rail">{row.year}</span>
+          {row.cells.map((cell) => (
+            <span class:list={['cell', `level-${Math.min(cell.events.length, 3)}`, cell.events.length > 0 && 'filled']}>
+              {cell.events.length > 0 && (
+                <span class="card">
+                  <span class="card-inner">
+                    <span class="card-subtitle">
+                      {cell.label} {row.year} · {cell.events.length} {cell.events.length === 1 ? 'event' : 'events'}
+                    </span>
+                    {cell.events.map((e) => (
+                      <span class="card-event">
+                        <span class="card-title">{e.event}</span>
+                        <span class="card-meta">
+                          {cell.label} {days(e)} · {e.role}
+                          {e.detail ? ` · ${e.detail}` : ''}
+                        </span>
+                      </span>
+                    ))}
+                  </span>
+                </span>
+              )}
+            </span>
+          ))}
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="legend">
+    <span>Less</span>
+    <span class="cell level-0"></span>
+    <span class="cell level-1"></span>
+    <span class="cell level-2"></span>
+    <span class="cell level-3"></span>
+    <span>More</span>
+  </div>
+</div>
+
+<script>
+  const GAP = 10
+  const EDGE = 8
+
+  document.querySelectorAll('.conference-heatmap .filled .card').forEach((card) => {
+    const cell = card.parentElement
+
+    cell.addEventListener('mouseenter', () => {
+      const box = cell.getBoundingClientRect()
+      const width = card.offsetWidth
+      const centered = box.left + box.width / 2 - width / 2
+      const max = window.innerWidth - width - EDGE
+
+      card.style.left = `${Math.round(Math.min(Math.max(EDGE, centered), Math.max(EDGE, max)))}px`
+      card.style.top = `${Math.round(box.top - GAP)}px`
+    })
+  })
+</script>
+
+<style>
+  .heatmap {
+    width: max-content;
+    max-width: 100%;
+  }
+
+  .rows {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .rail {
+    width: 34px;
+    flex-shrink: 0;
+    font-size: 11px;
+    line-height: 1;
+    opacity: 0.4;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .month {
+    width: 14px;
+    flex-shrink: 0;
+    text-align: center;
+    font-size: 10px;
+    line-height: 1;
+    opacity: 0.4;
+  }
+
+  .cell {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    border-radius: 2px;
+    outline: 1px solid transparent;
+    transition: outline 0.1s ease;
+  }
+
+  .level-0 {
+    background: rgba(139, 92, 246, 0.12);
+  }
+  .level-1 {
+    background: rgba(139, 92, 246, 0.4);
+  }
+  .level-2 {
+    background: rgba(139, 92, 246, 0.68);
+  }
+  .level-3 {
+    background: rgba(139, 92, 246, 0.95);
+  }
+
+  .legend {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    margin-top: 6px;
+    font-size: 11px;
+    opacity: 0.5;
+  }
+
+  /* Fixed, not absolute: the grid is only ~240px wide, so an absolute card would
+     be pinned to its left edge instead of tracking the cell under the cursor. */
+  .card {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: max-content;
+    max-width: min(20rem, calc(100vw - 2rem));
+    transform: translateY(-100%) translateY(0.35rem) scale(0.985);
+    transform-origin: center bottom;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 30;
+    transition:
+      opacity 0.18s ease,
+      transform 0.18s ease,
+      visibility 0.18s ease;
+  }
+
+  .card-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 0.78rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(115, 115, 115, 0.28);
+    background: rgba(20, 22, 29, 0.96);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.34);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+  }
+
+  .card-subtitle {
+    font-size: 0.66rem;
+    line-height: 1.2;
+    opacity: 0.58;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+  }
+
+  .card-event {
+    display: flex;
+    flex-direction: column;
+    gap: 0.18rem;
+  }
+
+  .card-title {
+    font-size: 0.88rem;
+    line-height: 1.25;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.94);
+    text-wrap: balance;
+  }
+
+  .card-meta {
+    font-size: 0.72rem;
+    line-height: 1.35;
+    opacity: 0.6;
+  }
+
+  /* Touch devices never resolve :hover cleanly, so the card only exists where hover is real. */
+  @media (hover: hover) {
+    .filled:hover {
+      outline: 1px solid rgba(128, 128, 128, 0.6);
+      outline-offset: 1px;
+    }
+
+    .filled:hover .card {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(-100%) scale(1);
+    }
+  }
+</style>

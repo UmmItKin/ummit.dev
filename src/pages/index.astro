@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
 import GitHubGraph from '@/components/GitHubGraph.vue'
 import SkillRadar from '@/components/SkillRadar.vue'
 import HoverPreviewLink from '@/components/HoverPreviewLink.astro'
+import ConferenceHeatmap from '@/components/ConferenceHeatmap.astro'
 import Sponsor from '@/components/Sponsor.astro'
 import { siteConfig, conferences } from '@/config'
 import { profile } from '@/config/profile'
@@ -295,6 +296,9 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
               Conferences
             </h2>
             <p class="text-xs opacity-45 -mt-3 mb-4">Conferences and community meetups I attend.</p>
+            <div class="mb-6">
+              <ConferenceHeatmap conferences={conferences} />
+            </div>
 
             <div class="md:hidden divide-y divide-neutral-800">
               {sortedConferences.map((c) => (
