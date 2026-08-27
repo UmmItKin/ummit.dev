@@ -57,7 +57,7 @@ const rows = years.map((year) => ({
                       {cell.events.map((e) => (
                         <span class="card-event">
                           <span class="card-title">
-                            {e.country && <i class:list={[`i-circle-flags-${e.country}`, 'mr-1 align-middle']} />}
+                            {e.image && <img class="card-logo" src={e.image} alt="" width="32" height="32" />}
                             {e.event}
                           </span>
                           <span class="card-meta">
@@ -272,6 +272,19 @@ const rows = years.map((year) => ({
     font-weight: 600;
     color: rgba(255, 255, 255, 0.94);
     text-wrap: balance;
+  }
+
+  /* `.prose img` sets a 2em vertical margin that wrecks the row; reset it here. */
+  img.card-logo {
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 1.05em;
+    height: 1.05em;
+    margin-right: 0.35em;
+    vertical-align: -0.15em;
+    object-fit: contain;
+    border-radius: 999px;
   }
 
   .card-meta {

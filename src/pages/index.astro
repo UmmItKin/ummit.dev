@@ -373,7 +373,7 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
                 <div class="py-3">
                   <div class="flex items-start justify-between gap-3">
                     <span class="font-medium min-w-0">
-                      {c.country && <i class:list={[`i-circle-flags-${c.country}`, 'mr-1.5 align-middle']} />}
+                      {c.image && <img class="conf-logo" src={c.image} alt="" width="32" height="32" />}
                       {c.href ? (
                         <a
                           class="prose-link !whitespace-normal"
@@ -420,7 +420,7 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
                     <tr class="border-b border-neutral-800">
                       <td class="py-2.5 pr-4 align-baseline">
                         <span class="font-medium">
-                          {c.country && <i class:list={[`i-circle-flags-${c.country}`, 'mr-1.5 align-middle']} />}
+                          {c.image && <img class="conf-logo" src={c.image} alt="" width="32" height="32" />}
                           {c.href ? (
                             <a
                               class="prose-link !whitespace-normal"
@@ -555,6 +555,19 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
     height: 100%;
     object-fit: cover;
     border-radius: 0.125rem;
+  }
+
+  /* `.prose img` sets a 2em vertical margin that wrecks the row; reset it here. */
+  img.conf-logo {
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 1.05em;
+    height: 1.05em;
+    margin-right: 0.4em;
+    vertical-align: -0.15em;
+    object-fit: contain;
+    border-radius: 999px;
   }
 
   .magic-link-icon i {

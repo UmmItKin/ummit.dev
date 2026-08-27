@@ -149,8 +149,6 @@ export default defineConfig({
     'i-ri-medal-line',
     'i-ri-bar-chart-line',
     'i-ri-earth-line',
-    'i-circle-flags-hk',
-    'i-circle-flags-tw',
     'i-simple-icons-burpsuite',
     'i-simple-icons-wireshark',
     'i-simple-icons-kalilinux',

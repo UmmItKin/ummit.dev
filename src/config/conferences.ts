@@ -5,7 +5,7 @@ export const conferences: ConferenceEntry[] = [
   {
     event: 'HITCON 2026',
     detail: 'When AI Acts: Hacking the Age of Agentic Systems',
-    country: 'tw',
+    image: '/badges/hitcon.png',
     date: '2026-08-21',
     dateEnd: '2026-08-22',
     role: 'Attendee',
@@ -14,7 +14,7 @@ export const conferences: ConferenceEntry[] = [
   {
     event: 'Hong Kong Python User Group',
     detail: 'HKPUG #99 - "Lie" to me, Python',
-    country: 'hk',
+    image: '/badges/hkpug.png',
     date: '2026-06-27',
     role: 'Attendee',
     href: 'https://www.meetup.com/pythonhk/events/315242135/',
@@ -22,7 +22,7 @@ export const conferences: ConferenceEntry[] = [
   {
     event: 'Hong Kong Linux User Group',
     detail: '香港 Linux 用家聚會 (2026 春)',
-    country: 'hk',
+    image: '/badges/hklug.png',
     date: '2026-05-04',
     role: 'Attendee',
     href: 'https://www.meetup.com/hong-kong-linux-user-group/events/314395884/',
@@ -30,7 +30,7 @@ export const conferences: ConferenceEntry[] = [
   {
     event: 'Hong Kong Python User Group',
     detail: 'HKPUG #96 - Project Cool Down: Build a Smart AC AI with Python',
-    country: 'hk',
+    image: '/badges/hkpug.png',
     date: '2026-03-28',
     role: 'Attendee',
     href: 'https://www.meetup.com/pythonhk/events/313621864/',
@@ -38,7 +38,7 @@ export const conferences: ConferenceEntry[] = [
   {
     event: 'Hong Kong Python User Group',
     detail: 'HKPUG #94 - Controlling Reality: Tests & AI Memory',
-    country: 'hk',
+    image: '/badges/hkpug.png',
     date: '2026-02-13',
     role: 'Attendee',
     href: 'https://www.meetup.com/pythonhk/events/312888626/',
@@ -46,7 +46,7 @@ export const conferences: ConferenceEntry[] = [
   {
     event: 'Hong Kong Python User Group',
     detail: 'HKPUG #92 - The Hacker and Refactor',
-    country: 'hk',
+    image: '/badges/hkpug.png',
     date: '2025-11-29',
     role: 'Speaker',
     href: 'https://www.meetup.com/pythonhk/events/311740779/',
@@ -54,7 +54,7 @@ export const conferences: ConferenceEntry[] = [
   {
     event: 'PyCon HK 2025',
     detail: 'Sailing Together: "Raise the Sail, Let Python Prevail"',
-    country: 'hk',
+    image: '/badges/hkpug.png',
     date: '2025-10-11',
     dateEnd: '2025-10-12',
     role: 'Attendee',
@@ -63,7 +63,7 @@ export const conferences: ConferenceEntry[] = [
   {
     event: 'Hong Kong Python User Group',
     detail: 'HKPUG #91 - Python Gems for Real World',
-    country: 'hk',
+    image: '/badges/hkpug.png',
     date: '2025-09-22',
     role: 'Attendee',
     href: 'https://www.meetup.com/pythonhk/events/310907812/',
