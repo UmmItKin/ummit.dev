@@ -113,13 +113,6 @@ export const profile: ProfileConfig = {
         image: '/badges/oscp.webp',
       },
       {
-        href: 'https://academy.hackthebox.com/preview/certifications/htb-certified-web-exploitation-specialist',
-        title: 'CWES',
-        subtitle: 'HackTheBox',
-        description: 'Certified Web Exploitation Specialist - Advanced web application security certification.',
-        image: '/badges/cwes.png',
-      },
-      {
         href: 'https://academy.hackthebox.com/preview/certifications/htb-certified-junior-cybersecurity-associate',
         title: 'CJCA',
         subtitle: 'HackTheBox',
