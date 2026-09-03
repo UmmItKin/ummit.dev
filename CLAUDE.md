@@ -8,6 +8,8 @@ Personal website & blog — [ummit.dev](https://ummit.dev). Astro 7 + Vue 3 + Un
 
 `AGENTS.md` just redirects here — this file is the single source of truth for any agent. `opencode.json` configures the OpenCode tool's ponytail plugin and is unrelated to Claude; leave it alone.
 
+`Dockerfile.vercel` builds `dist/` with Bun and serves it from `node:22-alpine` via `serve`. It is a deploy artifact only, nothing in the dev loop touches it.
+
 ## Commands
 
 Use **Bun only** (never npm/yarn):
@@ -32,11 +34,21 @@ Pre-commit hook (simple-git-hooks + lint-staged): runs `bun lint-staged && bun r
 
 This file is the authoritative reference for the repo's conventions.
 
-- **Content collections** — 6 collections (`blog`, `infosec`, `ctf`, `research`, `musings`, `pages`) defined in `src/content.config.ts` using Astro v6 content layer API. All blog-like collections share `postSchema`. Checklist for adding a new collection.
+- **Content collections** — 6 collections (`blog`, `infosec`, `ctf`, `research`, `musings`, `pages`) defined in `src/content.config.ts` using the content layer API. The five blog-like ones share `postSchema` via `postCollection(base)`; `pages` has its own smaller schema.
+- **Adding a collection touches eight files**, and nothing warns you when you miss one:
+  1. `src/content.config.ts` — `postCollection('./src/content/<name>')`, then add it to the `collections` export
+  2. `src/types.ts` — add the name to the `PostKey` union
+  3. `src/pages/<name>/index.astro` — a `PostListPage` wrapper (~16 lines, copy a sibling)
+  4. `src/pages/<name>/[...slug].astro` — `createPostPaths('<name>')`
+  5. `src/pages/og/[page].png.ts` — one row in the `pages` map for the listing OG
+  6. `src/pages/og/<name>/[...slug].png.ts` — `makeOgSlugRoute('<name>', '<Section>')`
+  7. `src/config/site.ts` — a `page.blogLinks` entry, or the nav will not show it
+  8. `src/components/PostLayout.astro` — a branch in `getOgPath()`, or posts fall back to the blog OG path and 404
+  `rss.xml.ts` is deliberately blog-only (`getPosts()` with no collection), so a new collection stays out of the feed unless you change that too.
 - **Routing table** — blog posts live at `/posts/<id>`, not `/blog/<id>`; `/blog` is only for filtered listing pages. Root `[...slug].astro` handles static pages.
 - **Shared route helpers, don't hand-roll `getStaticPaths`** — collection post pages call `createPostPaths(collection)` from `PostLayout.astro`; per-post OG routes call `makeOgSlugRoute(collection, section)` from `src/utils/og-image.ts`. Every static page's OG lives in one file, `og/[page].png.ts`, as a `{ page: [section, title] }` map — add a row there, not a new file. The blog per-post OG (`og/[...slug].png.ts`) stays hand-written because it uses `getPosts()` to filter drafts, which the `getCollection`-based factory does not.
 - **Footer build stamp** — `Footer.astro` bakes the build commit via `execSync('git rev-parse HEAD')` in frontmatter (build-time), then the client compares it against the GitHub commits API to show up-to-date/stale. Compare logic lives in `src/utils/build-status.ts` (a `.ts` file, not the inline script, because of the `try`/`catch` lint deadlock).
-- **Styles** — UnoCSS shortcuts in `uno.config.ts`; dark theme only. `presetIcons` locks no `collections`, so any set in the already-installed `@iconify/json` works: mostly `i-ri-*` (Remix) and `i-simple-icons-*`, plus `i-circle-flags-*` for country flags. **Every icon must be safelisted in `uno.config.ts`** — a name built at runtime (`` `i-circle-flags-${code}` ``) is invisible to the scanner and silently renders nothing.
+- **Styles** — UnoCSS shortcuts in `uno.config.ts`; dark theme only. `presetIcons` locks no `collections`, so any set in the already-installed `@iconify/json` works: in practice `i-ri-*` (Remix) and `i-simple-icons-*`. **Every icon must be safelisted in `uno.config.ts`** — a name built at runtime (`` `i-circle-flags-${code}` ``) is invisible to the scanner and silently renders nothing.
 - **Not every Tailwind utility exists here.** `text-2xs` and `leading-snug` emit no rule at all, and `lh-1.4` is read off the *spacing* scale (`line-height: .35rem`). Use `lh-[1.4]` for an arbitrary line-height, `text-xs` for the smallest text. Nothing warns you — grep the built CSS in `dist/_astro/` for the selector.
 - **Fonts** — self-hosted Google Sans Flex (sans) + Google Sans Code (mono) via `src/styles/fonts.css`. Long unicode-range lines trigger Prettier; run `bun lint:fix` after editing. OG images use Satori which only supports TTF/OTF — `public/fonts/Inter-Bold.ttf` is for Satori only, the site uses woff2.
 - **Responsive** — breakpoint `md:` = 768px. Pattern: `class="md:hidden"` for mobile-only + `class="hidden md:block"` for desktop-only. Tables on mobile get a separate card/list layout.
@@ -59,7 +71,7 @@ This file is the authoritative reference for the repo's conventions.
 
 | File | Purpose |
 |------|---------|
-| `src/content.config.ts` | Content collection definitions (Astro v6 content layer) |
+| `src/content.config.ts` | Content collection definitions (content layer API) |
 | `src/config/` | All site config, re-exported through `src/config/index.ts`. Import as `@/config`, not from individual files. `site.ts` holds nav/social/sub-nav; `features.ts` holds the homepage section flags |
 | `src/types.ts` | `PostKey` union (must stay in sync with collections) |
 | `src/components/PostLayout.astro` | Renders all collection post pages |
@@ -75,9 +87,10 @@ This file is the authoritative reference for the repo's conventions.
 
 ## View and like counters
 
-The site is static SSG with no server, so both counters talk to the **Firestore REST API** directly from the browser. No Firebase SDK, no dependency, no API key: `src/config/views.ts` holds only `projectId`, which is public by design and ships in every page's HTML.
+The site is static SSG with no server, so both counters talk to the **Firestore REST API** directly from the browser. No Firebase SDK, no dependency, no API key: `src/config/views.ts` holds only `enabled` and `projectId`, and the project id is public by design and ships in every page's HTML.
 
 - **`views` and `likes` are separate Firestore collections.** Document ids are post ids with `/` replaced by `_`, since Firestore rejects `/` in ids.
+- **Build the REST urls with `docRefs(collection, id)` / `batchRefs` from `src/utils/views.ts`**, never by hand. `ViewCounter`, `LikeButton` and `ListPosts` all go through them, so the write path and the read path cannot drift apart.
 - **Writes use `fieldTransforms` with `increment`**, which is atomic server-side. A read-then-write would lose counts when two people open a post at once.
 - **`docs/firestore.rules` is the only access control.** The endpoint is public and unauthenticated, so the rules must stay restrictive: `+1` only, `count` field only, everything outside the two collections closed. Allowing `-1` would let anyone script a count down to zero, which is why likes are one way.
 - **Listing pages use `batchGet`** (`src/utils/stats.ts`), one request for the whole page instead of two per post. **The response order does not match the request order**, so read the id back off each `found.name` rather than by index.
@@ -88,9 +101,9 @@ The site is static SSG with no server, so both counters talk to the **Firestore 
 
 - Components are flat in `src/components/` — no subdirectories.
 - `SkillRadar.vue` — do not modify; user maintains it manually.
-- `DeadManSwitch.vue` — gated by `enableDeadManSwitch` in `BaseLayout.astro`; currently disabled. Don't re-enable without asking.
+- `DeadManSwitch.vue` — gated by `features.deadMansSwitch` in `src/config/features.ts` (read in `BaseLayout.astro`); currently `false`. Don't re-enable without asking.
 - `ConferenceHeatmap.astro` — month grid + hover card for `src/config/conferences.ts`. Its card is `position: fixed` and placed by an inline script reading `getBoundingClientRect()`, because an absolute card gets pinned to the ~240px grid instead of tracking the cell. Do not wrap it in a `container-type` element or an `overflow` container: layout containment makes that element the containing block for fixed descendants, and the script's viewport coordinates then land in the wrong place.
-- OG image generation uses Satori (`src/utils/og-image.ts`), with per-collection and per-post endpoints under `src/pages/og/`.
+- OG image generation uses Satori (`src/utils/og-image.ts`). Under `src/pages/og/`: one `[page].png.ts` covers every static page, and each collection has its own `<name>/[...slug].png.ts` for per-post images.
 
 ## Git
 
