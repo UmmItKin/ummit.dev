@@ -1,0 +1,61 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import ListPosts from '@/components/ListPosts.astro'
+import { siteConfig } from '@/config'
+import { getWriterLevel } from '@/utils/level'
+import type { CollectionPosts } from '@/types'
+
+interface Props {
+  title: string
+  description: string
+  ogImage: { src: string; alt: string }
+  posts: CollectionPosts[]
+  // Singular and plural noun for the count line, e.g. ['article', 'articles'].
+  noun: [string, string]
+  verb: string
+  color: string
+}
+
+const { title, description, ogImage, posts, noun, verb, color } = Astro.props
+
+const levelInfo = getWriterLevel(posts.length)
+const countLine = `${levelInfo.count} ${levelInfo.count === 1 ? noun[0] : noun[1]} ${verb}`
+
+const earliestYear =
+  posts.length > 0 ? Math.min(...posts.map((post) => new Date(post.data.date).getFullYear())) : new Date().getFullYear()
+
+function activeLink(pathname: string) {
+  return Astro.url.pathname.replace(/\/+/g, '/').replace(/\/$/, '') === pathname
+}
+---
+
+<BaseLayout title={title} description={description} image={ogImage}>
+  <div class="flex flex-col gap-2 sm:flex-row sm:gap-4 flex-wrap mb-4">
+    {
+      siteConfig.page.blogLinks.map((nav) => (
+        <a
+          aria-label={nav.text}
+          class={`nav-link text-3xl font-bold ${activeLink(nav.href) ? 'opacity-80' : 'opacity-30 hover:opacity-50'}`}
+          href={nav.href}
+        >
+          {nav.text}
+        </a>
+      ))
+    }
+  </div>
+
+  <div class="mb-8 p-4 rounded-lg bg-neutral-800/30 border border-neutral-700/50">
+    <div class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-1">
+      <span class="text-base font-semibold whitespace-nowrap">
+        {countLine}
+      </span>
+      <span class="text-base opacity-50 whitespace-nowrap">·</span>
+      <span class={`text-base font-medium whitespace-nowrap ${color}`}>{levelInfo.level}</span>
+      <span class="text-base opacity-50 whitespace-nowrap">·</span>
+      <span class="text-base opacity-50 whitespace-nowrap">Since {earliestYear}</span>
+    </div>
+    <p class="text-sm opacity-70 italic">{levelInfo.message}</p>
+  </div>
+
+  <ListPosts list={posts} />
+</BaseLayout>

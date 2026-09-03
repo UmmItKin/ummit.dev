@@ -28,9 +28,7 @@ const canonicalURL = new URL(Astro.request.url, Astro.site)
 
 function formatCanonicalURL(url: string | URL) {
   const path = url.toString()
-  const hasQueryParams = path.includes('?')
-  if (hasQueryParams) path.replace(/\/?$/, '')
-  return path.replace(/\/?$/, hasQueryParams ? '' : '/')
+  return path.replace(/\/?$/, path.includes('?') ? '' : '/')
 }
 ---
 

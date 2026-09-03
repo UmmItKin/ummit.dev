@@ -1,16 +1,13 @@
 ---
 import { views } from '@/config/views'
+import { docRefs } from '@/utils/views'
 
 interface Props {
   slug: string
 }
 
 const { slug } = Astro.props
-// Firestore document ids cannot contain '/', so flatten nested post ids.
-const docId = slug.replace(/\//g, '_')
-const dbRoot = `projects/${views.projectId}/databases/(default)`
-const docPath = `${dbRoot}/documents/likes/${docId}`
-const api = 'https://firestore.googleapis.com/v1'
+const { docPath, docUrl, commitUrl } = docRefs('likes', slug)
 ---
 
 {
@@ -19,8 +16,8 @@ const api = 'https://firestore.googleapis.com/v1'
       type="button"
       class="like-button inline-flex items-center gap-1.5 text-sm px-2 py-1 rd-1 hover:bg-neutral-500/10 cursor-pointer bg-transparent border-0 text-inherit"
       data-doc-path={docPath}
-      data-doc-url={`${api}/${docPath}`}
-      data-commit-url={`${api}/${dbRoot}/documents:commit`}
+      data-doc-url={docUrl}
+      data-commit-url={commitUrl}
       aria-label="Like this post"
     >
       <i class="like-icon i-ri-heart-line" />

@@ -1,6 +1,7 @@
 ---
 import type { CollectionPosts } from '@/types'
 import { views as viewsConfig } from '@/config/views'
+import { batchRefs } from '@/utils/views'
 
 interface Props {
   list: CollectionPosts[]
@@ -8,8 +9,7 @@ interface Props {
 
 const { list = [] } = Astro.props
 
-const dbRoot = `projects/${viewsConfig.projectId}/databases/(default)`
-const batchUrl = `https://firestore.googleapis.com/v1/${dbRoot}/documents:batchGet`
+const { dbRoot, batchUrl } = batchRefs
 // Firestore document ids cannot contain '/', so flatten nested post ids.
 const statIds = list.map((post) => post.id.replace(/\//g, '_'))
 

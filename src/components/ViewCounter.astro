@@ -1,28 +1,20 @@
 ---
 import { views } from '@/config/views'
+import { docRefs } from '@/utils/views'
 
 interface Props {
   slug: string
 }
 
 const { slug } = Astro.props
-// Firestore document ids cannot contain '/', so flatten nested post ids.
-const docId = slug.replace(/\//g, '_')
-const dbRoot = `projects/${views.projectId}/databases/(default)`
 // docPath is the id Firestore expects in a write, docUrl is the same document
-// as a REST url. Derive one from the other so they cannot drift apart.
-const docPath = `${dbRoot}/documents/${views.collection}/${docId}`
-const api = 'https://firestore.googleapis.com/v1'
+// as a REST url. Both come from docRefs so they cannot drift apart.
+const { docPath, docUrl, commitUrl } = docRefs('views', slug)
 ---
 
 {
   views.enabled && (
-    <span
-      class="view-counter"
-      data-doc-path={docPath}
-      data-doc-url={`${api}/${docPath}`}
-      data-commit-url={`${api}/${dbRoot}/documents:commit`}
-    >
+    <span class="view-counter" data-doc-path={docPath} data-doc-url={docUrl} data-commit-url={commitUrl}>
       <span class="view-count tabular-nums" />
     </span>
   )

@@ -5,5 +5,4 @@ import type { ViewsConfig } from '@/types'
 export const views: ViewsConfig = {
   enabled: true,
   projectId: 'blog-b6d9f',
-  collection: 'views',
 }

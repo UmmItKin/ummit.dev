@@ -1,13 +1,8 @@
 ---
-interface Project {
-  text: string
-  description?: string
-  icon?: string
-  href: string
-}
+import type { ProjectData } from '@/types'
 
 interface Props {
-  list: Project[]
+  list: ProjectData[number]['projects']
 }
 
 const { list = [] } = Astro.props

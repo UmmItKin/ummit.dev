@@ -1,4 +1,18 @@
+import { views as config } from '@/config/views'
+
 const KEY = 'viewed-posts'
+
+const API = 'https://firestore.googleapis.com/v1'
+const DB_ROOT = `projects/${config.projectId}/databases/(default)`
+
+/** Firestore document ids reject '/', so nested post ids get flattened. */
+export function docRefs(collection: string, id: string) {
+  const docPath = `${DB_ROOT}/documents/${collection}/${id.replace(/\//g, '_')}`
+  return { docPath, docUrl: `${API}/${docPath}`, commitUrl: `${API}/${DB_ROOT}/documents:commit` }
+}
+
+/** Listing pages read every counter on the page in one batchGet. */
+export const batchRefs = { dbRoot: DB_ROOT, batchUrl: `${API}/${DB_ROOT}/documents:batchGet` }
 
 /** Count one view per post per session, so a refresh does not inflate it. */
 export function isFreshView(id: string): boolean {

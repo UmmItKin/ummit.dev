@@ -34,7 +34,7 @@ This file is the authoritative reference for the repo's conventions.
 
 - **Content collections** — 6 collections (`blog`, `infosec`, `ctf`, `research`, `musings`, `pages`) defined in `src/content.config.ts` using Astro v6 content layer API. All blog-like collections share `postSchema`. Checklist for adding a new collection.
 - **Routing table** — blog posts live at `/posts/<id>`, not `/blog/<id>`; `/blog` is only for filtered listing pages. Root `[...slug].astro` handles static pages.
-- **Shared route helpers, don't hand-roll `getStaticPaths`** — collection post pages call `createPostPaths(collection)` from `PostLayout.astro`; OG routes call `makeOgPageRoute(section, title)` (static page) or `makeOgSlugRoute(collection, section)` (per-post) from `src/utils/og-image.ts`. The blog per-post OG (`og/[...slug].png.ts`) stays hand-written because it uses `getPosts()` to filter drafts, which the `getCollection`-based factory does not.
+- **Shared route helpers, don't hand-roll `getStaticPaths`** — collection post pages call `createPostPaths(collection)` from `PostLayout.astro`; per-post OG routes call `makeOgSlugRoute(collection, section)` from `src/utils/og-image.ts`. Every static page's OG lives in one file, `og/[page].png.ts`, as a `{ page: [section, title] }` map — add a row there, not a new file. The blog per-post OG (`og/[...slug].png.ts`) stays hand-written because it uses `getPosts()` to filter drafts, which the `getCollection`-based factory does not.
 - **Footer build stamp** — `Footer.astro` bakes the build commit via `execSync('git rev-parse HEAD')` in frontmatter (build-time), then the client compares it against the GitHub commits API to show up-to-date/stale. Compare logic lives in `src/utils/build-status.ts` (a `.ts` file, not the inline script, because of the `try`/`catch` lint deadlock).
 - **Styles** — UnoCSS shortcuts in `uno.config.ts`; dark theme only. `presetIcons` locks no `collections`, so any set in the already-installed `@iconify/json` works: mostly `i-ri-*` (Remix) and `i-simple-icons-*`, plus `i-circle-flags-*` for country flags. **Every icon must be safelisted in `uno.config.ts`** — a name built at runtime (`` `i-circle-flags-${code}` ``) is invisible to the scanner and silently renders nothing.
 - **Not every Tailwind utility exists here.** `text-2xs` and `leading-snug` emit no rule at all, and `lh-1.4` is read off the *spacing* scale (`line-height: .35rem`). Use `lh-[1.4]` for an arbitrary line-height, `text-xs` for the smallest text. Nothing warns you — grep the built CSS in `dist/_astro/` for the selector.
@@ -63,7 +63,8 @@ This file is the authoritative reference for the repo's conventions.
 | `src/config/` | All site config, re-exported through `src/config/index.ts`. Import as `@/config`, not from individual files. `site.ts` holds nav/social/sub-nav; `features.ts` holds the homepage section flags |
 | `src/types.ts` | `PostKey` union (must stay in sync with collections) |
 | `src/components/PostLayout.astro` | Renders all collection post pages |
-| `src/components/ListPosts.astro` | Renders all listing pages |
+| `src/components/ListPosts.astro` | Renders the post list itself |
+| `src/components/PostListPage.astro` | The whole `/blog`, `/ctf`, `/infosec`, `/musings`, `/research` page: nav, count line, list. Those 5 routes are thin prop wrappers, put shared changes here |
 | `src/layouts/BaseLayout.astro` | Root layout wrapper |
 | `astro.config.ts` | Astro config (integrations, dev port 4321, `INVALID_ANNOTATION` warnings suppressed) |
 | `uno.config.ts` | UnoCSS shortcuts, presets, **icon safelist** (new icons must be added here) |
@@ -71,7 +72,6 @@ This file is the authoritative reference for the repo's conventions.
 | `src/pages/index.astro` | Homepage (bio, badge groups, competitions, CTF contributions, conferences, stacks) |
 | `docs/firestore.rules` | Security rules for the view/like counters. Must be pasted into the Firebase console by hand, nothing deploys them |
 | `public/fonts/` | Self-hosted woff2 font files + Inter-Bold.ttf (for Satori OG images) |
-| `scripts/migrate-hugo.ts` | One-off migration: converts Hugo `Article/` posts + frontmatter into `src/content/blog`. Kept for reference, not part of the build |
 
 ## View and like counters
 

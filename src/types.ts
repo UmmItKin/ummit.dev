@@ -138,7 +138,6 @@ export interface SponsorConfig {
 // Analytics
 export interface AnalyticsConfig {
   enabled: boolean
-  provider?: 'umami' | 'plausible' | 'none'
   src?: string
   websiteId?: string
 }
@@ -147,7 +146,6 @@ export interface AnalyticsConfig {
 export interface ViewsConfig {
   enabled: boolean
   projectId: string
-  collection: string
 }
 
 // Feature flags

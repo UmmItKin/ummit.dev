@@ -1,4 +1,3 @@
-import type { APIRoute } from 'astro'
 import type { PostKey } from '@/types'
 import { Buffer } from 'node:buffer'
 import { readFile } from 'node:fs/promises'
@@ -138,11 +137,6 @@ export function ogResponse(png: Buffer) {
       'Cache-Control': 'public, max-age=31536000, immutable',
     },
   })
-}
-
-// Static-page OG route: one image per page.
-export function makeOgPageRoute(section: string, title: string): APIRoute {
-  return async () => ogResponse(await generateOgImage(section, title))
 }
 
 // Per-post OG route: one image per entry in a collection, labelled `section`.

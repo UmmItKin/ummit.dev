@@ -3,16 +3,14 @@ import type { MarkdownHeading } from 'astro'
 
 interface Props {
   headings: MarkdownHeading[]
-  // Minimum number of qualifying headings before TOC renders.
-  minHeadings?: number
 }
 
-const { headings, minHeadings = 1 } = Astro.props
+const { headings } = Astro.props
 
 // Keep h2 + h3 only; skip post title (h1) and noisy deeper levels.
 const toc = headings.filter((h) => h.depth >= 1 && h.depth <= 3)
 
-const shouldRender = toc.filter((h) => h.depth === 2).length >= minHeadings
+const shouldRender = toc.some((h) => h.depth === 2)
 
 // Per-depth horizontal line offset inside the SVG (matches Fumadocs values).
 function lineOffset(depth: number): number {

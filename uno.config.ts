@@ -5,7 +5,6 @@ import {
   presetWebFonts,
   presetWind3,
   transformerDirectives,
-  transformerVariantGroup,
 } from 'unocss'
 
 export default defineConfig({
@@ -51,7 +50,6 @@ export default defineConfig({
 
   transformers: [
     transformerDirectives(),
-    transformerVariantGroup(),
   ],
 
   safelist: [
@@ -59,14 +57,12 @@ export default defineConfig({
     'text-emerald-400',
     'text-yellow-500',
     // UI icons
-    'i-ri-file-list-2-line',
     'i-ri-rss-line',
     'i-ri-book-2-line',
     'i-ri-signal-tower-line',
     'i-ri-global-line',
     'i-ri-external-link-line',
     'i-ri-mail-line',
-    'i-ri-edit-line',
     'i-ri-alert-line',
     'i-ri-share-line',
     'i-ri-check-line',
@@ -78,7 +74,6 @@ export default defineConfig({
     'i-simple-icons-linkedin',
 
     // Social icons
-    'i-carbon-campsite',
     'i-simple-icons-github',
     'i-simple-icons-x',
     'i-simple-icons-youtube',
@@ -92,17 +87,12 @@ export default defineConfig({
     'i-ri-server-line',
     'i-ri-router-line',
     'i-ri-smartphone-line',
-    'i-ri-wifi-line',
     'i-ri-radar-line',
 
     // Development icons
     'i-ri-apps-line',
     'i-ri-briefcase-line',
-    'i-ri-file-list-line',
-    'i-ri-code-line',
-    'i-ri-terminal-line',
     'i-ri-terminal-box-line',
-    'i-ri-database-2-line',
     'i-ri-bug-line',
     'i-ri-flashlight-line',
     'i-ri-download-2-line',
@@ -135,9 +125,6 @@ export default defineConfig({
 
     // Security icons
     'i-ri-brain-3-fill',
-    'i-ri-shield-keyhole-line',
-    'i-ri-lock-line',
-    'i-ri-shield-check-line',
     'i-ri-flag-line',
     'i-ri-calendar-event-line',
     'i-ri-calendar-line',
@@ -156,7 +143,6 @@ export default defineConfig({
     'i-simple-icons-tryhackme',
     'i-simple-icons-hackthebox',
 
-    'i-ri-sketching-line',
     'i-ri-key-2-line',
     'i-ri-heart-fill',
     'i-ri-heart-line',
