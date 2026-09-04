@@ -44,7 +44,7 @@ Requires [Bun](https://bun.sh/) and Node 24.x (npm/yarn not supported here).
 ```bash
 bun install      # install dependencies
 bun dev          # dev server (--host enabled)
-bun build        # production build
+bun run build    # production build
 bun lint:fix     # auto-fix lint issues
 ```
 
