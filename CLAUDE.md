@@ -17,12 +17,14 @@ Use **Bun only** (never npm/yarn):
 ```bash
 bun install      # install dependencies
 bun dev          # dev server on port 4321, --host enabled
-bun build        # production build (also runs in pre-commit hook)
+bun run build    # production build (also runs in pre-commit hook)
 bun preview      # preview the production build locally
 bun lint         # eslint check only
 bun lint:fix     # auto-fix lint issues (runs in pre-commit hook on staged files)
-bun release      # bump version via bumpp → triggers release.yml → changelogithub
+bun run release  # bump version via bumpp → triggers release.yml → changelogithub
 ```
+
+Use `bun run build`, not `bun build` — the bare form invokes Bun's own bundler (it errors with "Missing entrypoints") instead of the `build` npm script. The same applies to any script whose name collides with a Bun builtin.
 
 No test suite exists. CI (`.github/workflows/ci.yml`) runs `bun run lint` only.
 
