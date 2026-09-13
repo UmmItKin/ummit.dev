@@ -210,7 +210,7 @@ With this option, `tail` will continue monitoring the file even if it's removed 
 
 ## Conclusion
 
-These tips are just the start. As you get comfortable with the terminal, you'll find more ways to streamline tasks and automate your workflow.
+These are just a starting point. The more you use the terminal, the more small tricks you'll pick up for automating repetitive work.
 
 ## References
 

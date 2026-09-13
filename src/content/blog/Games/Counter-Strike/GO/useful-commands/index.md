@@ -93,4 +93,4 @@ Maintaining a consistent crosshair size across all weapons can improve your accu
 
 ## Conclusion
 
-These commands streamline your gameplay so you can focus on outsmarting opponents. Try them in practice games to build muscle memory before taking them into a match.
+These commands cut out the fiddly parts so you can focus on the game. Try them in practice matches to build muscle memory before using them in a real one.

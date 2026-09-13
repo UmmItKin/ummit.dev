@@ -45,7 +45,7 @@ See the source code on [GitHub](https://github.com/sienori/Tab-Session-Manager).
 
 ### [Tabby - Window Tab Manager](https://addons.mozilla.org/zh-TW/firefox/addon/tabby-window-tab-manager/)
 
-Tabby streamlines the management of numerous windows and tabs. Quickly open, close, move, and pin tabs. For those who frequently work with 100+ tabs, Tabby is a must-have.
+Tabby makes managing lots of windows and tabs easier. You can open, close, move, and pin tabs quickly. If you regularly run 100+ tabs, it's worth installing.
 
 See the source code on [GitHub](https://github.com/Bill13579/tabby).
 

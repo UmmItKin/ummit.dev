@@ -9,7 +9,7 @@ lang: en-US
 
 ## Introduction
 
-Building a custom Linux kernel on Arch Linux might appear intimidating at first, but armed with the right knowledge, it becomes an empowering skill. This tutorial is designed to guide you through the process, simplifying each step with clear and straightforward commands.
+Building a custom Linux kernel on Arch looks intimidating at first, but it's mostly a sequence of steps. This guide walks through each one with the commands you need.
 
 ## August 24, 2023
 
@@ -58,7 +58,7 @@ By installing both the base development tools and these additional packages, you
 
 ## Step 2: Download the Kernel Source
 
-Embark on your kernel customization journey by obtaining the kernel source code from the official source, kernel.org. The source code is sizeable, typically around 100 MBs or more. Here are a couple of methods to download the source code:
+Start by getting the kernel source from kernel.org. It's a large download, usually 100 MB or more. Here are a couple of ways to grab it:
 
 ### 1. Visit Kernel.org:
 
@@ -218,7 +218,7 @@ CONFIG_FCOE=m
 ...
 ```
 
-It's worth noting that the kernel configuration is a comprehensive topic on its own, with various options and settings that can significantly impact the behavior and performance of the kernel. Advanced users may explore tools like `make menuconfig`, `make xconfig`, or `make gconfig` to interactively configure the kernel's options. However, for the purpose of this guide, we'll focus on using the existing configuration to compile the custom kernel.
+Kernel configuration is a big topic on its own, since the options affect how the kernel behaves and performs. If you want to configure it interactively, look at `make menuconfig`, `make xconfig`, or `make gconfig`. This guide sticks to reusing the existing config to compile the kernel.
 
 ### 3. Compile the Kernel
 
@@ -417,7 +417,7 @@ While customizing your Linux system can be exciting, there may come a time when 
 
 ### Why Remove a Custom Kernel?
 
-Custom kernels can be beneficial for fine-tuning your system's performance, enabling specific features, or testing new functionalities. However, as your system evolves, you might find that you no longer need a particular custom kernel or want to revert to the default kernel provided by your Linux distribution. Removing a custom kernel can help streamline your system and free up disk space.
+A custom kernel is useful for tuning performance, enabling specific features, or testing something new. At some point you may not need one anymore, or want to go back to your distro's default kernel. Removing the old one frees up disk space.
 
 ### Step 1: Identify the Custom Kernel
 
@@ -535,9 +535,9 @@ By performing this optional step, you're making sure that your bootloader's conf
 
 You've now built a custom Linux kernel on your Arch Linux system. From acquiring the source code to configuring, compiling, and integrating the kernel into your boot loader, you've gained an in-depth understanding of the kernel's inner workings. This knowledge lets you fine-tune your system's performance and features, and deepens your grasp of the foundational components of your operating system.
 
-Having crafted your own Linux kernel, you now possess the ability to tailor your system's behavior according to your preferences and requirements. The advantages of a customized kernel configuration are at your fingertips, enabling you to harness the full potential of your hardware.
+With your own kernel built, you can tune the system's behavior to how you want it and match the config to your hardware.
 
-When it comes to removing a custom kernel from your Linux system, a cautious approach is key to maintaining system stability. Identify the kernel, boot into an alternate version, then remove the associated files to safely eliminate the custom kernel. This way your system retains its functionality and efficiency, reflecting your current needs and choices.
+To remove a custom kernel safely, boot into another kernel first, then delete the associated files. Removing the kernel you're currently running would leave the system unbootable.
 
 ## References
 

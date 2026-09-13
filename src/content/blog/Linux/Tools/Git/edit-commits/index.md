@@ -9,7 +9,7 @@ lang: en-US
 
 ## Introduction
 
-In the world of version control, mistakes happen, including in commit messages. Fortunately, Git provides a straightforward way to correct those messages, whether it's the first commit or any commit in your repository. Here's a step-by-step guide to editing Git commit messages:
+Typos in commit messages happen. Git lets you fix them, whether it's the latest commit or one further back in history. Here's how to edit Git commit messages:
 
 ### Step 1: Navigate to Your Repository Directory
 

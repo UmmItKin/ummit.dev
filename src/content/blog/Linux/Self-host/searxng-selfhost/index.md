@@ -191,11 +191,9 @@ By following these three simple steps, you'll successfully update your SearXNG i
 
 ## Conclusion
 
-Setting up your SearXNG instance using Docker is now a streamlined process, thanks to this guide. While the provided `docker-compose.yml` file is comprehensive, we understand that the official `docker-compose` README might not be the most user-friendly resource for everyone. That's why we've gone the extra mile to break down the Docker Compose setup and explain its components in a more accessible way.
+That's the full Docker setup for SearXNG. The official `docker-compose` README can be hard to follow, so this guide broke the compose file down piece by piece and explained what each service does.
 
-By creating this guide, we aim to bridge the gap and make the process of deploying your own SearXNG instance smoother and more understandable. Docker Compose abstracts the complexity of managing containers and services, but we've taken the effort to provide you with insights into how each service works together to bring your SearXNG metasearch engine to life.
-
-Feel confident in using Docker Compose to set up and maintain your SearXNG instance. This guide empowers you to create your private, efficient, and privacy-respecting search engine.
+With that, you have your own private, privacy-respecting search engine, and enough understanding of the setup to maintain it.
 
 ### Keeping Your System and SearXNG Up to Date
 

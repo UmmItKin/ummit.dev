@@ -9,7 +9,7 @@ lang: en-US
 
 ## Why use plugins?
 
-Oh-My-Zsh plugins are the secret sauce that can transform your terminal life. Imagine having a terminal that anticipates your needs, boosts your efficiency, and just feels right. Well, with these powerful plugins, you're about to embark on a journey to terminal enlightenment. Ready to explore? Dive in: [Oh-My-Zsh Plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins)
+Oh-My-Zsh plugins add things like command autosuggestions and syntax highlighting, which make day-to-day terminal work faster. The full list is here: [Oh-My-Zsh Plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins)
 
 ## Git Plugin: Your Versatile Commandeer
 
@@ -40,7 +40,7 @@ The zsh-autosuggestions plugin acts as your intuitive guide, enriching your comm
 cd ~/.oh-my-zsh/custom/plugins
 ```
 
-3. Unleash the power of zsh-autosuggestions by invoking the following incantation:
+3. Enable zsh-autosuggestions by running:
 
 ```shell
 git clone https://github.com/zsh-users/zsh-autosuggestions

@@ -67,7 +67,7 @@ Nerd Fonts are specialized fonts that have been patched to include a wide range 
 
 ### Installing Fonts for Oh My Posh
 
-When it comes to personalizing your terminal experience with Oh My Posh, fonts are important. Nerd Fonts are fonts patched with a wide range of icons, which Oh My Posh needs to display theme icons. Here's how to install them.
+Oh My Posh needs the right font to draw its theme icons. Nerd Fonts are regular fonts patched with those icons. Here's how to install them.
 
 #### Way1: Using Oh My Posh's CLI for Font Installation
 

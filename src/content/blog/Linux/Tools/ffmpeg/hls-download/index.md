@@ -11,13 +11,11 @@ lang: en-US
 
 First of all, a very MERRY CHRISTMAS to everyone! 🎄🎁
 
-As we embrace the festive spirit, this article kicks off with a practical guide, a valuable method to master when it comes to downloading videos.
-
-we'll walk you through a direct approach using FFMPEG. Let's unwrap the steps!
+This one is a practical guide to downloading videos with FFMPEG.
 
 ## Required Tools
 
-Before we dive in, ensure you have the following tools ready:
+You'll need these tools ready first:
 
 - `FFMPEG` (to download the stream)
 - Terminal (for executing commands)

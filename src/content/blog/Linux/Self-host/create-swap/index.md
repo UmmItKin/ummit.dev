@@ -179,7 +179,7 @@ Remember, removing a swap file can impact your system's performance, so make sur
 
 ## Conclusion
 
-By understanding the process of creating, adjusting, and if necessary, deleting a swap file, you have gained valuable insights into managing memory on your Linux VPS. These techniques empower you to fine-tune your system's performance and ensure optimal resource utilization, even during resource-intensive tasks.
+You can now create a swap file, resize it, and remove it when it's no longer needed. That's usually enough to keep a Linux VPS from running out of memory under heavy load.
 
 ## Reference
 

@@ -35,7 +35,7 @@ By default, `scp` uses port 22 for SSH connections. However, you can specify a c
 scp -P <custom_port> <local_file> user@remote_host:remote_path
 ```
 
-## Streamlined Remote Server Access with SSH
+## Remote Server Access with SSH
 
 ### Enhanced Security with Verbose Logging
 

@@ -72,4 +72,4 @@ Given that Raspberry Pi operates with Linux-based OS, a fundamental understandin
 
 # Final Thoughts
 
-Before you dive into the world of Raspberry Pi, it's important to understand its features and requirements. Consider your specific needs and whether Raspberry Pi aligns with your goals. With this knowledge, you can confidently start working with Raspberry Pi.
+It helps to know what a Raspberry Pi can and can't do before you buy one. Check its features and requirements against what you actually plan to build, then get started.

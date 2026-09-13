@@ -13,7 +13,7 @@ For those of us who have ventured into the world of dual-boot systems, we know t
 
 ### Why? (Fuck Windows)
 
-Windows updates have a knack for causing trouble, especially when it comes to your boot-loader. They can mess up your Grub configuration, leaving you without the familiar boot menu to choose your operating system. In such cases, you'd have to manually access the boot menu to select the system you want to run.
+Windows updates often mess with your boot-loader. They can overwrite your Grub configuration, leaving you without the boot menu, so you'd have to open the firmware boot menu by hand to pick which system to run.
 
 Windows tends to be the culprit here, often disrupting your boot loader, preventing Grub from automatically appearing.
 
@@ -21,7 +21,7 @@ A piece of advice for those planning to install both Windows and Linux: it's gen
 
 ## Getting Prepared
 
-Before we dive into configuring Grub and os-prober, you should already have both Linux and your other operating system (be it Debian, Arch, or Windows) installed. What you're missing is the boot loader for both systems.
+Before configuring Grub and os-prober, you should already have both Linux and your other operating system (Debian, Arch, or Windows) installed. What you're missing is a boot loader that sees both.
 
 ### Step 1: Install GRUB
 

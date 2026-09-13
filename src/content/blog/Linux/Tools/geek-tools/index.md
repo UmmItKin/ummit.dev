@@ -27,7 +27,7 @@ sudo pacman -S vim
 
 ![viu](./viu.png)
 
-### 2. Htop and Btop - Task Management Unleashed
+### 2. Htop and Btop - Task Management
 
 Htop and btop are your dynamic duo for advanced task management. Real-time updates and an intuitive interface make monitoring and managing processes a breeze.
 

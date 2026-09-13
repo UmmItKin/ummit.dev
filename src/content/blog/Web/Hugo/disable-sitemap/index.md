@@ -13,7 +13,7 @@ If you're using Hugo, a popular static site generator, you might be aware that i
 
 ## Why Disable the Sitemap?
 
-Before we dive into the how, let's briefly discuss why you might want to disable the sitemap in Hugo:
+A few reasons you might want to disable the sitemap in Hugo:
 
 1. **Customization**: You might have specific needs for your website's sitemap structure that Hugo's default sitemap generation doesn't fulfill. In such cases, you can choose to disable Hugo's sitemap generation and create a custom sitemap yourself.
 

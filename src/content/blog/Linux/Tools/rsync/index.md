@@ -9,7 +9,7 @@ lang: en-US
 
 ## Why Rsync?
 
-The need to efficiently synchronize data across various devices, servers, or locations is something many of us run into. Whether you're a tech enthusiast, a system administrator, or a regular user, rsync is a tool that can simplify and streamline the process of data synchronization. This guide covers what it is, how it works, and how you can make the most out of it to keep your data up-to-date and organized.
+Sooner or later you need to copy data between devices, servers, or locations and keep both sides in sync. rsync handles that well, only transferring what changed. This guide covers what it is, how it works, and how to use it.
 
 ## What is Rsync?
 

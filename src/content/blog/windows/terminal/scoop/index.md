@@ -9,9 +9,9 @@ lang: en-US
 
 ## Why Scoop?
 
-Are you tired of the hassle of managing software installations on your Windows system? Enter Scoop, a command-line package manager for Windows that can simplify your software management tasks. This guide covers installing Scoop and how to use it.
+Scoop is a command-line package manager for Windows that makes installing and updating software much less painful. This guide covers installing Scoop and using it.
 
-Before we dive into the details, if you're curious and eager to get started right away, you can find the official Scoop website at [here](https://scoop.sh/).
+If you'd rather jump straight in, the official site is [scoop.sh](https://scoop.sh/).
 
 ## What is Scoop?
 
@@ -137,7 +137,7 @@ To make the most of `gsudo`, I recommend a global installation. This way, the to
 
 3. **Restart Your Terminal**: After the installation is complete, restart your terminal to ensure that the changes take effect.
 
-4. **Enjoy Effortless Superuser Access**: That's it! With `gsudo` installed, you can now use the `sudo` command in your terminal. When you do, a popup window will appear, requesting superuser permissions. This means you can perform administrative tasks without the need to right-click and open a new terminal window each time.
+4. **Use `sudo` in the terminal**: With `gsudo` installed, you can run `sudo` in your terminal. A UAC popup asks for permission, so you don't have to right-click and open a separate admin terminal each time.
 
 Installing `gsudo` globally means it's available from any user account, so you don't need to right-click and open a new terminal as admin each time.
 

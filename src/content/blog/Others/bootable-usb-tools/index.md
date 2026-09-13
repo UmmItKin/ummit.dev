@@ -55,4 +55,4 @@ A USB drive can carry an entire operating system, recovery toolkit, or diagnosti
 
 ## In Conclusion
 
-When it comes to creating bootable USB drives, the choice of tools is diverse. While Rufus is an excellent choice for Windows users looking for speed and reliability, YUMI excels at creating multiboot USB drives, offering versatility to carry various operating systems and tools on a single drive. On the other hand, BalenaEtcher stands out for its cross-platform support and user-friendly interface.
+Which tool to use depends on what you need. Rufus is fast and reliable on Windows. YUMI is the one for multiboot drives, since it fits several operating systems and tools on a single stick. BalenaEtcher runs on Windows, macOS, and Linux and is the simplest to use.

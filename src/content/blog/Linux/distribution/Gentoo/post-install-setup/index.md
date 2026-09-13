@@ -49,7 +49,7 @@ So that you can switch your current user with `su` command.
 
 ### 2. Installing `sudo` for Administrative Tasks
 
-It’s really troublesome without the sudo tool, so it must be installed. By default, Gentoo doesn't include `sudo`. However, `sudo` is invaluable for performing administrative tasks with elevated privileges. To install `sudo`, use this command:
+Gentoo doesn't include `sudo` by default, and running admin tasks without it gets tedious fast. Install it with:
 
 ```bash
 emerge --ask --verbose sudo

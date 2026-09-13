@@ -220,7 +220,7 @@ The output should confirm that `/dev/mapper/4tbhdd` is active, and it is in read
 
 ## Conclusion
 
-Congratulations! You've successfully encrypted and set up an internal disk for decryption using a keyfile alongside a passphrase. This adds an extra layer of security to your storage solution. Remember to store your keyfile securely and keep it accessible to ensure smooth disk decryption.
+The internal disk is now encrypted and unlocks with a keyfile as well as a passphrase. Keep the keyfile somewhere safe but reachable at boot, or the disk won't decrypt.
 
 ## References
 

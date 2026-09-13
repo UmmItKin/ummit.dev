@@ -112,7 +112,7 @@ omz update
 
 ### Command 2: `omz help`
 
-When uncertainty arises, the `omz help` command is your trusty companion. A one-stop repository of Oh My Zsh's commands and features, this command is your instant reference guide. It displays a comprehensive list of available commands alongside concise explanations of their purposes.
+When you can't remember a command, run `omz help`. It prints the full list of Oh My Zsh commands with a short explanation of each.
 
 Access the help documentation with a simple command:
 
@@ -142,4 +142,4 @@ With these additional commands at your disposal, you have a more comprehensive g
 
 ## In Conclusion:
 
-Mastering these essential commands unlocks the true potential of Oh My Zsh, elevating your terminal proficiency. From effortless updates to theme customization and command references, you're equipped to conquer the command line with finesse. Embrace these tools, and watch as your terminal transforms into a productivity powerhouse. Happy terminal hacking!
+That covers the commands you'll use most: updating Oh My Zsh, switching themes, and finding the command references. With those, you have enough to work comfortably from the terminal.

@@ -63,7 +63,7 @@ Visual mode allows you to select and manipulate text.
 
 ## Essential Commands
 
-Learn these essential commands to streamline your vim experience.
+These are the core commands worth learning first in vim.
 
 - `:%d`: Delete all content.
 - `:%y+`: Copy all content.

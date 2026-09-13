@@ -75,7 +75,7 @@ By running this command, you'll efficiently optimize your mirrorlist, ensuring f
 
 ### 3. Enhance Visual Experience
 
-Elevate your Arch Linux environment with captivating visual enhancements. Follow these simple steps to breathe life into your interface:
+A few tweaks to make the Arch environment nicer to look at. Follow these steps:
 
 #### 3.2 Enable "Candy" Animation with `ILoveCandy`
 
@@ -165,7 +165,7 @@ Now you can enjoy faster downloads with the ability to retrieve multiple files s
 
 ### 5. Install Game Drivers (AMDGPU Users)
 
-For those using AMDGPU, elevate your gaming potential. Execute:
+On AMDGPU, install the graphics and Vulkan drivers for gaming. Run:
 
 ```shell
 sudo pacman -Sy
@@ -177,7 +177,7 @@ xf86-video-amdgpu
 
 ### 6. Gnome Users: Enhance Browsing Experience
 
-For Gnome users, elevate your browsing capabilities with the gnome-browser-connector. Install it using:
+On Gnome, install gnome-browser-connector so browser extensions can talk to Gnome Shell:
 
 ```shell
 sudo pacman -S gnome-browser-connector
@@ -185,7 +185,7 @@ sudo pacman -S gnome-browser-connector
 
 Once installed, you'll be able to install extensions from [https://extensions.gnome.org/](https://extensions.gnome.org/).
 
-By completing these tasks, you'll optimize your Arch Linux environment, enriching your experience and unleashing its full potential. Enjoy your enhanced system!
+That's the post-install setup done. Your Arch system is now tuned and ready to use.
 
 ### 7. Customize Your GNOME Environment
 
@@ -256,7 +256,7 @@ With Firefox and VLC installed, you now have access to a web browser and media p
 
 ### 10. Install Firewall (UFW)
 
-When it comes to securing your system, a firewall controls incoming and outgoing network traffic. While Arch Linux doesn't come with a pre-installed firewall, you can easily set up the Uncomplicated Firewall (UFW) to manage network access.
+A firewall controls incoming and outgoing network traffic. Arch doesn't ship one by default, so set up the Uncomplicated Firewall (UFW) to manage network access.
 
    #### Install UFW
 

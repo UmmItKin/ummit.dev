@@ -119,7 +119,7 @@ sudo ufw allow <application_name>
 
 ### Connection Rate Limiting
 
-UFW empowers you to limit the number of connections to a particular port:
+UFW can limit the number of connections to a particular port:
 
 ```shell
 sudo ufw limit <port>/<protocol>

@@ -52,7 +52,7 @@ rc-update add elogind boot
 
 ### Step 3: Ensuring Graphics Driver Compatibility
 
-Before we dive into the XFCE installation, it's vital to confirm that our system has the requisite graphics drivers in place. This step helps us avoid potential issues and ensures a smooth XFCE installation.
+Before installing XFCE, confirm the graphics drivers are in place. Getting this right first avoids display problems later.
 
 Run the following command to perform a dry run and simulate the installation of essential graphics drivers:
 
@@ -114,7 +114,7 @@ This command installs the XFCE meta-package, which includes all the core compone
 
 ### Step 8: Don't Forget the Terminal
 
-In the world of Linux, the terminal is your trusty companion, your guiding star through the vast universe of commands and tasks. Just like having hands and feet, you can't navigate Linux comfortably without it. So, let's make sure you have your terminal ready for action!
+You do most things on Linux through the terminal, so it's worth setting up a good one. Let's get that in place.
 
 >Just skip this part, no need to be installed, xfce4-meta is already included.
 
@@ -124,7 +124,7 @@ emerge --ask --verbose x11-terms/xfce4-terminal
 
 ### Step 9: Configuring Your XFCE Session
 
-Before we dive into your XFCE desktop, let's ensure that your system knows how to start it. We'll create a command to initiate XFCE.
+Next, tell the system how to start XFCE by creating a command to launch it.
 
 ```shell
 echo "exec startxfce4" > ~/.xinitrc

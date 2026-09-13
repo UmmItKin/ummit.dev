@@ -9,11 +9,11 @@ lang: en-US
 
 ## Introduction
 
-Tired of the same old look of your Oh My Zsh terminal? Want something more stylish and functional? Look no further than the Powerlevel10k theme, a specially designed theme for Oh My Zsh that brings beauty and functionality to your terminal.
+Powerlevel10k is an Oh My Zsh theme that makes the prompt both better looking and more useful, showing things like git status, exit codes, and timing right in the prompt.
 
 ## Getting Prepared
 
-Before we dive into the installation of Powerlevel10k, make sure you have Oh My Zsh installed on your system. Powerlevel10k is designed as a theme for Oh My Zsh, so having Oh My Zsh is a prerequisite.
+Powerlevel10k is a theme for Oh My Zsh, so you need Oh My Zsh installed first.
 
 ### Step 1: Installing Required Fonts
 

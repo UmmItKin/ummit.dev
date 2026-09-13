@@ -59,7 +59,7 @@ To log in with SSH:
 
 4. **Enter Password:** If this is your first time connecting, you'll be prompted to enter the password associated with the specified username (usually `root`). Note that the password won't be visible as you type it.
 
-5. **Welcome to Your VPS:** Congratulations! If all goes well, you should now be logged into your VPS server. You'll see a command prompt indicating that you're ready to start your CS 1.6 adventure.
+5. **Welcome to Your VPS:** If it worked, you're now logged into the VPS and looking at a command prompt, ready to set up the CS 1.6 server.
 
 That's it for logging in. The next parts cover installing the essential tools and setting up the CS 1.6 server with its mods and features.
 
@@ -186,7 +186,7 @@ Your CS 1.6 server needs the necessary game files to function properly. In this 
 
 ## Step 7: Testing the Server
 
-Now, your CS 1.6 server is set up with the basic game files. However, before you can dive into the action, you need to start the server and ensure everything is running as expected. Let's put your server to the test!
+The server now has the basic game files in place. Before you can play, start it and check that everything runs as expected.
 
 1. **Navigate to the Server Directory**:
 
@@ -396,7 +396,7 @@ Now install the Zombie Plague mod into your CS 1.6 server:
 
 1. **Obtaining the Zombie Plague Mod:**
 
-   Introduce the captivating zombie apocalypse gameplay of Zombie Plague to CS 1.6. Obtain the necessary mod files from the following links:
+   Zombie Plague adds a zombie-survival mode to CS 1.6. Grab the mod files from these links:
 
    - [Zombie Plague 2014 Version](https://forums.alliedmods.net/showthread.php?s=d63394212992e827c6577de504a895bc&t=164926) (Download the SMA files from here)
    - [Zombie Plague 2008 Version](https://forums.alliedmods.net/showthread.php?s=d63394212992e827c6577de504a895bc&t=72505) (Download the resource files from here)
@@ -540,7 +540,7 @@ Now that you've successfully installed the Zombie Plague mod on your CS 1.6 serv
 
 ## Step 14: Adding Yapb Bot to Your Zombie Plague Server
 
-Congratulations on successfully installing Zombie Plague on your server! However, playing alone on your server might not be as exciting as having other players. This final step covers how to add Yapb bot to your Zombie Plague server using the bot's source code.
+Zombie Plague is installed. Playing alone isn't much fun, so this last step adds Yapb bots to the server, built from the bot's source code.
 
 1. **Install Required Packages:**
    First, navigate to your home directory and install the necessary packages:

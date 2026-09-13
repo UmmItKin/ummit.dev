@@ -63,4 +63,4 @@ robocopy d:folder1 e:folder2 *.html
 - `/MOV`: Move files
 - `/MOVE`: Move folders (equivalent to moving files)
 
-Mastering these parameters empowers you to tailor RoboCopy to your specific file management needs, offering unparalleled efficiency and flexibility.
+With these parameters you can adapt RoboCopy to most file-copy and backup jobs.
