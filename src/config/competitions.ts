@@ -2,6 +2,15 @@ import type { CompetitionEntry } from '@/types'
 
 export const competitions: CompetitionEntry[] = [
   {
+    name: 'K17 CTF 2026',
+    date: 'Sep 11-12, 2026',
+    team: 'HeapUnderFlow',
+    division: 'General',
+    placement: '77/682',
+    details: '3,722 / 37',
+    subDetails: 'Overall: 78/930 · 37/37 solved',
+  },
+  {
     name: 'DEF CON CTF Qualifiers 2026',
     href: 'https://bbbctf.com/',
     date: 'May 22-24, 2026',
