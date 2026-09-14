@@ -6,53 +6,59 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=fff)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](./LICENSE)
 
-> Personal website & blog — [ummit.dev](https://ummit.dev) / [lamkin.me](https://lamkin.me)
+> My personal website and blog — [ummit.dev](https://ummit.dev) / [lamkin.me](https://lamkin.me)
 
 ## About
 
-This is the source code for my personal website, built on top of the [astro-theme-vitesse](https://github.com/kieranwv/astro-theme-vitesse) template with extensive customizations to fit my needs.
+The source for my personal site: a blog, CTF writeups, and a homepage covering what I work on. It started as a fork of the [astro-theme-vitesse](https://github.com/kieranwv/astro-theme-vitesse) template and has drifted a long way from it since.
 
-### Why
+I forked the theme because the original had stopped getting updates. I keep this copy current and on the latest dependencies, and add features when I need them. If any of it is useful to you, take it.
 
-Originally, the Vitesse theme seemed to be discontinued, and the source code was no longer being updated. Therefore, I forked it, updated it, and continue to maintain it myself. If you want to use this theme, feel free to do so!
+## Tech stack
 
-All the packages are using the latest versions and are upgraded by me regularly.
+- **[Astro](https://astro.build/) 7** — static site generation, content collections via the content layer API
+- **[Vue 3](https://vuejs.org/)** — the few interactive islands (charts, radar)
+- **[UnoCSS](https://unocss.dev/)** — atomic CSS, dark theme only
+- **[MDX](https://mdxjs.com/)** — posts and writeups
+- **[Bun](https://bun.sh/)** — package manager and runtime
 
 ## Features
 
-Extensions on top of the original Vitesse theme:
+Built on top of the original Vitesse theme:
 
-- **Astro 7** with the content layer API
 - **6 content collections** — `blog`, `infosec`, `ctf`, `musings`, `research`, `pages`
-- **Auto OG image generation** — dynamic Open Graph images per page and per post (Satori)
-- **View and like counters** — serverless, straight to the Firestore REST API (no SDK, no key)
-- **Build freshness stamp** — the footer shows the build's commit and checks it against GitHub
-- **Per-post `lastmod`** support
-- **Self-hosted variable fonts** — Google Sans Flex + Google Sans Code (no external font requests)
-- **Competition experience** — table with CTF placements and rankings
-- **Friends page** — clean list layout
-- **Gear page** — share your setup and tools
-- **Links page** — linktree-style with stagger animation
-- **Projects page** — showcase with category grouping
-- **Responsive design** — mobile-first with card/table adaptive layouts
-- **Dark-only theme** — optimized for dark mode viewing
+- **Auto OG images** — a unique Open Graph image per page and per post, rendered with Satori
+- **View and like counters** — serverless, talking straight to the Firestore REST API with no SDK and no API key
+- **Build freshness stamp** — the footer shows the deployed commit and checks it against GitHub
+- **Self-hosted variable fonts** — Google Sans Flex and Google Sans Code, so no external font requests
+- **Competition record** — a table of CTF placements and rankings on the homepage
+- **Per-post `lastmod`** for edited posts
+- **Extra pages** — friends, gear, links, projects, and video
+- **Responsive** — mobile-first, with tables that switch to a card layout on small screens
+- **Dark-only theme** tuned for reading at night
 
-## Getting Started
+## Getting started
 
-Requires [Bun](https://bun.sh/) and Node 24.x (npm/yarn not supported here).
+You need [Bun](https://bun.sh/) and Node 24.x. npm and yarn are not supported.
 
 ```bash
 bun install      # install dependencies
-bun dev          # dev server (--host enabled)
+bun dev          # dev server on port 4321 (--host enabled)
 bun run build    # production build
 bun lint:fix     # auto-fix lint issues
 ```
 
+Use `bun run build`, not `bun build` — the bare form runs Bun's own bundler instead of the build script.
+
+## Deployment
+
+The site is static, so the build output in `dist/` can be hosted anywhere. `Dockerfile.vercel` builds it with Bun and serves the static files, and is used for the Vercel deploy.
+
 ## Contributing
 
-- [`CLAUDE.md`](./CLAUDE.md) — the single reference for repo conventions, content rules, architecture, and the checklist for adding a new content collection
-- [`AGENTS.md`](./AGENTS.md) — a thin pointer to `CLAUDE.md` for OpenCode and other agents
+- [`CLAUDE.md`](./CLAUDE.md) — the single reference for conventions, architecture, content rules, and the checklist for adding a content collection
+- [`AGENTS.md`](./AGENTS.md) — a thin pointer to `CLAUDE.md` for other agents and tools
 
 ## License
 
-This project is licensed under the [MIT License](./LICENSE).
+Licensed under the [MIT License](./LICENSE).
