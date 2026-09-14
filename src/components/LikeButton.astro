@@ -10,21 +10,19 @@ const { slug } = Astro.props
 const { docPath, docUrl, commitUrl } = docRefs('likes', slug)
 ---
 
-{
-  views.enabled && (
-    <button
-      type="button"
-      class="like-button inline-flex items-center gap-1.5 text-sm px-2 py-1 rd-1 hover:bg-neutral-500/10 cursor-pointer bg-transparent border-0 text-inherit"
-      data-doc-path={docPath}
-      data-doc-url={docUrl}
-      data-commit-url={commitUrl}
-      aria-label="Like this post"
-    >
-      <i class="like-icon i-ri-heart-line" />
-      <span class="like-count tabular-nums" />
-    </button>
-  )
-}
+{views.enabled && (
+  <button
+    type="button"
+    class="like-button inline-flex items-center gap-1.5 text-sm px-2 py-1 rd-1 hover:bg-neutral-500/10 cursor-pointer bg-transparent border-0 text-inherit"
+    data-doc-path={docPath}
+    data-doc-url={docUrl}
+    data-commit-url={commitUrl}
+    aria-label="Like this post"
+  >
+    <i class="like-icon i-ri-heart-line" />
+    <span class="like-count tabular-nums" />
+  </button>
+)}
 
 <div class="like-toast not-prose" popover="manual" role="status">
   <i class="i-ri-heart-fill text-red-400"></i>

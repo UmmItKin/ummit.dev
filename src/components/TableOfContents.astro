@@ -26,90 +26,88 @@ function itemOffset(depth: number): number {
 }
 ---
 
-{
-  shouldRender && (
-    <>
-      <details class="toc-mobile not-prose mb-8 xl:hidden border-1 border-main rounded-md bg-neutral-500/5">
-        <summary class="cursor-pointer py-2 px-3 text-sm op-70 hover:op-100 transition-opacity duration-200 select-none">
-          <span class="i-ri-list-unordered align-middle mr-1.5" />
-          Table of contents
-        </summary>
-        <nav class="px-3 pb-3 pt-1 max-h-[60vh] overflow-y-auto" aria-label="Table of contents">
-          <ul class="toc-mobile-list" style="list-style: none; padding: 0; margin: 0;">
-            {toc.map((h) => (
-              <li style={`list-style: none; padding-left: ${(h.depth - 2) * 1}rem;`}>
-                <a
-                  href={`#${h.slug}`}
-                  class={`toc-link block py-0.5 leading-snug decoration-none transition-colors duration-200 ${
-                    h.depth === 2 ? 'text-sm op-80 hover:op-100' : 'text-xs op-55 hover:op-90'
-                  }`}
-                >
-                  {h.text}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </details>
-
-      <aside
-        class="toc-desktop not-prose hidden xl:block fixed top-24 w-60 max-h-[calc(100vh-12rem)] overflow-y-auto z-10"
-        style="left: calc(50% + 24rem + 2rem);"
-        aria-label="Table of contents"
-      >
-        <p class="text-xs op-50 uppercase tracking-wider mb-3 font-mono flex items-center gap-1.5">
-          <span class="i-ri-menu-line text-base" />
-          On this page
-        </p>
-        <div class="toc-container relative flex flex-col">
-          <div class="toc-thumb-wrap absolute top-0 left-0 pointer-events-none" aria-hidden="true" />
-
-          {toc.map((h, i) => {
-            const prev = toc[i - 1]
-            const l1 = lineOffset(h.depth)
-            const l0 = i === 0 ? l1 : lineOffset(prev.depth)
-            const drawCurve = l0 !== l1
-            return (
+{shouldRender && (
+  <>
+    <details class="toc-mobile not-prose mb-8 xl:hidden border-1 border-main rounded-md bg-neutral-500/5">
+      <summary class="cursor-pointer py-2 px-3 text-sm op-70 hover:op-100 transition-opacity duration-200 select-none">
+        <span class="i-ri-list-unordered align-middle mr-1.5" />
+        Table of contents
+      </summary>
+      <nav class="px-3 pb-3 pt-1 max-h-[60vh] overflow-y-auto" aria-label="Table of contents">
+        <ul class="toc-mobile-list" style="list-style: none; padding: 0; margin: 0;">
+          {toc.map((h) => (
+            <li style={`list-style: none; padding-left: ${(h.depth - 2) * 1}rem;`}>
               <a
                 href={`#${h.slug}`}
-                data-toc-slug={h.slug}
-                data-toc-depth={h.depth}
-                data-toc-l0={l0}
-                data-toc-l1={l1}
-                class="toc-link relative py-1.5 text-sm leading-snug op-50 hover:op-90 transition-colors duration-200 decoration-none wrap-anywhere"
-                style={`padding-left: ${itemOffset(h.depth)}px;`}
+                class={`toc-link block py-0.5 leading-snug decoration-none transition-colors duration-200 ${
+                  h.depth === 2 ? 'text-sm op-80 hover:op-100' : 'text-xs op-55 hover:op-90'
+                }`}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="toc-rail absolute -top-1.5 left-0 bottom-0 h-[calc(100%+0.375rem)] -z-1 pointer-events-none"
-                  style={`width: ${Math.max(l0, l1) + 9}px;`}
-                >
-                  {drawCurve && (
-                    <path
-                      d={`M ${l0 + 0.5} 0 C ${l0 + 0.5} 8 ${l1 + 0.5} 4 ${l1 + 0.5} 12`}
-                      stroke-width="1"
-                      fill="none"
-                      class="toc-rail-stroke"
-                    />
-                  )}
-                  <line
-                    x1={l1 + 0.5}
-                    y1={drawCurve ? 12 : 6}
-                    x2={l1 + 0.5}
-                    y2="100%"
-                    stroke-width="1"
-                    class="toc-rail-stroke"
-                  />
-                </svg>
                 {h.text}
               </a>
-            )
-          })}
-        </div>
-      </aside>
-    </>
-  )
-}
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </details>
+
+    <aside
+      class="toc-desktop not-prose hidden xl:block fixed top-24 w-60 max-h-[calc(100vh-12rem)] overflow-y-auto z-10"
+      style="left: calc(50% + 24rem + 2rem);"
+      aria-label="Table of contents"
+    >
+      <p class="text-xs op-50 uppercase tracking-wider mb-3 font-mono flex items-center gap-1.5">
+        <span class="i-ri-menu-line text-base" />
+        On this page
+      </p>
+      <div class="toc-container relative flex flex-col">
+        <div class="toc-thumb-wrap absolute top-0 left-0 pointer-events-none" aria-hidden="true" />
+
+        {toc.map((h, i) => {
+          const prev = toc[i - 1]
+          const l1 = lineOffset(h.depth)
+          const l0 = i === 0 ? l1 : lineOffset(prev.depth)
+          const drawCurve = l0 !== l1
+          return (
+            <a
+              href={`#${h.slug}`}
+              data-toc-slug={h.slug}
+              data-toc-depth={h.depth}
+              data-toc-l0={l0}
+              data-toc-l1={l1}
+              class="toc-link relative py-1.5 text-sm leading-snug op-50 hover:op-90 transition-colors duration-200 decoration-none wrap-anywhere"
+              style={`padding-left: ${itemOffset(h.depth)}px;`}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="toc-rail absolute -top-1.5 left-0 bottom-0 h-[calc(100%+0.375rem)] -z-1 pointer-events-none"
+                style={`width: ${Math.max(l0, l1) + 9}px;`}
+              >
+                {drawCurve && (
+                  <path
+                    d={`M ${l0 + 0.5} 0 C ${l0 + 0.5} 8 ${l1 + 0.5} 4 ${l1 + 0.5} 12`}
+                    stroke-width="1"
+                    fill="none"
+                    class="toc-rail-stroke"
+                  />
+                )}
+                <line
+                  x1={l1 + 0.5}
+                  y1={drawCurve ? 12 : 6}
+                  x2={l1 + 0.5}
+                  y2="100%"
+                  stroke-width="1"
+                  class="toc-rail-stroke"
+                />
+              </svg>
+              {h.text}
+            </a>
+          )
+        })}
+      </div>
+    </aside>
+  </>
+)}
 <style is:global>
   html {
     scroll-behavior: smooth;

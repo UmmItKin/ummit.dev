@@ -53,21 +53,19 @@ const targets = [
     </div>
 
     <div class="flex gap-4 overflow-x-auto pb-2 mb-5">
-      {
-        targets.map((t) => (
-          <a
-            href={t.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex flex-col items-center gap-2 shrink-0 w-16 opacity-80 hover:opacity-100 transition-opacity duration-200 decoration-none !border-none text-inherit"
-          >
-            <span class="inline-flex items-center justify-center w-12 h-12 rd-full bg-neutral-500/15">
-              <i class:list={[t.icon, 'text-xl']} />
-            </span>
-            <span class="text-xs">{t.name}</span>
-          </a>
-        ))
-      }
+      {targets.map((t) => (
+        <a
+          href={t.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex flex-col items-center gap-2 shrink-0 w-16 opacity-80 hover:opacity-100 transition-opacity duration-200 decoration-none !border-none text-inherit"
+        >
+          <span class="inline-flex items-center justify-center w-12 h-12 rd-full bg-neutral-500/15">
+            <i class:list={[t.icon, 'text-xl']} />
+          </span>
+          <span class="text-xs">{t.name}</span>
+        </a>
+      ))}
       <button
         type="button"
         class="share-native hidden flex-col items-center gap-2 shrink-0 w-16 opacity-80 hover:opacity-100 transition-opacity duration-200 cursor-pointer bg-transparent border-0 text-inherit p-0"

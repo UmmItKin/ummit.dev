@@ -60,7 +60,7 @@
     "simple-git-hooks": "^2.14.0"
   },
   "simple-git-hooks": {
-    "pre-commit": "bun lint-staged && bun run build"
+    "pre-commit": "bun lint-staged && bun run lint && bun run build"
   },
   "lint-staged": {
     "*.{js,ts,mjs,cjs,vue,astro,md,mdx,yml,yaml}": "eslint --fix"

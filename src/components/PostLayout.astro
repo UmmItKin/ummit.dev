@@ -101,26 +101,22 @@ function getOutdatedInfo(dateStr: string, lastmodStr?: string) {
       <LikeButton slug={post.id} />
       <ViewCounter slug={post.id} />
     </div>
-    {
-      (() => {
-        const outdatedInfo = post.collection === 'blog' ? getOutdatedInfo(date, lastmod) : null
-        return (
-          outdatedInfo && (
-            <p class="op-60 text-sm flex items-center gap-1 mt-2">
-              <i class:list={[outdatedInfo.icon, outdatedInfo.color]} />
-              <span>{outdatedInfo.message}</span>
-            </p>
-          )
+    {(() => {
+      const outdatedInfo = post.collection === 'blog' ? getOutdatedInfo(date, lastmod) : null
+      return (
+        outdatedInfo && (
+          <p class="op-60 text-sm flex items-center gap-1 mt-2">
+            <i class:list={[outdatedInfo.icon, outdatedInfo.color]} />
+            <span>{outdatedInfo.message}</span>
+          </p>
         )
-      })()
-    }
-    {
-      image && (
-        <p>
-          <img width="640" height="360" src={image.src} alt={image.alt || ''} />
-        </p>
       )
-    }
+    })()}
+    {image && (
+      <p>
+        <img width="640" height="360" src={image.src} alt={image.alt || ''} />
+      </p>
+    )}
     <TableOfContents headings={headings} />
     <Content />
   </article>

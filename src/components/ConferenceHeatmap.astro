@@ -37,43 +37,41 @@ const rows = years.map((year) => ({
     <div class="rows">
       <div class="row">
         <span class="rail"></span>
-        {months.map((m) => <span class="month">{m.charAt(0)}</span>)}
+        {months.map((m) => (
+          <span class="month">{m.charAt(0)}</span>
+        ))}
       </div>
 
-      {
-        rows.map((row) => (
-          <div class="row">
-            <span class="rail">{row.year}</span>
-            {row.cells.map((cell) => (
-              <span
-                class:list={['cell', `level-${Math.min(cell.events.length, 3)}`, cell.events.length > 0 && 'filled']}
-              >
-                {cell.events.length > 0 && (
-                  <span class="card">
-                    <span class="card-inner">
-                      <span class="card-subtitle">
-                        {cell.label} {row.year} · {cell.events.length} {cell.events.length === 1 ? 'event' : 'events'}
-                      </span>
-                      {cell.events.map((e) => (
-                        <span class="card-event">
-                          <span class="card-title">
-                            {e.image && <img class="card-logo" src={e.image} alt="" width="32" height="32" />}
-                            {e.event}
-                          </span>
-                          <span class="card-meta">
-                            {cell.label} {days(e)} · {e.role}
-                            {e.detail ? ` · ${e.detail}` : ''}
-                          </span>
-                        </span>
-                      ))}
+      {rows.map((row) => (
+        <div class="row">
+          <span class="rail">{row.year}</span>
+          {row.cells.map((cell) => (
+            <span class:list={['cell', `level-${Math.min(cell.events.length, 3)}`, cell.events.length > 0 && 'filled']}>
+              {cell.events.length > 0 && (
+                <span class="card">
+                  <span class="card-inner">
+                    <span class="card-subtitle">
+                      {cell.label} {row.year} · {cell.events.length} {cell.events.length === 1 ? 'event' : 'events'}
                     </span>
+                    {cell.events.map((e) => (
+                      <span class="card-event">
+                        <span class="card-title">
+                          {e.image && <img class="card-logo" src={e.image} alt="" width="32" height="32" />}
+                          {e.event}
+                        </span>
+                        <span class="card-meta">
+                          {cell.label} {days(e)} · {e.role}
+                          {e.detail ? ` · ${e.detail}` : ''}
+                        </span>
+                      </span>
+                    ))}
                   </span>
-                )}
-              </span>
-            ))}
-          </div>
-        ))
-      }
+                </span>
+              )}
+            </span>
+          ))}
+        </div>
+      ))}
     </div>
 
     <div class="legend">

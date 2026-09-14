@@ -58,48 +58,46 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
     <p>{profile.intro}</p>
     {profile.subtagline && <p class="mt-1 text-sm opacity-60">{profile.subtagline}</p>}
 
-    {
-      badgeGroups.length > 0 && (
-        <p class="ctf-section">
-          {badgeGroups.map((group, gi) => (
-            <>
-              {gi > 0 && <br />}
-              <span>{group.label} </span>
-              {group.badges.map((badge: Badge) => (
-                <HoverPreviewLink
-                  href={badge.href}
-                  title={badge.title}
-                  subtitle={badge.subtitle}
-                  description={badge.description}
-                >
-                  <span class="magic-link-icon">
-                    {badge.image ? (
-                      <img src={badge.image} alt="" width="500" height="500" />
-                    ) : (
-                      <i class:list={[badge.icon]} style={badge.color ? `color: ${badge.color}` : ''} />
-                    )}
-                  </span>
-                  {badge.title}
-                </HoverPreviewLink>
-              ))}
-            </>
-          ))}
-        </p>
-      )
-    }
+    {badgeGroups.length > 0 && (
+      <p class="ctf-section">
+        {badgeGroups.map((group, gi) => (
+          <>
+            {gi > 0 && <br />}
+            <span>{group.label} </span>
+            {group.badges.map((badge: Badge) => (
+              <HoverPreviewLink
+                href={badge.href}
+                title={badge.title}
+                subtitle={badge.subtitle}
+                description={badge.description}
+              >
+                <span class="magic-link-icon">
+                  {badge.image ? (
+                    <img src={badge.image} alt="" width="500" height="500" />
+                  ) : (
+                    <i class:list={[badge.icon]} style={badge.color ? `color: ${badge.color}` : ''} />
+                  )}
+                </span>
+                {badge.title}
+              </HoverPreviewLink>
+            ))}
+          </>
+        ))}
+      </p>
+    )}
 
-    {profile.bio.map((p: string) => <p>{p}</p>)}
+    {profile.bio.map((p: string) => (
+      <p>{p}</p>
+    ))}
 
     <hr class="hr-line" />
 
     <p class="flex items-center gap-x-4 gap-y-2 flex-wrap">
-      {
-        siteConfig.socialLinks.map((link) => (
-          <a aria-label={link.text} href={link.href} target="_blank" class="prose-link">
-            <i class:list={[link.icon]} /> {link.text}
-          </a>
-        ))
-      }
+      {siteConfig.socialLinks.map((link) => (
+        <a aria-label={link.text} href={link.href} target="_blank" class="prose-link">
+          <i class:list={[link.icon]} /> {link.text}
+        </a>
+      ))}
     </p>
 
     <div class="flex flex-col sm:flex-row gap-2 sm:gap-6 mt-4 text-sm opacity-80">
@@ -115,265 +113,211 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
       </a>
     </div>
 
-    {
-      profile.gpgKeyUrl && (
-        <a
-          class="prose-link inline-flex items-center gap-1 mt-3 text-xs whitespace-nowrap"
-          href={profile.gpgKeyUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <i class="i-ri-key-2-line" />
-          GPG Key
-        </a>
-      )
-    }
+    {profile.gpgKeyUrl && (
+      <a
+        class="prose-link inline-flex items-center gap-1 mt-3 text-xs whitespace-nowrap"
+        href={profile.gpgKeyUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <i class="i-ri-key-2-line" />
+        GPG Key
+      </a>
+    )}
 
     <hr class="hr-line" />
 
-    {
-      features.sponsor && (
-        <>
-          <section class="mt-8">
-            <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
-              <i class="i-ri-cup-line" />
-              Sponsor
-            </h2>
-            <Sponsor />
-          </section>
-          <hr class="hr-line" />
-        </>
-      )
-    }
+    {features.sponsor && (
+      <>
+        <section class="mt-8">
+          <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
+            <i class="i-ri-cup-line" />
+            Sponsor
+          </h2>
+          <Sponsor />
+        </section>
+        <hr class="hr-line" />
+      </>
+    )}
 
-    {
-      contributions && (
-        <>
-          <section class="mt-8">
-            <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
-              <i class="i-simple-icons-git" />
-              Contributions
-            </h2>
-            <GitHubGraph client:visible days={contributions.days} total={contributions.total} />
-          </section>
-          <hr class="hr-line" />
-        </>
-      )
-    }
+    {contributions && (
+      <>
+        <section class="mt-8">
+          <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
+            <i class="i-simple-icons-git" />
+            Contributions
+          </h2>
+          <GitHubGraph client:visible days={contributions.days} total={contributions.total} />
+        </section>
+        <hr class="hr-line" />
+      </>
+    )}
 
-    {
-      features.skills && (
-        <>
-          <section class="mt-8">
-            <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
-              <i class="i-ri-trophy-line" />
-              Skills
-            </h2>
-            <p class="text-sm opacity-70 mb-4">This is my skill :D</p>
-            <SkillRadar client:idle data={skills} />
-          </section>
-          <hr class="hr-line" />
-        </>
-      )
-    }
+    {features.skills && (
+      <>
+        <section class="mt-8">
+          <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
+            <i class="i-ri-trophy-line" />
+            Skills
+          </h2>
+          <p class="text-sm opacity-70 mb-4">This is my skill :D</p>
+          <SkillRadar client:idle data={skills} />
+        </section>
+        <hr class="hr-line" />
+      </>
+    )}
 
-    {
-      features.competitions && (
-        <>
-          <section class="mt-8">
-            <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
-              <i class="i-ri-trophy-line" />
-              Competition Experience
-            </h2>
-            <p class="text-xs opacity-45 -mt-3 mb-4">
-              Only the best runs are listed — I play other CTFs casually too, just not at full effort.
-            </p>
+    {features.competitions && (
+      <>
+        <section class="mt-8">
+          <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
+            <i class="i-ri-trophy-line" />
+            Competition Experience
+          </h2>
+          <p class="text-xs opacity-45 -mt-3 mb-4">
+            Only the best runs are listed — I play other CTFs casually too, just not at full effort.
+          </p>
 
-            <div class="md:hidden divide-y divide-neutral-800">
-              {competitions.map((c) => (
-                <div class="py-3">
-                  <h3 class="font-medium mt-0">
-                    {c.href ? (
-                      <a class="prose-link !whitespace-normal" href={c.href} target="_blank" rel="noopener noreferrer">
-                        {c.name}
-                      </a>
-                    ) : (
-                      c.name
-                    )}
-                  </h3>
-                  <div class="text-xs opacity-60 mt-1 flex flex-col items-start gap-1">
+          <div class="md:hidden divide-y divide-neutral-800">
+            {competitions.map((c) => (
+              <div class="py-3">
+                <h3 class="font-medium mt-0">
+                  {c.href ? (
+                    <a class="prose-link !whitespace-normal" href={c.href} target="_blank" rel="noopener noreferrer">
+                      {c.name}
+                    </a>
+                  ) : (
+                    c.name
+                  )}
+                </h3>
+                <div class="text-xs opacity-60 mt-1 flex flex-col items-start gap-1">
+                  <span class="inline-flex items-center gap-1">
+                    <i class="i-ri-calendar-line" />
+                    {c.date}
+                  </span>
+                  <span class="inline-flex items-center gap-1">
+                    <i class="i-ri-team-line" />
+                    {c.team}
+                    {c.division && c.division !== '\u2014' && <span class="opacity-70">({c.division})</span>}
+                  </span>
+                  <span class="inline-flex items-center gap-1">
+                    <i class="i-ri-medal-line" />
+                    <strong class="opacity-90">{c.placement}</strong>
+                  </span>
+                  {c.details && c.details !== '\u2014' && (
                     <span class="inline-flex items-center gap-1">
-                      <i class="i-ri-calendar-line" />
-                      {c.date}
+                      <i class="i-ri-bar-chart-line" />
+                      {c.details}
                     </span>
+                  )}
+                  {c.subDetails && (
                     <span class="inline-flex items-center gap-1">
-                      <i class="i-ri-team-line" />
+                      <i class="i-ri-earth-line" />
+                      {c.subDetails}
+                    </span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div class="hidden md:block overflow-x-auto">
+            <table class="competition-table w-full text-sm text-left">
+              <thead>
+                <tr class="border-b border-neutral-700">
+                  <th class="pb-2 pr-4 font-medium opacity-70">Competition</th>
+                  <th class="pb-2 pr-4 font-medium opacity-70 whitespace-nowrap">Date</th>
+                  <th class="pb-2 pr-4 font-medium opacity-70">Team</th>
+                  <th class="pb-2 pr-4 font-medium opacity-70 text-right whitespace-nowrap">Placement</th>
+                  <th class="pb-2 font-medium opacity-70 text-right whitespace-nowrap">Pts / Solves</th>
+                </tr>
+              </thead>
+              <tbody>
+                {competitions.map((c) => (
+                  <tr class="border-b border-neutral-800">
+                    <td class="py-2.5 pr-4 font-medium align-baseline">
+                      {c.href ? (
+                        <a
+                          class="prose-link !whitespace-normal"
+                          href={c.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {c.name}
+                        </a>
+                      ) : (
+                        c.name
+                      )}
+                    </td>
+                    <td class="py-2.5 pr-4 opacity-60 whitespace-nowrap align-baseline">{c.date}</td>
+                    <td class="py-2.5 pr-4 align-baseline">
                       {c.team}
-                      {c.division && c.division !== '\u2014' && <span class="opacity-70">({c.division})</span>}
-                    </span>
-                    <span class="inline-flex items-center gap-1">
-                      <i class="i-ri-medal-line" />
-                      <strong class="opacity-90">{c.placement}</strong>
-                    </span>
-                    {c.details && c.details !== '\u2014' && (
-                      <span class="inline-flex items-center gap-1">
-                        <i class="i-ri-bar-chart-line" />
-                        {c.details}
-                      </span>
-                    )}
-                    {c.subDetails && (
-                      <span class="inline-flex items-center gap-1">
-                        <i class="i-ri-earth-line" />
-                        {c.subDetails}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div class="hidden md:block overflow-x-auto">
-              <table class="competition-table w-full text-sm text-left">
-                <thead>
-                  <tr class="border-b border-neutral-700">
-                    <th class="pb-2 pr-4 font-medium opacity-70">Competition</th>
-                    <th class="pb-2 pr-4 font-medium opacity-70 whitespace-nowrap">Date</th>
-                    <th class="pb-2 pr-4 font-medium opacity-70">Team</th>
-                    <th class="pb-2 pr-4 font-medium opacity-70 text-right whitespace-nowrap">Placement</th>
-                    <th class="pb-2 font-medium opacity-70 text-right whitespace-nowrap">Pts / Solves</th>
+                      {c.division && c.division !== '\u2014' && (
+                        <span class="text-xs opacity-45 ml-1.5">{c.division}</span>
+                      )}
+                    </td>
+                    <td class="py-2.5 pr-4 text-right tabular-nums whitespace-nowrap align-baseline">
+                      <strong>{c.placement}</strong>
+                    </td>
+                    <td class="py-2.5 text-right tabular-nums whitespace-nowrap align-baseline">
+                      {c.details && c.details !== '\u2014' ? c.details : <span class="opacity-25">{'\u2014'}</span>}
+                      {c.subDetails && <div class="text-xs opacity-45 mt-0.5">{c.subDetails}</div>}
+                    </td>
                   </tr>
-                </thead>
-                <tbody>
-                  {competitions.map((c) => (
-                    <tr class="border-b border-neutral-800">
-                      <td class="py-2.5 pr-4 font-medium align-baseline">
-                        {c.href ? (
-                          <a
-                            class="prose-link !whitespace-normal"
-                            href={c.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {c.name}
-                          </a>
-                        ) : (
-                          c.name
-                        )}
-                      </td>
-                      <td class="py-2.5 pr-4 opacity-60 whitespace-nowrap align-baseline">{c.date}</td>
-                      <td class="py-2.5 pr-4 align-baseline">
-                        {c.team}
-                        {c.division && c.division !== '\u2014' && (
-                          <span class="text-xs opacity-45 ml-1.5">{c.division}</span>
-                        )}
-                      </td>
-                      <td class="py-2.5 pr-4 text-right tabular-nums whitespace-nowrap align-baseline">
-                        <strong>{c.placement}</strong>
-                      </td>
-                      <td class="py-2.5 text-right tabular-nums whitespace-nowrap align-baseline">
-                        {c.details && c.details !== '\u2014' ? c.details : <span class="opacity-25">{'\u2014'}</span>}
-                        {c.subDetails && <div class="text-xs opacity-45 mt-0.5">{c.subDetails}</div>}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
 
-          <section class="mt-8">
-            <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
-              <i class="i-ri-flag-line" />
-              CTF Contributions
-            </h2>
-            <p class="text-xs opacity-45 -mt-3 mb-4">Events I have authored challenges for or otherwise helped run.</p>
+        <section class="mt-8">
+          <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
+            <i class="i-ri-flag-line" />
+            CTF Contributions
+          </h2>
+          <p class="text-xs opacity-45 -mt-3 mb-4">Events I have authored challenges for or otherwise helped run.</p>
 
-            <div class="md:hidden divide-y divide-neutral-800">
-              {ctfContributions.map((c) => (
-                <div class="py-3">
-                  <div class="font-medium">
-                    {c.href ? (
-                      <a class="prose-link !whitespace-normal" href={c.href} target="_blank" rel="noopener noreferrer">
-                        {c.event}
-                      </a>
-                    ) : (
-                      c.event
-                    )}
-                  </div>
-                  <div class="text-xs opacity-60 mt-1 flex flex-col items-start gap-1">
-                    <span class="inline-flex items-center gap-1">
-                      <i class="i-ri-calendar-line" />
-                      {c.date}
-                    </span>
-                    {c.role.split(', ').map((r) => (
-                      <span class="inline-flex items-center gap-1">
-                        <i class:list={[contributionRoleIcons[r] ?? 'i-ri-user-line']} />
-                        {r}
-                      </span>
-                    ))}
-                  </div>
+          <div class="md:hidden divide-y divide-neutral-800">
+            {ctfContributions.map((c) => (
+              <div class="py-3">
+                <div class="font-medium">
+                  {c.href ? (
+                    <a class="prose-link !whitespace-normal" href={c.href} target="_blank" rel="noopener noreferrer">
+                      {c.event}
+                    </a>
+                  ) : (
+                    c.event
+                  )}
                 </div>
-              ))}
-            </div>
-
-            <div class="hidden md:block overflow-x-auto">
-              <table class="competition-table w-full text-sm text-left">
-                <thead>
-                  <tr class="border-b border-neutral-700">
-                    <th class="pb-2 pr-4 font-medium opacity-70">Event</th>
-                    <th class="pb-2 pr-4 font-medium opacity-70 whitespace-nowrap">Date</th>
-                    <th class="pb-2 font-medium opacity-70 whitespace-nowrap">Role</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {ctfContributions.map((c) => (
-                    <tr class="border-b border-neutral-800">
-                      <td class="py-2.5 pr-4 font-medium align-baseline">
-                        {c.href ? (
-                          <a
-                            class="prose-link !whitespace-normal"
-                            href={c.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {c.event}
-                          </a>
-                        ) : (
-                          c.event
-                        )}
-                      </td>
-                      <td class="py-2.5 pr-4 opacity-60 whitespace-nowrap align-baseline">{c.date}</td>
-                      <td class="py-2.5 opacity-60 whitespace-nowrap align-baseline">{c.role}</td>
-                    </tr>
+                <div class="text-xs opacity-60 mt-1 flex flex-col items-start gap-1">
+                  <span class="inline-flex items-center gap-1">
+                    <i class="i-ri-calendar-line" />
+                    {c.date}
+                  </span>
+                  {c.role.split(', ').map((r) => (
+                    <span class="inline-flex items-center gap-1">
+                      <i class:list={[contributionRoleIcons[r] ?? 'i-ri-user-line']} />
+                      {r}
+                    </span>
                   ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
-          <hr class="hr-line" />
-        </>
-      )
-    }
+                </div>
+              </div>
+            ))}
+          </div>
 
-    {
-      features.conferences && (
-        <>
-          <section class="mt-8">
-            <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
-              <i class="i-ri-calendar-event-line" />
-              Conferences
-            </h2>
-            <p class="text-xs opacity-45 -mt-3 mb-4">Conferences and community meetups I attend.</p>
-            <div class="mb-6">
-              <ConferenceHeatmap conferences={conferences} />
-            </div>
-
-            <div class="md:hidden divide-y divide-neutral-800">
-              {sortedConferences.map((c) => (
-                <div class="py-3">
-                  <div class="flex items-start justify-between gap-3">
-                    <span class="font-medium min-w-0">
-                      {c.image && <img class="conf-logo" src={c.image} alt="" width="32" height="32" />}
+          <div class="hidden md:block overflow-x-auto">
+            <table class="competition-table w-full text-sm text-left">
+              <thead>
+                <tr class="border-b border-neutral-700">
+                  <th class="pb-2 pr-4 font-medium opacity-70">Event</th>
+                  <th class="pb-2 pr-4 font-medium opacity-70 whitespace-nowrap">Date</th>
+                  <th class="pb-2 font-medium opacity-70 whitespace-nowrap">Role</th>
+                </tr>
+              </thead>
+              <tbody>
+                {ctfContributions.map((c) => (
+                  <tr class="border-b border-neutral-800">
+                    <td class="py-2.5 pr-4 font-medium align-baseline">
                       {c.href ? (
                         <a
                           class="prose-link !whitespace-normal"
@@ -386,118 +330,153 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
                       ) : (
                         c.event
                       )}
-                    </span>
-                    <span
+                    </td>
+                    <td class="py-2.5 pr-4 opacity-60 whitespace-nowrap align-baseline">{c.date}</td>
+                    <td class="py-2.5 opacity-60 whitespace-nowrap align-baseline">{c.role}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <hr class="hr-line" />
+      </>
+    )}
+
+    {features.conferences && (
+      <>
+        <section class="mt-8">
+          <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
+            <i class="i-ri-calendar-event-line" />
+            Conferences
+          </h2>
+          <p class="text-xs opacity-45 -mt-3 mb-4">Conferences and community meetups I attend.</p>
+          <div class="mb-6">
+            <ConferenceHeatmap conferences={conferences} />
+          </div>
+
+          <div class="md:hidden divide-y divide-neutral-800">
+            {sortedConferences.map((c) => (
+              <div class="py-3">
+                <div class="flex items-start justify-between gap-3">
+                  <span class="font-medium min-w-0">
+                    {c.image && <img class="conf-logo" src={c.image} alt="" width="32" height="32" />}
+                    {c.href ? (
+                      <a class="prose-link !whitespace-normal" href={c.href} target="_blank" rel="noopener noreferrer">
+                        {c.event}
+                      </a>
+                    ) : (
+                      c.event
+                    )}
+                  </span>
+                  <span
+                    class:list={[
+                      'text-xs whitespace-nowrap inline-flex items-center gap-1',
+                      c.role === 'Speaker' ? 'opacity-90' : 'opacity-60',
+                    ]}
+                  >
+                    <i class:list={[c.role === 'Speaker' ? 'i-ri-mic-line' : 'i-ri-user-line']} />
+                    {c.role}
+                  </span>
+                </div>
+                {c.detail && <div class="text-xs opacity-45 mt-1">{c.detail}</div>}
+                <div class="text-xs opacity-60 mt-1 inline-flex items-center gap-1">
+                  <i class="i-ri-calendar-line" />
+                  {formatConferenceDate(c.date, c.dateEnd)}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div class="hidden md:block overflow-x-auto">
+            <table class="competition-table w-full text-sm text-left">
+              <thead>
+                <tr class="border-b border-neutral-700">
+                  <th class="pb-2 pr-4 font-medium opacity-70">Event</th>
+                  <th class="pb-2 pr-4 font-medium opacity-70 whitespace-nowrap">Date</th>
+                  <th class="pb-2 font-medium opacity-70 whitespace-nowrap text-right">Role</th>
+                </tr>
+              </thead>
+              <tbody>
+                {sortedConferences.map((c) => (
+                  <tr class="border-b border-neutral-800">
+                    <td class="py-2.5 pr-4 align-baseline">
+                      <span class="font-medium">
+                        {c.image && <img class="conf-logo" src={c.image} alt="" width="32" height="32" />}
+                        {c.href ? (
+                          <a
+                            class="prose-link !whitespace-normal"
+                            href={c.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {c.event}
+                          </a>
+                        ) : (
+                          c.event
+                        )}
+                      </span>
+                      {c.detail && <div class="text-xs opacity-45 mt-0.5">{c.detail}</div>}
+                    </td>
+                    <td class="py-2.5 pr-4 opacity-60 whitespace-nowrap align-baseline">
+                      <span class="inline-flex items-center gap-1">
+                        <i class="i-ri-calendar-line" />
+                        {formatConferenceDate(c.date, c.dateEnd)}
+                      </span>
+                    </td>
+                    <td
                       class:list={[
-                        'text-xs whitespace-nowrap inline-flex items-center gap-1',
+                        'py-2.5 whitespace-nowrap align-baseline text-right',
                         c.role === 'Speaker' ? 'opacity-90' : 'opacity-60',
                       ]}
                     >
-                      <i class:list={[c.role === 'Speaker' ? 'i-ri-mic-line' : 'i-ri-user-line']} />
-                      {c.role}
-                    </span>
-                  </div>
-                  {c.detail && <div class="text-xs opacity-45 mt-1">{c.detail}</div>}
-                  <div class="text-xs opacity-60 mt-1 inline-flex items-center gap-1">
-                    <i class="i-ri-calendar-line" />
-                    {formatConferenceDate(c.date, c.dateEnd)}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div class="hidden md:block overflow-x-auto">
-              <table class="competition-table w-full text-sm text-left">
-                <thead>
-                  <tr class="border-b border-neutral-700">
-                    <th class="pb-2 pr-4 font-medium opacity-70">Event</th>
-                    <th class="pb-2 pr-4 font-medium opacity-70 whitespace-nowrap">Date</th>
-                    <th class="pb-2 font-medium opacity-70 whitespace-nowrap text-right">Role</th>
+                      <span class="inline-flex items-center gap-1">
+                        <i class:list={[c.role === 'Speaker' ? 'i-ri-mic-line' : 'i-ri-user-line']} />
+                        {c.role}
+                      </span>
+                    </td>
                   </tr>
-                </thead>
-                <tbody>
-                  {sortedConferences.map((c) => (
-                    <tr class="border-b border-neutral-800">
-                      <td class="py-2.5 pr-4 align-baseline">
-                        <span class="font-medium">
-                          {c.image && <img class="conf-logo" src={c.image} alt="" width="32" height="32" />}
-                          {c.href ? (
-                            <a
-                              class="prose-link !whitespace-normal"
-                              href={c.href}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {c.event}
-                            </a>
-                          ) : (
-                            c.event
-                          )}
-                        </span>
-                        {c.detail && <div class="text-xs opacity-45 mt-0.5">{c.detail}</div>}
-                      </td>
-                      <td class="py-2.5 pr-4 opacity-60 whitespace-nowrap align-baseline">
-                        <span class="inline-flex items-center gap-1">
-                          <i class="i-ri-calendar-line" />
-                          {formatConferenceDate(c.date, c.dateEnd)}
-                        </span>
-                      </td>
-                      <td
-                        class:list={[
-                          'py-2.5 whitespace-nowrap align-baseline text-right',
-                          c.role === 'Speaker' ? 'opacity-90' : 'opacity-60',
-                        ]}
-                      >
-                        <span class="inline-flex items-center gap-1">
-                          <i class:list={[c.role === 'Speaker' ? 'i-ri-mic-line' : 'i-ri-user-line']} />
-                          {c.role}
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
-          <hr class="hr-line" />
-        </>
-      )
-    }
-
-    {
-      features.stacks && (
-        <section class="mt-8">
-          <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
-            <i class="i-ri-flashlight-line" />
-            Stacks
-          </h2>
-
-          <div class="stack-desc bg-neutral-800 rounded-lg px-4 py-3 mb-4 flex flex-col gap-1">
-            <span class="font-semibold text-base text-main flex items-center gap-2">
-              The Stacks for my development, hacking, and daily use.
-            </span>
-            <small class="text-xs text-main/60 italic mt-1"> Cannot list all here, just the main ones :) </small>
+                ))}
+              </tbody>
+            </table>
           </div>
+        </section>
+        <hr class="hr-line" />
+      </>
+    )}
 
-          {stacks.map((row, i) => (
-            <div class:list={['marquee-container', i > 0 && 'mt-4']}>
-              <div class:list={['marquee-track', i % 2 === 0 ? 'animate-marquee' : 'animate-marquee-reverse']}>
-                <div class="marquee-content">
-                  {row.map((icon) => (
-                    <i class:list={[icon, 'text-4xl opacity-60']} />
-                  ))}
-                </div>
-                <div class="marquee-content" aria-hidden="true">
-                  {row.map((icon) => (
-                    <i class:list={[icon, 'text-4xl opacity-60']} />
-                  ))}
-                </div>
+    {features.stacks && (
+      <section class="mt-8">
+        <h2 class="text-sm font-medium mb-4 flex items-center gap-2 opacity-80">
+          <i class="i-ri-flashlight-line" />
+          Stacks
+        </h2>
+
+        <div class="stack-desc bg-neutral-800 rounded-lg px-4 py-3 mb-4 flex flex-col gap-1">
+          <span class="font-semibold text-base text-main flex items-center gap-2">
+            The Stacks for my development, hacking, and daily use.
+          </span>
+          <small class="text-xs text-main/60 italic mt-1"> Cannot list all here, just the main ones :) </small>
+        </div>
+
+        {stacks.map((row, i) => (
+          <div class:list={['marquee-container', i > 0 && 'mt-4']}>
+            <div class:list={['marquee-track', i % 2 === 0 ? 'animate-marquee' : 'animate-marquee-reverse']}>
+              <div class="marquee-content">
+                {row.map((icon) => (
+                  <i class:list={[icon, 'text-4xl opacity-60']} />
+                ))}
+              </div>
+              <div class="marquee-content" aria-hidden="true">
+                {row.map((icon) => (
+                  <i class:list={[icon, 'text-4xl opacity-60']} />
+                ))}
               </div>
             </div>
-          ))}
-        </section>
-      )
-    }
+          </div>
+        ))}
+      </section>
+    )}
   </article>
 </BaseLayout>
 

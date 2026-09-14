@@ -31,13 +31,11 @@ const { Content } = await render(page)
 <BaseLayout title={title} description={description} image={ogImage}>
   <article class="prose">
     <h1>{title}</h1>
-    {
-      image && (
-        <p>
-          <img width="640" height="360" src={image.src} alt={image.alt || ''} />
-        </p>
-      )
-    }
+    {image && (
+      <p>
+        <img width="640" height="360" src={image.src} alt={image.alt || ''} />
+      </p>
+    )}
     <Content />
   </article>
 </BaseLayout>

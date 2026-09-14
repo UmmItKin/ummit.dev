@@ -46,22 +46,22 @@ function activeLink(pathname: string) {
 
 <BaseLayout title="Video" description="My video collection." image={ogImage}>
   <div class="flex flex-col gap-2 sm:flex-row sm:gap-4 flex-wrap mb-4">
-    {
-      siteConfig.page.blogLinks.map((nav) => (
-        <a
-          aria-label={nav.text}
-          class={`nav-link text-3xl font-bold ${activeLink(nav.href) ? 'opacity-80' : 'opacity-30 hover:opacity-50'}`}
-          href={nav.href}
-        >
-          {nav.text}
-        </a>
-      ))
-    }
+    {siteConfig.page.blogLinks.map((nav) => (
+      <a
+        aria-label={nav.text}
+        class={`nav-link text-3xl font-bold ${activeLink(nav.href) ? 'opacity-80' : 'opacity-30 hover:opacity-50'}`}
+        href={nav.href}
+      >
+        {nav.text}
+      </a>
+    ))}
   </div>
 
   <div class="mb-8 p-4 rounded-lg bg-neutral-800/30 border border-neutral-700/50">
     <div class="flex items-center gap-2 mb-1 flex-wrap">
-      <span class="font-semibold text-base">{videos.length} {videos.length === 1 ? 'video' : 'videos'} shared</span>
+      <span class="font-semibold text-base">
+        {videos.length} {videos.length === 1 ? 'video' : 'videos'} shared
+      </span>
       <span class="text-base opacity-60">·</span>
       <span class="text-base font-medium text-red-400">Video Collection</span>
     </div>
@@ -69,24 +69,22 @@ function activeLink(pathname: string) {
   </div>
 
   <div class="space-y-4">
-    {
-      sortedVideos.map((video) => (
-        <a
-          href={video.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="block hover:opacity-80 transition-opacity duration-200"
-        >
-          <div class="flex flex-col sm:flex-row sm:items-baseline gap-2">
-            <h3 class="text-lg font-normal">{video.title}</h3>
-            <div class="flex items-center gap-2 text-sm opacity-60">
-              <span>{video.date}</span>
-              <span>·</span>
-              <span>{video.platform}</span>
-            </div>
+    {sortedVideos.map((video) => (
+      <a
+        href={video.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block hover:opacity-80 transition-opacity duration-200"
+      >
+        <div class="flex flex-col sm:flex-row sm:items-baseline gap-2">
+          <h3 class="text-lg font-normal">{video.title}</h3>
+          <div class="flex items-center gap-2 text-sm opacity-60">
+            <span>{video.date}</span>
+            <span>·</span>
+            <span>{video.platform}</span>
           </div>
-        </a>
-      ))
-    }
+        </div>
+      </a>
+    ))}
   </div>
 </BaseLayout>

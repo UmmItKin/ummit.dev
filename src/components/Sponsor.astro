@@ -6,24 +6,23 @@ import type { SponsorLink } from '@/types'
 <div class="sponsor-wrap">
   <p class="sponsor-text">
     <i class="i-ri-heart-fill"></i>
-    {sponsor.text}{sponsor.subtitle && ` \u2014 ${sponsor.subtitle}`}
+    {sponsor.text}
+    {sponsor.subtitle && ` \u2014 ${sponsor.subtitle}`}
   </p>
   <div class="sponsor-buttons">
-    {
-      sponsor.links.map((link: SponsorLink) => (
-        <a
-          href={link.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="sponsor-button"
-          style={link.hoverColor ? `--hover-color: ${link.hoverColor}` : ''}
-          aria-label={`${link.platform}`}
-        >
-          <i class={link.icon} />
-          <span>{link.platform}</span>
-        </a>
-      ))
-    }
+    {sponsor.links.map((link: SponsorLink) => (
+      <a
+        href={link.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="sponsor-button"
+        style={link.hoverColor ? `--hover-color: ${link.hoverColor}` : ''}
+        aria-label={`${link.platform}`}
+      >
+        <i class={link.icon} />
+        <span>{link.platform}</span>
+      </a>
+    ))}
   </div>
 </div>
 

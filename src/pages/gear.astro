@@ -13,25 +13,23 @@ const ogImage = { src: '/og/gear.png', alt: 'My Gear' }
   </div>
 
   <div class="space-y-12">
-    {
-      gear.map((section) => (
-        <section>
-          <h2 class="text-xl font-semibold mb-1 flex items-center gap-2">
-            <i class:list={[section.icon, 'opacity-60']} />
-            {section.title}
-          </h2>
-          {section.subtitle && <p class="text-sm opacity-50 mb-4">{section.subtitle}</p>}
-          {!section.subtitle && <div class="mb-4" />}
-          <div class="grid gap-2">
-            {section.items.map((item: GearItem) => (
-              <div class="flex flex-col sm:flex-row sm:items-center py-2 border-b border-neutral-800">
-                <span class="text-sm opacity-50 sm:w-40 shrink-0">{item.label}</span>
-                <span class="text-sm" set:html={item.value} />
-              </div>
-            ))}
-          </div>
-        </section>
-      ))
-    }
+    {gear.map((section) => (
+      <section>
+        <h2 class="text-xl font-semibold mb-1 flex items-center gap-2">
+          <i class:list={[section.icon, 'opacity-60']} />
+          {section.title}
+        </h2>
+        {section.subtitle && <p class="text-sm opacity-50 mb-4">{section.subtitle}</p>}
+        {!section.subtitle && <div class="mb-4" />}
+        <div class="grid gap-2">
+          {section.items.map((item: GearItem) => (
+            <div class="flex flex-col sm:flex-row sm:items-center py-2 border-b border-neutral-800">
+              <span class="text-sm opacity-50 sm:w-40 shrink-0">{item.label}</span>
+              <span class="text-sm" set:html={item.value} />
+            </div>
+          ))}
+        </div>
+      </section>
+    ))}
   </div>
 </BaseLayout>

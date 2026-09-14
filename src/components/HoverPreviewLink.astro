@@ -38,13 +38,11 @@ const {
         <span class="preview-card-title">{title}</span>
         {description && <span class="preview-card-description">{description}</span>}
       </span>
-      {
-        previewImage && (
-          <span class="preview-card-image" data-fit={imageFit}>
-            <Image src={previewImage} alt="" width={160} height={160} />
-          </span>
-        )
-      }
+      {previewImage && (
+        <span class="preview-card-image" data-fit={imageFit}>
+          <Image src={previewImage} alt="" width={160} height={160} />
+        </span>
+      )}
     </span>
   </span>
 </span>
