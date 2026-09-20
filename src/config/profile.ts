@@ -22,7 +22,7 @@ export const profile: ProfileConfig = {
         image: '/badges/icedtea.jpg',
       },
       {
-        href: 'https://ctftime.org/team/405936/',
+        href: 'https://heapunderflow.org',
         title: 'HeapUnderFlow',
         subtitle: 'CTF Team',
         description: 'My current Hong Kong based CTF team',
