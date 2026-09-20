@@ -30,7 +30,7 @@ No test suite exists. CI (`.github/workflows/ci.yml`) runs `bun run lint` only.
 
 Because nothing tests behaviour, **grep the built output in `dist/` after a change** rather than trusting a green build. A passing build only proves the syntax parsed. Real bugs found this way include a URL missing a path segment, a dropped CSS property, and a literal `—` in the HTML, all of which built and linted cleanly.
 
-Pre-commit hook (simple-git-hooks + lint-staged): runs `bun lint-staged && bun run build`. A broken build blocks commits.
+Pre-commit hook (simple-git-hooks + lint-staged): runs `bun lint-staged && bun run lint && bun run build`. A lint error or broken build blocks commits. The full-repo `bun run lint` step exists because `lint-staged` alone only checks staged files, so a repo-wide reformat (e.g. a `prettier-plugin-astro` major bump) would otherwise pass locally and only fail in CI. Editing the hook in `package.json` requires re-running `bunx simple-git-hooks` to reinstall `.git/hooks/`.
 
 ## Architecture
 
