@@ -59,6 +59,7 @@ export interface ProfileConfig {
     community?: Badge[]
     mbti?: Badge[]
     certifications?: Badge[]
+    interests?: Badge[]
   }
 }
 

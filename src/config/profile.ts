@@ -4,7 +4,7 @@ export const profile: ProfileConfig = {
   name: 'Kin =]',
   taglineIcon: 'i-simple-icons-linux',
   intro:
-    'HKer, InfoSec enthusiast currently into Computer Forensics, Wireless Attack, Web Security, GNU/Linux, and Open source. Also hunting CVEs :D',
+    'HKer into InfoSec, GNU/Linux, and <a class="prose-link" href="https://www.residentevil.com/requiem/en-us/" target="_blank" rel="noopener noreferrer">Resident Evil</a>. Mostly Computer Forensics, Wireless Attacks, and Web Security these days, plus the occasional CVE hunt :D',
   subtagline: 'Aspiring to become a professional Red Team operator.',
   gpgKeyUrl: 'https://github.com/UmmItKin.gpg',
   bio: [
@@ -125,6 +125,15 @@ export const profile: ProfileConfig = {
         subtitle: 'TryHackMe',
         description: 'Junior Penetration Tester - Foundational penetration testing skills certification.',
         image: '/badges/pt1.png',
+      },
+    ],
+    interests: [
+      {
+        href: 'https://www.residentevil.com/requiem/en-us/',
+        title: 'Resident Evil',
+        subtitle: 'Fan',
+        description: 'Resident Evil fan since I was 5.',
+        image: '/icons/umbrella-corp.webp',
       },
     ],
   },
