@@ -104,29 +104,6 @@ export const profile: ProfileConfig = {
         icon: 'i-ri-brain-3-fill',
       },
     ],
-    certifications: [
-      {
-        href: 'https://www.offsec.com/courses/pen-200/',
-        title: 'OSCP',
-        subtitle: 'Offensive Security',
-        description: 'Offensive Security Certified Professional - Advanced penetration testing certification.',
-        image: '/badges/oscp.webp',
-      },
-      {
-        href: 'https://academy.hackthebox.com/preview/certifications/htb-certified-junior-cybersecurity-associate',
-        title: 'CJCA',
-        subtitle: 'HackTheBox',
-        description: 'Certified Junior Cybersecurity Associate - Entry-level cybersecurity fundamentals.',
-        image: '/badges/cjca.png',
-      },
-      {
-        href: 'https://tryhackme.com/certification/junior-penetration-tester',
-        title: 'PT1',
-        subtitle: 'TryHackMe',
-        description: 'Junior Penetration Tester - Foundational penetration testing skills certification.',
-        image: '/badges/pt1.png',
-      },
-    ],
     interests: [
       {
         href: 'https://www.residentevil.com/requiem/en-us/',
