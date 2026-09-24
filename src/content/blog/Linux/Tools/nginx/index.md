@@ -126,7 +126,7 @@ sudo vim /etc/nginx/conf.d/yoursite_me.conf
 
 Replace the SSL certificate and key paths with the paths to your Origin Certificate and Private Key files, and ensure the `server_name` matches your directory structure:
 
-```conf
+```nginx
 server {
   listen 443 ssl http2;
   listen [::]:443 ssl http2;

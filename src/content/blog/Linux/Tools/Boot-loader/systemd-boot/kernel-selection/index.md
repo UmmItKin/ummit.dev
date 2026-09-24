@@ -49,7 +49,7 @@ sudo nano my_kernel.conf
 ```
 
 3. In the configuration file, outline the entry's specifics. Replace `<kernel_version>` with the actual version you intend to use:
-```conf
+```ini
 title My Custom Kernel
 linux /vmlinuz-<kernel_version>
 initrd /initramfs-<kernel_version>.img

