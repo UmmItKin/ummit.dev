@@ -4,6 +4,6 @@
 # Dead Man's Switch — a farewell notice that appears when the site has not been
 # rebuilt for `days` days.
 deadManSwitch:
-  enabled: false # turn the whole feature on or off
+  enabled: true # turn the whole feature on or off
   preview: false # force the notice to show now, ignoring the day threshold
   days: 50 # show once the site has not been rebuilt for this many days
