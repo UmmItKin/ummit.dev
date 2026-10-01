@@ -63,26 +63,8 @@ function dismiss() {
             </h2>
           </div>
 
-          <div class="space-y-4 text-gray-300 text-sm leading-relaxed mb-6">
-            <p>
-              This is an automatically triggered <strong>Dead Man's</strong> Switch notice.
-            </p>
-
-            <p>
-              UmmIt Kin Github has not been updated for more than <strong class="text-white">30 days</strong> and that mean:
-            </p>
-
-            <p>
-              UmmIt Kin has passed away, encountered an accident, or is facing a major event that prevents internet access. (I don't think so)
-            </p>
-
-            <p>
-              I’m probably no longer in this life. Or let’s say, you can’t find me anymore. XD
-            </p>
-
-            <p>
-              Yes, this may be my last message. To all my friends, it was nice to meet you, but I’m done with this life. My life is very challenging, emotionally challenging as well. This decision has actually been brewing for several years. Unfortunately, you’ve reached this page ...
-            </p>
+          <div class="dead-man-message space-y-4 text-gray-300 text-sm leading-relaxed mb-6">
+            <slot />
 
             <div class="mt-4 pt-4 border-t border-gray-800/80 text-xs text-gray-500 font-italic">
               Last Update: {{ new Date(buildTime).toLocaleDateString() }}
@@ -112,5 +94,11 @@ function dismiss() {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+/* Slotted markdown: make **bold** stand out white, like the old highlight. */
+.dead-man-message :deep(strong) {
+  color: #fff;
+  font-weight: 700;
 }
 </style>

@@ -7,5 +7,4 @@ export const features: FeaturesConfig = {
   competitions: true,
   conferences: true,
   stacks: true,
-  deadMansSwitch: false,
 }

@@ -1,0 +1,8 @@
+# Site configuration. Edit this file to toggle features; no code changes needed.
+# Read at build time, so run a rebuild (or restart `bun dev`) after editing.
+
+# Dead Man's Switch — a farewell notice that appears when the site has not been
+# rebuilt for 30+ days.
+deadManSwitch:
+  enabled: false # turn the whole feature on or off
+  preview: false # force the notice to show now, ignoring the 30-day timer

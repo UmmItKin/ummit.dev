@@ -156,5 +156,4 @@ export interface FeaturesConfig {
   competitions: boolean
   conferences: boolean
   stacks: boolean
-  deadMansSwitch: boolean
 }
