@@ -5,8 +5,10 @@ import { onMounted, ref } from 'vue'
 const props = withDefaults(defineProps<{
   buildTime: number
   preview?: boolean
+  days?: number
 }>(), {
   preview: false,
+  days: 30,
 })
 
 const isVisible = ref(false)
@@ -20,11 +22,11 @@ onMounted(() => {
     return
   }
 
-  const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000
+  const threshold = props.days * 24 * 60 * 60 * 1000
   const now = Date.now()
   const diff = now - props.buildTime
 
-  if (diff > THIRTY_DAYS) {
+  if (diff > threshold) {
     if (!dismissedAt.value || (now - dismissedAt.value) > 24 * 60 * 60 * 1000) {
       isVisible.value = true
       isLocked.value = true
@@ -96,7 +98,16 @@ function dismiss() {
   opacity: 0;
 }
 
-/* Slotted markdown: make **bold** stand out white, like the old highlight. */
+/* Slotted markdown: space-y-4 does not reach slot-projected children, so put
+   the paragraph gap on the paragraphs directly. */
+.dead-man-message :deep(p) {
+  margin: 1rem 0 0;
+}
+.dead-man-message :deep(p:first-child) {
+  margin-top: 0;
+}
+
+/* Make **bold** stand out white, like the old highlight. */
 .dead-man-message :deep(strong) {
   color: #fff;
   font-weight: 700;

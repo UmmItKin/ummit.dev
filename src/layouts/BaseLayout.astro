@@ -36,7 +36,12 @@ const buildTime = Date.now()
       <slot />
       <ScrollToTop client:idle />
       {deadManSwitch.enabled && (
-        <DeadManSwitch client:only="vue" buildTime={buildTime} preview={deadManSwitch.preview}>
+        <DeadManSwitch
+          client:only="vue"
+          buildTime={buildTime}
+          preview={deadManSwitch.preview}
+          days={deadManSwitch.days}
+        >
           <DeadManMessage />
         </DeadManSwitch>
       )}
