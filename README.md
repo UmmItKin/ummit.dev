@@ -50,6 +50,24 @@ bun lint:fix     # auto-fix lint issues
 
 Use `bun run build`, not `bun build` — the bare form runs Bun's own bundler instead of the build script.
 
+## Password-protected posts
+
+Add a quoted password to a `.md` post in `blog`, `infosec`, `ctf`, `musings`, or `research`:
+
+```yaml
+---
+title: A locked post
+date: 2026-10-07
+password: 'replace: with a long unique passphrase'
+---
+```
+
+The build encrypts the rendered body and table of contents with AES-256-GCM and a PBKDF2-SHA-256 key (600,000 iterations). Readers enter the password to decrypt it in their browser. Passwords are not saved in browser storage. HTTPS or localhost is required. Remove `password` to publish the body normally; an empty password fails validation.
+
+Titles, descriptions, cover images, dates, and URLs stay public. RSS omits the locked body. Images and downloads remain public files even when their links appear inside encrypted text. This supports static Markdown, not MDX components or scripts inside posts.
+
+The source `.md` still contains the password and plaintext. Keep it in a private repository if the content needs to stay private, and deploy only `dist/`. Use a long, unique passphrase because visitors can download the ciphertext and try passwords offline. Rebuilding with a different password cannot revoke copies someone already downloaded.
+
 ## Deployment
 
 The site is static, so the build output in `dist/` can be hosted anywhere. `Dockerfile.vercel` builds it with Bun and serves the static files, and is used for the Vercel deploy.

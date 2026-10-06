@@ -43,6 +43,7 @@ const postSchema = z.preprocess(
     title: z.string(),
     description: z.string().optional(),
     duration: z.string().optional(),
+    password: z.string().min(1).optional(),
     image: z
       .object({
         src: z.string(),

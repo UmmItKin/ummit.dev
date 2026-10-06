@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import LikeButton from '@/components/LikeButton.astro'
+import PasswordPost from '@/components/PasswordPost.astro'
 import ShareButton from '@/components/ShareButton.astro'
 import TableOfContents from '@/components/TableOfContents.astro'
 import ViewCounter from '@/components/ViewCounter.astro'
@@ -22,6 +23,9 @@ export async function createPostPaths(collection: PostKey) {
 
 const { post } = Astro.props
 const { title, image, description, date, lastmod, duration, tag } = post.data
+if (post.data.password && !post.filePath?.endsWith('.md')) {
+  throw new Error(`Password protection supports Markdown (.md) only: ${post.id}`)
+}
 const { Content, headings } = await render(post)
 
 // Generate OG image path based on collection type
@@ -117,8 +121,17 @@ function getOutdatedInfo(dateStr: string, lastmodStr?: string) {
         <img width="640" height="360" src={image.src} alt={image.alt || ''} />
       </p>
     )}
-    <TableOfContents headings={headings} />
-    <Content />
+    {post.data.password ? (
+      <PasswordPost password={post.data.password}>
+        <TableOfContents headings={headings} />
+        <Content />
+      </PasswordPost>
+    ) : (
+      <>
+        <TableOfContents headings={headings} />
+        <Content />
+      </>
+    )}
   </article>
   <div class="mt-8 pt-6 border-t border-neutral-800 -ml-3">
     <ShareButton title={title} url={shareUrl} />
@@ -156,4 +169,5 @@ function getOutdatedInfo(dateStr: string, lastmodStr?: string) {
   }
   initPostBlur()
   document.addEventListener('astro:page-load', initPostBlur)
+  document.addEventListener('post:unlocked', initPostBlur)
 </script>

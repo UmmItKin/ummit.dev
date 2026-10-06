@@ -87,6 +87,10 @@ This file is the authoritative reference for the repo's conventions.
 | `docs/firestore.rules` | Security rules for the view/like counters. Must be pasted into the Firebase console by hand, nothing deploys them |
 | `public/fonts/` | Self-hosted woff2 font files + Inter-Bold.ttf (for Satori OG images) |
 
+## Password-protected posts
+
+`password: 'a-long-unique-passphrase'` in post frontmatter enables build-time encryption for `.md` files in the five post collections. `PasswordPost.astro` renders its slot to HTML and encrypts the body and TOC using `src/utils/post-crypto.ts` (PBKDF2-SHA-256, AES-256-GCM). Only ciphertext reaches the page. `password-post.ts` decrypts in the browser and emits `post:unlocked` to initialize the TOC and image effects. Do not pass passwords to client components or spread post data into feeds. RSS omits protected bodies; metadata and asset files remain public. MDX is rejected for protected posts to avoid content leaking through component bundles. Keep plaintext sources and build caches private, and deploy only `dist/`. Verify both correct/wrong passwords and scan build output for plaintext when changing this feature.
+
 ## View and like counters
 
 The site is static SSG with no server, so both counters talk to the **Firestore REST API** directly from the browser. No Firebase SDK, no dependency, no API key: `src/config/views.ts` holds only `enabled` and `projectId`, and the project id is public by design and ships in every page's HTML.

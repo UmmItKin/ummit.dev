@@ -317,6 +317,7 @@ function itemOffset(depth: number): number {
   }
 
   document.addEventListener('astro:page-load', initTOC)
+  document.addEventListener('post:unlocked', initTOC)
   if (document.readyState !== 'loading') {
     initTOC()
   }

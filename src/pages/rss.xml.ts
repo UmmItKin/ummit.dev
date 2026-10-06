@@ -13,10 +13,11 @@ export async function GET(context: APIContext) {
     site: siteUrl,
     items: posts!.map((item) => {
       return {
-        ...item.data,
+        title: item.data.title,
+        description: item.data.description,
         link: `${context.site}/posts/${item.id}/`,
         pubDate: new Date(item.data.date),
-        content: item.body,
+        content: item.data.password ? undefined : item.body,
         author: `${siteConfig.author} <${siteConfig.email}>`,
       }
     }),
