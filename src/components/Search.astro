@@ -8,8 +8,6 @@
   <div id="search-ui"></div>
 </dialog>
 
-<link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
-
 <style>
   .search-dialog {
     margin: 10vh auto auto;
@@ -43,6 +41,10 @@
       return
     }
     loaded = true
+    const css = document.createElement('link')
+    css.rel = 'stylesheet'
+    css.href = '/pagefind/pagefind-ui.css'
+    document.head.appendChild(css)
     const src = '/pagefind/pagefind-ui.js'
     import(/* @vite-ignore */ src)
       .then((mod: any) => {
