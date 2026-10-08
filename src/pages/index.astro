@@ -240,7 +240,7 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
               <tbody>
                 {competitions.map((c) => (
                   <tr class="border-b border-neutral-800">
-                    <td class="py-2.5 pr-4 font-medium align-baseline">
+                    <td class="py-2.5 pr-4 font-medium align-top">
                       {c.href ? (
                         <a
                           class="prose-link !whitespace-normal"
@@ -254,17 +254,17 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
                         c.name
                       )}
                     </td>
-                    <td class="py-2.5 pr-4 opacity-60 whitespace-nowrap align-baseline">{c.date}</td>
-                    <td class="py-2.5 pr-4 align-baseline">
-                      {c.team}
+                    <td class="py-2.5 pr-4 opacity-60 whitespace-nowrap align-top">{c.date}</td>
+                    <td class="py-2.5 pr-4 align-top">
+                      <span class="whitespace-nowrap">{c.team}</span>
                       {c.division && c.division !== '\u2014' && (
-                        <span class="text-xs opacity-45 ml-1.5">{c.division}</span>
+                        <div class="text-xs opacity-45 whitespace-nowrap">{c.division}</div>
                       )}
                     </td>
-                    <td class="py-2.5 pr-4 text-right tabular-nums whitespace-nowrap align-baseline">
+                    <td class="py-2.5 pr-4 text-right tabular-nums whitespace-nowrap align-top">
                       <strong>{c.placement}</strong>
                     </td>
-                    <td class="py-2.5 text-right tabular-nums whitespace-nowrap align-baseline">
+                    <td class="py-2.5 text-right tabular-nums whitespace-nowrap align-top">
                       {c.details && c.details !== '\u2014' ? c.details : <span class="opacity-25">{'\u2014'}</span>}
                       {c.subDetails && <div class="text-xs opacity-45 mt-0.5">{c.subDetails}</div>}
                     </td>
@@ -322,7 +322,7 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
               <tbody>
                 {ctfContributions.map((c) => (
                   <tr class="border-b border-neutral-800">
-                    <td class="py-2.5 pr-4 font-medium align-baseline">
+                    <td class="py-2.5 pr-4 font-medium align-top">
                       {c.href ? (
                         <a
                           class="prose-link !whitespace-normal"
@@ -336,8 +336,8 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
                         c.event
                       )}
                     </td>
-                    <td class="py-2.5 pr-4 opacity-60 whitespace-nowrap align-baseline">{c.date}</td>
-                    <td class="py-2.5 opacity-60 whitespace-nowrap align-baseline">{c.role}</td>
+                    <td class="py-2.5 pr-4 opacity-60 whitespace-nowrap align-top">{c.date}</td>
+                    <td class="py-2.5 opacity-60 whitespace-nowrap align-top">{c.role}</td>
                   </tr>
                 ))}
               </tbody>
@@ -405,7 +405,7 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
               <tbody>
                 {sortedConferences.map((c) => (
                   <tr class="border-b border-neutral-800">
-                    <td class="py-2.5 pr-4 align-baseline">
+                    <td class="py-2.5 pr-4 align-top">
                       <span class="font-medium">
                         {c.image && <img class="conf-logo" src={c.image} alt="" width="32" height="32" />}
                         {c.href ? (
@@ -423,7 +423,7 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
                       </span>
                       {c.detail && <div class="text-xs opacity-45 mt-0.5">{c.detail}</div>}
                     </td>
-                    <td class="py-2.5 pr-4 opacity-60 whitespace-nowrap align-baseline">
+                    <td class="py-2.5 pr-4 opacity-60 whitespace-nowrap align-top">
                       <span class="inline-flex items-center gap-1">
                         <i class="i-ri-calendar-line" />
                         {formatConferenceDate(c.date, c.dateEnd)}
@@ -431,7 +431,7 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
                     </td>
                     <td
                       class:list={[
-                        'py-2.5 whitespace-nowrap align-baseline text-right',
+                        'py-2.5 whitespace-nowrap align-top text-right',
                         c.role === 'Speaker' ? 'opacity-90' : 'opacity-60',
                       ]}
                     >
