@@ -72,7 +72,7 @@ function openSearch() {
           :href="link.href"
           nav-link
         />
-        <button nav-link aria-label="Search" title="Search (/)" @click="openSearch">
+        <button nav-link flex items-center aria-label="Search" title="Search (/)" @click="openSearch">
           <i i-ri-search-line />
         </button>
         <a nav-link target="_blank" href="/rss.xml" i-ri-rss-line aria-label="RSS" />
