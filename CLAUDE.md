@@ -21,7 +21,7 @@ bun run build    # production build (also runs in pre-commit hook)
 bun preview      # preview the production build locally
 bun lint         # eslint check only
 bun lint:fix     # auto-fix lint issues (runs in pre-commit hook on staged files)
-bun run release  # bump version via bumpp → triggers release.yml → changelogithub
+bun run release  # bump version + tag + push via bumpp (release notes are hand-written and published with `gh release create`)
 ```
 
 Use `bun run build`, not `bun build` — the bare form invokes Bun's own bundler (it errors with "Missing entrypoints") instead of the `build` npm script. The same applies to any script whose name collides with a Bun builtin.
