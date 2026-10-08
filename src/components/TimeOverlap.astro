@@ -1,0 +1,125 @@
+---
+// Timezone-overlap card, shown on hover over a small badge. My side is fixed
+// (Hong Kong); the visitor side and overlap sentence are computed client-side.
+const MY_TZ = 'Asia/Hong_Kong'
+const MY_LABEL = 'Hong Kong'
+const MY_START = 10 // my awake window, local hours (10:00 to 02:00, wraps)
+const MY_END = 2
+---
+
+<span class="to-wrap relative inline-block" tabindex="0">
+  <span class="to-badge inline-flex items-center gap-1.5 py-1 px-2 rd-1 bg-neutral-500/15 hover:bg-neutral-500/25 text-sm cursor-default transition-colors">
+    <span class="dot inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
+    <span>{MY_LABEL}</span>
+    <span class="clock tabular-nums opacity-70">--:--</span>
+  </span>
+
+  <div
+    class="time-overlap to-card text-sm"
+    data-tz={MY_TZ}
+    data-mylabel={MY_LABEL}
+    data-mystart={MY_START}
+    data-myend={MY_END}
+  >
+    <p class="opacity-70 mb-3">Email is the fastest way to reach me.</p>
+    <div class="grid grid-cols-[2rem_1fr] gap-x-3 gap-y-1 items-center">
+      <span class="opacity-60">Me</span>
+      <div class="track">
+        <span class="fill me"></span>
+      </div>
+      <span class="opacity-60">You</span>
+      <div class="track">
+        <span class="fill you"></span>
+        <span class="now"></span>
+      </div>
+      <span></span>
+      <div class="flex justify-between text-xs opacity-45 mt-0.5">
+        <span>12am</span>
+        <span>6am</span>
+        <span>12pm</span>
+        <span>6pm</span>
+      </div>
+    </div>
+    <p class="overlap mt-3 font-medium">&nbsp;</p>
+  </div>
+</span>
+
+<style>
+  .to-badge .dot {
+    background: #1ed760;
+    animation: dot-pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes dot-pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 4px 1px rgb(30 215 96 / 0.5);
+    }
+    50% {
+      box-shadow: 0 0 7px 2px rgb(30 215 96 / 0.85);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .to-badge .dot {
+      animation: none;
+      box-shadow: 0 0 6px 1.5px rgb(30 215 96 / 0.7);
+    }
+  }
+  .to-card {
+    user-select: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 50;
+    width: 20rem;
+    max-width: 80vw;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    background: #0d1117;
+    border: 1px solid rgb(255 255 255 / 0.1);
+    box-shadow: 0 12px 40px rgb(0 0 0 / 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease;
+  }
+  .to-wrap:hover .to-card,
+  .to-wrap:focus-within .to-card {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .to-card .track {
+    position: relative;
+    height: 10px;
+    border-radius: 6px;
+    background: rgb(255 255 255 / 0.06);
+    overflow: hidden;
+  }
+  .to-card .fill {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    border-radius: 6px;
+    background: rgb(255 255 255 / 0.22);
+  }
+  .to-card .now {
+    position: absolute;
+    top: -2px;
+    width: 2px;
+    height: 14px;
+    background: #fff;
+  }
+</style>
+
+<script>
+  import { renderTimeOverlap } from '@/utils/time-overlap'
+
+  function run() {
+    document.querySelectorAll('.time-overlap').forEach((el) => {
+      if (el instanceof HTMLElement) {
+        renderTimeOverlap(el)
+      }
+    })
+  }
+
+  run()
+  document.addEventListener('astro:page-load', run)
+</script>

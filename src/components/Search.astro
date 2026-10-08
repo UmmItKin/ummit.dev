@@ -1,0 +1,90 @@
+---
+// Static full-text search via Pagefind. The index is built after `astro build`
+// (see the build script) and loaded from /pagefind on first open, so search
+// only works in `bun preview` / production, not `bun dev`.
+---
+
+<dialog id="search-dialog" class="search-dialog">
+  <div id="search-ui"></div>
+</dialog>
+
+<link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+
+<style>
+  .search-dialog {
+    margin: 10vh auto auto;
+    width: min(42rem, 92vw);
+    padding: 1rem;
+    border: 1px solid rgb(255 255 255 / 0.1);
+    border-radius: 0.75rem;
+    background: #0d1117;
+    color: inherit;
+    outline: none;
+  }
+  .search-dialog::backdrop {
+    background: rgb(0 0 0 / 0.6);
+    backdrop-filter: blur(3px);
+  }
+  .search-dialog :global(.pagefind-ui) {
+    --pagefind-ui-primary: #fff;
+    --pagefind-ui-text: #bbb;
+    --pagefind-ui-background: #0d1117;
+    --pagefind-ui-border: rgb(255 255 255 / 0.12);
+    --pagefind-ui-tag: #161b22;
+  }
+</style>
+
+<script>
+  const dialog = document.getElementById('search-dialog') as HTMLDialogElement | null
+  let loaded = false
+
+  function load() {
+    if (loaded || !dialog) {
+      return
+    }
+    loaded = true
+    const src = '/pagefind/pagefind-ui.js'
+    import(/* @vite-ignore */ src)
+      .then((mod: any) => {
+        const PagefindUI = mod.PagefindUI ?? mod.default
+        // eslint-disable-next-line no-new
+        new PagefindUI({ element: '#search-ui', showSubResults: true })
+        focusInput()
+      })
+      .catch(() => {
+        loaded = false
+        const ui = document.getElementById('search-ui')
+        if (ui) {
+          ui.textContent = 'Search is only available on the built site, not the dev server.'
+        }
+      })
+  }
+
+  function focusInput() {
+    requestAnimationFrame(() => dialog?.querySelector('input')?.focus())
+  }
+
+  function open() {
+    if (!dialog) {
+      return
+    }
+    load()
+    dialog.showModal()
+    focusInput()
+  }
+
+  window.addEventListener('open-search', open)
+  document.addEventListener('keydown', (e) => {
+    const t = e.target as HTMLElement | null
+    const typing = t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)
+    if (e.key === '/' && !typing && (!dialog || !dialog.open)) {
+      e.preventDefault()
+      open()
+    }
+  })
+  dialog?.addEventListener('click', (e) => {
+    if (e.target === dialog) {
+      dialog.close()
+    }
+  })
+</script>

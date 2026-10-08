@@ -29,6 +29,11 @@ function toggleNavDrawer() {
 function closeDrawer() {
   isDrawerOpen.value = false
 }
+
+function openSearch() {
+  closeDrawer()
+  window.dispatchEvent(new CustomEvent('open-search'))
+}
 </script>
 
 <template>
@@ -67,6 +72,9 @@ function closeDrawer() {
           :href="link.href"
           nav-link
         />
+        <button nav-link aria-label="Search" title="Search (/)" @click="openSearch">
+          <i i-ri-search-line />
+        </button>
         <a nav-link target="_blank" href="/rss.xml" i-ri-rss-line aria-label="RSS" />
       </div>
     </div>
@@ -79,6 +87,9 @@ function closeDrawer() {
     :class="isDrawerOpen ? 'translate-x-0' : 'translate-x--100%'"
   >
     <i i-ri-menu-2-fill />
+    <button nav-link flex items-center gap-2 aria-label="Search" @click="openSearch">
+      <i i-ri-search-line /> Search
+    </button>
     <a
       v-for="link in navLinks"
       :key="link.text"

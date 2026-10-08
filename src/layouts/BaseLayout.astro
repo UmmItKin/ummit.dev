@@ -6,6 +6,7 @@ import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.astro'
 import ScrollToTop from '@/components/ScrollToTop.vue'
 import DeadManSwitch from '@/components/DeadManSwitch.vue'
+import Search from '@/components/Search.astro'
 import { Content as DeadManMessage } from '@/components/dead-man-message.md'
 import { deadManSwitch } from '@/config/app-config'
 
@@ -45,6 +46,7 @@ const buildTime = Date.now()
           <DeadManMessage />
         </DeadManSwitch>
       )}
+      <Search />
       <Footer />
     </main>
   </body>

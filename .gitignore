@@ -6,3 +6,5 @@ node_modules
 *.log
 .opencode
 .codegraph/
+
+dist/pagefind/

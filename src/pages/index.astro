@@ -5,6 +5,7 @@ import SkillRadar from '@/components/SkillRadar.vue'
 import HoverPreviewLink from '@/components/HoverPreviewLink.astro'
 import ConferenceHeatmap from '@/components/ConferenceHeatmap.astro'
 import Sponsor from '@/components/Sponsor.astro'
+import TimeOverlap from '@/components/TimeOverlap.astro'
 import { siteConfig, conferences } from '@/config'
 import { profile } from '@/config/profile'
 import { skills } from '@/config/skills'
@@ -57,6 +58,10 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
     </h1>
     <p set:html={profile.intro} />
     {profile.subtagline && <p class="mt-1 text-sm opacity-60">{profile.subtagline}</p>}
+
+    <div class="mt-4">
+      <TimeOverlap />
+    </div>
 
     {badgeGroups.length > 0 && (
       <p class="ctf-section">
