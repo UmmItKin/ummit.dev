@@ -57,7 +57,7 @@
       .then((mod: any) => {
         const PagefindUI = mod.PagefindUI ?? mod.default
         // eslint-disable-next-line no-new
-        new PagefindUI({ element: '#search-ui', showSubResults: true })
+        new PagefindUI({ element: '#search-ui', bundlePath: '/pagefind/', showSubResults: true })
         focusInput()
       })
       .catch(() => {
@@ -70,7 +70,7 @@
   }
 
   function focusInput() {
-    requestAnimationFrame(() => dialog?.querySelector('input')?.focus())
+    setTimeout(() => dialog?.querySelector('input')?.focus(), 80)
   }
 
   function open() {
