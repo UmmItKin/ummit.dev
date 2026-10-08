@@ -29,9 +29,14 @@ Built on top of the original Vitesse theme:
 - **6 content collections** — `blog`, `infosec`, `ctf`, `musings`, `research`, `pages`
 - **Auto OG images** — a unique Open Graph image per page and per post, rendered with Satori
 - **View and like counters** — serverless, talking straight to the Firestore REST API with no SDK and no API key
+- **Password-protected posts** — bodies encrypted at build time, unlocked in the browser (see below)
+- **Share dialog** on every post, with a copy-link fallback that works on Android
 - **Build freshness stamp** — the footer shows the deployed commit and checks it against GitHub
 - **Self-hosted variable fonts** — Google Sans Flex and Google Sans Code, so no external font requests
-- **Competition record** — a table of CTF placements and rankings on the homepage
+- **Competition record and CTF contributions** — tables of placements and challenge authoring on the homepage
+- **Conferences section** — an attendance heatmap with each event's logo
+- **Timezone overlap card** — compares the visitor's local hours with mine
+- **Dead Man's Switch** — a farewell notice that appears if the site goes unbuilt for a set number of days, toggled from a root `config.yaml`
 - **Per-post `lastmod`** for edited posts
 - **Extra pages** — friends, gear, links, projects, and video
 - **Responsive** — mobile-first, with tables that switch to a card layout on small screens
