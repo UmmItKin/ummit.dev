@@ -12,7 +12,7 @@
 
 The source for my personal site: a blog, CTF writeups, and a homepage covering what I work on. It started as a fork of the [astro-theme-vitesse](https://github.com/kieranwv/astro-theme-vitesse) template and has drifted a long way from it since.
 
-I forked the theme because the original had stopped getting updates. I keep this copy current and on the latest dependencies, and add features when I need them. If any of it is useful to you, take it.
+I forked the theme because the original had stopped getting updates. I keep it on current dependencies and add features when I need them. If any of it is useful to you, take it.
 
 ## Tech stack
 
