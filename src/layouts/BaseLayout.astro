@@ -27,7 +27,7 @@ const buildTime = Date.now()
       Skip to main content
     </a>
     <Header client:idle transition:persist />
-    <main id="main-content" class="grow max-w-3xl mx-auto pt-10 pb-16 px-6 relative">
+    <main id="main-content" class="grow max-w-3xl mx-auto pt-10 pb-16 px-6 relative" transition:animate="none">
       <slot />
       <ScrollToTop client:idle />
       {deadManSwitch.enabled && (
