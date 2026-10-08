@@ -41,6 +41,13 @@
       return
     }
     loaded = true
+    if (import.meta.env.DEV) {
+      const ui = document.getElementById('search-ui')
+      if (ui) {
+        ui.textContent = 'Search only works on the built site (run a production build), not the dev server.'
+      }
+      return
+    }
     const css = document.createElement('link')
     css.rel = 'stylesheet'
     css.href = '/pagefind/pagefind-ui.css'
