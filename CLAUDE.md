@@ -26,7 +26,7 @@ bun run release  # bump version + tag + push via bumpp (release notes are hand-w
 
 Use `bun run build`, not `bun build` — the bare form invokes Bun's own bundler (it errors with "Missing entrypoints") instead of the `build` npm script. The same applies to any script whose name collides with a Bun builtin.
 
-No test suite exists. CI (`.github/workflows/ci.yml`) runs `bun run lint` only.
+No test suite exists. CI (`.github/workflows/ci.yml`) runs `bun run lint` then `bun run build`, matching the pre-commit hook.
 
 Because nothing tests behaviour, **grep the built output in `dist/` after a change** rather than trusting a green build. A passing build only proves the syntax parsed. Real bugs found this way include a URL missing a path segment, a dropped CSS property, and a literal `—` in the HTML, all of which built and linted cleanly.
 
