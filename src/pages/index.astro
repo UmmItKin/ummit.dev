@@ -559,11 +559,30 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
     opacity: 0.8;
   }
 
+  /* Quiet, tracked column headers so the data reads first. */
+  .competition-table thead th {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    padding-bottom: 0.75rem;
+  }
+
   .competition-table tbody tr {
     transition: background 0.2s ease;
+    border-color: rgba(255, 255, 255, 0.06);
   }
 
   .competition-table tbody tr:hover {
-    background: rgba(136, 136, 136, 0.06);
+    background: rgba(136, 136, 136, 0.05);
+  }
+
+  /* Primary numbers (placement, points): just a touch brighter than the muted
+     body text, not white, so it stays within the theme. */
+  .competition-table tbody td strong {
+    font-weight: 600;
+    color: #d0d0d0;
+    font-variant-numeric: tabular-nums;
   }
 </style>
