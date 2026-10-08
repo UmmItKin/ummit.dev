@@ -26,7 +26,7 @@ const buildTime = Date.now()
     >
       Skip to main content
     </a>
-    <Header client:idle />
+    <Header client:idle transition:persist />
     <main id="main-content" class="grow max-w-3xl mx-auto pt-10 pb-16 px-6 relative">
       <slot />
       <ScrollToTop client:idle />
@@ -40,7 +40,7 @@ const buildTime = Date.now()
           <DeadManMessage />
         </DeadManSwitch>
       )}
-      <Footer />
+      <Footer transition:persist />
     </main>
   </body>
 </html>
