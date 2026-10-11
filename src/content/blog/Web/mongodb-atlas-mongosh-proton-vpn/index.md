@@ -8,7 +8,7 @@ lang: en-US
 
 # Connecting to MongoDB Atlas with mongosh while Proton VPN is on (Linux)
 
-I lost an evening to this during a university lab. `mongosh` refused to connect to my MongoDB Atlas cluster, and Atlas kept telling me to fix my IP access list even though my IP was already on it. The real cause was Proton VPN. This post covers how I found that out, why Proton's split tunneling didn't work out of the box, and the config that fixed it.
+I lost an evening to this during a university lab. `mongosh` refused to connect to my MongoDB Atlas cluster, and Atlas kept telling me to fix my IP access list even though my IP was already on it. The real cause was Proton VPN. Tracking that down took a while, and Proton's split tunneling needed real setup before it worked. The config that fixed it is further down.
 
 ## Who this is for
 
@@ -80,7 +80,7 @@ timeout 10 openssl s_client -connect $H:27017 -servername $H </dev/null
 
 As a test I added `0.0.0.0/0` (allow from anywhere) to the Atlas access list and waited for it to turn **Active**. The TLS handshake still hung.
 
-That settled it. The packets were not reaching Atlas properly through the VPN tunnel, so no access list change could help. I did not pin down the exact reason Proton's tunnel drops TLS on port 27017. It could be port filtering on the VPN server or something in the tunnel path. What matters is that bypassing the tunnel for mongosh fixed it.
+That settled it. The packets were not reaching Atlas properly through the VPN tunnel, so no access list change could help. I did not pin down the exact reason Proton's tunnel drops TLS on port 27017. It could be port filtering on the VPN server or something in the tunnel path. Bypassing the tunnel for mongosh fixed it either way.
 
 Remove the `0.0.0.0/0` entry after a test like this. Leaving a database open to the whole internet is a bad idea, even with a password on it.
 
