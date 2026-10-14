@@ -14,18 +14,18 @@ export const links: LinkEntry[] = [
     icon: 'i-simple-icons-github',
   },
   {
+    text: 'YouTube',
+    href: 'https://www.youtube.com/@UmmItKin',
+    icon: 'i-simple-icons-youtube',
+  },
+  {
     text: 'Buy me a Coffee',
-    href: 'https://buymeacoffee.com/ummit',
+    href: 'https://buymeacoffee.com/ummitc',
     icon: 'i-simple-icons-buymeacoffee',
   },
   {
-    text: 'Blog',
-    href: '/blog',
-    icon: 'i-ri-rss-line',
-  },
-  {
     text: 'Passthru',
-    href: 'https://gpu.passthru.info',
+    href: 'https://gpu-passthru.vercel.app/',
     icon: 'i-ri-book-2-line',
   },
   {
