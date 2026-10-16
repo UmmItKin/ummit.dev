@@ -9,7 +9,9 @@ function readCookie(): string[] {
     return []
   }
   try {
-    return JSON.parse(decodeURIComponent(row.slice(COOKIE.length + 1))) as string[]
+    const parsed: unknown = JSON.parse(decodeURIComponent(row.slice(COOKIE.length + 1)))
+    // The cookie is client-editable, so accept only a list of strings.
+    return Array.isArray(parsed) ? parsed.filter((id): id is string => typeof id === 'string') : []
   }
   catch {
     return []
@@ -18,7 +20,8 @@ function readCookie(): string[] {
 
 function writeCookie(ids: string[]): void {
   const value = encodeURIComponent(JSON.stringify(ids))
-  document.cookie = `${COOKIE}=${value}; path=/; max-age=${ONE_YEAR}; SameSite=Lax`
+  const secure = location.protocol === 'https:' ? '; Secure' : ''
+  document.cookie = `${COOKIE}=${value}; path=/; max-age=${ONE_YEAR}; SameSite=Lax${secure}`
 }
 
 export function hasLiked(id: string): boolean {
