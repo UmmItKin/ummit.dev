@@ -3,11 +3,11 @@ import { Buffer } from 'node:buffer'
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import process from 'node:process'
-import { getCollection } from 'astro:content'
 import satori from 'satori'
 import { html } from 'satori-html'
 import sharp from 'sharp'
 import { siteConfig } from '@/config'
+import { getPosts } from '@/utils/posts'
 
 const BIO = 'HKer, InfoSec enthusiast currently into Computer Forensics, Wireless Attack, Web Security, GNU/Linux, and Open source. Also hunting CVEs :D'
 
@@ -143,7 +143,8 @@ export function ogResponse(png: Buffer) {
 export function makeOgSlugRoute(collection: PostKey, section: string) {
   return {
     getStaticPaths: async () => {
-      const posts = await getCollection(collection)
+      // getPosts drops drafts in production, like the page routes and RSS do.
+      const posts = await getPosts(undefined, collection)
       return posts.map(post => ({ params: { slug: post.id }, props: { title: post.data.title } }))
     },
     GET: async ({ props }) => ogResponse(await generateOgImage(section, (props as { title: string }).title)),
