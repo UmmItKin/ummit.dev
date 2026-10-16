@@ -3,15 +3,25 @@ rules_version = '2';
 // Paste these into Firebase console > Firestore Database > Rules.
 //
 // The counter is written by anonymous visitors, so the rules are the only
-// thing standing between the collection and someone with curl. They allow
-// exactly one operation: bumping `count` by 1 on a views document.
+// thing standing between the collection and someone with curl. They allow two
+// writes: creating a counter at count == 1, and bumping `count` by exactly 1.
+// Documents can be read one at a time but not listed, and never deleted.
+//
+// Document ids are post ids with `/` turned into `_`. Every id on the site
+// uses only letters, digits, `.`, `_` and `-`, at most 53 characters, so ids
+// outside that shape are refused. Widen the pattern if the slug scheme changes.
+// This bounds the shape of an id, not how many documents exist, so it does
+// not replace App Check or a billing budget alert.
 service cloud.firestore {
   match /databases/{database}/documents {
     match /views/{postId} {
-      allow read: if true;
+      // `get` covers the single-document and batchGet reads the site makes.
+      // Leaving out `list` stops anyone enumerating every id.
+      allow get: if true;
 
       // Creating a counter is only allowed at count == 1.
-      allow create: if request.resource.data.keys().hasOnly(['count'])
+      allow create: if postId.matches('^[A-Za-z0-9._-]{1,128}$')
+                    && request.resource.data.keys().hasOnly(['count'])
                     && request.resource.data.count == 1;
 
       // Updates must increment by exactly 1 and touch nothing else.
@@ -25,9 +35,10 @@ service cloud.firestore {
     // Likes are one way, so this is +1 only, same as views. Allowing -1 would
     // let anyone script a post's count back down to zero.
     match /likes/{postId} {
-      allow read: if true;
+      allow get: if true;
 
-      allow create: if request.resource.data.keys().hasOnly(['count'])
+      allow create: if postId.matches('^[A-Za-z0-9._-]{1,128}$')
+                    && request.resource.data.keys().hasOnly(['count'])
                     && request.resource.data.count == 1;
 
       allow update: if request.resource.data.keys().hasOnly(['count'])
