@@ -69,6 +69,7 @@ export default defineConfig({
     'i-ri-close-line',
     'i-ri-more-line',
     'i-ri-file-copy-line',
+    'i-simple-icons-claude',
     'i-simple-icons-telegram',
     'i-simple-icons-reddit',
     'i-simple-icons-linkedin',

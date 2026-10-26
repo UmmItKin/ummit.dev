@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
+import AiCopy from '@/components/AiCopy.astro'
 import LikeButton from '@/components/LikeButton.astro'
 import PasswordPost from '@/components/PasswordPost.astro'
 import ShareButton from '@/components/ShareButton.astro'
 import TableOfContents from '@/components/TableOfContents.astro'
 import ViewCounter from '@/components/ViewCounter.astro'
 import type { CollectionPosts, PostKey } from '@/types'
+import { siteConfig } from '@/config'
 import { getPosts } from '@/utils/posts'
 import { render } from 'astro:content'
 
@@ -39,6 +41,12 @@ function getOgPath() {
 }
 const ogImage = getOgPath()
 const shareUrl = new URL(Astro.url.pathname, Astro.site).href
+
+// Raw Markdown source on GitHub, for the agent-friendly copy block. Only .md
+// posts get it; .mdx can pull content from component bundles.
+const rawUrl = post.filePath?.endsWith('.md')
+  ? `https://raw.githubusercontent.com/UmmItKin/ummit.dev/master/${post.filePath}`
+  : undefined
 
 function getDate(dateStr: string) {
   return new Date(dateStr).toISOString()
@@ -131,6 +139,9 @@ function getOutdatedInfo(dateStr: string, lastmodStr?: string) {
         <TableOfContents headings={headings} />
         <Content />
       </>
+    )}
+    {rawUrl && !post.data.password && (
+      <AiCopy rawUrl={rawUrl} title={title} author={siteConfig.author} date={date} description={description} />
     )}
   </article>
   <div class="mt-8 pt-6 border-t border-neutral-800 -ml-3">

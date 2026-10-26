@@ -1,0 +1,120 @@
+---
+// Agent-friendly block: hands an LLM a prompt plus the raw Markdown source of
+// this page, so an agent can read the real source instead of scraping the HTML.
+interface Props {
+  rawUrl: string
+  title: string
+  author: string
+  date?: string
+  description?: string
+}
+const { rawUrl, title, author, date, description } = Astro.props
+
+const meta = [
+  `Title: ${title}`,
+  `Author: ${author}`,
+  date && `Date: ${date}`,
+  description && `Description: ${description}`,
+]
+  .filter(Boolean)
+  .join('\n')
+
+const prompt = `You are an AI agent reading a page on ummit.dev. Fetch the full Markdown source below and summarize it: the problem it solves, the steps and commands, and what to take away. Keep to the source and do not invent details.
+
+${meta}
+
+Markdown source: ${rawUrl}`
+---
+
+<div class="ai-copy not-prose" data-prompt={prompt}>
+  <div class="ai-copy-head">
+    <span class="ai-copy-label">
+      <i class="i-simple-icons-claude" />
+      For LLMs and agents
+    </span>
+    <button type="button" class="ai-copy-btn" aria-label="Copy the prompt for an AI agent">
+      <i class="i-ri-file-copy-line" />
+      <span class="ai-copy-btn-text">Copy</span>
+    </button>
+  </div>
+  <pre class="ai-copy-body"><code>{prompt}</code></pre>
+</div>
+
+<style>
+  .ai-copy {
+    margin-top: 2rem;
+    border-radius: 0.6rem;
+    background: rgb(255 255 255 / 0.04);
+    border: 1px solid rgb(255 255 255 / 0.08);
+    overflow: hidden;
+  }
+  .ai-copy-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+  }
+  .ai-copy-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    opacity: 0.5;
+  }
+  .ai-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.55rem;
+    border-radius: 0.4rem;
+    background: rgb(255 255 255 / 0.06);
+    border: 0;
+    color: inherit;
+    opacity: 0.7;
+    cursor: pointer;
+    transition:
+      opacity 0.2s ease,
+      background 0.2s ease;
+  }
+  .ai-copy-btn:hover {
+    opacity: 1;
+    background: rgb(255 255 255 / 0.12);
+  }
+  .ai-copy-body {
+    margin: 0;
+    padding: 0.75rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-all;
+    border-top: 1px solid rgb(255 255 255 / 0.06);
+    color: #bbb;
+  }
+</style>
+
+<script>
+  import { copyText } from '@/utils/share'
+
+  function initAiCopy() {
+    document.querySelectorAll('.ai-copy').forEach((el) => {
+      if (!(el instanceof HTMLElement) || el.dataset.bound) {
+        return
+      }
+      el.dataset.bound = '1'
+      const btn = el.querySelector('.ai-copy-btn')
+      const label = el.querySelector('.ai-copy-btn-text')
+      const prompt = el.dataset.prompt || ''
+      btn?.addEventListener('click', async () => {
+        const ok = await copyText(prompt, el)
+        if (label) {
+          label.textContent = ok ? 'Copied' : 'Failed'
+          setTimeout(() => {
+            label.textContent = 'Copy'
+          }, 1500)
+        }
+      })
+    })
+  }
+  initAiCopy()
+  document.addEventListener('astro:page-load', initAiCopy)
+</script>
