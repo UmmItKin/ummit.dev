@@ -30,13 +30,25 @@ humanizer rewrites text so it reads less like a chatbot wrote it. It is the skil
 
 [![humanizer](https://img.shields.io/badge/humanizer-GitHub-181717?style=for-the-badge&logo=github&logoColor=fff)](https://github.com/blader/humanizer)
 
+```bash
+npx skills add blader/humanizer
+```
+
 lieflat-less-ai-tone works on Chinese prose. It finds AI writing traces from an explicit list of rules and rewrites only the matches, leaving every other sentence word for word.
 
 [![lieflat-less-ai-tone](https://img.shields.io/badge/lieflat--less--ai--tone-GitHub-181717?style=for-the-badge&logo=github&logoColor=fff)](https://github.com/larashero3-dotcom/lieflat-less-ai-tone)
 
+```bash
+npx skills add larashero3-dotcom/lieflat-less-ai-tone
+```
+
 humanizer-zh-tw polishes Chinese articles, reviews, and documents. It removes filler, repetition, and formulaic phrasing, and keeps the facts, the stated confidence, and the author's voice. It edits text you already have. It does not judge who wrote the text.
 
 [![Humanizer--zh--TW](https://img.shields.io/badge/Humanizer--zh--TW-GitHub-181717?style=for-the-badge&logo=github&logoColor=fff)](https://github.com/kevintsai1202/Humanizer-zh-TW)
+
+```bash
+npx skills add kevintsai1202/Humanizer-zh-TW --full-depth
+```
 
 ## Keeping code small
 
@@ -44,11 +56,20 @@ The ponytail plugin is built around one idea: write the smallest working change.
 
 [![ponytail](https://img.shields.io/badge/ponytail-GitHub-181717?style=for-the-badge&logo=github&logoColor=fff)](https://github.com/DietrichGebert/ponytail)
 
+```bash
+npx skills add DietrichGebert/ponytail
+```
+
 ## Academic research and writing
 
 One repository ships five skills, one for each stage of a paper. deep-research runs a multi-agent research pipeline with eight modes, from a quick brief to a systematic review. academic-paper covers planning, revision, abstracts, literature reviews, citation checks, and AI disclosure. academic-paper-reviewer simulates a peer review from a panel of reviewer personas. academic-pipeline runs research, writing, review, and revision in order. sr-screener screens study records against eligibility criteria for systematic and scoping reviews.
 
 [![academic-research-skills](https://img.shields.io/badge/academic--research--skills-GitHub-181717?style=for-the-badge&logo=github&logoColor=fff)](https://github.com/Imbad0202/academic-research-skills)
+
+```bash
+/plugin marketplace add Imbad0202/academic-research-skills
+/plugin install academic-research-skills
+```
 
 ## Output that fits the reader
 
@@ -56,9 +77,18 @@ i-have-adhd shapes answers for readers with ADHD. It leads with the next action,
 
 [![i-have-adhd](https://img.shields.io/badge/i--have--adhd-GitHub-181717?style=for-the-badge&logo=github&logoColor=fff)](https://github.com/ayghri/i-have-adhd)
 
+```bash
+claude plugin marketplace add ayghri/i-have-adhd
+claude plugin install i-have-adhd@i-have-adhd
+```
+
 answer-me-with-html turns an answer into a one-page visual HTML explainer. The model writes a short Markdown draft, and a bundled CLI builds the page. It suits flows, comparisons, diagnoses, and anything with steps or branches.
 
 [![answer-me-with-html](https://img.shields.io/badge/answer--me--with--html-GitHub-181717?style=for-the-badge&logo=github&logoColor=fff)](https://github.com/QingYunA/answer-me-with-html)
+
+```bash
+npx skills add QingYunA/answer-me-with-html
+```
 
 ## Understanding code and projects
 
@@ -66,10 +96,19 @@ graphify turns any input into a persistent knowledge graph. The input can be cod
 
 [![graphify](https://img.shields.io/badge/graphify-GitHub-181717?style=for-the-badge&logo=github&logoColor=fff)](https://github.com/Graphify-Labs/graphify)
 
+```bash
+uv tool install graphifyy
+graphify install
+```
+
 ## Video
 
 watch takes a video URL or a local file, downloads it, extracts frames with ffmpeg, and pulls the transcript so the agent can answer questions about the video.
 
 [![claude-video](https://img.shields.io/badge/claude--video-GitHub-181717?style=for-the-badge&logo=github&logoColor=fff)](https://github.com/bradautomates/claude-video)
+
+```bash
+npx skills add bradautomates/claude-video -g --skill watch
+```
 
 Skills are cheap to try. If one looks useful, install it, read its `SKILL.md`, and see whether the instructions match how you work.
