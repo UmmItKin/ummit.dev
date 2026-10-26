@@ -11,7 +11,7 @@ COPY . .
 RUN bun run build
 
 # Stage 2: Serve the static dist/ on $PORT
-FROM node:22-alpine
+FROM node:24-alpine
 WORKDIR /app
 
 COPY --from=build /app/dist /app/dist

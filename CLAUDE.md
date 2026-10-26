@@ -4,11 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Personal website & blog — [ummit.dev](https://ummit.dev). Astro 7 + Vue 3 + UnoCSS + MDX, static SSG only. Forked from `astro-theme-vitesse` with extensive customizations. Requires **Node 24.x** (`engines` pinned; CI/release still on 22) and **Bun** (npm/yarn not supported).
+Personal website & blog — [ummit.dev](https://ummit.dev). Astro 7 + Vue 3 + UnoCSS + MDX, static SSG only. Forked from `astro-theme-vitesse` with extensive customizations. Requires **Node 24.x** (`engines` pinned; CI and the Docker deploy run the same version) and **Bun** (npm/yarn not supported).
 
 `AGENTS.md` just redirects here — this file is the single source of truth for any agent. `opencode.json` configures the OpenCode tool's ponytail plugin and is unrelated to Claude; leave it alone.
 
-`Dockerfile.vercel` builds `dist/` with Bun and serves it from `node:22-alpine` via `serve`. It is a deploy artifact only, nothing in the dev loop touches it.
+`Dockerfile.vercel` builds `dist/` with Bun and serves it from `node:24-alpine` via `serve`. It is a deploy artifact only, nothing in the dev loop touches it.
 
 ## Commands
 
