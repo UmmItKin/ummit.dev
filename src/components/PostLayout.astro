@@ -42,11 +42,12 @@ function getOgPath() {
 const ogImage = getOgPath()
 const shareUrl = new URL(Astro.url.pathname, Astro.site).href
 
-// Raw Markdown source on GitHub, for the agent-friendly copy block. Only .md
-// posts get it; .mdx can pull content from component bundles.
-const rawUrl = post.filePath?.endsWith('.md')
-  ? `https://raw.githubusercontent.com/UmmItKin/ummit.dev/master/${post.filePath}`
-  : undefined
+// GitHub links to the Markdown source. Only .md posts get them; .mdx can pull
+// content from component bundles. `githubUrl` is the readable blob view for
+// humans; `rawUrl` is the plain source for the agent-friendly copy block.
+const isMd = post.filePath?.endsWith('.md')
+const githubUrl = isMd ? `https://github.com/UmmItKin/ummit.dev/blob/master/${post.filePath}` : undefined
+const rawUrl = isMd ? `https://raw.githubusercontent.com/UmmItKin/ummit.dev/master/${post.filePath}` : undefined
 
 function getDate(dateStr: string) {
   return new Date(dateStr).toISOString()
@@ -108,6 +109,14 @@ function getOutdatedInfo(dateStr: string, lastmodStr?: string) {
       {lastmod && <span class="op-70"> · Updated: {lastmod}</span>}
       {duration && <span> · {duration}</span>}
       {tag && <span> · {tag}</span>}
+      {githubUrl && (
+        <span>
+          {' · '}
+          <a class="prose-link" href={githubUrl} target="_blank" rel="noopener noreferrer">
+            <i class="i-simple-icons-github" /> Source
+          </a>
+        </span>
+      )}
     </p>
     <div class="not-prose flex items-center gap-3 -ml-2 mb-6">
       <LikeButton slug={post.id} />
