@@ -4,7 +4,12 @@ const encoder = new TextEncoder()
 async function deriveKey(password: string, salt: Uint8Array<ArrayBuffer>) {
   const material = await crypto.subtle.importKey('raw', encoder.encode(password), 'PBKDF2', false, ['deriveKey'])
   return crypto.subtle.deriveKey(
-    { name: 'PBKDF2', hash: 'SHA-256', salt, iterations },
+    {
+      name: 'PBKDF2',
+      hash: 'SHA-256',
+      salt,
+      iterations,
+    },
     material,
     { name: 'AES-GCM', length: 256 },
     false,
@@ -32,7 +37,10 @@ export async function decryptPost(payload: string, password: string) {
     throw new Error('Invalid encrypted post')
   const key = await deriveKey(password, bytes.slice(1, 17))
   const plaintext = await crypto.subtle.decrypt(
-    { name: 'AES-GCM', iv: bytes.slice(17, 29) },
+    {
+      name: 'AES-GCM',
+      iv: bytes.slice(17, 29),
+    },
     key,
     bytes.slice(29),
   )

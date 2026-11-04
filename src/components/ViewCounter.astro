@@ -46,7 +46,11 @@ const { docPath, docUrl, commitUrl } = docRefs('views', slug)
   import { fetchViews } from '@/utils/views'
 
   function show(el: Element, n: number) {
-    el.textContent = `${n.toLocaleString()} ${n === 1 ? 'view' : 'views'}`
+    let label = 'views'
+    if (n === 1) {
+      label = 'view'
+    }
+    el.textContent = `${n.toLocaleString()} ${label}`
   }
 
   async function countView(el: HTMLElement) {

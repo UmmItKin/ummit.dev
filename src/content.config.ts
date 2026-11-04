@@ -85,4 +85,11 @@ const ctf = postCollection('./src/content/ctf')
 const research = postCollection('./src/content/research')
 const infosec = postCollection('./src/content/infosec')
 
-export const collections = { pages, blog, musings, ctf, research, infosec }
+export const collections = {
+  pages,
+  blog,
+  musings,
+  ctf,
+  research,
+  infosec,
+}

@@ -191,7 +191,10 @@ function itemOffset(depth: number): number {
     // Desktop-only thumb overlay setup.
     const container = document.querySelector('.toc-desktop .toc-container')
     const thumbWrap = document.querySelector('.toc-desktop .toc-thumb-wrap')
-    const desktopLinks = container ? Array.from(container.querySelectorAll('a.toc-link[data-toc-slug]')) : []
+    let desktopLinks = []
+    if (container) {
+      desktopLinks = Array.from(container.querySelectorAll('a.toc-link[data-toc-slug]'))
+    }
 
     let geo = []
     let pathD = ''

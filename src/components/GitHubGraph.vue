@@ -53,7 +53,20 @@ const months = computed(() => {
   if (!weeks.value.length)
     return []
 
-  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  const monthNames = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ]
   const labels: { name: string, col: number }[] = []
   let lastMonth = -1
 
@@ -85,7 +98,9 @@ function showTooltip(event: MouseEvent, day: ContributionDay) {
   const rect = (event.target as HTMLElement).getBoundingClientRect()
   tooltip.value = {
     visible: true,
-    text: `${day.count} contribution${day.count !== 1 ? 's' : ''} on ${formatDate(day.date)}`,
+    text: `${day.count} contribution${day.count !== 1
+      ? 's'
+      : ''} on ${formatDate(day.date)}`,
     x: rect.left + rect.width / 2,
     y: rect.top,
   }

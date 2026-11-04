@@ -12,7 +12,9 @@ const props = withDefaults(defineProps<{
 })
 
 const isVisible = ref(false)
-const isLocked = useScrollLock(typeof document !== 'undefined' ? document.body : null)
+const isLocked = useScrollLock(typeof document !== 'undefined'
+  ? document.body
+  : null)
 const dismissedAt = useStorage('dead-man-dismissed', 0)
 
 onMounted(() => {

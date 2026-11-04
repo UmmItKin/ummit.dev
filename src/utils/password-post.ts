@@ -38,7 +38,10 @@ export function initPasswordPosts() {
         status.textContent = 'Could not unlock this post. Check the password and try again.'
         if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
           status.animate(
-            [{ opacity: 0, filter: 'blur(3px)' }, { opacity: 1, filter: 'none' }],
+            [
+              { opacity: 0, filter: 'blur(3px)' },
+              { opacity: 1, filter: 'none' },
+            ],
             { duration: 350, easing: 'ease-out' },
           )
         }

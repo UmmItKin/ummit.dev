@@ -145,7 +145,10 @@ export function makeOgSlugRoute(collection: PostKey, section: string) {
     getStaticPaths: async () => {
       // getPosts drops drafts in production, like the page routes and RSS do.
       const posts = await getPosts(undefined, collection)
-      return posts.map(post => ({ params: { slug: post.id }, props: { title: post.data.title } }))
+      return posts.map(post => ({
+        params: { slug: post.id },
+        props: { title: post.data.title },
+      }))
     },
     GET: async ({ props }) => ogResponse(await generateOgImage(section, (props as { title: string }).title)),
   }

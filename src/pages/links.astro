@@ -77,7 +77,11 @@ const domain = new URL(Astro.site ?? 'https://example.com').hostname
       return
     }
     const handleLoad = () => img.classList.add('loaded')
-    img.complete ? handleLoad() : img.addEventListener('load', handleLoad, { once: true })
+    if (img.complete) {
+      handleLoad()
+      return
+    }
+    img.addEventListener('load', handleLoad, { once: true })
   }
 
   initBlurLoad()

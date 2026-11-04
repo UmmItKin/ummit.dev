@@ -47,7 +47,14 @@ export async function increment(
         {
           transform: {
             document: docPath,
-            fieldTransforms: [{ fieldPath: 'count', increment: { integerValue: String(by) } }],
+            fieldTransforms: [
+              {
+                fieldPath: 'count',
+                increment: {
+                  integerValue: String(by),
+                },
+              },
+            ],
           },
         },
       ],
@@ -58,7 +65,9 @@ export async function increment(
   }
   const data = await res.json()
   const n = Number(data?.writeResults?.[0]?.transformResults?.[0]?.integerValue)
-  return Number.isFinite(n) ? n : null
+  return Number.isFinite(n)
+    ? n
+    : null
 }
 
 export async function read(docUrl: string): Promise<number | null> {
@@ -68,7 +77,9 @@ export async function read(docUrl: string): Promise<number | null> {
   }
   const data = await res.json()
   const n = Number(data?.fields?.count?.integerValue ?? 0)
-  return Number.isFinite(n) ? n : null
+  return Number.isFinite(n)
+    ? n
+    : null
 }
 
 export async function fetchViews(
@@ -77,7 +88,9 @@ export async function fetchViews(
   docPath: string,
 ): Promise<number | null> {
   try {
-    return isFreshView(docPath) ? await increment(commitUrl, docPath) : await read(docUrl)
+    return isFreshView(docPath)
+      ? await increment(commitUrl, docPath)
+      : await read(docUrl)
   }
   catch {
     // Offline or blocked: caller leaves the slot blank rather than showing 0.

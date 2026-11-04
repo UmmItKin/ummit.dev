@@ -131,8 +131,14 @@ function getYear(date: Date | string | number) {
 
     const stats = await fetchStats(batchUrl, dbRoot, ids.split(','))
     document.querySelectorAll('.post-stats').forEach((el) => {
-      const id = el instanceof HTMLElement ? el.dataset.statId : null
-      const s = id ? stats.get(id) : undefined
+      let id: string | null = null
+      if (el instanceof HTMLElement) {
+        id = el.dataset.statId ?? null
+      }
+      let s
+      if (id) {
+        s = stats.get(id)
+      }
       // A post nobody has opened has no document, so show nothing at all
       // rather than a row of zeroes.
       if (!s || (s.views === 0 && s.likes === 0)) {

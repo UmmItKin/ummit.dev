@@ -20,7 +20,10 @@ const pages: Record<string, [string, string]> = {
 }
 
 export const getStaticPaths: GetStaticPaths = () =>
-  Object.entries(pages).map(([page, [section, title]]) => ({ params: { page }, props: { section, title } }))
+  Object.entries(pages).map(([page, [section, title]]) => ({
+    params: { page },
+    props: { section, title },
+  }))
 
 export const GET: APIRoute = async ({ props }) => {
   const { section, title } = props as { section: string, title: string }

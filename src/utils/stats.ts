@@ -50,10 +50,14 @@ export async function fetchStats(
       const n = Number(row.found.fields?.count?.integerValue ?? 0)
       const prev = out.get(id) ?? { views: 0, likes: 0 }
       if (kind === 'views') {
-        prev.views = Number.isFinite(n) ? n : 0
+        prev.views = Number.isFinite(n)
+          ? n
+          : 0
       }
       if (kind === 'likes') {
-        prev.likes = Number.isFinite(n) ? n : 0
+        prev.likes = Number.isFinite(n)
+          ? n
+          : 0
       }
       out.set(id, prev)
     }

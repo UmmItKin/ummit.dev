@@ -5,7 +5,9 @@ const YOU_START = 8 // assumed visitor awake window (local hours)
 const YOU_END = 0 // midnight (wraps)
 
 function inRange(h: number, start: number, end: number): boolean {
-  return start < end ? h >= start && h < end : h >= start || h < end
+  return start < end
+    ? h >= start && h < end
+    : h >= start || h < end
 }
 
 /** Current hour-of-day (0-23, fractional) in a given IANA timezone. */
@@ -79,7 +81,9 @@ export function renderTimeOverlap(el: HTMLElement): void {
   const overlapEl = el.querySelector('.overlap')
   if (overlapEl) {
     overlapEl.textContent = overlap >= 1
-      ? `We overlap about ${overlap} hour${overlap === 1 ? '' : 's'} a day.`
+      ? `We overlap about ${overlap} hour${overlap === 1
+        ? ''
+        : 's'} a day.`
       : 'Our days barely overlap.'
   }
   const where = el.querySelector('.where')

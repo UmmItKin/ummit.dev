@@ -155,7 +155,11 @@ const { docPath, docUrl, commitUrl } = docRefs('likes', slug)
     // A post nobody has liked has no document, which reads as null. Show it as
     // zero so the button is never just a bare heart with no number.
     const n = count ?? 0
-    out.textContent = `${n.toLocaleString()} ${n === 1 ? 'like' : 'likes'}`
+    let label = 'likes'
+    if (n === 1) {
+      label = 'like'
+    }
+    out.textContent = `${n.toLocaleString()} ${label}`
     // Next frame, so the blurred state paints before the transition runs.
     requestAnimationFrame(() => el.classList.add('is-ready'))
   }
