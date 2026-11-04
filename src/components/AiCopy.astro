@@ -24,6 +24,8 @@ const prompt = `You are an AI agent reading a page on ummit.dev. Fetch the full 
 ${meta}
 
 Markdown source: ${rawUrl}`
+
+const aiModeUrl = `https://www.google.com/search?udm=50&q=${encodeURIComponent(prompt)}`
 ---
 
 <div class="ai-copy not-prose" data-prompt={prompt}>
@@ -32,10 +34,22 @@ Markdown source: ${rawUrl}`
       <i class="i-simple-icons-claude" />
       For LLMs and agents
     </span>
-    <button type="button" class="ai-copy-btn" aria-label="Copy the prompt for an AI agent">
-      <i class="i-ri-file-copy-line" />
-      <span class="ai-copy-btn-text">Copy</span>
-    </button>
+    <div class="ai-copy-actions">
+      <a
+        class="ai-copy-btn"
+        href={aiModeUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Ask Google AI Mode about this article"
+      >
+        <i class="i-ri-brain-3-fill" />
+        <span>Ask AI Mode</span>
+      </a>
+      <button type="button" class="ai-copy-btn" aria-label="Copy the prompt for an AI agent">
+        <i class="i-ri-file-copy-line" />
+        <span class="ai-copy-btn-text">Copy</span>
+      </button>
+    </div>
   </div>
   <pre class="ai-copy-body"><code>{prompt}</code></pre>
 </div>
@@ -54,6 +68,11 @@ Markdown source: ${rawUrl}`
     justify-content: space-between;
     padding: 0.5rem 0.75rem;
     font-size: 0.75rem;
+  }
+  .ai-copy-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
   }
   .ai-copy-label {
     display: inline-flex;
