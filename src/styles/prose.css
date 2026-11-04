@@ -225,6 +225,9 @@
 }
 
 .prose pre code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
   background-color: transparent;
   border-width: 0;
   border-radius: 0;
