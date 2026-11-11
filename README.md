@@ -79,8 +79,9 @@ The site is static, so the build output in `dist/` can be hosted anywhere. `Dock
 
 ## Contributing
 
-- [`CLAUDE.md`](./CLAUDE.md) — the single reference for conventions, architecture, content rules, and the checklist for adding a content collection
-- [`AGENTS.md`](./AGENTS.md) — a thin pointer to `CLAUDE.md` for other agents and tools
+- [`CLAUDE.md`](./CLAUDE.md) — commands, the pre-commit hook, and the writing rules that apply to every change
+- [`.claude/rules/`](./.claude/rules) — conventions by topic, including content rules and the checklist for adding a content collection
+- [`AGENTS.md`](./AGENTS.md) — a thin pointer to both for other agents and tools
 
 ## License
 
