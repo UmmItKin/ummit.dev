@@ -1,11 +1,15 @@
 ---
-title: "我用 Arch 同 Debian 嘅體感：點解我覺得 rolling 反而穩啲"
-description: "純粹個人體感。用過兩年 Debian，再用咗幾年 Arch Linux，講下我點睇 stable release、rolling release、apt 同 pacman，仲有 AUR 嘅 supply chain 問題。"
+title: "我用 Arch 同 Debian 嘅體感，點解我覺得 rolling 反而穩陣?"
+description: "純粹個人體感。用過幾年 Debian，再用咗幾年 Arch Linux，講下我點睇 stable release、rolling release、apt 同 pacman，仲有 AUR 嘅 supply chain 問題。"
 date: 2026-11-17
 lang: zh-HK
 ---
 
-先講清楚，呢篇只係我自己嘅體感，唔係 benchmark，亦唔係要說服你轉 distro。每個人用法唔同，你用 Debian 用得開心就繼續用。
+先講清楚，呢篇只係我自己嘅體感，唔係 benchmark，亦唔係要說服你轉 distro。每個人用法/睇法都唔同。
+
+而呢篇文會出現係因為太多人問我點解會覺得 Ubuntu/Debian 廢反而 arch 係 stable?
+
+>所係個句 - 最緊要係你用得開心覺得好用就岩。
 
 ## 2017 至 2021 年用 Debian，爛過好多次
 
