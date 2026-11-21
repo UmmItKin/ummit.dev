@@ -29,7 +29,6 @@ const badgeGroups = [
   { label: 'Game', badges: profile.badges.interests ?? [] },
 ].filter((g) => g.badges.length > 0)
 
-// Roles are comma-joined in config; each part gets its own icon.
 const contributionRoleIcons: Record<string, string> = {
   'Challenge Author': 'i-ri-puzzle-line',
   'Website Design': 'i-ri-palette-line',
@@ -541,7 +540,6 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
     border-radius: 0.125rem;
   }
 
-  /* `.prose img` sets a 2em vertical margin that wrecks the row; reset it here. */
   img.conf-logo {
     display: inline-block;
     margin-top: 0;
@@ -559,7 +557,6 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
     opacity: 0.8;
   }
 
-  /* Quiet, tracked column headers so the data reads first. */
   .competition-table thead th {
     font-size: 0.6875rem;
     font-weight: 500;
@@ -578,8 +575,6 @@ const sortedConferences = [...conferences].sort((a, b) => b.date.localeCompare(a
     background: rgba(136, 136, 136, 0.05);
   }
 
-  /* Primary numbers (placement, points): just a touch brighter than the muted
-     body text, not white, so it stays within the theme. */
   .competition-table tbody td strong {
     font-weight: 600;
     color: #d0d0d0;

@@ -7,19 +7,16 @@ interface Props {
 
 const { headings } = Astro.props
 
-// Keep h2 + h3 only; skip post title (h1) and noisy deeper levels.
 const toc = headings.filter((h) => h.depth >= 1 && h.depth <= 3)
 
 const shouldRender = toc.some((h) => h.depth === 2)
 
-// Per-depth horizontal line offset inside the SVG (matches Fumadocs values).
 function lineOffset(depth: number): number {
   if (depth <= 2) return 8
   if (depth === 3) return 16
   return 24
 }
 function itemOffset(depth: number): number {
-  // Padding from container left edge to the link text.
   if (depth <= 2) return 20
   if (depth === 3) return 32
   return 44
@@ -114,7 +111,6 @@ function itemOffset(depth: number): number {
     scroll-padding-top: 5rem;
   }
 
-  /* Mobile TOC: kill prose bullets / margins. */
   .toc-mobile ul,
   .toc-mobile li {
     list-style: none !important;
@@ -130,7 +126,6 @@ function itemOffset(depth: number): number {
     color: var(--toc-line-active);
   }
 
-  /* ===== Desktop TOC: dim rail + active SVG thumb ===== */
   :root {
     --toc-line: rgba(255, 255, 255, 0.18);
     --toc-line-active: #a371f7;
@@ -163,7 +158,6 @@ function itemOffset(depth: number): number {
       return
     }
 
-    // slug -> all matching link nodes (mobile + desktop).
     const linkMap = new Map()
     links.forEach((link) => {
       const slug = link.getAttribute('href')?.slice(1)
@@ -176,7 +170,6 @@ function itemOffset(depth: number): number {
       linkMap.get(slug).push(link)
     })
 
-    // Heading elements in document order.
     const headingEls = []
     linkMap.forEach((_, slug) => {
       const el = document.getElementById(slug)
@@ -188,7 +181,6 @@ function itemOffset(depth: number): number {
       return
     }
 
-    // Desktop-only thumb overlay setup.
     const container = document.querySelector('.toc-desktop .toc-container')
     const thumbWrap = document.querySelector('.toc-desktop .toc-thumb-wrap')
     let desktopLinks = []
@@ -233,7 +225,6 @@ function itemOffset(depth: number): number {
         geo.push({ slug, top, bottom, x })
       })
 
-      // Render the overlay SVG once.
       thumbWrap.style.width = `${svgWidth}px`
       thumbWrap.style.height = `${svgHeight}px`
       thumbWrap.innerHTML = `

@@ -5,13 +5,10 @@ import { getLinkTarget } from '@/utils/link'
 
 const footerNavLinks = siteConfig.footer?.navLinks ?? []
 
-// Commit this build was cut from, baked in at build time.
 let buildCommit = 'unknown'
 try {
   buildCommit = execSync('git rev-parse HEAD').toString().trim()
-} catch {
-  // Not a git checkout (e.g. some CI). Leave it as unknown.
-}
+} catch {}
 const repoApi = 'https://api.github.com/repos/UmmItKin/ummit.dev/commits/master'
 ---
 
@@ -103,10 +100,10 @@ const repoApi = 'https://api.github.com/repos/UmmItKin/ummit.dev/commits/master'
     status.textContent = fresh ? 'up to date' : 'update available'
     status.classList.toggle('text-emerald-400', fresh)
     status.classList.toggle('text-yellow-500', !fresh)
-    // Next frame, so the blurred state paints before the transition runs.
     requestAnimationFrame(() => status.classList.add('is-loaded'))
   }
   updateBuildStatus()
+  // Next frame, so the blurred state paints before the transition runs.
   document.addEventListener('astro:page-load', updateBuildStatus)
 </script>
 

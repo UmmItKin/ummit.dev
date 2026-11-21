@@ -109,7 +109,6 @@ function dismiss() {
   margin-top: 0;
 }
 
-/* Make **bold** stand out white, like the old highlight. */
 .dead-man-message :deep(strong) {
   color: #fff;
   font-weight: 700;

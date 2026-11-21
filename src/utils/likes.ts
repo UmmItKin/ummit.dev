@@ -32,11 +32,6 @@ export function hasLiked(id: string): boolean {
   return readCookie().includes(id)
 }
 
-/**
- * Likes are one way: once given they cannot be taken back. The cookie is only
- * written after Firestore confirms, so a failed request cannot leave the
- * button looking liked when nothing was recorded.
- */
 export async function addLike(commitUrl: string, docPath: string): Promise<number | null> {
   if (hasLiked(docPath)) {
     return null

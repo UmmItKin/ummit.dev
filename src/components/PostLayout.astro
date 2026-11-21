@@ -30,7 +30,6 @@ if (post.data.password && !post.filePath?.endsWith('.md')) {
 }
 const { Content, headings } = await render(post)
 
-// Generate OG image path based on collection type
 function getOgPath() {
   if (image?.src) return image.src
   if (post.collection === 'ctf') return `/og/ctf/${post.id}.png`
@@ -42,9 +41,6 @@ function getOgPath() {
 const ogImage = getOgPath()
 const shareUrl = new URL(Astro.url.pathname, Astro.site).href
 
-// GitHub links to the Markdown source. Only .md posts get them; .mdx can pull
-// content from component bundles. `githubUrl` is the readable blob view for
-// humans; `rawUrl` is the plain source for the agent-friendly copy block.
 const isMd = post.filePath?.endsWith('.md')
 const githubUrl = isMd ? `https://github.com/UmmItKin/ummit.dev/blob/master/${post.filePath}` : undefined
 const rawUrl = isMd ? `https://raw.githubusercontent.com/UmmItKin/ummit.dev/master/${post.filePath}` : undefined
@@ -92,7 +88,6 @@ function getOutdatedInfo(dateStr: string, lastmodStr?: string) {
 }
 ---
 
-<!-- Actually javascript:history.back()" also work xdd-->
 <BaseLayout title={title} description={description} image={{ src: ogImage, alt: title }} pageType="article">
   <div class="mb-6">
     <button

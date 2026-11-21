@@ -11,10 +11,8 @@ export function docRefs(collection: string, id: string) {
   return { docPath, docUrl: `${API}/${docPath}`, commitUrl: `${API}/${DB_ROOT}/documents:commit` }
 }
 
-/** Listing pages read every counter on the page in one batchGet. */
 export const batchRefs = { dbRoot: DB_ROOT, batchUrl: `${API}/${DB_ROOT}/documents:batchGet` }
 
-/** Count one view per post per session, so a refresh does not inflate it. */
 export function isFreshView(id: string): boolean {
   try {
     const seen = JSON.parse(sessionStorage.getItem(KEY) || '[]') as string[]
@@ -25,17 +23,17 @@ export function isFreshView(id: string): boolean {
     return true
   }
   catch {
-    // Private mode or storage disabled: still show a count, just do not dedupe.
     return true
   }
+  // Private mode or storage disabled: still show a count, just do not dedupe.
 }
 
-/**
- * Atomic server-side increment, so two readers arriving at once cannot
- * clobber each other the way a read-then-write would.
- */
 export async function increment(
   commitUrl: string,
+  /**
+   * Atomic server-side increment, so two readers arriving at once cannot
+   * clobber each other the way a read-then-write would.
+   */
   docPath: string,
   by: number = 1,
 ): Promise<number | null> {
@@ -93,7 +91,6 @@ export async function fetchViews(
       : await read(docUrl)
   }
   catch {
-    // Offline or blocked: caller leaves the slot blank rather than showing 0.
     return null
   }
 }

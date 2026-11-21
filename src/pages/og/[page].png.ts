@@ -1,7 +1,6 @@
 import type { APIRoute, GetStaticPaths } from 'astro'
 import { generateOgImage, ogResponse } from '@/utils/og-image'
 
-// Section label and title for every static page's OG image.
 const pages: Record<string, [string, string]> = {
   'blog': ['Page', 'Blog'],
   'ctf': ['Page', 'CTF Writeups'],

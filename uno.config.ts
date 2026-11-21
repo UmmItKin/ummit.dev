@@ -53,10 +53,8 @@ export default defineConfig({
   ],
 
   safelist: [
-    // Toggled from JS by the footer build-freshness check.
     'text-emerald-400',
     'text-yellow-500',
-    // UI icons
     'i-ri-rss-line',
     'i-ri-book-2-line',
     'i-ri-signal-tower-line',
@@ -74,14 +72,12 @@ export default defineConfig({
     'i-simple-icons-reddit',
     'i-simple-icons-linkedin',
 
-    // Social icons
     'i-simple-icons-github',
     'i-simple-icons-x',
     'i-simple-icons-youtube',
     'i-ri-github-line',
     'i-ri-twitter-x-line',
 
-    // Device icons
     'i-ri-computer-line',
     'i-ri-macbook-line',
     'i-ri-keyboard-line',
@@ -90,7 +86,6 @@ export default defineConfig({
     'i-ri-smartphone-line',
     'i-ri-radar-line',
 
-    // Development icons
     'i-ri-apps-line',
     'i-ri-briefcase-line',
     'i-ri-terminal-box-line',
@@ -102,7 +97,6 @@ export default defineConfig({
     'i-ri-video-line',
     'i-ri-shield-line',
 
-    // Tech stack icons
     'i-simple-icons-linux',
     'i-simple-icons-python',
     'i-simple-icons-neovim',
@@ -118,13 +112,11 @@ export default defineConfig({
     'i-simple-icons-css3',
     'i-simple-icons-kdenlive',
 
-    // OS icons
     'i-simple-icons-archlinux',
     'i-simple-icons-nixos',
     'i-simple-icons-debian',
     'i-simple-icons-raspberrypi',
 
-    // Security icons
     'i-ri-brain-3-fill',
     'i-ri-flag-line',
     'i-ri-calendar-event-line',

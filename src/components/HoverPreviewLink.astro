@@ -48,18 +48,14 @@ const {
 </span>
 
 <script>
-  // Detect touch devices more accurately
   const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0
-  // Note: This can return true on touch-screen laptops.
 
   if (isTouchDevice) {
-    // Hide all preview cards on touch devices
     const previewCards = document.querySelectorAll('.preview-card')
     previewCards.forEach((card) => {
       ;(card as HTMLElement).style.display = 'none'
     })
 
-    // Remove hover interactions on touch devices
     const previewGroups = document.querySelectorAll('.preview-link-group')
     previewGroups.forEach((group) => {
       group.classList.add('touch-device')
@@ -171,7 +167,6 @@ const {
     display: block;
   }
 
-  /* Additional styles for touch devices */
   .touch-device .preview-card {
     display: none !important;
   }

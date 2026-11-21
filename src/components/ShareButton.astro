@@ -153,7 +153,6 @@ const targets = [
       openBtn?.addEventListener('click', () => dialog.showModal())
       closeBtn?.addEventListener('click', () => dialog.close())
 
-      // Click on the backdrop area closes, clicks inside the panel do not.
       dialog.addEventListener('click', (e) => {
         if (e.target === dialog) {
           dialog.close()

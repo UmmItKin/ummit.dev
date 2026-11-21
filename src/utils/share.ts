@@ -30,7 +30,6 @@ export async function copyText(text: string, host: HTMLElement): Promise<boolean
       return true
     }
     catch {
-      // Blocked or denied, fall through to the selection copy.
     }
   }
   return legacyCopy(text, host)

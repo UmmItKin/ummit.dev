@@ -1,8 +1,5 @@
-// Logic for TimeOverlap.astro. Lives in a .ts module because inline .astro
-// scripts cannot use try/catch (lint deadlock) and this file is cleaner to test.
-
-const YOU_START = 8 // assumed visitor awake window (local hours)
-const YOU_END = 0 // midnight (wraps)
+const YOU_START = 8
+const YOU_END = 0
 
 function inRange(h: number, start: number, end: number): boolean {
   return start < end
@@ -10,7 +7,6 @@ function inRange(h: number, start: number, end: number): boolean {
     : h >= start || h < end
 }
 
-/** Current hour-of-day (0-23, fractional) in a given IANA timezone. */
 function hourInTz(tz: string): number {
   const parts = new Intl.DateTimeFormat('en-US', {
     timeZone: tz,
@@ -22,7 +18,6 @@ function hourInTz(tz: string): number {
   return (get('hour') % 24) + get('minute') / 60
 }
 
-/** UTC offset in whole hours for a timezone (east of UTC is positive). */
 function offsetHours(tz: string): number {
   const now = new Date()
   const local = new Date(now.toLocaleString('en-US', { timeZone: tz }))
@@ -48,7 +43,6 @@ export function renderTimeOverlap(el: HTMLElement): void {
   const myOff = offsetHours(myTz)
   const youOff = offsetHours(youTz)
 
-  // Count UTC hours where both people are awake.
   let overlap = 0
   for (let u = 0; u < 24; u++) {
     const myH = (u + myOff + 24) % 24

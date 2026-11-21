@@ -9,7 +9,6 @@ const { conferences } = Astro.props
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
-// The card header already carries the month, so a cell only needs the day numbers.
 function days(c: ConferenceEntry) {
   const start = Number(c.date.slice(8))
   if (!c.dateEnd || c.dateEnd.slice(0, 7) !== c.date.slice(0, 7)) return `${start}`
@@ -124,9 +123,9 @@ const rows = years.map((year) => ({
     max-width: 100%;
   }
 
-  /* No `margin-left: auto`: an auto margin still eats the free space once the
-     block wraps onto its own line, stranding it against the right edge. */
   .stat {
+    /* No `margin-left: auto`: an auto margin still eats the free space once the
+     block wraps onto its own line, stranding it against the right edge. */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -217,8 +216,6 @@ const rows = years.map((year) => ({
     opacity: 0.5;
   }
 
-  /* Fixed, not absolute: the grid is only ~240px wide, so an absolute card would
-     be pinned to its left edge instead of tracking the cell under the cursor. */
   .card {
     position: fixed;
     left: 0;
@@ -272,7 +269,6 @@ const rows = years.map((year) => ({
     text-wrap: balance;
   }
 
-  /* `.prose img` sets a 2em vertical margin that wrecks the row; reset it here. */
   img.card-logo {
     display: inline-block;
     margin-top: 0;
@@ -291,8 +287,6 @@ const rows = years.map((year) => ({
     opacity: 0.6;
   }
 
-  /* Stack explicitly instead of relying on wrap: the wrap point moves with the
-     label width, so there is no fixed breakpoint to align the centering against. */
   @media (max-width: 640px) {
     .wrap {
       flex-direction: column;
@@ -305,13 +299,13 @@ const rows = years.map((year) => ({
     }
   }
 
-  /* Touch devices never resolve :hover cleanly, so the card only exists where hover is real. */
   @media (hover: hover) {
     .filled:hover {
       outline: 1px solid rgba(128, 128, 128, 0.6);
       outline-offset: 1px;
     }
 
+    /* Touch devices never resolve :hover cleanly, so the card only exists where hover is real. */
     .filled:hover .card {
       opacity: 1;
       visibility: visible;

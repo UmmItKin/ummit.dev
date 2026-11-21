@@ -60,8 +60,6 @@ const { docPath, docUrl, commitUrl } = docRefs('likes', slug)
     transform: none;
   }
 
-  /* ScrollToTop sits at right-5 bottom-30, so keep clear of it on narrow
-     screens where there is no room to sit beside it. */
   @media (max-width: 640px) {
     .like-toast {
       inset: auto 1rem 1rem 1rem;
@@ -77,8 +75,6 @@ const { docPath, docUrl, commitUrl } = docRefs('likes', slug)
     }
   }
 
-  /* The count arrives after render, so ease the whole control in together
-     rather than blurring the number beside an already sharp heart. */
   .like-button {
     opacity: 0;
     filter: blur(4px);
@@ -87,7 +83,6 @@ const { docPath, docUrl, commitUrl } = docRefs('likes', slug)
       filter 0.4s ease;
   }
 
-  /* Dim only until liked. Opacity on top of red would mute it to a dull grey. */
   .like-button.is-ready {
     filter: none;
     opacity: 0.6;
@@ -102,7 +97,6 @@ const { docPath, docUrl, commitUrl } = docRefs('likes', slug)
     color: #f87171;
   }
 
-  /* Pop the heart on like, but never on the initial render. */
   .like-button.is-liked .like-icon {
     animation: like-pop 0.28s cubic-bezier(0.2, 0, 0, 1);
   }
@@ -148,19 +142,15 @@ const { docPath, docUrl, commitUrl } = docRefs('likes', slug)
     icon.classList.toggle('i-ri-heart-fill', liked)
     icon.classList.toggle('i-ri-heart-line', !liked)
     el.classList.toggle('is-active', liked)
-    // The animation class is what triggers the pop, so only add it on a click.
     if (animate) {
       el.classList.add('is-liked')
     }
-    // A post nobody has liked has no document, which reads as null. Show it as
-    // zero so the button is never just a bare heart with no number.
     const n = count ?? 0
     let label = 'likes'
     if (n === 1) {
       label = 'like'
     }
     out.textContent = `${n.toLocaleString()} ${label}`
-    // Next frame, so the blurred state paints before the transition runs.
     requestAnimationFrame(() => el.classList.add('is-ready'))
   }
 
@@ -170,6 +160,7 @@ const { docPath, docUrl, commitUrl } = docRefs('likes', slug)
         return
       }
       el.dataset.bound = '1'
+      // Next frame, so the blurred state paints before the transition runs.
 
       const { docPath, docUrl, commitUrl } = el.dataset
       if (!docPath || !docUrl || !commitUrl) {
@@ -184,7 +175,6 @@ const { docPath, docUrl, commitUrl } = docRefs('likes', slug)
         if (busy) {
           return
         }
-        // Likes cannot be taken back, so say so instead of doing nothing.
         if (liked) {
           toast('You already liked this post')
           return

@@ -1,6 +1,5 @@
 import type { ConferenceEntry } from '@/types'
 
-// `date` / `dateEnd` are ISO (YYYY-MM-DD); the homepage formats and sorts them.
 export const conferences: ConferenceEntry[] = [
   {
     event: 'Hong Kong Python User Group',

@@ -18,8 +18,6 @@ export type ProjectData = Array<{
   }>
 }>
 
-// ─── Config Types ──────────────────────────────────────────────
-
 export interface NavLink {
   text: string
   href: string
@@ -32,7 +30,6 @@ export interface SocialLink {
   header?: string
 }
 
-// Profile / homepage
 export interface Badge {
   href: string
   title: string
@@ -62,13 +59,11 @@ export interface ProfileConfig {
   }
 }
 
-// Skills radar
 export interface SkillItem {
   label: string
   value: number
 }
 
-// Competitions
 export interface CompetitionEntry {
   name: string
   href?: string
@@ -80,11 +75,9 @@ export interface CompetitionEntry {
   subDetails?: string
 }
 
-// Conferences
 export interface ConferenceEntry {
   event: string
   detail?: string
-  // Path under public/badges/, shown as a small logo next to the event name.
   image?: string
   date: string
   dateEnd?: string
@@ -92,7 +85,6 @@ export interface ConferenceEntry {
   href?: string
 }
 
-// Friends
 export interface FriendEntry {
   name: string
   image: string
@@ -101,14 +93,12 @@ export interface FriendEntry {
   tooltip?: string
 }
 
-// Links page
 export interface LinkEntry {
   text: string
   href: string
   icon: string
 }
 
-// Gear
 export interface GearItem {
   label: string
   value: string
@@ -121,7 +111,6 @@ export interface GearSection {
   items: GearItem[]
 }
 
-// Sponsor
 export interface SponsorLink {
   platform: string
   href: string
@@ -135,20 +124,17 @@ export interface SponsorConfig {
   links: SponsorLink[]
 }
 
-// Analytics
 export interface AnalyticsConfig {
   enabled: boolean
   src?: string
   websiteId?: string
 }
 
-// Post view counter (Firestore REST API)
 export interface ViewsConfig {
   enabled: boolean
   projectId: string
 }
 
-// Feature flags
 export interface FeaturesConfig {
   sponsor: boolean
   githubContributions: boolean

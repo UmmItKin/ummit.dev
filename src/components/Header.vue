@@ -117,7 +117,6 @@ function closeDrawer() {
   background: rgba(0, 0, 0, 0.4);
 }
 
-/* Blur needs a translucent base, so fall back to the solid panel without it. */
 @supports not (backdrop-filter: blur(16px)) {
   .nav-drawer {
     background: #0d1117;

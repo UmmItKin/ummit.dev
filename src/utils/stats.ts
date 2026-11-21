@@ -1,9 +1,3 @@
-/**
- * Batch reader for listing pages.
- *
- * A listing can hold fifty posts, so fetching each counter on its own would
- * fire a hundred requests. batchGet takes every document in one round trip.
- */
 export interface Stats {
   views: number
   likes: number
@@ -63,7 +57,6 @@ export async function fetchStats(
     }
   }
   catch {
-    // Offline or blocked: callers leave the slots blank.
   }
   return out
 }

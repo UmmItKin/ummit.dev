@@ -11,7 +11,6 @@ export function initPasswordPosts() {
     const status = form.querySelector<HTMLElement>('[role="status"]')!
     const content = root.querySelector<HTMLElement>('[data-unlocked-content]')!
 
-    // Handle submissions locally; passwords never need to leave the browser.
     form.addEventListener('submit', async (event) => {
       event.preventDefault()
       if (button.disabled)

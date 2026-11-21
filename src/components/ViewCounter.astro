@@ -7,8 +7,6 @@ interface Props {
 }
 
 const { slug } = Astro.props
-// docPath is the id Firestore expects in a write, docUrl is the same document
-// as a REST url. Both come from docRefs so they cannot drift apart.
 const { docPath, docUrl, commitUrl } = docRefs('views', slug)
 ---
 
@@ -29,7 +27,6 @@ const { docPath, docUrl, commitUrl } = docRefs('views', slug)
       filter 0.4s ease;
   }
 
-  /* Matches the like button's resting dim so the two sit level. */
   .view-counter.is-loaded {
     opacity: 0.6;
     filter: none;
@@ -62,10 +59,10 @@ const { docPath, docUrl, commitUrl } = docRefs('views', slug)
     const n = await fetchViews(commitUrl, docUrl, docPath)
     if (n !== null) {
       show(out, n)
-      // Next frame, so the blurred state paints before the transition runs.
       requestAnimationFrame(() => el.classList.add('is-loaded'))
     }
   }
+  // Next frame, so the blurred state paints before the transition runs.
 
   function initViewCounter() {
     document.querySelectorAll('.view-counter').forEach((el) => {

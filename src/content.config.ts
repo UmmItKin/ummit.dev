@@ -28,10 +28,6 @@ function dateTransform(val: string | number | Date) {
   })
 }
 
-// Shared schema for blog-like collections (blog, musings, ctf, research, infosec)
-// Preprocess copies the raw `date` into `dateRaw` before the field transform
-// below turns `date` into a display string that drops the time of day. The sort
-// in posts.ts reads `dateRaw` so same-day posts stay in real chronological order.
 const postSchema = z.preprocess(
   (val) => {
     if (val && typeof val === 'object' && 'date' in val && (val as { date?: unknown }).date != null) {
