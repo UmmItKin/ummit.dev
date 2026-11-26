@@ -57,6 +57,7 @@ export default defineConfig({
     'text-yellow-500',
     'i-ri-rss-line',
     'i-ri-book-2-line',
+    'i-ri-file-user-line',
     'i-ri-signal-tower-line',
     'i-ri-global-line',
     'i-ri-external-link-line',

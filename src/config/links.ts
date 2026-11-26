@@ -9,6 +9,11 @@ export const links: LinkEntry[] = [
     icon: 'i-simple-icons-archlinux',
   },
   {
+    text: 'CV',
+    href: '/cv.pdf',
+    icon: 'i-ri-file-user-line',
+  },
+  {
     text: 'GitHub',
     href: 'https://github.com/UmmItKin',
     icon: 'i-simple-icons-github',
